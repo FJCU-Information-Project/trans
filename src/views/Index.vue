@@ -30,6 +30,7 @@ body{
 }
 #moutain{
   position: absolute;
+  fill: black;
   bottom: 0;
   left: 0;
   width: 40vw;
