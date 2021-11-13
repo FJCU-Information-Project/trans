@@ -1,47 +1,59 @@
-<script>
-// @ is an alias to /src
-//import HelloWorld from "@/components/HelloWorld.vue";
-export default {
-    name: "Index" /*,
-  components: {
-    HelloWorld,
-  },*/,
-};
-</script>
 
 <template>
   <div id="index">
     <h3 id="title">TRANS</h3>
     <router-link id="entryPoint" to="/Home">Entry</router-link>
-    
   </div>
+  <img id="road" src="../assets/svg/road.svg" alt="">
   <img id="moutain" src="../assets/svg/moutain.svg" alt="">
-  <!-- <svg id="moutain">
-    <polyline points="135 40, 85 100, 185 100" fill="#a3a87f"/>
-    <polyline points="65 0, 0 100, 130 100" fill="#5b6c5b"/>
-  </svg> -->
+  <img id="redcar" src="../assets/svg/redcar.svg" alt="">
+  <img id="bluecar" src="../assets/svg/bluecar.svg" alt="">
   <!--<HelloWorld msg="Welcome to Your Vue.js App" />-->
 </template>
+
+<script>
+export default {
+    name: "Index",
+};
+</script>
+
 
 
 <style lang="scss">
 body{
   background-color: #D6C7A6;
 }
-#moutain{
+
+@mixin svg($bottom,$size){
   position: absolute;
-  fill: black;
-  bottom: 0;
+  bottom: $bottom;
+  width: $size;
+}
+#road{
+  @include svg(0,100%);
   left: 0;
-  width: 40vw;
+  z-index: -1;
+}
+#moutain{
+  @include svg(0,40vw);
+  left: 0;
+}
+#redcar{
+  @include svg(5vw,25vw);
+  right: 30vw;
+}
+#bluecar{
+  @include svg(10vw,25vw);
+  right: 10vw;
 }
 #index {
-  margin-top: 30vh;
+  margin: 30vh auto 0;
+  width: 80%;
   #title{
     color: white;
-    font-size: 6em;
-    letter-spacing: 1em;
-    text-indent: 1em;
+    font-size: 500%;
+    letter-spacing: 0.5em;
+    text-indent: 0.5em;
   }
   #entryPoint {
     letter-spacing: 0.5em;
