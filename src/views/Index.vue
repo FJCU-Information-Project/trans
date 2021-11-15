@@ -24,27 +24,27 @@ body{
   background-color: #D6C7A6;
 }
 
-@mixin svg($bottom,$size){
+@mixin svg($bottom,$size,$layer){
   position: absolute;
   bottom: $bottom;
   width: $size;
+  z-index: $layer;
 }
 #road{
-  @include svg(0,100%);
+  @include svg(0,100%,-2);
   left: 0;
-  z-index: -1;
 }
 #moutain{
-  @include svg(0,40vw);
+  @include svg(0,40vw,-1);
   left: 0;
 }
 #redcar{
-  @include svg(5vw,25vw);
+  @include svg(5vw,25vw,-1);
   right: 30vw;
 }
 #bluecar{
-  @include svg(10vw,25vw);
-  right: 10vw;
+  @include svg(11vw,25vw,-1);
+  right: 5vw;
 }
 #index {
   margin: 30vh auto 0;
@@ -56,6 +56,7 @@ body{
     text-indent: 0.5em;
   }
   #entryPoint {
+    margin-top: 4em;
     letter-spacing: 0.5em;
     text-indent: 0.5em;
     text-align: center;
