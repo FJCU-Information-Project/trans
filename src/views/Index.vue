@@ -1,4 +1,3 @@
-
 <template>
   <div id="index">
     <h3 id="title">TRANS</h3>
@@ -9,6 +8,7 @@
   <img id="redcar" src="../assets/svg/redcar.svg" alt="">
   <img id="bluecar" src="../assets/svg/bluecar.svg" alt="">
   <!--<HelloWorld msg="Welcome to Your Vue.js App" />-->
+  <el-button type="primary">我是按鈕</el-button>
 </template>
 
 <script>
