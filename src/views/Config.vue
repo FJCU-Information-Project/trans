@@ -1,5 +1,5 @@
 <template>
-  <div id="upload">
+  <div id="config">
     TRANS
   </div>
   <!--<HelloWorld msg="Welcome to Your Vue.js App" />-->
@@ -10,6 +10,6 @@
 
 <script>
 export default {
-    name: "Upload",
+    name: "Config",
 };
 </script>

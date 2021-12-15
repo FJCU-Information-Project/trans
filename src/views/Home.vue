@@ -1,5 +1,4 @@
 <template>
-    <Navbar />
     <div class="home">
         <!-- <img alt="Vue logo" src="../assets/logo.png" /> -->
         <!-- <iframe :src="src" frameborder="0"></iframe> -->
@@ -7,7 +6,7 @@
             <el-carousel-item>
               <div class="medium card">
                   <h3>使用者設定</h3>
-                  <router-link to="/Upload" class="link">
+                  <router-link to="/Config" class="link">
                     <button class="btn">CONFIG</button>
                   </router-link>
                 </div>
@@ -34,7 +33,7 @@
 
 <script>
 // @ is an alias to /src
-import Navbar from "@/components/Navbar.vue";
+/*import Navbar from "@/components/Navbar.vue";*/
 
 export default {
   data (){
@@ -42,10 +41,10 @@ export default {
       src : 'http://127.0.0.1:5000/'
     }
   },
-  name: "Home" ,
+  name: "Home" ,/*
   components: {
     Navbar,
-  },
+  },*/
 };
 </script>
 
