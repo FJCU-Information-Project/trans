@@ -51,7 +51,7 @@ body{
   margin: 30vh auto 0;
   width: 80%;
   #title{
-    color: white;
+    color: #475669;
     font-size: 500%;
     letter-spacing: 0.5em;
     text-indent: 0.5em;
