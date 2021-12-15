@@ -8,7 +8,7 @@
   <img id="redcar" src="../assets/svg/redcar.svg" alt="">
   <img id="bluecar" src="../assets/svg/bluecar.svg" alt="">
   <!--<HelloWorld msg="Welcome to Your Vue.js App" />-->
-  <el-button type="primary">我是按鈕</el-button>
+  <!-- <el-button type="primary">我是按鈕</el-button> -->
 </template>
 
 <script>
@@ -21,7 +21,8 @@ export default {
 
 <style lang="scss">
 body{
-  background-color: #D6C7A6;
+  // background-color: #D6C7A6;
+  // background-color: ;
 }
 
 @mixin svg($bottom,$size,$layer){

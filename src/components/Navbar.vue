@@ -1,9 +1,15 @@
-
-
 <template>
-  <nav>
-    fhlgeoh
-  </nav>
+  <el-row>
+    <el-col :span="24">
+      <div class="grid-content bg-purple-dark nav">
+        <p id="logo">TRANS</p>
+        <button>
+          <!-- <img src="https://cdn-icons.flaticon.com/png/512/3177/premium/3177283.png?token=exp=1639556831~hmac=d48cabdc1d2766058be61c55da58600d" alt="" class="account-icon">  -->
+          <!-- Auth -->
+        </button>
+      </div>
+      </el-col>
+  </el-row>
 </template>
 
 <!-- navbar template
@@ -34,12 +40,50 @@ export default {
 -->
 
 <style lang="scss">
-  nav{
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 10em 0;
-    background-color: #ff0;
+  .account-icon{
+    width: 1em;
+    height: 1em;
+    margin-right: .5em;
+  }
+  .nav{
+    padding: 1em 2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #logo{
+    padding: .5em 1em;
+    background-color: transparent;
+    font-weight: bold;
+    letter-spacing: 4px;
+    text-indent: 4px;
+    font-size: 1.25em;
+    color: white;
+  }
+  button{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5em 1em;
+    font-size: 1.25em;
+    font-weight: bolder;
+    border: 0;
+    background-color: transparent;
+    color: white;
+    letter-spacing: 3px;
+    text-indent: 3px;
+  }
+  .el-row {
+    // margin-bottom: 20px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .bg-purple-dark {
+    background: #99a9bf;
+  }
+  .grid-content {
+    min-height: 36px;
   }
   // 原navbar scss
   // nav{
