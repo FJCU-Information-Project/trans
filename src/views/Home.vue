@@ -25,11 +25,13 @@
       <el-col :span="11">
         <div class="grid-content bg-purple analysis-entry-card">
           <div class="filter">
-            <h3 class="analysis-title">Analysis Title</h3>
+            <h3 class="analysis-title">Analysis1 Title</h3>
             <div class="btn-group">
-              <p class="analysis-btn">
-                entry
-              </p>
+              <router-link to="/analysis1" class="link">
+                <p class="analysis-btn">
+                  entry
+                </p>
+              </router-link>
               <p class="analysis-btn">
                 entry
               </p>
@@ -40,11 +42,13 @@
       <el-col :span="13">
         <div class="grid-content bg-purple analysis-entry-card">
           <div class="filter">
-            <h3 class="analysis-title">Analysis Title</h3>
+            <h3 class="analysis-title">Analysis2 Title</h3>
             <div class="btn-group">
-              <p class="analysis-btn">
-                entry
-              </p>
+              <router-link to="/analysis2" class="link">
+                <p class="analysis-btn">
+                  entry
+                </p>
+              </router-link>
               <p class="analysis-btn">
                 entry
               </p>

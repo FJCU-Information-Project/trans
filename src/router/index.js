@@ -24,12 +24,23 @@ const routes = [
     component: () =>
       import("../views/Upload.vue"),
   },
-
   {
     path: "/config",
     name: "Config",
     component: () =>
       import("../views/Config.vue"),
+  },
+  {
+    path: "/analysis_1",
+    name: "Analysis1",
+    component: () =>
+      import("../views/Analysis1.vue"),
+  },
+  {
+    path: "/analysis_2",
+    name: "Analysis2",
+    component: () =>
+      import("../views/Analysis2.vue"),
   },
   {
     path: "/about",
