@@ -21,14 +21,92 @@
             </el-carousel-item>
           </el-carousel>
     </div>
-    <!-- 上傳資料及頁面 -->
-    <div class="upload-container">
-      <el-row>
-        <el-col :span="6"><div class="grid-content bg-purple"></div></el-col>
-        <el-col :span="6"><div class="grid-content bg-purple-light"></div></el-col>
-        <el-col :span="6"><div class="grid-content bg-purple"></div></el-col>
-      </el-row>
-    </div>
+    <el-row :gutter="20">
+      <el-col :span="11">
+        <div class="grid-content bg-purple analysis-entry-card">
+          <div class="filter">
+            <h3 class="analysis-title">Analysis Title</h3>
+            <div class="btn-group">
+              <p class="analysis-btn">
+                entry
+              </p>
+              <p class="analysis-btn">
+                entry
+              </p>
+            </div>
+          </div>
+        </div>
+      </el-col>
+      <el-col :span="13">
+        <div class="grid-content bg-purple analysis-entry-card">
+          <div class="filter">
+            <h3 class="analysis-title">Analysis Title</h3>
+            <div class="btn-group">
+              <p class="analysis-btn">
+                entry
+              </p>
+              <p class="analysis-btn">
+                entry
+              </p>
+            </div>
+          </div>
+        </div>
+      </el-col>
+    </el-row>
+    <el-row :gutter="20">
+      <el-col :span="7">
+        <div class="grid-content bg-purple analysis-entry-card">
+          <div class="filter">
+            <h3 class="analysis-title">Analysis Title</h3>
+            <div class="btn-group">
+              <p class="analysis-btn">
+                entry
+              </p>
+              <p class="analysis-btn">
+                entry
+              </p>
+            </div>
+          </div>
+        </div>
+      </el-col>
+      <el-col :span="9">
+        <div class="grid-content bg-purple analysis-entry-card">
+          <div class="filter">
+            <h3 class="analysis-title">Analysis Title</h3>
+            <div class="btn-group">
+              <p class="analysis-btn">
+                entry
+              </p>
+              <p class="analysis-btn">
+                entry
+              </p>
+            </div>
+          </div>
+        </div>
+      </el-col>
+      <el-col :span="8">
+        <div class="grid-content bg-purple analysis-entry-card">
+          <div class="filter">
+            <h3 class="analysis-title">Analysis Title</h3>
+            <div class="btn-group">
+              <p class="analysis-btn">
+                entry
+              </p>
+              <p class="analysis-btn">
+                entry
+              </p>
+            </div>
+          </div>
+        </div> 
+      </el-col>
+    </el-row>
+    <el-row>
+      <el-col :span="24">
+        <div class="grid-content bg-purple-dark footer">
+          
+        </div>
+        </el-col>
+    </el-row>
 </template>
 
 <script>
@@ -50,11 +128,64 @@ export default {
 
 <style lang="scss">
   // 上傳資料頁面CSS
-  .upload-container{
+  .upload-card{
+    height: 35em;
+  }
+  .card-allocate{
     width: 100%;
     height: 100vh;
-    padding: 3em;
+    padding: 3em 5em;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
+  }
+  .filter{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: transparent;
+  }
+  .analysis-title{
+    font-size: 2.5em;
+    font-weight: bolder;
+    color: #fff;
+    letter-spacing: 3px;
+    text-indent: 3px;
+  }
+  .analysis-entry-card:hover{
+    // background-color: rgba(119, 119, 184, .8);
+    transition: ease-in-out .4s all;
+    // filter:blur(3px);
+  }
+  .analysis-entry-card:hover .analysis-btn{
+    border: 3px solid #fff;
+    color: #fff;
+    transition: ease-in-out .4s all;
+  }
+  .analysis-entry-card:hover .filter{
+    background-color: rgba(119, 119, 184, .3);
+    transition: ease-in-out .4s all;
+  }
+  .btn-group{
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2em;
+
+  }
+  .analysis-btn{
+    padding: .5em 1em;
+    border: 3px solid transparent;
+    font-size: 1.25em;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-indent: 4px;
+    color: transparent;
   }
   .el-row {
     margin-bottom: 20px;
@@ -76,6 +207,15 @@ export default {
     min-height: 36px;
   }
   //
+  .footer{
+    height: 25em;
+  }
+  .analysis-entry-card{
+    height: 30em;
+    background-image: url(https://images.pexels.com/photos/10123275/pexels-photo-10123275.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+    background-position: center;
+    background-size: cover;
+  }
   .link{
     text-decoration: none;
   }
@@ -91,6 +231,7 @@ export default {
     font-size: 1.05em;
     letter-spacing: 3px;
     text-indent: 3px;
+    cursor: pointer;
   }
   .card{
     height: 300px;
