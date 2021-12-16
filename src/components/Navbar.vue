@@ -2,7 +2,7 @@
   <el-row>
     <el-col :span="24">
       <div class="grid-content bg-purple-dark nav">
-        <router-link to="/home">
+        <router-link to="/home" class="link">
           <p id="logo">TRANS</p>
         </router-link>
         
@@ -87,6 +87,9 @@ export default {
   }
   .grid-content {
     min-height: 36px;
+  }
+  .link{
+    text-decoration: none;
   }
   // 原navbar scss
   // nav{

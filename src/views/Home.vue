@@ -186,6 +186,7 @@ export default {
     letter-spacing: 4px;
     text-indent: 4px;
     color: transparent;
+    cursor: pointer;
   }
   .analysis-btn:hover{
     background-color: #fff;

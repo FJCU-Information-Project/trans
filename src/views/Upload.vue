@@ -4,7 +4,7 @@
     <el-col :span="7">
       <div class="grid-content bg-purple upload-card">
         <div class="icon-con">
-          <img src="https://cdn-icons.flaticon.com/png/512/4292/premium/4292316.png?token=exp=1639641448~hmac=6280b8cb0beb9320f2d7efbd49eff5c6" alt="">
+          <img src="https://cdn-icons.flaticon.com/png/512/4292/premium/4292316.png?token=exp=1639670726~hmac=c5fbca0ced0927e7f55d36ace1f97049" alt="">
         </div>
         <h3>節點 Node</h3>
         <p class="describe">
@@ -91,6 +91,10 @@
   <!-- <router-link to="/Home">
     <el-button type="primary">Home</el-button>
   </router-link> -->
+  
+  <!-- 預設資料集功能介面 -->
+  <!-- <iframe src="" frameborder="0"></iframe> -->
+  
 </template>
 
 <script>
@@ -100,6 +104,33 @@ export default {
 </script>
 
 <style lang="scss">
+  // 預設資料集功能介面CSS
+  .sna-con{
+    height: 30em;
+  }
+  .el-row {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .el-col {
+    border-radius: 4px;
+  }
+  .bg-purple {
+    background: #d3dce6;
+  }
+  .bg-purple-light {
+    background: #e5e9f2;
+  }
+  .grid-content {
+    border-radius: 4px;
+    min-height: 36px;
+  }
+  //
+
   // 上傳資料頁面CSS
   .el-upload__tip{
     margin-top: 2em;
