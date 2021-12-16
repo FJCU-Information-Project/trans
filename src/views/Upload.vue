@@ -10,10 +10,25 @@
         <p class="describe">
 
         </p>
-        <form action="">
-          <input type="file" name="" id="">
-          <input type="submit" value="">
-        </form>
+        <el-upload
+          class="upload-demo"
+          action="https://jsonplaceholder.typicode.com/posts/"
+          :on-preview="handlePreview"
+          :on-remove="handleRemove"
+          :before-remove="beforeRemove"
+          multiple
+          :limit="3"
+          :on-exceed="handleExceed"
+          :file-list="fileList"
+        >
+          <el-button size="small" type="warning">Click to upload</el-button>
+          <template #tip>
+            <div class="el-upload__tip">
+              jpg/png files with a size less than 500kb
+            </div>
+          </template>
+        </el-upload>
+
       </div>
     </el-col>
     <el-col :span="7">
@@ -25,10 +40,24 @@
         <p class="describe">
 
         </p>
-        <form action="">
-          <input type="file" name="" id="">
-          <input type="submit" value="">
-        </form>
+        <el-upload
+          class="upload-demo"
+          action="https://jsonplaceholder.typicode.com/posts/"
+          :on-preview="handlePreview"
+          :on-remove="handleRemove"
+          :before-remove="beforeRemove"
+          multiple
+          :limit="3"
+          :on-exceed="handleExceed"
+          :file-list="fileList"
+        >
+          <el-button size="small" type="warning">Click to upload</el-button>
+          <template #tip>
+            <div class="el-upload__tip">
+              jpg/png files with a size less than 500kb
+            </div>
+          </template>
+        </el-upload>
       </div>
     </el-col>
     <el-col :span="7">
@@ -40,10 +69,24 @@
         <p class="describe">
 
         </p>
-        <form action="">
-          <input type="file" name="" id="">
-          <input type="submit" value="">
-        </form>
+        <el-upload
+          class="upload-demo"
+          action="https://jsonplaceholder.typicode.com/posts/"
+          :on-preview="handlePreview"
+          :on-remove="handleRemove"
+          :before-remove="beforeRemove"
+          multiple
+          :limit="3"
+          :on-exceed="handleExceed"
+          :file-list="fileList"
+        >
+          <el-button size="small" type="warning">Click to upload</el-button>
+          <template #tip>
+            <div class="el-upload__tip">
+              jpg/png files with a size less than 500kb
+            </div>
+          </template>
+      </el-upload>
       </div>
     </el-col>
   </el-row>
@@ -64,6 +107,12 @@ export default {
 
 <style lang="scss">
   // 上傳資料頁面CSS
+  .el-upload__tip{
+    margin-top: 2em;
+  }
+  .upload-demo{
+    margin-top: 2em;
+  }
   .upload-card{
     box-sizing: border-box;
     height: 35em;
@@ -77,29 +126,29 @@ export default {
       font-weight: bolder;
       color: #000;
     }
-    & form{
-      margin-top: 5em;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      & input:nth-child(1){
-        border-radius: 30px;
-        background: #fff;
-        padding: .5em 0;
-      }
-      & input:nth-child(2){
-        margin-top: 3em;
-        width: 30%;
-        border: 0;
-        background-color: #fff;
-        border-radius:10px;
-        padding: .25em;
-        font-size: 1.05em;
-        letter-spacing: 5px;
-        text-indent: 5px;
-        font-weight: bolder;
-      }
-    }
+    // & form{
+    //   margin-top: 5em;
+    //   display: flex;
+    //   flex-direction: column;
+    //   align-items: center;
+    //   & input:nth-child(1){
+    //     border-radius: 30px;
+    //     background: #fff;
+    //     padding: .5em 0;
+    //   }
+    //   & input:nth-child(2){
+    //     margin-top: 3em;
+    //     width: 30%;
+    //     border: 0;
+    //     background-color: #fff;
+    //     border-radius:10px;
+    //     padding: .25em;
+    //     font-size: 1.05em;
+    //     letter-spacing: 5px;
+    //     text-indent: 5px;
+    //     font-weight: bolder;
+    //   }
+    // }
   }
   .icon-con{
     width: 150px;
