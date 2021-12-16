@@ -12,16 +12,14 @@
         </p>
         <el-upload
           class="upload-demo"
+          drag
           action="https://jsonplaceholder.typicode.com/posts/"
-          :on-preview="handlePreview"
-          :on-remove="handleRemove"
-          :before-remove="beforeRemove"
           multiple
-          :limit="3"
-          :on-exceed="handleExceed"
-          :file-list="fileList"
         >
-          <el-button size="small" type="warning">Click to upload</el-button>
+          <el-icon class="el-icon--upload"><upload-filled /></el-icon>
+          <div class="el-upload__text">
+            Drop file here or <em>click to upload</em>
+          </div>
           <template #tip>
             <div class="el-upload__tip">
               jpg/png files with a size less than 500kb
@@ -42,16 +40,14 @@
         </p>
         <el-upload
           class="upload-demo"
+          drag
           action="https://jsonplaceholder.typicode.com/posts/"
-          :on-preview="handlePreview"
-          :on-remove="handleRemove"
-          :before-remove="beforeRemove"
           multiple
-          :limit="3"
-          :on-exceed="handleExceed"
-          :file-list="fileList"
         >
-          <el-button size="small" type="warning">Click to upload</el-button>
+          <el-icon class="el-icon--upload"><upload-filled /></el-icon>
+          <div class="el-upload__text">
+            Drop file here or <em>click to upload</em>
+          </div>
           <template #tip>
             <div class="el-upload__tip">
               jpg/png files with a size less than 500kb
@@ -71,22 +67,20 @@
         </p>
         <el-upload
           class="upload-demo"
+          drag
           action="https://jsonplaceholder.typicode.com/posts/"
-          :on-preview="handlePreview"
-          :on-remove="handleRemove"
-          :before-remove="beforeRemove"
           multiple
-          :limit="3"
-          :on-exceed="handleExceed"
-          :file-list="fileList"
         >
-          <el-button size="small" type="warning">Click to upload</el-button>
+          <el-icon class="el-icon--upload"><upload-filled /></el-icon>
+          <div class="el-upload__text">
+            Drop file here or <em>click to upload</em>
+          </div>
           <template #tip>
             <div class="el-upload__tip">
               jpg/png files with a size less than 500kb
             </div>
           </template>
-      </el-upload>
+        </el-upload>
       </div>
     </el-col>
   </el-row>
