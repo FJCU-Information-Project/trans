@@ -187,6 +187,10 @@ export default {
     text-indent: 4px;
     color: transparent;
   }
+  .analysis-btn:hover{
+    background-color: #fff;
+    color: #000 !important;
+  }
   .el-row {
     margin-bottom: 20px;
     &:last-child {
