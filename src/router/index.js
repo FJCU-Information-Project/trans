@@ -31,13 +31,13 @@ const routes = [
       import("../views/Config.vue"),
   },
   {
-    path: "/analysis_1",
+    path: "/analysis1",
     name: "Analysis1",
     component: () =>
       import("../views/Analysis1.vue"),
   },
   {
-    path: "/analysis_2",
+    path: "/analysis2",
     name: "Analysis2",
     component: () =>
       import("../views/Analysis2.vue"),
