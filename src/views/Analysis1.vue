@@ -1,9 +1,17 @@
 <template>
-  Analysis1
+  <el-select v-model="value" placeholder="Select">
+    <el-option
+      v-for="item in options"
+      :key="item.value"
+      :label="item.label"
+      :value="item.value"
+    >
+    </el-option>
+  </el-select>
 </template>
 
 <script>
 export default {
-    name: "Analysis1",
+  name: "Analysis1",
 };
 </script>

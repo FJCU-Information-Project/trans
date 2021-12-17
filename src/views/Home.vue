@@ -21,89 +21,91 @@
             </el-carousel-item>
           </el-carousel>
     </div>
-    <el-row :gutter="20">
-      <el-col :span="11">
-        <div class="grid-content bg-purple analysis-entry-card">
-          <div class="filter">
-            <h3 class="analysis-title">Analysis1 Title</h3>
-            <div class="btn-group">
-              <router-link to="/analysis1" class="link">
+    <div class="container">
+      <el-row :gutter="20">
+        <el-col :xs="24" :sm="2" :md="8" :lg="11" :xl="11">
+          <div class="grid-content bg-purple analysis-entry-card">
+            <div class="filter">
+              <h3 class="analysis-title">Analysis1 Title</h3>
+              <div class="btn-group">
+                <router-link to="/analysis1" class="link">
+                  <p class="analysis-btn">
+                    entry
+                  </p>
+                </router-link>
                 <p class="analysis-btn">
                   entry
                 </p>
-              </router-link>
-              <p class="analysis-btn">
-                entry
-              </p>
+              </div>
             </div>
           </div>
-        </div>
-      </el-col>
-      <el-col :span="13">
-        <div class="grid-content bg-purple analysis-entry-card">
-          <div class="filter">
-            <h3 class="analysis-title">Analysis2 Title</h3>
-            <div class="btn-group">
-              <router-link to="/analysis2" class="link">
+        </el-col>
+        <el-col :xs="24" :sm="2" :md="8" :lg="13" :xl="13">
+          <div class="grid-content bg-purple analysis-entry-card">
+            <div class="filter">
+              <h3 class="analysis-title">Analysis2 Title</h3>
+              <div class="btn-group">
+                <router-link to="/analysis2" class="link">
+                  <p class="analysis-btn">
+                    entry
+                  </p>
+                </router-link>
                 <p class="analysis-btn">
                   entry
                 </p>
-              </router-link>
-              <p class="analysis-btn">
-                entry
-              </p>
+              </div>
             </div>
           </div>
-        </div>
-      </el-col>
-    </el-row>
-    <el-row :gutter="20">
-      <el-col :span="7">
-        <div class="grid-content bg-purple analysis-entry-card">
-          <div class="filter">
-            <h3 class="analysis-title">Analysis Title</h3>
-            <div class="btn-group">
-              <p class="analysis-btn">
-                entry
-              </p>
-              <p class="analysis-btn">
-                entry
-              </p>
+        </el-col>
+      </el-row>
+      <el-row :gutter="20">
+        <el-col :xs="24" :sm="2" :md="8" :lg="7" :xl="7">
+          <div class="grid-content bg-purple analysis-entry-card">
+            <div class="filter">
+              <h3 class="analysis-title">Analysis Title</h3>
+              <div class="btn-group">
+                <p class="analysis-btn">
+                  entry
+                </p>
+                <p class="analysis-btn">
+                  entry
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      </el-col>
-      <el-col :span="9">
-        <div class="grid-content bg-purple analysis-entry-card">
-          <div class="filter">
-            <h3 class="analysis-title">Analysis Title</h3>
-            <div class="btn-group">
-              <p class="analysis-btn">
-                entry
-              </p>
-              <p class="analysis-btn">
-                entry
-              </p>
+        </el-col>
+        <el-col :xs="24" :sm="2" :md="8" :lg="9" :xl="9">
+          <div class="grid-content bg-purple analysis-entry-card">
+            <div class="filter">
+              <h3 class="analysis-title">Analysis Title</h3>
+              <div class="btn-group">
+                <p class="analysis-btn">
+                  entry
+                </p>
+                <p class="analysis-btn">
+                  entry
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      </el-col>
-      <el-col :span="8">
-        <div class="grid-content bg-purple analysis-entry-card">
-          <div class="filter">
-            <h3 class="analysis-title">Analysis Title</h3>
-            <div class="btn-group">
-              <p class="analysis-btn">
-                entry
-              </p>
-              <p class="analysis-btn">
-                entry
-              </p>
+        </el-col>
+        <el-col :xs="24" :sm="2" :md="8" :lg="8" :xl="8">
+          <div class="grid-content bg-purple analysis-entry-card">
+            <div class="filter">
+              <h3 class="analysis-title">Analysis Title</h3>
+              <div class="btn-group">
+                <p class="analysis-btn">
+                  entry
+                </p>
+                <p class="analysis-btn">
+                  entry
+                </p>
+              </div>
             </div>
-          </div>
-        </div> 
-      </el-col>
-    </el-row>
+          </div> 
+        </el-col>
+      </el-row>
+    </div>
     <el-row>
       <el-col :span="24">
         <div class="grid-content bg-purple-dark footer">
@@ -111,6 +113,7 @@
         </div>
         </el-col>
     </el-row>
+
 </template>
 
 <script>
@@ -216,6 +219,14 @@ export default {
     min-height: 36px;
   }
   //
+  .footer{
+    margin-top: 1.25em;
+  }
+  .container{
+    width: 100%;
+    padding: 0 1.25em;
+    box-sizing: border-box;
+  }
   .footer{
     height: 25em;
   }
