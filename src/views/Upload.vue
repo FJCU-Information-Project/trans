@@ -4,7 +4,7 @@
     <el-col :span="7">
       <div class="grid-content bg-purple upload-card">
         <div class="icon-con">
-          <img src="https://cdn-icons.flaticon.com/png/512/4292/premium/4292316.png?token=exp=1639670726~hmac=c5fbca0ced0927e7f55d36ace1f97049" alt="">
+          <img src="../assets/node.png" alt="">
         </div>
         <h3>節點 Node</h3>
         <p class="describe">
