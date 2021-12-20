@@ -12,7 +12,7 @@
       </el-select>
     </el-aside>
     <el-main>
-      <iframe src="" frameborder="0">
+      <iframe src="/SNA.html" frameborder="0">
         <!-- 社會網路圖 -->
       </iframe>
     </el-main>
