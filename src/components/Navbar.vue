@@ -5,14 +5,25 @@
         <router-link to="/home" class="link">
           <p id="logo">TRANS</p>
         </router-link>
-        
-        <button>
-          <!-- <img src="https://cdn-icons.flaticon.com/png/512/3177/premium/3177283.png?token=exp=1639556831~hmac=d48cabdc1d2766058be61c55da58600d" alt="" class="account-icon">  -->
-          <!-- Auth -->
-        </button>
       </div>
-      </el-col>
+    </el-col>
   </el-row>
+  <!-- <el-container> -->
+    <!-- <el-row>
+      <el-col :span="24">
+        <div class="grid-content bg-purple-dark nav">
+          <router-link to="/home" class="link">
+            <p id="logo">TRANS</p>
+          </router-link>
+          
+          <button> -->
+            <!-- <img src="https://cdn-icons.flaticon.com/png/512/3177/premium/3177283.png?token=exp=1639556831~hmac=d48cabdc1d2766058be61c55da58600d" alt="" class="account-icon">  -->
+            <!-- Auth -->
+          <!-- </button>
+        </div>
+        </el-col>
+    </el-row>
+  </el-container> -->
 </template>
 
 <!-- navbar template
@@ -77,6 +88,7 @@ export default {
     text-indent: 3px;
   }
   .el-row {
+    margin-bottom: 0;
     // margin-bottom: 20px;
     &:last-child {
       margin-bottom: 0;

@@ -43,7 +43,6 @@ export default {
   justify-content: center;
   align-items: flex-start;
   padding: 5em 0;
-  height: 92vh;
 }
 
 .el-main {
