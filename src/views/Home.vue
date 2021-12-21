@@ -224,11 +224,13 @@ export default {
   }
   .container{
     width: 100%;
-    padding: 0 1.25em;
+    padding: 1.25em 1.25em;
     box-sizing: border-box;
+    background-image: url(https://images.pexels.com/photos/10344100/pexels-photo-10344100.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
   }
   .footer{
     height: 25em;
+    margin-top: 0;
   }
   .analysis-entry-card{
     height: 30em;
