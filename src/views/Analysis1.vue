@@ -21,10 +21,18 @@
   <el-row class="con_flex">
     <el-col :span="11">
         <div class="grid-content bg-purple main_sec">
+          <el-table :data="tableData" stripe style="width: 100%;">
+            <el-table-column prop="date" label="Date" width="180"/>
+            <el-table-column prop="name" label="Name" width="180" />
+            <el-table-column prop="address" label="Address" />
+          </el-table>
         </div>
       </el-col>
     <el-col :span="12">
         <div class="grid-content bg-purple-light main_sec">
+          <iframe src="/SNA.html" frameborder="0" width="100%" height="100%">
+            <!-- 社會網路圖 -->
+          </iframe>
         </div>
       </el-col>
   </el-row>
@@ -52,7 +60,89 @@
 <script>
 export default {
   name: "Analysis1",
+  data() {
+    return {
+      tableData: [
+        {
+          date: '2016-05-03',
+          name: 'Tom',
+          address: 'No. 189, Grove St, Los Angeles',
+        },
+        {
+          date: '2016-05-02',
+          name: 'Tom',
+          address: 'No. 189, Grove St, Los Angeles',
+        },
+        {
+          date: '2016-05-04',
+          name: 'Tom',
+          address: 'No. 189, Grove St, Los Angeles',
+        },
+        {
+          date: '2016-05-01',
+          name: 'Tom',
+          address: 'No. 189, Grove St, Los Angeles',
+        },
+        {
+          date: '2016-05-03',
+          name: 'Tom',
+          address: 'No. 189, Grove St, Los Angeles',
+        },
+        {
+          date: '2016-05-02',
+          name: 'Tom',
+          address: 'No. 189, Grove St, Los Angeles',
+        },
+        {
+          date: '2016-05-04',
+          name: 'Tom',
+          address: 'No. 189, Grove St, Los Angeles',
+        },
+        {
+          date: '2016-05-01',
+          name: 'Tom',
+          address: 'No. 189, Grove St, Los Angeles',
+        },
+        {
+          date: '2016-05-03',
+          name: 'Tom',
+          address: 'No. 189, Grove St, Los Angeles',
+        },
+        {
+          date: '2016-05-02',
+          name: 'Tom',
+          address: 'No. 189, Grove St, Los Angeles',
+        },
+        {
+          date: '2016-05-04',
+          name: 'Tom',
+          address: 'No. 189, Grove St, Los Angeles',
+        },
+        {
+          date: '2016-05-01',
+          name: 'Tom',
+          address: 'No. 189, Grove St, Los Angeles',
+        },
+        {
+          date: '2016-05-03',
+          name: 'Tom',
+          address: 'No. 189, Grove St, Los Angeles',
+        },
+        {
+          date: '2016-05-02',
+          name: 'Tom',
+          address: 'No. 189, Grove St, Los Angeles',
+        },
+        {
+          date: '2016-05-04',
+          name: 'Tom',
+          address: 'No. 189, Grove St, Los Angeles',
+        },
+      ],
+    }
+  },
 };
+
 </script>
 
 <style lang="scss">
@@ -63,6 +153,7 @@ export default {
 }
 .main_sec{
   height: 100vh;
+  padding: 1em 1em;
 }
 .banner{
   background: rgb(226, 226, 216);
