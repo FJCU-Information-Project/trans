@@ -1,34 +1,34 @@
 <template>
     <div class="home">
-        <!-- <img alt="Vue logo" src="../assets/logo.png" /> -->
-        <!-- <iframe :src="src" frameborder="0"></iframe> -->
-         <el-carousel :interval="4000" type="card" height="300px">
-            <el-carousel-item>
-              <div class="medium card">
-                  <h3>使用者設定</h3>
-                  <router-link to="/Config" class="link">
-                    <button class="btn">CONFIG</button>
-                  </router-link>
-                </div>
-            </el-carousel-item>
-            <el-carousel-item>
-                <div class="medium card">
-                  <h3>上傳資料</h3>
-                  <router-link to="/Upload" class="link">
-                    <button class="btn">UPLOAD</button>
-                  </router-link>
-                </div>
-            </el-carousel-item>
-          </el-carousel>
+      <!-- <img alt="Vue logo" src="../assets/logo.png" /> -->
+      <!-- <iframe :src="src" frameborder="0"></iframe> -->
+      <el-carousel :interval="4000" type="card" height="300px">
+        <el-carousel-item>
+          <div class="medium card">
+              <h3>使用者設定</h3>
+              <router-link to="/Config" class="link">
+                <button class="btn">CONFIG</button>
+              </router-link>
+            </div>
+        </el-carousel-item>
+        <el-carousel-item>
+          <div class="medium card">
+            <h3>上傳資料</h3>
+            <router-link to="/Upload" class="link">
+              <button class="btn">UPLOAD</button>
+            </router-link>
+          </div>
+        </el-carousel-item>
+      </el-carousel>
     </div>
     <div class="container">
       <el-row :gutter="20">
         <el-col :xs="24" :sm="2" :md="8" :lg="11" :xl="11">
           <div class="grid-content bg-purple analysis-entry-card">
             <div class="filter">
-              <h3 class="analysis-title">Analysis1 Title</h3>
+              <h3 class="analysis-title">Layer Analysis</h3>
               <div class="btn-group">
-                <router-link to="/analysis1" class="link">
+                <router-link to="/layeranalysis" class="link">
                   <p class="analysis-btn">
                     entry
                   </p>
@@ -43,9 +43,9 @@
         <el-col :xs="24" :sm="2" :md="8" :lg="13" :xl="13">
           <div class="grid-content bg-purple analysis-entry-card">
             <div class="filter">
-              <h3 class="analysis-title">Analysis2 Title</h3>
+              <h3 class="analysis-title">Intersection Analysis</h3>
               <div class="btn-group">
-                <router-link to="/analysis2" class="link">
+                <router-link to="/intersectionanalysis" class="link">
                   <p class="analysis-btn">
                     entry
                   </p>
@@ -62,11 +62,13 @@
         <el-col :xs="24" :sm="2" :md="8" :lg="7" :xl="7">
           <div class="grid-content bg-purple analysis-entry-card">
             <div class="filter">
-              <h3 class="analysis-title">Analysis Title</h3>
+              <h3 class="analysis-title">Result Analysis</h3>
               <div class="btn-group">
-                <p class="analysis-btn">
-                  entry
-                </p>
+                <router-link to="/ResultAnalysis" class="link">
+                  <p class="analysis-btn">
+                    entry
+                  </p>
+                </router-link>
                 <p class="analysis-btn">
                   entry
                 </p>
@@ -77,11 +79,13 @@
         <el-col :xs="24" :sm="2" :md="8" :lg="9" :xl="9">
           <div class="grid-content bg-purple analysis-entry-card">
             <div class="filter">
-              <h3 class="analysis-title">Analysis Title</h3>
+              <h3 class="analysis-title">Betweenness Analysis</h3>
               <div class="btn-group">
-                <p class="analysis-btn">
-                  entry
-                </p>
+                <router-link to="/betweennessanalysis" class="link">
+                  <p class="analysis-btn">
+                    entry
+                  </p>
+                </router-link>
                 <p class="analysis-btn">
                   entry
                 </p>
@@ -92,11 +96,13 @@
         <el-col :xs="24" :sm="2" :md="8" :lg="8" :xl="8">
           <div class="grid-content bg-purple analysis-entry-card">
             <div class="filter">
-              <h3 class="analysis-title">Analysis Title</h3>
+              <h3 class="analysis-title">Closeness Analysis</h3>
               <div class="btn-group">
-                <p class="analysis-btn">
-                  entry
-                </p>
+                <router-link to="/closenessanalysis" class="link">
+                  <p class="analysis-btn">
+                    entry
+                  </p>
+                </router-link>
                 <p class="analysis-btn">
                   entry
                 </p>

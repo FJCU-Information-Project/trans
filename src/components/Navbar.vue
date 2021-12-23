@@ -1,5 +1,5 @@
 <template>
-  <el-row>
+  <el-row class="close">
     <el-col :span="24">
       <div class="grid-content bg-purple-dark nav">
         <router-link to="/home" class="link">
@@ -54,6 +54,9 @@ export default {
 -->
 
 <style lang="scss">
+  .close{
+    margin-bottom: 0 !important;
+  }
   .account-icon{
     width: 1em;
     height: 1em;
@@ -88,7 +91,6 @@ export default {
     text-indent: 3px;
   }
   .el-row {
-    margin-bottom: 0;
     // margin-bottom: 20px;
     &:last-child {
       margin-bottom: 0;

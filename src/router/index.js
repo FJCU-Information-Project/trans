@@ -31,25 +31,40 @@ const routes = [
       import("../views/Config.vue"),
   },
   {
-    path: "/analysis1",
-    name: "Analysis1",
+    path: "/layeranalysis",
+    name: "LayerAnalysis",
     component: () =>
-      import("../views/Analysis1.vue"),
+      import("../views/LayerAnalysis.vue"),
   },
   {
-    path: "/analysis2",
-    name: "Analysis2",
+    path: "/intersectionanalysis",
+    name: "IntersectionAnalysis",
     component: () =>
-      import("../views/Analysis2.vue"),
+      import("../views/IntersectionAnalysis.vue"),
   },
   {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
+    path: "/resultanalysis",
+    name: "ResultAnalysis",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+      import("../views/ResultAnalysis.vue"),
+  },
+  {
+    path: "/betweennessanalysis",
+    name: "BetweennessAnalysis",
+    component: () =>
+      import("../views/BetweennessAnalysis.vue"),
+  },
+  {
+    path: "/closenessanalysis",
+    name: "ClosenessAnalysis",
+    component: () =>
+      import("../views/ClosenessAnalysis.vue"),
+  },
+  {
+    path: "/degreeanalysis",
+    name: "DegreeAnalysis",
+    component: () =>
+      import("../views/DegreeAnalysis.vue"),
   },
 ];
 
