@@ -177,6 +177,7 @@ export default {
   .analysis-entry-card:hover .filter{
     background-color: rgba(119, 119, 184, .3);
     transition: ease-in-out .4s all;
+    border-radius: 3px;
   }
   .btn-group{
     width: 300px;
@@ -226,7 +227,7 @@ export default {
     width: 100%;
     padding: 1.25em 1.25em;
     box-sizing: border-box;
-    background-image: url(https://images.pexels.com/photos/10344100/pexels-photo-10344100.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+    // background-image: url(https://images.pexels.com/photos/10344100/pexels-photo-10344100.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
   }
   .footer{
     height: 25em;
@@ -237,6 +238,7 @@ export default {
     background-image: url(https://images.pexels.com/photos/10123275/pexels-photo-10123275.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
     background-position: center;
     background-size: cover;
+    box-shadow: 8px 8px 10px rgba(0, 0, 0, .4);
   }
   .link{
     text-decoration: none;
