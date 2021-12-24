@@ -74,19 +74,12 @@ export default {
     return {
       tableData: [
         {
-          date: "2016-05-03",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
+          id: "1",
+          node: "天氣",
         },
         {
-          date: "2016-05-02",
-          name: "Amy",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-04",
-          name: "John",
-          address: "No. 189, Grove St, Los Angeles",
+          id: "2",
+          node: "天氣2",
         },
       ],
       value: '',
@@ -96,7 +89,7 @@ export default {
     const api = `http://127.0.0.1:5000/nodes`;
     this.$http.get(api).then((response) => {
       console.log(response.data);
-      this.tableData = response.data;
+      this.tableData = response.data.slice(0,5);
     });
   },
   name: "LayerAnalysis",
