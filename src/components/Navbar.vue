@@ -5,12 +5,14 @@
         <router-link to="/home" class="link">
           <p id="logo">TRANS</p>
         </router-link>
-        <router-link to="/Config" class="link">
-          <button>CONFIG</button>
-        </router-link>
-        <router-link to="/Upload" class="link">
-          <button>UPLOAD</button>
-        </router-link>
+        <div class="menu">
+          <router-link to="/Config" class="link">
+            <el-button round>Config</el-button>
+          </router-link>
+          <router-link to="/Upload" class="link">
+            <el-button round>Upload</el-button>
+          </router-link>
+        </div>
       </div>
     </el-col>
   </el-row>
@@ -60,6 +62,12 @@ export default {
 -->
 
 <style lang="scss">
+.menu{
+  width: 18%;
+  display: flex;
+  justify-content: space-between;
+  // background: #ffa;
+}
 .close {
   margin-bottom: 0 !important;
 }
