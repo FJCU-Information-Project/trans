@@ -67,6 +67,7 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 8px 8px 10px rgb(131, 131, 131);
   }
   #logo{
     padding: .5em 1em;

@@ -2,19 +2,30 @@
   <el-row>
     <el-col :span="24">
       <div class="grid-content banner">
-        <h1>Analysis1</h1>
+        <h1>Intersection Analysis</h1>
         <span style="font-weight: bolder;">
-          請選取一個您感興趣的節點，我們將會為您找出與其關聯性前五強的節點
+          請選擇兩個您好奇的節點，我們將會為您分析出此兩個節點間的關聯跟中間會經常伴隨的節點
         </span>
-       <el-select v-model="value" placeholder="Select">
-          <el-option
-            v-for="item in options"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value"
-          >
-          </el-option>
-        </el-select>
+       <div class="select-group">
+          <el-select v-model="value" placeholder="請選擇第一個節點">
+            <el-option
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            >
+            </el-option>
+          </el-select>
+          <el-select v-model="value" placeholder="請選擇第二個節點">
+            <el-option
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            >
+            </el-option>
+          </el-select>
+        </div>
       </div>
     </el-col>
   </el-row>
@@ -121,6 +132,11 @@ export default {
 </script>
 
 <style lang="scss">
+.select-group{
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+}
 .con_flex{
   display: flex;
   justify-content: space-evenly;
@@ -140,7 +156,7 @@ export default {
   place-items: center;
   padding: 5em 0;
   box-sizing: border-box;
-  background-image: url(https://images.pexels.com/photos/1485894/pexels-photo-1485894.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500);
+  background-image: url(https://images.pexels.com/photos/36487/above-adventure-aerial-air.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
   background-size: cover;
   background-position: center;
   color: white;

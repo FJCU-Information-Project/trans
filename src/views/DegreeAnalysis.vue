@@ -6,15 +6,6 @@
         <span style="font-weight: bolder;">
           請選取一個您感興趣的節點，我們將會為您找出與其關聯性前五強的節點
         </span>
-       <el-select v-model="value" placeholder="Select">
-          <el-option
-            v-for="item in options"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value"
-          >
-          </el-option>
-        </el-select>
       </div>
     </el-col>
   </el-row>
@@ -140,7 +131,7 @@ export default {
   place-items: center;
   padding: 5em 0;
   box-sizing: border-box;
-  background-image: url(https://images.pexels.com/photos/1485894/pexels-photo-1485894.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500);
+  background-image: url(https://images.pexels.com/photos/36487/above-adventure-aerial-air.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
   background-size: cover;
   background-position: center;
   color: white;

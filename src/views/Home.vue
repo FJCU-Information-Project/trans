@@ -1,5 +1,5 @@
 <template>
-    <div class="home">
+    <div class="home carousel">
       <!-- <img alt="Vue logo" src="../assets/logo.png" /> -->
       <!-- <iframe :src="src" frameborder="0"></iframe> -->
       <el-carousel :interval="4000" type="card" height="300px">
@@ -226,6 +226,9 @@ export default {
     min-height: 36px;
   }
   //
+  .carousel{
+    background: rgb(255, 255, 255);
+  }
   .footer{
     margin-top: 1.25em;
   }

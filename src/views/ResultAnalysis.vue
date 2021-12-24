@@ -4,9 +4,9 @@
       <div class="grid-content banner">
         <h1>Result Analysis</h1>
         <span style="font-weight: bolder;">
-          請選取一個您感興趣的節點，我們將會為您找出與其關聯性前五強的節點
+          請選擇事故結果，我們將為您分析出哪些節點組合最容易造成此結果的產生，並加以排名
         </span>
-        <el-select v-model="value" placeholder="Select">
+        <el-select v-model="value" placeholder="請選擇事故結果">
           <el-option
             v-for="item in options"
             :key="item.value"
