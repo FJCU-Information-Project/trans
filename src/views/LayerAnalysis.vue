@@ -68,7 +68,6 @@
 </template>
 
 <script>
-
 export default {
   data() {
     return {
@@ -82,14 +81,14 @@ export default {
           node: "天氣2",
         },
       ],
-      value: '',
+      value: "",
     };
   },
   created() {
     const api = `http://127.0.0.1:5000/nodes`;
     this.$http.get(api).then((response) => {
       console.log(response.data);
-      this.tableData = response.data.slice(0,5);
+      this.tableData = response.data.slice(0, 5);
     });
   },
   name: "LayerAnalysis",

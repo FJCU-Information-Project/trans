@@ -103,83 +103,83 @@ button {
     margin-bottom: 0;
   }
 }
-  .account-icon{
-    width: 1em;
-    height: 1em;
-    margin-right: .5em;
+.account-icon {
+  width: 1em;
+  height: 1em;
+  margin-right: 0.5em;
+}
+.nav {
+  padding: 1em 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 8px 8px 10px rgb(190, 190, 190);
+}
+#logo {
+  padding: 0.5em 1em;
+  background-color: transparent;
+  font-weight: bold;
+  letter-spacing: 4px;
+  text-indent: 4px;
+  font-size: 1.25em;
+  color: white;
+}
+// button{
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   padding: .5em 1em;
+//   font-size: 1.25em;
+//   font-weight: bolder;
+//   border: 0;
+//   background-color: transparent;
+//   color: white;
+//   letter-spacing: 3px;
+//   text-indent: 3px;
+// }
+.el-row {
+  // margin-bottom: 20px;
+  &:last-child {
+    margin-bottom: 0;
   }
-  .nav{
-    padding: 1em 2em;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 8px 8px 10px rgb(190, 190, 190);
-  }
-  #logo{
-    padding: .5em 1em;
-    background-color: transparent;
-    font-weight: bold;
-    letter-spacing: 4px;
-    text-indent: 4px;
-    font-size: 1.25em;
-    color: white;
-  }
-  // button{
-  //   display: flex;
-  //   justify-content: space-between;
-  //   align-items: center;
-  //   padding: .5em 1em;
-  //   font-size: 1.25em;
-  //   font-weight: bolder;
-  //   border: 0;
-  //   background-color: transparent;
-  //   color: white;
-  //   letter-spacing: 3px;
-  //   text-indent: 3px;
-  // }
-  .el-row {
-    // margin-bottom: 20px;
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-  .bg-purple-dark {
-    background: #99a9bf;
-  }
-  .grid-content {
-    min-height: 36px;
-  }
-  .link{
-    text-decoration: none;
-  }
-  // 原navbar scss
-  // nav{
-  //   width: 100%;
-  //   height: 3em;
-  //   padding: 0 2em !important;
-  //   box-sizing: border-box;
-  //   margin: auto;
-  //   display: flex !important;
-  //   align-items: center;
-  //   justify-content: flex-end;
-  //   background-color: #3a3a3a;
-  //   color: white;
-  //   letter-spacing: 4px;
-  //   text-transform: uppercase;
-  //   ul{
-  //     display: flex;
-  //     justify-content: space-around;
-  //     li{
-  //       margin-left: 2.5em;
-  //       list-style: none;
-  //       a{
-  //         text-decoration: none;
-  //         color: white;
-  //         &:hover{
-  //           color: #d6c7a6;
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
+}
+.bg-purple-dark {
+  background: #99a9bf;
+}
+.grid-content {
+  min-height: 36px;
+}
+.link {
+  text-decoration: none;
+}
+// 原navbar scss
+// nav{
+//   width: 100%;
+//   height: 3em;
+//   padding: 0 2em !important;
+//   box-sizing: border-box;
+//   margin: auto;
+//   display: flex !important;
+//   align-items: center;
+//   justify-content: flex-end;
+//   background-color: #3a3a3a;
+//   color: white;
+//   letter-spacing: 4px;
+//   text-transform: uppercase;
+//   ul{
+//     display: flex;
+//     justify-content: space-around;
+//     li{
+//       margin-left: 2.5em;
+//       list-style: none;
+//       a{
+//         text-decoration: none;
+//         color: white;
+//         &:hover{
+//           color: #d6c7a6;
+//         }
+//       }
+//     }
+//   }
+// }
 </style>
