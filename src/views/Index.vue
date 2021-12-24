@@ -3,54 +3,52 @@
     <h3 id="title">TRANS</h3>
     <router-link id="entryPoint" to="/Home">Entry</router-link>
   </div>
-  <img id="road" src="../assets/svg/road.svg" alt="">
-  <img id="moutain" src="../assets/svg/moutain.svg" alt="">
-  <img id="redcar" src="../assets/svg/redcar.svg" alt="">
-  <img id="bluecar" src="../assets/svg/bluecar.svg" alt="">
+  <img id="road" src="../assets/svg/road.svg" alt="" />
+  <img id="moutain" src="../assets/svg/moutain.svg" alt="" />
+  <img id="redcar" src="../assets/svg/redcar.svg" alt="" />
+  <img id="bluecar" src="../assets/svg/bluecar.svg" alt="" />
   <!--<HelloWorld msg="Welcome to Your Vue.js App" />-->
   <!-- <el-button type="primary">我是按鈕</el-button> -->
 </template>
 
 <script>
 export default {
-    name: "Index",
+  name: "Index",
 };
 </script>
 
-
-
 <style lang="scss">
-body{
+body {
   // background-color: #D6C7A6;
   // background-color: ;
 }
 
-@mixin svg($bottom,$size,$layer){
+@mixin svg($bottom, $size, $layer) {
   position: absolute;
   bottom: $bottom;
   width: $size;
   z-index: $layer;
 }
-#road{
-  @include svg(0,100%,-2);
+#road {
+  @include svg(0, 100%, -2);
   left: 0;
 }
-#moutain{
-  @include svg(0,40vw,-1);
+#moutain {
+  @include svg(0, 40vw, -1);
   left: 0;
 }
-#redcar{
-  @include svg(5vw,25vw,-1);
+#redcar {
+  @include svg(5vw, 25vw, -1);
   right: 30vw;
 }
-#bluecar{
-  @include svg(11vw,25vw,-1);
+#bluecar {
+  @include svg(11vw, 25vw, -1);
   right: 5vw;
 }
 #index {
   margin: 30vh auto 0;
   width: 80%;
-  #title{
+  #title {
     color: #475669;
     font-size: 500%;
     letter-spacing: 0.5em;
@@ -65,7 +63,7 @@ body{
     font-size: 1.5em;
     color: white;
     display: inline-block;
-    background-color: #655A65;
+    background-color: #655a65;
     box-sizing: border-box;
     padding: 0.5em 1.5em;
     border-radius: 3em;

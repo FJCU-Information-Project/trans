@@ -3,30 +3,29 @@
     <el-col :span="24">
       <div class="grid-content banner">
         <h1>Layer Analysis</h1>
-        <span style="font-weight: bolder;">
+        <span style="font-weight: bolder">
           請選擇您想分析的中心節點及階層，我們將會為您呈現中心節點向外發散的層級關係點層級
         </span>
         <div class="select-group">
           <el-select v-model="value" placeholder="請選擇中心節點">
             <el-option
-              v-for="item in options"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
+              v-for="item in tableData"
+              :key="item.id"
+              :label="item.node"
+              :value="item.node"
             >
             </el-option>
           </el-select>
           <el-select v-model="value" placeholder="請選擇層級">
             <el-option
-              v-for="item in options"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
+              v-for="item in tableData"
+              :key="item.address"
+              :label="item.name"
+              :value="item.name"
             >
             </el-option>
           </el-select>
         </div>
-       
       </div>
     </el-col>
   </el-row>
@@ -40,10 +39,10 @@
     </el-col>
     <el-col :span="11">
       <div class="grid-content bg-purple main_sec">
-        <el-table :data="tableData" stripe style="width: 100%;">
-          <el-table-column prop="date" label="Date" width="180"/>
-          <el-table-column prop="name" label="Name" width="180" />
-          <el-table-column prop="address" label="Address" />
+        <el-table :data="tableData" stripe style="width: 100%">
+          <el-table-column prop="id" label="id" width="180" />
+          <el-table-column prop="node" label="node" width="180" />
+          <el-table-column prop="node" label="node" />
         </el-table>
       </div>
     </el-col>
@@ -61,96 +60,68 @@
       </el-select>
     </el-aside>
     <el-main> -->
-      <!-- <iframe src="/SNA.html" frameborder="0" width="100%" height="100%"> -->
-        <!-- 社會網路圖 -->
-      <!-- </iframe> -->
-    <!-- </el-main>
+  <!-- <iframe src="/SNA.html" frameborder="0" width="100%" height="100%"> -->
+  <!-- 社會網路圖 -->
+  <!-- </iframe> -->
+  <!-- </el-main>
   </el-container> -->
-
 </template>
 
 <script>
+
 export default {
-  name: "Analysis1",
   data() {
     return {
       tableData: [
         {
-          date: '2016-05-03',
-          name: 'Tom',
-          address: 'No. 189, Grove St, Los Angeles',
+          date: "2016-05-03",
+          name: "Tom",
+          address: "No. 189, Grove St, Los Angeles",
         },
         {
-          date: '2016-05-02',
-          name: 'Tom',
-          address: 'No. 189, Grove St, Los Angeles',
+          date: "2016-05-02",
+          name: "Amy",
+          address: "No. 189, Grove St, Los Angeles",
         },
         {
-          date: '2016-05-04',
-          name: 'Tom',
-          address: 'No. 189, Grove St, Los Angeles',
-        },
-        {
-          date: '2016-05-01',
-          name: 'Tom',
-          address: 'No. 189, Grove St, Los Angeles',
-        },
-        {
-          date: '2016-05-03',
-          name: 'Tom',
-          address: 'No. 189, Grove St, Los Angeles',
-        },
-        {
-          date: '2016-05-02',
-          name: 'Tom',
-          address: 'No. 189, Grove St, Los Angeles',
-        },
-        {
-          date: '2016-05-04',
-          name: 'Tom',
-          address: 'No. 189, Grove St, Los Angeles',
-        },
-        {
-          date: '2016-05-01',
-          name: 'Tom',
-          address: 'No. 189, Grove St, Los Angeles',
-        },
-        {
-          date: '2016-05-03',
-          name: 'Tom',
-          address: 'No. 189, Grove St, Los Angeles',
-        },
-        {
-          date: '2016-05-02',
-          name: 'Tom',
-          address: 'No. 189, Grove St, Los Angeles',
+          date: "2016-05-04",
+          name: "John",
+          address: "No. 189, Grove St, Los Angeles",
         },
       ],
-    }
+      value: '',
+    };
   },
+  created() {
+    const api = `http://127.0.0.1:5000/nodes`;
+    this.$http.get(api).then((response) => {
+      console.log(response.data);
+      this.tableData = response.data;
+    });
+  },
+  name: "LayerAnalysis",
 };
-
 </script>
 
 <style lang="scss">
-.select-group{
+.select-group {
   width: 30%;
   display: flex;
   justify-content: space-between;
 }
-.con_flex{
+.con_flex {
   display: flex;
   justify-content: space-evenly;
   padding: 1.25em 0;
 }
-.main_sec{
+.main_sec {
   padding: 1em 1em;
 }
-.iframe_main_sec{
+.iframe_main_sec {
   height: 100vh;
   padding: 1em 1em;
 }
-.banner{
+.banner {
   background: rgb(226, 226, 216);
   height: 50vh;
   display: grid;
@@ -161,7 +132,7 @@ export default {
   background-size: cover;
   background-position: center;
   color: white;
-  & h1{
+  & h1 {
     font-size: 4em;
     font-weight: bolder;
     letter-spacing: 10px;

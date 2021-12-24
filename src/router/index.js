@@ -9,68 +9,58 @@ const routes = [
   {
     path: "/",
     name: "Index",
-    component: () =>
-      import("../views/Index.vue"),
+    component: () => import("../views/Index.vue"),
   },
   {
     path: "/home",
     name: "Home",
-    component: () =>
-      import("../views/Home.vue"),
+    component: () => import("../views/Home.vue"),
   },
   {
     path: "/upload",
     name: "Upload",
-    component: () =>
-      import("../views/Upload.vue"),
+    component: () => import("../views/Upload.vue"),
   },
   {
     path: "/config",
     name: "Config",
-    component: () =>
-      import("../views/Config.vue"),
+    component: () => import("../views/Config.vue"),
   },
   {
     path: "/layeranalysis",
     name: "LayerAnalysis",
-    component: () =>
-      import("../views/LayerAnalysis.vue"),
+    component: () => import("../views/LayerAnalysis.vue"),
   },
   {
     path: "/intersectionanalysis",
     name: "IntersectionAnalysis",
-    component: () =>
-      import("../views/IntersectionAnalysis.vue"),
+    component: () => import("../views/IntersectionAnalysis.vue"),
   },
   {
     path: "/resultanalysis",
     name: "ResultAnalysis",
-    component: () =>
-      import("../views/ResultAnalysis.vue"),
+    component: () => import("../views/ResultAnalysis.vue"),
   },
   {
     path: "/betweennessanalysis",
     name: "BetweennessAnalysis",
-    component: () =>
-      import("../views/BetweennessAnalysis.vue"),
+    component: () => import("../views/BetweennessAnalysis.vue"),
   },
   {
     path: "/closenessanalysis",
     name: "ClosenessAnalysis",
-    component: () =>
-      import("../views/ClosenessAnalysis.vue"),
+    component: () => import("../views/ClosenessAnalysis.vue"),
   },
   {
     path: "/degreeanalysis",
     name: "DegreeAnalysis",
-    component: () =>
-      import("../views/DegreeAnalysis.vue"),
+    component: () => import("../views/DegreeAnalysis.vue"),
   },
 ];
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes
+  routes,
 });
 
 export default router;
