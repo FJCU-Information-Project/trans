@@ -6,10 +6,10 @@
           <p id="logo">TRANS</p>
         </router-link>
         <router-link to="/Config" class="link">
-          <button class="btn">CONFIG</button>
+          <button>CONFIG</button>
         </router-link>
         <router-link to="/Upload" class="link">
-          <button class="btn">UPLOAD</button>
+          <button>UPLOAD</button>
         </router-link>
       </div>
     </el-col>
@@ -124,19 +124,19 @@ button {
     font-size: 1.25em;
     color: white;
   }
-  button{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: .5em 1em;
-    font-size: 1.25em;
-    font-weight: bolder;
-    border: 0;
-    background-color: transparent;
-    color: white;
-    letter-spacing: 3px;
-    text-indent: 3px;
-  }
+  // button{
+  //   display: flex;
+  //   justify-content: space-between;
+  //   align-items: center;
+  //   padding: .5em 1em;
+  //   font-size: 1.25em;
+  //   font-weight: bolder;
+  //   border: 0;
+  //   background-color: transparent;
+  //   color: white;
+  //   letter-spacing: 3px;
+  //   text-indent: 3px;
+  // }
   .el-row {
     // margin-bottom: 20px;
     &:last-child {

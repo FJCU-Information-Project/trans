@@ -22,6 +22,23 @@
             </div>
           </div>
         </el-col>
+        <el-col :xs="24" :sm="2" :md="8" :lg="13" :xl="13">
+          <div class="grid-content bg-purple analysis-entry-card">
+            <div class="filter">
+              <h3 class="analysis-title">Layer Analysis</h3>
+              <div class="btn-group">
+                <router-link to="/layeranalysis" class="link">
+                  <p class="analysis-btn">
+                    entry
+                  </p>
+                </router-link>
+                <p class="analysis-btn">
+                  entry
+                </p>
+              </div>
+            </div>
+          </div>
+        </el-col>
       </el-row>
     <el-row :gutter="20">
       <el-col :xs="24" :sm="2" :md="8" :lg="7" :xl="7">
