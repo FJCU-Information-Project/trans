@@ -125,7 +125,7 @@ export default {
 .banner {
   background: rgb(226, 226, 216);
   height: 50vw;
- display: flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;

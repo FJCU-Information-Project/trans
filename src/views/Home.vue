@@ -1,8 +1,11 @@
 <template>
-  <div class="home carousel">
-    <!-- <img alt="Vue logo" src="../assets/logo.png" /> -->
-    <!-- <iframe :src="src" frameborder="0"></iframe> -->
-  </div>
+  <el-row class="close">
+    <el-col :span="24">
+      <div class="grid-content banner">
+        <h1>WELCOME TO TRANS</h1>
+      </div>
+    </el-col>
+  </el-row>
   <div class="container">
     <el-row :gutter="20">
       <el-col :xs="24" :sm="2" :md="8" :lg="11" :xl="11">
@@ -183,6 +186,26 @@ export default {
   min-height: 36px;
 }
 //
+.banner {
+  background: rgb(226, 226, 216);
+  height: 50vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 5em 0;
+  box-sizing: border-box;
+  background-image: url(https://images.pexels.com/photos/2705755/pexels-photo-2705755.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+  background-size: cover;
+  background-position: center;
+  color: white;
+  & h1 {
+    font-size: 4em;
+    font-weight: bolder;
+    letter-spacing: 10px;
+    text-indent: 10px;
+  }
+}
 .carousel {
   background: rgb(255, 255, 255);
 }
@@ -194,17 +217,11 @@ export default {
   padding: 1.25em 1.25em;
   box-sizing: border-box;
   // background-image: url(https://images.pexels.com/photos/10344100/pexels-photo-10344100.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+  // background-image: url(https://images.pexels.com/photos/2705755/pexels-photo-2705755.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
 }
 .footer {
   height: 25em;
   margin-top: 0;
-}
-.analysis-entry-card {
-  height: 30em;
-  background-image: url(https://images.pexels.com/photos/10123275/pexels-photo-10123275.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
-  background-position: center;
-  background-size: cover;
-  box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.4);
 }
 .link {
   text-decoration: none;
@@ -262,17 +279,8 @@ iframe {
   min-height: 36px;
 }
 //
-.carousel {
-  background: rgb(255, 255, 255);
-}
 .footer {
   margin-top: 1.25em;
-}
-.container {
-  width: 100%;
-  padding: 1.25em 1.25em;
-  box-sizing: border-box;
-  // background-image: url(https://images.pexels.com/photos/10344100/pexels-photo-10344100.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
 }
 .footer {
   height: 25em;
@@ -283,7 +291,9 @@ iframe {
   background-image: url(https://images.pexels.com/photos/10123275/pexels-photo-10123275.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
   background-position: center;
   background-size: cover;
-  box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.4);
+  // box-shadow: 8px 8px 15px rgba(255, 255, 255, .5);
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, .5);
+  z-index: 100;
 }
 .link {
   text-decoration: none;
