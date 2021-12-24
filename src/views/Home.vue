@@ -21,9 +21,9 @@
       <el-col :xs="24" :sm="2" :md="8" :lg="13" :xl="13">
         <div class="grid-content bg-purple analysis-entry-card">
           <div class="filter">
-            <h3 class="analysis-title">Layer Analysis</h3>
+            <h3 class="analysis-title">Degree Analysis</h3>
             <div class="btn-group">
-              <router-link to="/layeranalysis" class="link">
+              <router-link to="/degreeanalysis" class="link">
                 <p class="analysis-btn">entry</p>
               </router-link>
               <p class="analysis-btn">entry</p>
@@ -49,9 +49,9 @@
       <el-col :xs="24" :sm="2" :md="8" :lg="9" :xl="9">
         <div class="grid-content bg-purple analysis-entry-card">
           <div class="filter">
-            <h3 class="analysis-title">Betweenness Analysis</h3>
+            <h3 class="analysis-title">Intersection Analysis</h3>
             <div class="btn-group">
-              <router-link to="/betweennessanalysis" class="link">
+              <router-link to="/intersectionanalysis" class="link">
                 <p class="analysis-btn">entry</p>
               </router-link>
               <p class="analysis-btn">entry</p>
@@ -251,9 +251,6 @@ iframe {
   letter-spacing: 15px;
   text-indent: 15px;
 }
-.el-col {
-  border-radius: 4px;
-}
 .bg-purple {
   background: #d3dce6;
 }
@@ -291,20 +288,6 @@ iframe {
 .link {
   text-decoration: none;
 }
-.btn {
-  font-size: 12px;
-  letter-spacing: 0;
-  text-indent: 0;
-  font-weight: 400;
-  margin-top: 2em;
-  color: #fff;
-  background: #475669;
-  border-radius: 50px;
-  font-size: 1.05em;
-  letter-spacing: 3px;
-  text-indent: 3px;
-  cursor: pointer;
-}
 .card {
   height: 300px;
   background-image: url(https://images.pexels.com/photos/2303781/pexels-photo-2303781.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
@@ -322,23 +305,23 @@ iframe {
   width: 80%;
   height: 90vh;
 }
-.el-carousel__item h3 {
-  display: inline-block;
-  color: #475669;
-  font-size: 2em;
-  opacity: 0.75;
-  margin: 0;
-  text-align: center;
-  font-weight: bolder;
-  letter-spacing: 15px;
-  text-indent: 15px;
-}
+// .el-carousel__item h3 {
+//   display: inline-block;
+//   color: #475669;
+//   font-size: 2em;
+//   opacity: 0.75;
+//   margin: 0;
+//   text-align: center;
+//   font-weight: bolder;
+//   letter-spacing: 15px;
+//   text-indent: 15px;
+// }
 
-.el-carousel__item:nth-child(2n) {
-  background-color: #99a9bf;
-}
+// .el-carousel__item:nth-child(2n) {
+//   background-color: #99a9bf;
+// }
 
-.el-carousel__item:nth-child(2n + 1) {
-  background-color: #d3dce6;
-}
+// .el-carousel__item:nth-child(2n + 1) {
+//   background-color: #d3dce6;
+// }
 </style>

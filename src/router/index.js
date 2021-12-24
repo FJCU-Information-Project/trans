@@ -42,9 +42,9 @@ const routes = [
     component: () => import("../views/ResultAnalysis.vue"),
   },
   {
-    path: "/betweennessanalysis",
-    name: "BetweennessAnalysis",
-    component: () => import("../views/BetweennessAnalysis.vue"),
+    path: "/intersectionanalysis",
+    name: "IntersectionAnalysis",
+    component: () => import("../views/IntersectionAnalysis.vue"),
   },
   {
     path: "/closenessanalysis",

@@ -66,7 +66,6 @@ export default {
   width: 18%;
   display: flex;
   justify-content: space-between;
-  // background: #ffa;
 }
 .close {
   margin-bottom: 0 !important;
@@ -82,6 +81,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   box-shadow: 8px 8px 10px rgb(131, 131, 131);
+  border-radius: 0 !important;
 }
 #logo {
   padding: 0.5em 1em;

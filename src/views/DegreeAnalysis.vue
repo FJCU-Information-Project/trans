@@ -124,12 +124,14 @@ export default {
 }
 .banner {
   background: rgb(226, 226, 216);
-  height: 50vh;
-  display: grid;
-  place-items: center;
+  height: 50vw;
+ display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
   padding: 5em 0;
   box-sizing: border-box;
-  background-image: url(https://images.pexels.com/photos/36487/above-adventure-aerial-air.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+  background-image: url(https://images.pexels.com/photos/1125212/pexels-photo-1125212.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500);
   background-size: cover;
   background-position: center;
   color: white;
