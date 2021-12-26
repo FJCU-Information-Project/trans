@@ -1,31 +1,33 @@
 <template>
-  <Navbar />
   <el-row>
-    <el-col :span="24">
+  <el-col :span="24">
       <div class="grid-content banner">
-        <h1>Intersection Analysis</h1>
-        <span style="font-weight: bolder">
-          請選擇兩個您好奇的節點，我們將會為您分析出此兩個節點間的關聯跟中間會經常伴隨的節點
-        </span>
-        <div class="select-group">
-          <el-select v-model="value" placeholder="請選擇第一個節點">
-            <el-option
-              v-for="item in options"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
-            >
-            </el-option>
-          </el-select>
-          <el-select v-model="value" placeholder="請選擇第二個節點">
-            <el-option
-              v-for="item in options"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
-            >
-            </el-option>
-          </el-select>
+        <Navbar />
+        <div class="ban-title">
+          <h1>Intersection Analysis</h1>
+          <span style="font-weight: bolder" class="sub-title">
+            請選取一個您感興趣的節點，我們將會為您找出與其關聯性前五強的節點
+          </span>
+          <div class="select-group">
+            <el-select v-model="value" placeholder="請選擇第一個節點">
+              <el-option
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              >
+              </el-option>
+            </el-select>
+            <el-select v-model="value" placeholder="請選擇第二個節點">
+              <el-option
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              >
+              </el-option>
+            </el-select>
+          </div>
         </div>
       </div>
     </el-col>
@@ -136,6 +138,21 @@ export default {
 </script>
 
 <style lang="scss">
+.sub-title{
+  display: inline-block;
+  margin-top: 3em;
+}
+.ban-title{
+  height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  // & span{
+  //   display: inline-block;
+  //   margin-top: 3em;
+  // }
+}
 .select-group {
   width: 30%;
   display: flex;
@@ -154,13 +171,10 @@ export default {
   padding: 1em 1em;
 }
 .banner {
-  background: rgb(226, 226, 216);
-  height: 50vw;
+  // background: rgb(226, 226, 216);
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  padding: 5em 0;
   box-sizing: border-box;
   background-image: url(https://images.pexels.com/photos/10003543/pexels-photo-10003543.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
   background-size: cover;

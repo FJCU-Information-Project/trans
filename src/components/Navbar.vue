@@ -1,7 +1,7 @@
 <template>
   <el-row class="close">
     <el-col :span="24">
-      <div class="grid-content bg-purple-dark nav">
+      <div class="grid-content nav">
         <router-link to="/home" class="link">
           <p id="logo">TRANS</p>
         </router-link>
@@ -37,34 +37,32 @@
   </el-container> -->
 </template>
 
-<!-- navbar template
-<template>
-  <nav>
-    <ul>
-      <li v-for="i in 5" :key="i">
-        <router-link :to="`/page${i}`">Page{{ i }}</router-link>
-      </li>
-    </ul>
-  </nav>
-</template>
--->
 
-<!-- script 
 <script>
 // @ is an alias to /src
 export default {
   name: "Navbar" ,
   data(){
-    var path = this.$route.params.path;
+    //var path = this.$route.params.path;
     return {
-      path,
+      //path,
     }
   }
 };
 </script>
--->
 
 <style lang="scss">
+.ban-title{
+  height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  & span{
+    display: inline-block;
+    margin-top: 3em;
+  }
+}
 .menu {
   width: 28%;
   display: flex;
@@ -83,8 +81,9 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 8px 8px 10px rgb(131, 131, 131);
+  box-shadow: 8px 8px 15px rgb(255, 255, 255);
   border-radius: 0 !important;
+  background: transparent;
 }
 #logo {
   padding: 0.5em 1em;
@@ -118,13 +117,6 @@ button {
   width: 1em;
   height: 1em;
   margin-right: 0.5em;
-}
-.nav {
-  padding: 1em 2em;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 8px 8px 10px rgb(190, 190, 190);
 }
 #logo {
   padding: 0.5em 1em;

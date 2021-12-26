@@ -1,9 +1,11 @@
 <template>
-  <Navbar />
   <el-row class="close">
     <el-col :span="24">
-      <div class="grid-content home-banner">
-        <h1>WELCOME TO TRANS</h1>
+      <div class="grid-content banner">
+        <Navbar />
+        <div class="ban-title">
+          <h1>Welcome to Trans</h1>
+        </div>
       </div>
     </el-col>
   </el-row>
@@ -181,14 +183,11 @@ export default {
   min-height: 36px;
 }
 //
-.home-banner {
-  background: rgb(226, 226, 216);
-  height: 50vw;
+.banner {
+  // background: rgb(226, 226, 216);
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  padding: 5em 0;
   box-sizing: border-box;
   background-image: url(https://images.pexels.com/photos/2705755/pexels-photo-2705755.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
   background-size: cover;
@@ -262,12 +261,6 @@ iframe {
   font-weight: bolder;
   letter-spacing: 15px;
   text-indent: 15px;
-}
-.bg-purple {
-  background: #d3dce6;
-}
-.bg-purple-light {
-  background: #e5e9f2;
 }
 .grid-content {
   border-radius: 4px;

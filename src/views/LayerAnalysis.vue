@@ -1,31 +1,33 @@
 <template>
-  <Navbar />
   <el-row>
     <el-col :span="24">
-      <div class="grid-content banner">
-        <h1>Layer Analysis</h1>
-        <span style="font-weight: bolder">
-          請選擇您想分析的中心節點及階層，我們將會為您呈現中心節點向外發散的層級關係點層級
-        </span>
-        <div class="select-group">
-          <el-select v-model="value" placeholder="請選擇中心節點">
-            <el-option
-              v-for="item in tableData"
-              :key="item.id"
-              :label="item.node"
-              :value="item.node"
-            >
-            </el-option>
-          </el-select>
-          <el-select v-model="value" placeholder="請選擇層級">
-            <el-option
-              v-for="item in tableData"
-              :key="item.address"
-              :label="item.name"
-              :value="item.name"
-            >
-            </el-option>
-          </el-select>
+    <div class="grid-content banner">
+        <Navbar />
+        <div class="ban-title">
+          <h1>Layer Analysis</h1>
+          <span style="font-weight: bolder" class="sub-title">
+            請選擇您想分析的中心節點及階層，我們將會為您呈現中心節點向外發散的層級關係點層級
+          </span>
+          <div class="select-group">
+            <el-select v-model="value" placeholder="請選擇中心節點">
+              <el-option
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              >
+              </el-option>
+            </el-select>
+            <el-select v-model="value" placeholder="請選擇層級">
+              <el-option
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              >
+              </el-option>
+            </el-select>
+          </div>
         </div>
       </div>
     </el-col>
@@ -102,10 +104,26 @@ export default {
 </script>
 
 <style lang="scss">
+.sub-title{
+  display: inline-block;
+  margin-top: 3em;
+}
+.ban-title{
+  height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  // & span{
+  //   display: inline-block;
+  //   margin-top: 3em;
+  // }
+}
 .select-group {
   width: 30%;
   display: flex;
   justify-content: space-between;
+  margin-top: 4em;
 }
 .con_flex {
   display: flex;
@@ -120,13 +138,10 @@ export default {
   padding: 1em 1em;
 }
 .banner {
-  background: rgb(226, 226, 216);
-  height: 50vw;
+  // background: rgb(226, 226, 216);
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  padding: 5em 0;
   box-sizing: border-box;
   background-image: url(https://images.pexels.com/photos/10003543/pexels-photo-10003543.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
   background-size: cover;

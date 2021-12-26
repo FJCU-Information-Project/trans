@@ -1,89 +1,98 @@
 <template>
-  <Navbar />
+  <el-row>
+      <el-col :span="24">
+        <div class="grid-content banner">
+          <Navbar />
+          <div class="ban-title">
+            <el-row class="card-allocate">
+              <el-col :span="7">
+                <div class="grid-content bg-purple upload-card">
+                  <div class="icon-con">
+                    <img src="../assets/node.png" alt="" />
+                  </div>
+                  <h3>節點 Node</h3>
+                  <p class="describe"></p>
+                  <el-upload
+                    class="upload-demo"
+                    drag
+                    action="https://jsonplaceholder.typicode.com/posts/"
+                    multiple
+                  >
+                    <el-icon class="el-icon--upload"><upload-filled /></el-icon>
+                    <div class="el-upload__text">
+                      Drop file here or <em>click to upload</em>
+                    </div>
+                    <template #tip>
+                      <div class="el-upload__tip">
+                        jpg/png files with a size less than 500kb
+                      </div>
+                    </template>
+                  </el-upload>
+                </div>
+              </el-col>
+              <el-col :span="7">
+                <div class="grid-content bg-purple-light upload-card">
+                  <div class="icon-con">
+                    <img
+                      src="https://cdn-icons-png.flaticon.com/512/6389/6389267.png"
+                      alt=""
+                    />
+                  </div>
+                  <h3>屬性 Attribute</h3>
+                  <p class="describe"></p>
+                  <el-upload
+                    class="upload-demo"
+                    drag
+                    action="https://jsonplaceholder.typicode.com/posts/"
+                    multiple
+                  >
+                    <el-icon class="el-icon--upload"><upload-filled /></el-icon>
+                    <div class="el-upload__text">
+                      Drop file here or <em>click to upload</em>
+                    </div>
+                    <template #tip>
+                      <div class="el-upload__tip">
+                        jpg/png files with a size less than 500kb
+                      </div>
+                    </template>
+                  </el-upload>
+                </div>
+              </el-col>
+              <el-col :span="7">
+                <div class="grid-content bg-purple upload-card">
+                  <div class="icon-con">
+                    <img
+                      src="https://cdn-icons-png.flaticon.com/512/995/995646.png"
+                      alt=""
+                    />
+                  </div>
+              <h3>關聯 Relationship</h3>
+              <p class="describe"></p>
+              <el-upload
+                class="upload-demo"
+                drag
+                action="https://jsonplaceholder.typicode.com/posts/"
+                multiple
+              >
+                <el-icon class="el-icon--upload"><upload-filled /></el-icon>
+                <div class="el-upload__text">
+                  Drop file here or <em>click to upload</em>
+                </div>
+                <template #tip>
+                  <div class="el-upload__tip">
+                    jpg/png files with a size less than 500kb
+                  </div>
+                </template>
+              </el-upload>
+            </div>
+          </el-col>
+        </el-row>
+                </div>
+              </div>
+            </el-col>
+          </el-row>
   <!-- 上傳資料及頁面 -->
-  <el-row class="card-allocate">
-    <el-col :span="7">
-      <div class="grid-content bg-purple upload-card">
-        <div class="icon-con">
-          <img src="../assets/node.png" alt="" />
-        </div>
-        <h3>節點 Node</h3>
-        <p class="describe"></p>
-        <el-upload
-          class="upload-demo"
-          drag
-          action="https://jsonplaceholder.typicode.com/posts/"
-          multiple
-        >
-          <el-icon class="el-icon--upload"><upload-filled /></el-icon>
-          <div class="el-upload__text">
-            Drop file here or <em>click to upload</em>
-          </div>
-          <template #tip>
-            <div class="el-upload__tip">
-              jpg/png files with a size less than 500kb
-            </div>
-          </template>
-        </el-upload>
-      </div>
-    </el-col>
-    <el-col :span="7">
-      <div class="grid-content bg-purple-light upload-card">
-        <div class="icon-con">
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/6389/6389267.png"
-            alt=""
-          />
-        </div>
-        <h3>屬性 Attribute</h3>
-        <p class="describe"></p>
-        <el-upload
-          class="upload-demo"
-          drag
-          action="https://jsonplaceholder.typicode.com/posts/"
-          multiple
-        >
-          <el-icon class="el-icon--upload"><upload-filled /></el-icon>
-          <div class="el-upload__text">
-            Drop file here or <em>click to upload</em>
-          </div>
-          <template #tip>
-            <div class="el-upload__tip">
-              jpg/png files with a size less than 500kb
-            </div>
-          </template>
-        </el-upload>
-      </div>
-    </el-col>
-    <el-col :span="7">
-      <div class="grid-content bg-purple upload-card">
-        <div class="icon-con">
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/995/995646.png"
-            alt=""
-          />
-        </div>
-        <h3>關聯 Relationship</h3>
-        <p class="describe"></p>
-        <el-upload
-          class="upload-demo"
-          drag
-          action="https://jsonplaceholder.typicode.com/posts/"
-          multiple
-        >
-          <el-icon class="el-icon--upload"><upload-filled /></el-icon>
-          <div class="el-upload__text">
-            Drop file here or <em>click to upload</em>
-          </div>
-          <template #tip>
-            <div class="el-upload__tip">
-              jpg/png files with a size less than 500kb
-            </div>
-          </template>
-        </el-upload>
-      </div>
-    </el-col>
-  </el-row>
+  
   <!-- <div id="upload">
     TRANS
   </div> -->
@@ -136,6 +145,17 @@ export default {
 //
 
 // 上傳資料頁面CSS
+.ban-title{
+  height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  // & span{
+  //   display: inline-block;
+  //   margin-top: 3em;
+  // }
+}
 .el-upload__tip {
   margin-top: 2em;
 }
@@ -200,6 +220,23 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.banner {
+  // background: rgb(226, 226, 216);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  background-image: url(https://images.pexels.com/photos/10003543/pexels-photo-10003543.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+  background-size: cover;
+  background-position: center;
+  color: white;
+  & h1 {
+    font-size: 4em;
+    font-weight: bolder;
+    letter-spacing: 10px;
+    text-indent: 10px;
+  }
 }
 .el-row {
   margin-bottom: 20px;

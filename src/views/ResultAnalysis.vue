@@ -1,21 +1,25 @@
 <template>
-  <Navbar />
   <el-row>
     <el-col :span="24">
       <div class="grid-content banner">
-        <h1>Result Analysis</h1>
-        <span style="font-weight: bolder">
-          請選擇事故結果，我們將為您分析出哪些節點組合最容易造成此結果的產生，並加以排名
-        </span>
-        <el-select v-model="value" placeholder="請選擇事故結果">
-          <el-option
-            v-for="item in options"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value"
-          >
-          </el-option>
-        </el-select>
+      <Navbar />
+        <div class="ban-title">
+          <h1>Result Analysis</h1>
+          <span style="font-weight: bolder" class="sub-title">
+            請選擇事故結果，我們將為您分析出哪些節點組合最容易造成此結果的產生，並加以排名
+          </span>
+          <div class="select-group">
+            <el-select v-model="value" placeholder="請選擇事故結果">
+              <el-option
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              >
+              </el-option>
+            </el-select>
+          </div>
+        </div>
       </div>
     </el-col>
   </el-row>
@@ -125,6 +129,21 @@ export default {
 </script>
 
 <style lang="scss">
+.sub-title{
+  display: inline-block;
+  margin-top: 3em;
+}
+.ban-title{
+  height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  // & span{
+  //   display: inline-block;
+  //   margin-top: 3em;
+  // }
+}
 .con_flex {
   display: flex;
   justify-content: space-evenly;
@@ -138,11 +157,10 @@ export default {
   padding: 1em 1em;
 }
 .banner {
-  background: rgb(226, 226, 216);
-  height: 50vw;
-  display: grid;
-  place-items: center;
-  padding: 5em 0;
+  // background: rgb(226, 226, 216);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
   box-sizing: border-box;
   background-image: url(https://images.pexels.com/photos/10003543/pexels-photo-10003543.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
   background-size: cover;
@@ -196,5 +214,9 @@ body > .el-container {
 .grid-content {
   border-radius: 4px;
   min-height: 36px;
+}
+.select-group{
+  justify-content: center;
+  margin-top: 4em;
 }
 </style>
