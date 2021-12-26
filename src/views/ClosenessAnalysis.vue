@@ -43,9 +43,10 @@
     </el-col> -->
     <el-col :span="18">
       <div class="grid-content iframe_main_sec">
-        <iframe src="/SNA.html" frameborder="0" width="100%" height="100%">
+        <el-empty description="description"></el-empty>
+        <!-- <iframe src="/SNA.html" frameborder="0" width="100%" height="100%"> -->
           <!-- 社會網路圖 -->
-        </iframe>
+        <!-- </iframe> -->
       </div>
     </el-col>
   </el-row>
@@ -148,8 +149,10 @@ export default {
   padding: 1em 1em;
 }
 .iframe_main_sec {
-  height: 100vh;
+  // height: 100vh;
   padding: 1em 1em;
+  background: #fff;
+  margin-top: 10em;
 }
 .banner {
   background: rgb(226, 226, 216);

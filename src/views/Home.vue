@@ -1,7 +1,7 @@
 <template>
   <el-row class="close">
     <el-col :span="24">
-      <div class="grid-content banner">
+      <div class="grid-content home-banner">
         <h1>WELCOME TO TRANS</h1>
       </div>
     </el-col>
@@ -180,7 +180,7 @@ export default {
   min-height: 36px;
 }
 //
-.banner {
+.home-banner {
   background: rgb(226, 226, 216);
   height: 50vw;
   display: flex;
