@@ -122,7 +122,7 @@ export default {
   justify-content: space-evenly;
   padding: 5em 0;
   box-sizing: border-box;
-  background-image: url(https://images.pexels.com/photos/1125212/pexels-photo-1125212.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500);
+  background-image: url(https://images.pexels.com/photos/10003543/pexels-photo-10003543.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
   background-size: cover;
   background-position: center;
   color: white;
@@ -170,12 +170,6 @@ body > .el-container {
 
 .el-container:nth-child(7) .el-aside {
   line-height: 320px;
-}
-.bg-purple {
-  background: #d3dce6;
-}
-.bg-purple-light {
-  background: #e5e9f2;
 }
 .grid-content {
   border-radius: 4px;

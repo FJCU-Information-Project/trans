@@ -10,7 +10,29 @@
     </el-col>
   </el-row>
   <el-row class="con_flex">
-    <el-col :span="11">
+    <el-col :span="18">
+      <div class="grid-content bg-purple main_sec">
+        <!-- 原table -->
+        <!-- <el-table :data="tableData" stripe style="width: 100%">
+          <el-table-column prop="date" label="Date" width="300" />
+          <el-table-column prop="name" label="Name" width="300" />
+          <el-table-column prop="address" label="Address" />
+        </el-table> -->
+          <el-table :data="tableData" style="width: 100%" height="500">
+            <el-table-column fixed prop="date" label="Date" width="150" />
+            <el-table-column prop="name" label="Name" width="120" />
+            <el-table-column prop="address" label="Address" width="600" />
+          </el-table>
+      </div>
+    </el-col>
+    <!-- <el-col :span="12">
+      <div class="grid-content bg-purple-light iframe_main_sec">
+        <iframe src="/SNA.html" frameborder="0" width="100%" height="100%"> -->
+          <!-- 社會網路圖 -->
+        <!-- </iframe>
+      </div>
+    </el-col> -->
+    <!-- <el-col :span="18">
       <div class="grid-content bg-purple main_sec">
         <el-table :data="tableData" stripe style="width: 100%">
           <el-table-column prop="date" label="Date" width="180" />
@@ -18,8 +40,8 @@
           <el-table-column prop="address" label="Address" />
         </el-table>
       </div>
-    </el-col>
-    <el-col :span="12">
+    </el-col> -->
+    <el-col :span="18">
       <div class="grid-content bg-purple-light iframe_main_sec">
         <iframe src="/SNA.html" frameborder="0" width="100%" height="100%">
           <!-- 社會網路圖 -->
@@ -113,7 +135,11 @@ export default {
 .con_flex {
   display: flex;
   justify-content: space-evenly;
-  padding: 1.25em 0;
+  padding: 3em 0;
+  background-image: url(https://images.pexels.com/photos/3322471/pexels-photo-3322471.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+  background-size: cover;
+  background-position: center;
+  box-sizing: border-box;
 }
 .main_sec {
   padding: 1em 1em;
@@ -129,7 +155,7 @@ export default {
   place-items: center;
   padding: 5em 0;
   box-sizing: border-box;
-  background-image: url(https://images.pexels.com/photos/1125212/pexels-photo-1125212.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500);
+  background-image: url(https://images.pexels.com/photos/10003543/pexels-photo-10003543.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
   background-size: cover;
   background-position: center;
   color: white;
@@ -177,12 +203,6 @@ body > .el-container {
 
 .el-container:nth-child(7) .el-aside {
   line-height: 320px;
-}
-.bg-purple {
-  background: #d3dce6;
-}
-.bg-purple-light {
-  background: #e5e9f2;
 }
 .grid-content {
   border-radius: 4px;
