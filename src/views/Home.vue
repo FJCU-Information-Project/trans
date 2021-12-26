@@ -1,4 +1,5 @@
 <template>
+  <Navbar />
   <el-row class="close">
     <el-col :span="24">
       <div class="grid-content home-banner">
@@ -86,18 +87,18 @@
 
 <script>
 // @ is an alias to /src
-/*import Navbar from "@/components/Navbar.vue";*/
+import Navbar from "@/components/Navbar.vue";
 
 export default {
+  name: "Home",
+  components: {
+    Navbar,
+  },
   data() {
     return {
       src: "http://127.0.0.1:5000/",
     };
   },
-  name: "Home" /*
-  components: {
-    Navbar,
-  },*/,
 };
 </script>
 

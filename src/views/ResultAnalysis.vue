@@ -1,4 +1,5 @@
 <template>
+  <Navbar />
   <el-row>
     <el-col :span="24">
       <div class="grid-content banner">
@@ -57,8 +58,13 @@
 </template>
 
 <script>
+import Navbar from "@/components/Navbar.vue";
+
 export default {
   name: "ResultAnalysis",
+  components: {
+    Navbar,
+  },
   data() {
     return {
       tableData: [

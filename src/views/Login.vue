@@ -1,12 +1,18 @@
 <template>
+  <Navbar />
   <el-row>
     <el-col :span="24">
       <div class="grid-content login-banner">
         <el-col :span="8">
           <el-card shadow="always" class="con-flex">
             <h1>授權碼</h1>
-            <el-input v-model="input" placeholder="請輸入授權碼" class="number_input"/>
-            <el-button type="danger" class="submit">確認</el-button></el-card>
+            <el-input
+              v-model="input"
+              placeholder="請輸入授權碼"
+              class="number_input"
+            />
+            <el-button type="danger" class="submit">確認</el-button></el-card
+          >
         </el-col>
       </div>
     </el-col>
@@ -14,30 +20,35 @@
 </template>
 
 <script>
+import Navbar from "@/components/Navbar.vue";
+
 export default {
-  
+  name: "Login",
+  components: {
+    Navbar,
+  },
 };
 </script>
 
 <style lang="scss">
-.con-flex{
+.con-flex {
   height: 20vw;
   width: 40vw;
   padding: 2em 0;
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
 }
-.submit{
+.submit {
   // width: 201;
   font-size: 1.25em;
   letter-spacing: 1em;
   text-indent: 1em;
   margin-top: 2.5em;
 }
-.number_input{
+.number_input {
   width: 90%;
   margin-top: 2.5em;
 }

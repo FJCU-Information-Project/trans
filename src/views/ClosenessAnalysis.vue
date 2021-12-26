@@ -2,77 +2,42 @@
   <el-row class="close">
     <el-col :span="24">
       <div class="grid-content banner">
+        <Navbar />
         <h1>Closeness Analysis</h1>
         <span style="font-weight: bolder">
-          請選取一個您感興趣的節點，我們將會為您找出與其關聯性前五強的節點
+          請選取一個您感興趣的節點，我們將會為您找出與其關聯性前五強的
         </span>
       </div>
     </el-col>
   </el-row>
   <el-row class="con_flex">
-    <el-col :span="18">
+    <el-col :span="11">
       <div class="grid-content main_sec">
-        <!-- 原table -->
-        <!-- <el-table :data="tableData" stripe style="width: 100%">
-          <el-table-column prop="date" label="Date" width="300" />
-          <el-table-column prop="name" label="Name" width="300" />
-          <el-table-column prop="address" label="Address" />
-        </el-table> -->
-        <el-table :data="tableData" style="width: 100%" height="500">
-          <el-table-column fixed prop="date" label="Date" width="150" />
-          <el-table-column prop="name" label="Name" width="120" />
-          <el-table-column prop="address" label="Address" width="600" />
-        </el-table>
-      </div>
-    </el-col>
-    <!-- <el-col :span="12">
-      <div class="grid-content bg-purple-light iframe_main_sec">
-        <iframe src="/SNA.html" frameborder="0" width="100%" height="100%"> -->
-    <!-- 社會網路圖 -->
-    <!-- </iframe>
-      </div>
-    </el-col> -->
-    <!-- <el-col :span="18">
-      <div class="grid-content bg-purple main_sec">
         <el-table :data="tableData" stripe style="width: 100%">
           <el-table-column prop="date" label="Date" width="180" />
           <el-table-column prop="name" label="Name" width="180" />
           <el-table-column prop="address" label="Address" />
         </el-table>
       </div>
-    </el-col> -->
-    <el-col :span="18">
+    </el-col>
+    <el-col :span="12">
       <div class="grid-content iframe_main_sec">
-        <el-empty description="description"></el-empty>
-        <!-- <iframe src="/SNA.html" frameborder="0" width="100%" height="100%"> -->
+        <iframe src="/SNA.html" frameborder="0" width="100%" height="100%">
           <!-- 社會網路圖 -->
-        <!-- </iframe> -->
+        </iframe>
       </div>
     </el-col>
   </el-row>
-  <!-- <el-container>
-    <el-aside width="300px">
-      <el-select v-model="value" placeholder="Select">
-        <el-option
-          v-for="item in options"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value"
-        >
-        </el-option>
-      </el-select>
-    </el-aside>
-    <el-main> -->
-  <!-- <iframe src="/SNA.html" frameborder="0" width="100%" height="100%"> -->
-  <!-- 社會網路圖 -->
-  <!-- </iframe> -->
-  <!-- </el-main>
-  </el-container> -->
 </template>
 
 <script>
+import Navbar from "@/components/Navbar.vue";
+
 export default {
-  name: "Analysis1",
+  name: "ClosenessAnalysis",
+  components: {
+    Navbar,
+  },
   data() {
     return {
       tableData: [
@@ -133,8 +98,8 @@ export default {
 </script>
 
 <style lang="scss">
-.close{
-  margin-bottom: 0 ;
+.close {
+  margin-bottom: 0;
 }
 .con_flex {
   display: flex;

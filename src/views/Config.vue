@@ -1,4 +1,5 @@
 <template>
+  <Navbar />
   <div class="con">
     <el-form ref="form" :model="form" label-width="120px" class="config-form">
       <el-form-item label="Activity type">
@@ -46,7 +47,13 @@
 </template>
 
 <script>
+import Navbar from "@/components/Navbar.vue";
+
 export default {
+  name: "Config",
+  components: {
+    Navbar,
+  },
   data() {
     return {
       form: {
@@ -66,7 +73,6 @@ export default {
       console.log("submit!");
     },
   },
-  name: "Config",
 };
 </script>
 

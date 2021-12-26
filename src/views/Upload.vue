@@ -1,4 +1,5 @@
 <template>
+  <Navbar />
   <!-- 上傳資料及頁面 -->
   <el-row class="card-allocate">
     <el-col :span="7">
@@ -96,8 +97,13 @@
 </template>
 
 <script>
+import Navbar from "@/components/Navbar.vue";
+
 export default {
   name: "Upload",
+  components: {
+    Navbar,
+  },
 };
 </script>
 
