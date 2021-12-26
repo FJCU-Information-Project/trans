@@ -1,5 +1,5 @@
 <template>
-  <el-row>
+  <el-row class="close">
     <el-col :span="24">
       <div class="grid-content banner">
         <h1>Closeness Analysis</h1>
@@ -11,7 +11,7 @@
   </el-row>
   <el-row class="con_flex">
     <el-col :span="18">
-      <div class="grid-content bg-purple main_sec">
+      <div class="grid-content main_sec">
         <!-- 原table -->
         <!-- <el-table :data="tableData" stripe style="width: 100%">
           <el-table-column prop="date" label="Date" width="300" />
@@ -42,7 +42,7 @@
       </div>
     </el-col> -->
     <el-col :span="18">
-      <div class="grid-content bg-purple-light iframe_main_sec">
+      <div class="grid-content iframe_main_sec">
         <iframe src="/SNA.html" frameborder="0" width="100%" height="100%">
           <!-- 社會網路圖 -->
         </iframe>
@@ -132,6 +132,9 @@ export default {
 </script>
 
 <style lang="scss">
+.close{
+  margin-bottom: 0 ;
+}
 .con_flex {
   display: flex;
   justify-content: space-evenly;
