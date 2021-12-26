@@ -292,7 +292,7 @@ iframe {
   background-position: center;
   background-size: cover;
   // box-shadow: 8px 8px 15px rgba(255, 255, 255, .5);
-  box-shadow: 8px 8px 15px rgba(0, 0, 0, .5);
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
   z-index: 100;
 }
 .link {

@@ -12,6 +12,9 @@
           <router-link to="/Upload" class="link">
             <el-button round>Upload</el-button>
           </router-link>
+          <router-link to="/Login" class="link">
+            <el-button round type="danger">Login</el-button>
+          </router-link>
         </div>
       </div>
     </el-col>
@@ -62,8 +65,8 @@ export default {
 -->
 
 <style lang="scss">
-.menu{
-  width: 18%;
+.menu {
+  width: 28%;
   display: flex;
   justify-content: space-between;
 }

@@ -18,18 +18,18 @@
           <el-table-column prop="name" label="Name" width="300" />
           <el-table-column prop="address" label="Address" />
         </el-table> -->
-          <el-table :data="tableData" style="width: 100%" height="500">
-            <el-table-column fixed prop="date" label="Date" width="150" />
-            <el-table-column prop="name" label="Name" width="120" />
-            <el-table-column prop="address" label="Address" width="600" />
-          </el-table>
+        <el-table :data="tableData" style="width: 100%" height="500">
+          <el-table-column fixed prop="date" label="Date" width="150" />
+          <el-table-column prop="name" label="Name" width="120" />
+          <el-table-column prop="address" label="Address" width="600" />
+        </el-table>
       </div>
     </el-col>
     <!-- <el-col :span="12">
       <div class="grid-content bg-purple-light iframe_main_sec">
         <iframe src="/SNA.html" frameborder="0" width="100%" height="100%"> -->
-          <!-- 社會網路圖 -->
-        <!-- </iframe>
+    <!-- 社會網路圖 -->
+    <!-- </iframe>
       </div>
     </el-col> -->
     <!-- <el-col :span="18">

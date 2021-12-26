@@ -56,6 +56,11 @@ const routes = [
     name: "DegreeAnalysis",
     component: () => import("../views/DegreeAnalysis.vue"),
   },
+  {
+    path: "/login",
+    name: "Login",
+    component: () => import("../views/Login.vue"),
+  },
 ];
 
 const router = createRouter({
