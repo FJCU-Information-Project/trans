@@ -1,7 +1,7 @@
 <template>
   <el-row>
     <el-col :span="24">
-    <div class="grid-content banner">
+      <div class="grid-content banner">
         <Navbar />
         <div class="ban-title">
           <h1>Layer Analysis</h1>
@@ -104,11 +104,11 @@ export default {
 </script>
 
 <style lang="scss">
-.sub-title{
+.sub-title {
   display: inline-block;
   margin-top: 3em;
 }
-.ban-title{
+.ban-title {
   height: 92vh;
   display: flex;
   flex-direction: column;

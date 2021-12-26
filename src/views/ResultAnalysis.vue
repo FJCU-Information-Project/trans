@@ -2,7 +2,7 @@
   <el-row>
     <el-col :span="24">
       <div class="grid-content banner">
-      <Navbar />
+        <Navbar />
         <div class="ban-title">
           <h1>Result Analysis</h1>
           <span style="font-weight: bolder" class="sub-title">
@@ -129,11 +129,11 @@ export default {
 </script>
 
 <style lang="scss">
-.sub-title{
+.sub-title {
   display: inline-block;
   margin-top: 3em;
 }
-.ban-title{
+.ban-title {
   height: 92vh;
   display: flex;
   flex-direction: column;
@@ -215,7 +215,7 @@ body > .el-container {
   border-radius: 4px;
   min-height: 36px;
 }
-.select-group{
+.select-group {
   justify-content: center;
   margin-top: 4em;
 }

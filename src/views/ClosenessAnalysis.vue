@@ -100,7 +100,7 @@ export default {
 </script>
 
 <style lang="scss">
-.ban-title{
+.ban-title {
   height: 92vh;
   display: flex;
   flex-direction: column;

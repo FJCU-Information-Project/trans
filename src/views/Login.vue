@@ -31,7 +31,7 @@ export default {
 </script>
 
 <style lang="scss">
-.login-title{
+.login-title {
   height: 92vh;
   display: flex;
   justify-content: center;

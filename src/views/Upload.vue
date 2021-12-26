@@ -1,98 +1,98 @@
 <template>
   <el-row>
-      <el-col :span="24">
-        <div class="grid-content banner">
-          <Navbar />
-          <div class="ban-title">
-            <el-row class="card-allocate">
-              <el-col :span="7">
-                <div class="grid-content bg-purple upload-card">
-                  <div class="icon-con">
-                    <img src="../assets/node.png" alt="" />
+    <el-col :span="24">
+      <div class="grid-content banner">
+        <Navbar />
+        <div class="ban-title">
+          <el-row class="card-allocate">
+            <el-col :span="7">
+              <div class="grid-content bg-purple upload-card">
+                <div class="icon-con">
+                  <img src="../assets/node.png" alt="" />
+                </div>
+                <h3>節點 Node</h3>
+                <p class="describe"></p>
+                <el-upload
+                  class="upload-demo"
+                  drag
+                  action="https://jsonplaceholder.typicode.com/posts/"
+                  multiple
+                >
+                  <el-icon class="el-icon--upload"><upload-filled /></el-icon>
+                  <div class="el-upload__text">
+                    Drop file here or <em>click to upload</em>
                   </div>
-                  <h3>節點 Node</h3>
-                  <p class="describe"></p>
-                  <el-upload
-                    class="upload-demo"
-                    drag
-                    action="https://jsonplaceholder.typicode.com/posts/"
-                    multiple
-                  >
-                    <el-icon class="el-icon--upload"><upload-filled /></el-icon>
-                    <div class="el-upload__text">
-                      Drop file here or <em>click to upload</em>
+                  <template #tip>
+                    <div class="el-upload__tip">
+                      jpg/png files with a size less than 500kb
                     </div>
-                    <template #tip>
-                      <div class="el-upload__tip">
-                        jpg/png files with a size less than 500kb
-                      </div>
-                    </template>
-                  </el-upload>
+                  </template>
+                </el-upload>
+              </div>
+            </el-col>
+            <el-col :span="7">
+              <div class="grid-content bg-purple-light upload-card">
+                <div class="icon-con">
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/6389/6389267.png"
+                    alt=""
+                  />
                 </div>
-              </el-col>
-              <el-col :span="7">
-                <div class="grid-content bg-purple-light upload-card">
-                  <div class="icon-con">
-                    <img
-                      src="https://cdn-icons-png.flaticon.com/512/6389/6389267.png"
-                      alt=""
-                    />
+                <h3>屬性 Attribute</h3>
+                <p class="describe"></p>
+                <el-upload
+                  class="upload-demo"
+                  drag
+                  action="https://jsonplaceholder.typicode.com/posts/"
+                  multiple
+                >
+                  <el-icon class="el-icon--upload"><upload-filled /></el-icon>
+                  <div class="el-upload__text">
+                    Drop file here or <em>click to upload</em>
                   </div>
-                  <h3>屬性 Attribute</h3>
-                  <p class="describe"></p>
-                  <el-upload
-                    class="upload-demo"
-                    drag
-                    action="https://jsonplaceholder.typicode.com/posts/"
-                    multiple
-                  >
-                    <el-icon class="el-icon--upload"><upload-filled /></el-icon>
-                    <div class="el-upload__text">
-                      Drop file here or <em>click to upload</em>
+                  <template #tip>
+                    <div class="el-upload__tip">
+                      jpg/png files with a size less than 500kb
                     </div>
-                    <template #tip>
-                      <div class="el-upload__tip">
-                        jpg/png files with a size less than 500kb
-                      </div>
-                    </template>
-                  </el-upload>
+                  </template>
+                </el-upload>
+              </div>
+            </el-col>
+            <el-col :span="7">
+              <div class="grid-content bg-purple upload-card">
+                <div class="icon-con">
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/995/995646.png"
+                    alt=""
+                  />
                 </div>
-              </el-col>
-              <el-col :span="7">
-                <div class="grid-content bg-purple upload-card">
-                  <div class="icon-con">
-                    <img
-                      src="https://cdn-icons-png.flaticon.com/512/995/995646.png"
-                      alt=""
-                    />
+                <h3>關聯 Relationship</h3>
+                <p class="describe"></p>
+                <el-upload
+                  class="upload-demo"
+                  drag
+                  action="https://jsonplaceholder.typicode.com/posts/"
+                  multiple
+                >
+                  <el-icon class="el-icon--upload"><upload-filled /></el-icon>
+                  <div class="el-upload__text">
+                    Drop file here or <em>click to upload</em>
                   </div>
-              <h3>關聯 Relationship</h3>
-              <p class="describe"></p>
-              <el-upload
-                class="upload-demo"
-                drag
-                action="https://jsonplaceholder.typicode.com/posts/"
-                multiple
-              >
-                <el-icon class="el-icon--upload"><upload-filled /></el-icon>
-                <div class="el-upload__text">
-                  Drop file here or <em>click to upload</em>
-                </div>
-                <template #tip>
-                  <div class="el-upload__tip">
-                    jpg/png files with a size less than 500kb
-                  </div>
-                </template>
-              </el-upload>
-            </div>
-          </el-col>
-        </el-row>
-                </div>
+                  <template #tip>
+                    <div class="el-upload__tip">
+                      jpg/png files with a size less than 500kb
+                    </div>
+                  </template>
+                </el-upload>
               </div>
             </el-col>
           </el-row>
+        </div>
+      </div>
+    </el-col>
+  </el-row>
   <!-- 上傳資料及頁面 -->
-  
+
   <!-- <div id="upload">
     TRANS
   </div> -->
@@ -145,7 +145,7 @@ export default {
 //
 
 // 上傳資料頁面CSS
-.ban-title{
+.ban-title {
   height: 92vh;
   display: flex;
   flex-direction: column;

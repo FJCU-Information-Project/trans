@@ -37,28 +37,27 @@
   </el-container> -->
 </template>
 
-
 <script>
 // @ is an alias to /src
 export default {
-  name: "Navbar" ,
-  data(){
+  name: "Navbar",
+  data() {
     //var path = this.$route.params.path;
     return {
       //path,
-    }
-  }
+    };
+  },
 };
 </script>
 
 <style lang="scss">
-.ban-title{
+.ban-title {
   height: 92vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  & span{
+  & span {
     display: inline-block;
     margin-top: 3em;
   }

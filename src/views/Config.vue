@@ -1,54 +1,167 @@
- <template>
+<template>
   <el-row>
-      <el-col :span="24">
-        <div class="grid-content banner">
-          <Navbar />
-          <div class="ban-title">
-           <el-form ref="form" :model="form" label-width="120px" class="config-form">
-              <el-form-item label="Activity type">
-                <el-checkbox-group v-model="form.type">
-                  <el-checkbox label="Online activities" name="type"></el-checkbox>
-                  <el-checkbox label="Promotion activities" name="type"></el-checkbox>
-                  <el-checkbox label="Offline activities" name="type"></el-checkbox>
-                  <el-checkbox label="Simple brand exposure" name="type"></el-checkbox>
-                  <el-checkbox label="Online activities" name="type"></el-checkbox>
-                  <el-checkbox label="Promotion activities" name="type"></el-checkbox>
-                  <el-checkbox label="Offline activities" name="type"></el-checkbox>
-                  <el-checkbox label="Simple brand exposure" name="type"></el-checkbox>
-                  <el-checkbox label="Online activities" name="type"></el-checkbox>
-                  <el-checkbox label="Promotion activities" name="type"></el-checkbox>
-                  <el-checkbox label="Offline activities" name="type"></el-checkbox>
-                  <el-checkbox label="Simple brand exposure" name="type"></el-checkbox>
-                  <el-checkbox label="Online activities" name="type"></el-checkbox>
-                  <el-checkbox label="Promotion activities" name="type"></el-checkbox>
-                  <el-checkbox label="Offline activities" name="type"></el-checkbox>
-                  <el-checkbox label="Simple brand exposure" name="type"></el-checkbox>
-                  <el-checkbox label="Online activities" name="type"></el-checkbox>
-                  <el-checkbox label="Promotion activities" name="type"></el-checkbox>
-                  <el-checkbox label="Offline activities" name="type"></el-checkbox>
-                  <el-checkbox label="Simple brand exposure" name="type"></el-checkbox>
-                  <el-checkbox label="Online activities" name="type"></el-checkbox>
-                  <el-checkbox label="Promotion activities" name="type"></el-checkbox>
-                  <el-checkbox label="Offline activities" name="type"></el-checkbox>
-                  <el-checkbox label="Simple brand exposure" name="type"></el-checkbox>
-                  <el-checkbox label="Online activities" name="type"></el-checkbox>
-                  <el-checkbox label="Promotion activities" name="type"></el-checkbox>
-                  <el-checkbox label="Offline activities" name="type"></el-checkbox>
-                  <el-checkbox label="Simple brand exposure" name="type"></el-checkbox>
-                  <el-checkbox label="Online activities" name="type"></el-checkbox>
-                  <el-checkbox label="Promotion activities" name="type"></el-checkbox>
-                  <el-checkbox label="Offline activities" name="type"></el-checkbox>
-                  <el-checkbox label="Simple brand exposure" name="type"></el-checkbox>
-                  <el-checkbox label="Online activities" name="type"></el-checkbox>
-                  <el-checkbox label="Promotion activities" name="type"></el-checkbox>
-                  <el-checkbox label="Offline activities" name="type"></el-checkbox>
-                  <el-checkbox label="Simple brand exposure" name="type"></el-checkbox>
-                </el-checkbox-group>
-              </el-form-item>
-            </el-form>
-          </div>
+    <el-col :span="24">
+      <div class="grid-content banner">
+        <Navbar />
+        <div class="ban-title">
+          <el-form
+            ref="form"
+            :model="form"
+            label-width="120px"
+            class="config-form"
+          >
+            <el-form-item label="Activity type">
+              <el-checkbox-group v-model="form.type">
+                <el-checkbox
+                  label="Online activities"
+                  name="type"
+                ></el-checkbox>
+                <el-checkbox
+                  label="Promotion activities"
+                  name="type"
+                ></el-checkbox>
+                <el-checkbox
+                  label="Offline activities"
+                  name="type"
+                ></el-checkbox>
+                <el-checkbox
+                  label="Simple brand exposure"
+                  name="type"
+                ></el-checkbox>
+                <el-checkbox
+                  label="Online activities"
+                  name="type"
+                ></el-checkbox>
+                <el-checkbox
+                  label="Promotion activities"
+                  name="type"
+                ></el-checkbox>
+                <el-checkbox
+                  label="Offline activities"
+                  name="type"
+                ></el-checkbox>
+                <el-checkbox
+                  label="Simple brand exposure"
+                  name="type"
+                ></el-checkbox>
+                <el-checkbox
+                  label="Online activities"
+                  name="type"
+                ></el-checkbox>
+                <el-checkbox
+                  label="Promotion activities"
+                  name="type"
+                ></el-checkbox>
+                <el-checkbox
+                  label="Offline activities"
+                  name="type"
+                ></el-checkbox>
+                <el-checkbox
+                  label="Simple brand exposure"
+                  name="type"
+                ></el-checkbox>
+                <el-checkbox
+                  label="Online activities"
+                  name="type"
+                ></el-checkbox>
+                <el-checkbox
+                  label="Promotion activities"
+                  name="type"
+                ></el-checkbox>
+                <el-checkbox
+                  label="Offline activities"
+                  name="type"
+                ></el-checkbox>
+                <el-checkbox
+                  label="Simple brand exposure"
+                  name="type"
+                ></el-checkbox>
+                <el-checkbox
+                  label="Online activities"
+                  name="type"
+                ></el-checkbox>
+                <el-checkbox
+                  label="Promotion activities"
+                  name="type"
+                ></el-checkbox>
+                <el-checkbox
+                  label="Offline activities"
+                  name="type"
+                ></el-checkbox>
+                <el-checkbox
+                  label="Simple brand exposure"
+                  name="type"
+                ></el-checkbox>
+                <el-checkbox
+                  label="Online activities"
+                  name="type"
+                ></el-checkbox>
+                <el-checkbox
+                  label="Promotion activities"
+                  name="type"
+                ></el-checkbox>
+                <el-checkbox
+                  label="Offline activities"
+                  name="type"
+                ></el-checkbox>
+                <el-checkbox
+                  label="Simple brand exposure"
+                  name="type"
+                ></el-checkbox>
+                <el-checkbox
+                  label="Online activities"
+                  name="type"
+                ></el-checkbox>
+                <el-checkbox
+                  label="Promotion activities"
+                  name="type"
+                ></el-checkbox>
+                <el-checkbox
+                  label="Offline activities"
+                  name="type"
+                ></el-checkbox>
+                <el-checkbox
+                  label="Simple brand exposure"
+                  name="type"
+                ></el-checkbox>
+                <el-checkbox
+                  label="Online activities"
+                  name="type"
+                ></el-checkbox>
+                <el-checkbox
+                  label="Promotion activities"
+                  name="type"
+                ></el-checkbox>
+                <el-checkbox
+                  label="Offline activities"
+                  name="type"
+                ></el-checkbox>
+                <el-checkbox
+                  label="Simple brand exposure"
+                  name="type"
+                ></el-checkbox>
+                <el-checkbox
+                  label="Online activities"
+                  name="type"
+                ></el-checkbox>
+                <el-checkbox
+                  label="Promotion activities"
+                  name="type"
+                ></el-checkbox>
+                <el-checkbox
+                  label="Offline activities"
+                  name="type"
+                ></el-checkbox>
+                <el-checkbox
+                  label="Simple brand exposure"
+                  name="type"
+                ></el-checkbox>
+              </el-checkbox-group>
+            </el-form-item>
+          </el-form>
         </div>
-      </el-col>
+      </div>
+    </el-col>
   </el-row>
 </template>
 
@@ -83,7 +196,7 @@ export default {
 </script>
 
 <style lang="scss">
-.ban-title{
+.ban-title {
   height: 92vh;
   display: flex;
   flex-direction: column;
