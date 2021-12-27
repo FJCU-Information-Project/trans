@@ -61,6 +61,21 @@ const routes = [
     name: "Login",
     component: () => import("../views/Login.vue"),
   },
+  {
+    path: "/management",
+    name: "Management",
+    component: () => import("../views/Management.vue"),
+  },
+  {
+    path: "/history",
+    name: "History",
+    component: () => import("../views/History.vue"),
+  },
+  {
+    path: "/favorite",
+    name: "Favorite",
+    component: () => import("../views/Favorite.vue"),
+  },
 ];
 
 const router = createRouter({

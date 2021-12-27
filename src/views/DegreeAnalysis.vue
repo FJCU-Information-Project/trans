@@ -30,24 +30,7 @@
       </div>
     </el-col>
   </el-row>
-  <!-- <el-container>
-    <el-aside width="300px">
-      <el-select v-model="value" placeholder="Select">
-        <el-option
-          v-for="item in options"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value"
-        >
-        </el-option>
-      </el-select>
-    </el-aside>
-    <el-main> -->
-  <!-- <iframe src="/SNA.html" frameborder="0" width="100%" height="100%"> -->
-  <!-- 社會網路圖 -->
-  <!-- </iframe> -->
-  <!-- </el-main>
-  </el-container> -->
+  <el-footer>Footer</el-footer>
 </template>
 
 <script>

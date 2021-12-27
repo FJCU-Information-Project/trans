@@ -8,10 +8,13 @@ import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
 import axios from "axios";
 import VueAxios from "vue-axios";
+import Vuetify from "vuetify/lib";
+import "vuetify/dist/vuetify.min.css";
 
 createApp(App)
   .use(ElementPlus)
   .use(store)
   .use(router)
   .use(VueAxios, axios)
+  .use(Vuetify)
   .mount("#app");

@@ -1,43 +1,33 @@
 <template>
-  <el-row class="close">
+  <el-row>
     <el-col :span="24">
       <div class="grid-content banner">
         <Navbar />
         <div class="ban-title">
-          <h1>Closeness Analysis</h1>
-          <span style="font-weight: bolder" class="sub-title">
-            請選取一個您感興趣的節點，我們將會為您找出與其關聯性前五強的節點
-          </span>
+          <h1>Analysis History</h1>
+          <div class="manage-btn"></div>
         </div>
       </div>
     </el-col>
   </el-row>
   <el-row class="con_flex">
     <el-col :span="11">
-      <div class="grid-content main_sec">
-        <el-table :data="tableData" stripe style="width: 100%">
-          <el-table-column prop="date" label="Date" width="180" />
+      <div class="grid-content bg-purple main_sec">
+        <el-table :data="tableData" stripe class="table-column">
+          <el-table-column prop="date" label="Date" width="180" class="table-column"/>
           <el-table-column prop="name" label="Name" width="180" />
           <el-table-column prop="address" label="Address" />
         </el-table>
       </div>
     </el-col>
-    <el-col :span="12">
-      <div class="grid-content iframe_main_sec">
-        <iframe src="/SNA.html" frameborder="0" width="100%" height="100%">
-          <!-- 社會網路圖 -->
-        </iframe>
-      </div>
-    </el-col>
   </el-row>
-  <el-footer>Footer</el-footer>
 </template>
 
 <script>
 import Navbar from "@/components/Navbar.vue";
 
 export default {
-  name: "ClosenessAnalysis",
+  name: "DegreeAnalysis",
   components: {
     Navbar,
   },
@@ -101,6 +91,20 @@ export default {
 </script>
 
 <style lang="scss">
+.table-column{
+  background: #000 !important;
+}
+.manage-btn {
+  width: 25%;
+  display: flex;
+  justify-content: space-between;
+  // background: #b3c0d1;
+  margin-top: 3em;
+  & span {
+    margin-top: 0;
+    font-size: 1.25em;
+  }
+}
 .ban-title {
   height: 92vh;
   display: flex;
@@ -108,26 +112,17 @@ export default {
   align-items: center;
   justify-content: center;
 }
-.close {
-  margin-bottom: 0;
-}
 .con_flex {
   display: flex;
   justify-content: space-evenly;
-  padding: 3em 0;
-  background-image: url(https://images.pexels.com/photos/3322471/pexels-photo-3322471.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
-  background-size: cover;
-  background-position: center;
-  box-sizing: border-box;
+  padding: 1.25em 0;
 }
 .main_sec {
   padding: 1em 1em;
 }
 .iframe_main_sec {
-  // height: 100vh;
+  height: 100vh;
   padding: 1em 1em;
-  background: #fff;
-  margin-top: 10em;
 }
 .banner {
   // background: rgb(226, 226, 216);

@@ -1,7 +1,7 @@
 <template>
   <el-row class="close">
     <el-col :span="24">
-      <div class="grid-content banner">
+      <div class="grid-content home-banner">
         <Navbar />
         <div class="ban-title">
           <h1>Welcome to Trans</h1>
@@ -183,7 +183,7 @@ export default {
   min-height: 36px;
 }
 //
-.banner {
+.home-banner {
   // background: rgb(226, 226, 216);
   height: 100vh;
   display: flex;
@@ -216,6 +216,7 @@ export default {
 .footer {
   height: 25em;
   margin-top: 0;
+  background: rgb(110, 94, 73);
 }
 .link {
   text-decoration: none;

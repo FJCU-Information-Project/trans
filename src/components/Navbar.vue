@@ -12,6 +12,9 @@
           <router-link to="/Upload" class="link">
             <el-button round>Upload</el-button>
           </router-link>
+          <router-link to="/Management" class="link">
+            <el-button round>Management</el-button>
+          </router-link>
           <router-link to="/Login" class="link">
             <el-button round type="danger">Login</el-button>
           </router-link>
@@ -63,7 +66,7 @@ export default {
   }
 }
 .menu {
-  width: 28%;
+  width: 40%;
   display: flex;
   justify-content: space-between;
 }
