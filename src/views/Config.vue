@@ -108,55 +108,13 @@
                   label="Simple brand exposure"
                   name="type"
                 ></el-checkbox>
-                <el-checkbox
-                  label="Online activities"
-                  name="type"
-                ></el-checkbox>
-                <el-checkbox
-                  label="Promotion activities"
-                  name="type"
-                ></el-checkbox>
-                <el-checkbox
-                  label="Offline activities"
-                  name="type"
-                ></el-checkbox>
-                <el-checkbox
-                  label="Simple brand exposure"
-                  name="type"
-                ></el-checkbox>
-                <el-checkbox
-                  label="Online activities"
-                  name="type"
-                ></el-checkbox>
-                <el-checkbox
-                  label="Promotion activities"
-                  name="type"
-                ></el-checkbox>
-                <el-checkbox
-                  label="Offline activities"
-                  name="type"
-                ></el-checkbox>
-                <el-checkbox
-                  label="Simple brand exposure"
-                  name="type"
-                ></el-checkbox>
-                <el-checkbox
-                  label="Online activities"
-                  name="type"
-                ></el-checkbox>
-                <el-checkbox
-                  label="Promotion activities"
-                  name="type"
-                ></el-checkbox>
-                <el-checkbox
-                  label="Offline activities"
-                  name="type"
-                ></el-checkbox>
-                <el-checkbox
-                  label="Simple brand exposure"
-                  name="type"
-                ></el-checkbox>
               </el-checkbox-group>
+                <el-input
+                  v-model="input"
+                  placeholder="新增其他"
+                  class="number_input"
+                />
+                <el-button type="danger" class="submit">確認</el-button>
             </el-form-item>
           </el-form>
         </div>
@@ -175,6 +133,7 @@ export default {
   },
   data() {
     return {
+      input: "",
       form: {
         name: "",
         region: "",
