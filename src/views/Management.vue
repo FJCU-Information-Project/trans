@@ -38,7 +38,25 @@ export default {
 </script>
 
 <style lang="scss">
-
+.el-tabs{
+  & .is-active{
+    background: #fff;
+    color: #fc7064;
+  }
+  & .el-tabs__active-bar{
+    width: 10px !important;
+    background: #fc7064;
+  }
+}
+.el-tabs__item{
+  font-size: 2em;
+  padding: 3em 2em;
+  color: white;
+}
+.el-tabs__item:hover{
+  color: black;
+  background: #fff;
+}
 .man-tabs{
   height: 100%;
 

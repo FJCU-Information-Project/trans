@@ -2,7 +2,7 @@
   <div class="grid-content his-banner">
     <el-row class="his-con_flex">
       <el-col :span="18">
-        <div class="grid-content bg-purple main_sec">
+        <div class="grid-content main_sec">
           <el-table
             :data="
               tableData.filter(
