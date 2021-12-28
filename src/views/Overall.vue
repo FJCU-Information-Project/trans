@@ -8,8 +8,8 @@
           <span style="font-weight: bolder" class="sub-title">
             請選取一個您感興趣的節點，我們將會為您找出與其關聯性前五強的節點
           </span>
-          <div class="select-group">
-            <el-select v-model="value" placeholder="請選擇第一個節點">
+          <!-- <div class="select-group">
+            <el-select v-model="value" placeholder="請選擇一個節點">
               <el-option
                 v-for="item in options"
                 :key="item.value"
@@ -18,16 +18,7 @@
               >
               </el-option>
             </el-select>
-            <el-select v-model="value" placeholder="請選擇第二個節點">
-              <el-option
-                v-for="item in options"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              >
-              </el-option>
-            </el-select>
-          </div>
+          </div> -->
         </div>
       </div>
     </el-col>

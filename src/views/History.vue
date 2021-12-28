@@ -64,6 +64,26 @@ export default {
           type: "Closness Analysis",
           dataset: "預設資料集",
         },
+        {
+          time: "2013-02-30",
+          type: "Layer Analysis",
+          dataset: "自訂資料集:高雄",
+        },
+        {
+          time: "2012-01-17",
+          type: "Closness Analysis",
+          dataset: "預設資料集",
+        },
+        {
+          time: "2013-02-30",
+          type: "Layer Analysis",
+          dataset: "自訂資料集:高雄",
+        },
+        {
+          time: "2012-01-17",
+          type: "Closness Analysis",
+          dataset: "預設資料集",
+        },
       ],
     };
   },
@@ -81,6 +101,7 @@ export default {
 <style lang="scss">
 .el-table{
   margin-top: 4em;
+  border-radius: .75em;
 }
 .el-table__cell{
   text-align: center !important;

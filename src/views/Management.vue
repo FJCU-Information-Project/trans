@@ -49,6 +49,9 @@ export default {
     background: #fc7064;
   }
 }
+.el-tabs__nav-wrap::after{
+  display: none;
+}
 .el-tabs__item{
   font-size: 1.75em;
   padding: 3em 2em;
