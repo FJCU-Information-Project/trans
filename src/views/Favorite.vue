@@ -32,14 +32,32 @@
             </el-table-column>
           </el-table>
         </div>
+        <el-button type="text" @click="open">Click to open Message Box</el-button>
       </el-col>
     </el-row>
   </div>
 </template>
 
 <script>
+import { ElMessageBox } from 'element-plus';
+
 export default {
   name: "History",
+  setup() {
+    const open = () => {
+      ElMessageBox.alert(
+        '<strong>proxy is <i>HTML</i> string</strong>',
+        'HTML String',
+        {
+          dangerouslyUseHTMLString: true,
+        }
+      )
+    }
+
+    return {
+      open,
+    }
+  },
   data() {
     return {
       search: "",
