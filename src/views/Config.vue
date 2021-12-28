@@ -10,7 +10,7 @@
             label-width="120px"
             class="config-form"
           >
-            <el-form-item label="Activity type">
+            <el-form-item>
               <el-checkbox-group v-model="form.type">
                 <el-checkbox
                   label="Online activities"
@@ -112,9 +112,9 @@
               <el-input
                 v-model="input"
                 placeholder="新增其他"
-                class="number_input"
+                class="column_input"
               />
-              <el-button type="danger" class="submit manage-btn">確認</el-button>
+              <el-button type="danger" class="submit manage-btn" round plain>確認</el-button>
             </el-form-item>
           </el-form>
         </div>
@@ -155,6 +155,17 @@ export default {
 </script>
 
 <style lang="scss">
+.column_input{
+  width: 60%;
+}
+.el-form-item{
+  & .manage-btn{
+    width: auto;
+  }
+}
+.el-form-item__content{
+  margin-left: 0 !important;
+}
 .manage-btn {
   width: 25%;
   display: flex;

@@ -101,7 +101,7 @@ export default {
 <style lang="scss">
 .el-table{
   margin-top: 4em;
-  border-radius: .75em;
+  border-radius: .45em;
 }
 .el-table__cell{
   text-align: center !important;
