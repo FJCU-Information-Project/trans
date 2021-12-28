@@ -11,12 +11,41 @@
     </el-col>
   </el-row>
   <el-row class="con_flex">
-    <el-col :span="11">
+    <el-col :span="12">
       <div class="grid-content bg-purple main_sec">
-        <el-table :data="tableData" stripe style="width: 100%">
-          <el-table-column prop="date" label="Date" width="180" />
-          <el-table-column prop="name" label="Name" width="180" />
-          <el-table-column prop="address" label="Address" />
+        <el-table
+          :data="
+            tableData.filter(
+              (data) => !search || data.time.toLowerCase().includes(search.toLowerCase())
+            )
+          "
+          style="width: 100%"
+        >
+          <el-table-column label="分析時間" prop="time" />
+          <el-table-column label="類型" prop="type" />
+          <el-table-column label="資料集" prop="dataset" />
+          <el-table-column align="right">
+            <template #header>
+              <el-input
+                v-model="search" 
+                size="mini" 
+                placeholder="請輸入要尋找的日期" 
+              />
+            </template>
+            <template #default="scope">
+              <el-button
+                size="mini"
+                @click="handleEdit(scope.$index, scope.row)"
+              >查看</el-button
+              >
+              <el-button
+                size="mini"
+                type="danger"
+                @click="handleDelete(scope.$index, scope.row)"
+                >刪除</el-button
+              >
+            </template>
+          </el-table-column>
         </el-table>
       </div>
     </el-col>
@@ -28,24 +57,6 @@
       </div>
     </el-col>
   </el-row>
-  <!-- <el-container>
-    <el-aside width="300px">
-      <el-select v-model="value" placeholder="Select">
-        <el-option
-          v-for="item in options"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value"
-        >
-        </el-option>
-      </el-select>
-    </el-aside>
-    <el-main> -->
-  <!-- <iframe src="/SNA.html" frameborder="0" width="100%" height="100%"> -->
-  <!-- 社會網路圖 -->
-  <!-- </iframe> -->
-  <!-- </el-main>
-  </el-container> -->
 </template>
 
 <script>
@@ -58,59 +69,38 @@ export default {
   },
   data() {
     return {
+      search: "",
       tableData: [
         {
-          date: "2016-05-03",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
+          time: "2015-05-13",
+          type: "Layer Analysis",
+          dataset: "預設資料集",
         },
         {
-          date: "2016-05-02",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
+          time: "2016-03-26",
+          type: "Degree Analysis",
+          dataset: "自訂資料集:台北",
         },
         {
-          date: "2016-05-04",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
+          time: "2013-02-30",
+          type: "Layer Analysis",
+          dataset: "自訂資料集:高雄",
         },
         {
-          date: "2016-05-01",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-03",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-02",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-04",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-01",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-03",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-02",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
+          time: "2012-01-17",
+          type: "Closness Analysis",
+          dataset: "預設資料集",
         },
       ],
     };
+  },
+  methods: {
+    handleEdit(index, row) {
+      console.log(index, row)
+    },
+    handleDelete(index, row) {
+      console.log(index, row)
+    },
   },
 };
 </script>

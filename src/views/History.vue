@@ -11,14 +11,14 @@
           <el-table
             :data="
               tableData.filter(
-                (data) => !search || data.name.toLowerCase().includes(search.toLowerCase())
+                (data) => !search || data.time.toLowerCase().includes(search.toLowerCase())
               )
             "
             style="width: 100%"
           >
-            <el-table-column label="日期" prop="date" />
-            <el-table-column label="名字" prop="name" />
-            <el-table-column label="地址" prop="address" />
+            <el-table-column label="分析時間" prop="time" />
+            <el-table-column label="類型" prop="type" />
+            <el-table-column label="資料集" prop="dataset" />
             <el-table-column align="right">
               <template #header>
                 <el-input v-model="search" size="mini" placeholder="請輸入要尋找的日期" />
@@ -55,24 +55,24 @@ export default {
       search: "",
       tableData: [
         {
-          date: "2016-05-03",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
+          time: "2015-05-13",
+          type: "Layer Analysis",
+          dataset: "預設資料集",
         },
         {
-          date: "2016-05-02",
-          name: "John",
-          address: "No. 189, Grove St, Los Angeles",
+          time: "2016-03-26",
+          type: "Degree Analysis",
+          dataset: "自訂資料集:台北",
         },
         {
-          date: "2016-05-04",
-          name: "Amy",
-          address: "No. 189, Grove St, Los Angeles",
+          time: "2013-02-30",
+          type: "Layer Analysis",
+          dataset: "自訂資料集:高雄",
         },
         {
-          date: "2016-05-01",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
+          time: "2012-01-17",
+          type: "Closness Analysis",
+          dataset: "預設資料集",
         },
       ],
     };
