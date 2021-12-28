@@ -104,9 +104,8 @@ export default {
   justify-content: flex-end;
 }
 .his-con_flex {
-  width: 100vw;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   padding: 1.25em 0;
 }
 .main_sec {
@@ -122,7 +121,7 @@ export default {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  background-image: url(https://images.pexels.com/photos/10003543/pexels-photo-10003543.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+  // background-image: url(https://images.pexels.com/photos/10003543/pexels-photo-10003543.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
   background-size: cover;
   background-position: center;
   color: white;

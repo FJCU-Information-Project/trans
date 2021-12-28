@@ -3,17 +3,14 @@
     <el-col :span="24">
       <div class="grid-content man-banner">
         <Navbar />
-        <div class="ban-title">
-          <h1>Analysis Management</h1>
-          <div class="manage-btn">
-            <router-link :to="{name: 'History'}" class="link">
-              <el-button round type="danger" plain>History</el-button>
-            </router-link>
-            <router-link :to="{name: 'Favorite'}" class="link">
-              <el-button round type="danger" plain>Favorite</el-button>
-            </router-link>
-          </div>
-        </div>
+        <el-tabs stretch="true" :tab-position="tabPosition" style="height: 100%;width:100%" class="man-tabs">
+          <el-tab-pane label="History">
+            <History/>
+          </el-tab-pane>
+          <el-tab-pane label="Favorite">
+            <Favorite/>
+          </el-tab-pane>
+        </el-tabs>
       </div>
     </el-col>
   </el-row>
@@ -22,20 +19,30 @@
 
 <script>
 import Navbar from "@/components/Navbar.vue";
+import History from "@/views/History.vue";
+import Favorite from "@/views/Favorite.vue";
 
 export default {
   name: "Management",
   components: {
     Navbar,
+    History,
+    Favorite,
   },
   data() {
     return {
+      tabPosition: "left",
     };
   },
 };
 </script>
 
 <style lang="scss">
+
+.man-tabs{
+  height: 100%;
+
+}
 .manage-btn {
   width: 25%;
   display: flex;
@@ -48,7 +55,7 @@ export default {
   }
 }
 .ban-title {
-  height: 92vh;
+  // height: 92vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -68,7 +75,7 @@ export default {
 }
 .man-banner {
   // background: rgb(226, 226, 216);
-  height: 80vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;

@@ -4,7 +4,7 @@
       <div class="grid-content banner">
         <Navbar />
         <div class="ban-title">
-          <h1>Intersection Analysis</h1>
+          <h1>Overall</h1>
           <span style="font-weight: bolder" class="sub-title">
             請選取一個您感興趣的節點，我們將會為您找出與其關聯性前五強的節點
           </span>

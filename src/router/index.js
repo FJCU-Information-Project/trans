@@ -27,24 +27,19 @@ const routes = [
     component: () => import("../views/Config.vue"),
   },
   {
+    path: "/overall",
+    name: "Overall",
+    component: () => import("../views/Overall.vue"),
+  },
+  {
     path: "/layeranalysis",
     name: "LayerAnalysis",
     component: () => import("../views/LayerAnalysis.vue"),
   },
   {
-    path: "/intersectionanalysis",
-    name: "IntersectionAnalysis",
-    component: () => import("../views/IntersectionAnalysis.vue"),
-  },
-  {
     path: "/resultanalysis",
     name: "ResultAnalysis",
     component: () => import("../views/ResultAnalysis.vue"),
-  },
-  {
-    path: "/intersectionanalysis",
-    name: "IntersectionAnalysis",
-    component: () => import("../views/IntersectionAnalysis.vue"),
   },
   {
     path: "/closenessanalysis",
@@ -57,6 +52,10 @@ const routes = [
     component: () => import("../views/DegreeAnalysis.vue"),
   },
   {
+    path: "/MonoNode Analysis",
+    name: "MonoNodeAnalysis",
+    component: () => import("../views/MonoNodeAnalysis.vue"),
+  },  {
     path: "/login",
     name: "Login",
     component: () => import("../views/Login.vue"),
@@ -64,7 +63,7 @@ const routes = [
   {
     path: "/management",
     name: "Management",
-    component: () => import("../views/Management.vue"),
+    component: () => import("../views/Management.vue"),/*
     children: [
       {
         path: 'history',
@@ -76,7 +75,7 @@ const routes = [
         name: "Favorite",
         component: () => import("../views/Favorite.vue"),
       },
-    ],
+    ],*/
   },
 ];
 

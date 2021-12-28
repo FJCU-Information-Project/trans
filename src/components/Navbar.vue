@@ -6,38 +6,22 @@
           <p id="logo">TRANS</p>
         </router-link>
         <div class="menu">
-          <router-link to="/Config" class="link">
+          <router-link to="{name: 'Config'}" class="link">
             <el-button round>Config</el-button>
           </router-link>
-          <router-link to="/Upload" class="link">
+          <router-link to="{name: 'Upload'}" class="link">
             <el-button round>Upload</el-button>
           </router-link>
-          <router-link to="/Management" class="link">
+          <router-link to="{name: 'Management'}" class="link">
             <el-button round>Management</el-button>
           </router-link>
-          <router-link to="/Login" class="link">
+          <router-link to="{name: 'Login'}" class="link">
             <el-button round type="danger">Login</el-button>
           </router-link>
         </div>
       </div>
     </el-col>
   </el-row>
-  <!-- <el-container> -->
-  <!-- <el-row>
-      <el-col :span="24">
-        <div class="grid-content bg-purple-dark nav">
-          <router-link to="/home" class="link">
-            <p id="logo">TRANS</p>
-          </router-link>
-          
-          <button> -->
-  <!-- <img src="https://cdn-icons.flaticon.com/png/512/3177/premium/3177283.png?token=exp=1639556831~hmac=d48cabdc1d2766058be61c55da58600d" alt="" class="account-icon">  -->
-  <!-- Auth -->
-  <!-- </button>
-        </div>
-        </el-col>
-    </el-row>
-  </el-container> -->
 </template>
 
 <script>

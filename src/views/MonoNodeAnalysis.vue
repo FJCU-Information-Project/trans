@@ -1,12 +1,34 @@
 <template>
-  <Navbar />
   <el-row>
     <el-col :span="24">
       <div class="grid-content banner">
-        <h1>Betweeness Analysis</h1>
-        <span style="font-weight: bolder">
-          請選取一個您感興趣的節點，我們將會為您找出與其關聯性前五強的節點
-        </span>
+        <Navbar />
+        <div class="ban-title">
+          <h1>MonoNode Analysis</h1>
+          <span style="font-weight: bolder" class="sub-title">
+            請選取一個您感興趣的節點，我們將會為您找出與其關聯性前五強的節點
+          </span>
+          <div class="select-group">
+            <el-select v-model="value" placeholder="請選擇第一個節點">
+              <el-option
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              >
+              </el-option>
+            </el-select>
+            <el-select v-model="value" placeholder="請選擇第二個節點">
+              <el-option
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              >
+              </el-option>
+            </el-select>
+          </div>
+        </div>
       </div>
     </el-col>
   </el-row>
@@ -52,7 +74,7 @@
 import Navbar from "@/components/Navbar.vue";
 
 export default {
-  name: "BetweennessAnalysis",
+  name: "IntersectionAnalysis",
   components: {
     Navbar,
   },
@@ -116,6 +138,31 @@ export default {
 </script>
 
 <style lang="scss">
+.el-select{
+  & span{
+    margin-top: 0;
+  }
+}
+.sub-title {
+  display: inline-block;
+  margin-top: 3em;
+}
+.ban-title {
+  height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  // & span{
+  //   display: inline-block;
+  //   margin-top: 3em;
+  // }
+}
+.select-group {
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+}
 .con_flex {
   display: flex;
   justify-content: space-evenly;
@@ -129,13 +176,12 @@ export default {
   padding: 1em 1em;
 }
 .banner {
-  background: rgb(226, 226, 216);
-  height: 50vh;
-  display: grid;
-  place-items: center;
-  padding: 5em 0;
+  // background: rgb(226, 226, 216);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
   box-sizing: border-box;
-  background-image: url(https://images.pexels.com/photos/36487/above-adventure-aerial-air.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+  background-image: url(https://images.pexels.com/photos/10003543/pexels-photo-10003543.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
   background-size: cover;
   background-position: center;
   color: white;
@@ -183,12 +229,6 @@ body > .el-container {
 
 .el-container:nth-child(7) .el-aside {
   line-height: 320px;
-}
-.bg-purple {
-  background: #d3dce6;
-}
-.bg-purple-light {
-  background: #e5e9f2;
 }
 .grid-content {
   border-radius: 4px;

@@ -1,64 +1,47 @@
 <template>
-  <el-row class="con_flex">
-    <el-col :span="12">
-      <div class="grid-content bg-purple main_sec">
-        <el-table
-          :data="
-            tableData.filter(
-              (data) => !search || data.time.toLowerCase().includes(search.toLowerCase())
-            )
-          "
-          style="width: 100%"
-        >
-          <el-table-column label="分析時間" prop="time" />
-          <el-table-column label="類型" prop="type" />
-          <el-table-column label="資料集" prop="dataset" />
-          <el-table-column align="right">
-            <template #header>
-              <el-input
-                v-model="search" 
-                size="mini" 
-                placeholder="請輸入要尋找的日期" 
-              />
-            </template>
-            <template #default="scope">
-              <el-button
-                size="mini"
-                @click="handleEdit(scope.$index, scope.row)"
-              >查看</el-button
-              >
-              <el-button
-                size="mini"
-                type="danger"
-                @click="handleDelete(scope.$index, scope.row)"
-                >刪除</el-button
-              >
-            </template>
-          </el-table-column>
-        </el-table>
-      </div>
-    </el-col>
-    <el-col :span="11">
-      <div v-loading="loading" class="grid-content bg-purple-light iframe_main_sec">
-        <iframe 
-          ref="Iframe" 
-          src="/SNA.html" 
-          frameborder="0" 
-          width="100%" 
-          height="100%">
-          <!-- 社會網路圖 -->
-        </iframe>
-      </div>
-    </el-col>
-  </el-row>
+  <div class="grid-content his-banner">
+    <el-row class="his-con_flex">
+      <el-col :span="18">
+        <div class="grid-content bg-purple main_sec">
+          <el-table
+            :data="
+              tableData.filter(
+                (data) => !search || data.time.toLowerCase().includes(search.toLowerCase())
+              )
+            "
+            style="width: 100%"
+          >
+            <el-table-column label="分析時間" prop="time" />
+            <el-table-column label="類型" prop="type" />
+            <el-table-column label="資料集" prop="dataset" />
+            <el-table-column align="right">
+              <template #header>
+                <el-input v-model="search" size="mini" placeholder="請輸入要尋找的日期" />
+              </template>
+              <template #default="scope">
+                <el-button size="mini" @click="handleEdit(scope.$index, scope.row)"
+                  >查看</el-button
+                >
+                <el-button
+                  size="mini"
+                  type="danger"
+                  @click="handleDelete(scope.$index, scope.row)"
+                  >刪除</el-button
+                >
+              </template>
+            </el-table-column>
+          </el-table>
+        </div>
+      </el-col>
+    </el-row>
+  </div>
 </template>
 
 <script>
 export default {
-  name: "Favorite",
+  name: "History",
   data() {
     return {
-      loading: false,
       search: "",
       tableData: [
         {
@@ -91,24 +74,17 @@ export default {
     handleDelete(index, row) {
       console.log(index, row)
     },
-    iframeLoad(){
-      this.loading = true;
-      const iframe = this.$refs.Iframe;
-      if(iframe.attachEvent){
-        // For IE
-        iframe.attacheEvent('onload',() => {this.loading = false;});
-      }else{
-        iframe.onload = () => {this.loading = false;};
-      }
-    }
-  },
-  mounted(){
-    this.iframeLoad();
   },
 };
 </script>
 
 <style lang="scss">
+.el-table{
+  margin-top: 4em;
+}
+.el-table__cell{
+  text-align: center !important;
+}
 .manage-btn {
   width: 25%;
   display: flex;
@@ -120,16 +96,16 @@ export default {
     font-size: 1.25em;
   }
 }
-.ban-title {
-  height: 92vh;
+.his-ban-title {
+  height: 40vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 }
-.con_flex {
+.his-con_flex {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   padding: 1.25em 0;
 }
 .main_sec {
@@ -139,13 +115,13 @@ export default {
   height: 100vh;
   padding: 1em 1em;
 }
-.banner {
+.his-banner {
   // background: rgb(226, 226, 216);
-  height: 100vh;
+  height: 200vh;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  background-image: url(https://images.pexels.com/photos/10003543/pexels-photo-10003543.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+  // background-image: url(https://images.pexels.com/photos/10003543/pexels-photo-10003543.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
   background-size: cover;
   background-position: center;
   color: white;

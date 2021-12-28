@@ -14,9 +14,9 @@
       <el-col :xs="24" :sm="2" :md="8" :lg="11" :xl="11">
         <div class="grid-content bg-purple analysis-entry-card">
           <div class="filter">
-            <h3 class="analysis-title">Layer Analysis</h3>
+            <h3 class="analysis-title">Oeverall</h3>
             <div class="btn-group">
-              <router-link to="/layeranalysis" class="link">
+              <router-link to="{name: 'Overall'}" class="link">
                 <p class="analysis-btn">entry</p>
               </router-link>
               <p class="analysis-btn">entry</p>
@@ -29,7 +29,7 @@
           <div class="filter">
             <h3 class="analysis-title">Degree Analysis</h3>
             <div class="btn-group">
-              <router-link to="/degreeanalysis" class="link">
+              <router-link to="{name: 'DegreeAnalysis'}" class="link">
                 <p class="analysis-btn">entry</p>
               </router-link>
               <p class="analysis-btn">entry</p>
@@ -44,7 +44,7 @@
           <div class="filter">
             <h3 class="analysis-title">Result Analysis</h3>
             <div class="btn-group">
-              <router-link to="/ResultAnalysis" class="link">
+              <router-link to="{name: 'ResultAnalysis'}" class="link">
                 <p class="analysis-btn">entry</p>
               </router-link>
               <p class="analysis-btn">entry</p>
@@ -55,9 +55,9 @@
       <el-col :xs="24" :sm="2" :md="8" :lg="9" :xl="9">
         <div class="grid-content bg-purple analysis-entry-card">
           <div class="filter">
-            <h3 class="analysis-title">Intersection Analysis</h3>
+            <h3 class="analysis-title">Layer Analysis</h3>
             <div class="btn-group">
-              <router-link to="/intersectionanalysis" class="link">
+              <router-link to="{name: 'LayerAnalysis'}" class="link">
                 <p class="analysis-btn">entry</p>
               </router-link>
               <p class="analysis-btn">entry</p>
@@ -70,7 +70,35 @@
           <div class="filter">
             <h3 class="analysis-title">Closeness Analysis</h3>
             <div class="btn-group">
-              <router-link to="/closenessanalysis" class="link">
+              <router-link to="{name: 'ClosenessAnalysis'}" class="link">
+                <p class="analysis-btn">entry</p>
+              </router-link>
+              <p class="analysis-btn">entry</p>
+            </div>
+          </div>
+        </div>
+      </el-col>
+    </el-row>
+    <el-row :gutter="20">
+      <el-col :xs="24" :sm="2" :md="8" :lg="13" :xl="13">
+        <div class="grid-content bg-purple analysis-entry-card">
+          <div class="filter">
+            <h3 class="analysis-title">MonoNode Analysis</h3>
+            <div class="btn-group">
+              <router-link to="{name:'MonoNodeAnalysis'}" class="link">
+                <p class="analysis-btn">entry</p>
+              </router-link>
+              <p class="analysis-btn">entry</p>
+            </div>
+          </div>
+        </div>
+      </el-col>
+      <el-col :xs="24" :sm="2" :md="8" :lg="11" :xl="11">
+        <div class="grid-content bg-purple analysis-entry-card">
+          <div class="filter">
+            <h3 class="analysis-title">Isolation Analysis</h3>
+            <div class="btn-group">
+              <router-link to="{name: 'DegreeAnalysis'}" class="link">
                 <p class="analysis-btn">entry</p>
               </router-link>
               <p class="analysis-btn">entry</p>
