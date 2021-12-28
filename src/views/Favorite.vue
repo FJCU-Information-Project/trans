@@ -1,15 +1,4 @@
 <template>
-  <el-row>
-    <el-col :span="24">
-      <div class="grid-content banner">
-        <Navbar />
-        <div class="ban-title">
-          <h1>My Favorite</h1>
-          <div class="manage-btn"></div>
-        </div>
-      </div>
-    </el-col>
-  </el-row>
   <el-row class="con_flex">
     <el-col :span="12">
       <div class="grid-content bg-purple main_sec">
@@ -49,9 +38,14 @@
         </el-table>
       </div>
     </el-col>
-    <el-col :span="12">
-      <div class="grid-content bg-purple-light iframe_main_sec">
-        <iframe src="/SNA.html" frameborder="0" width="100%" height="100%">
+    <el-col :span="11">
+      <div v-loading="loading" class="grid-content bg-purple-light iframe_main_sec">
+        <iframe 
+          ref="Iframe" 
+          src="/SNA.html" 
+          frameborder="0" 
+          width="100%" 
+          height="100%">
           <!-- 社會網路圖 -->
         </iframe>
       </div>
@@ -60,15 +54,11 @@
 </template>
 
 <script>
-import Navbar from "@/components/Navbar.vue";
-
 export default {
-  name: "DegreeAnalysis",
-  components: {
-    Navbar,
-  },
+  name: "Favorite",
   data() {
     return {
+      loading: false,
       search: "",
       tableData: [
         {
@@ -101,6 +91,19 @@ export default {
     handleDelete(index, row) {
       console.log(index, row)
     },
+    iframeLoad(){
+      this.loading = true;
+      const iframe = this.$refs.Iframe;
+      if(iframe.attachEvent){
+        // For IE
+        iframe.attacheEvent('onload',() => {this.loading = false;});
+      }else{
+        iframe.onload = () => {this.loading = false;};
+      }
+    }
+  },
+  mounted(){
+    this.iframeLoad();
   },
 };
 </script>

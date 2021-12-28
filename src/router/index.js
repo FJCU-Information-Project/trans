@@ -65,16 +65,18 @@ const routes = [
     path: "/management",
     name: "Management",
     component: () => import("../views/Management.vue"),
-  },
-  {
-    path: "/history",
-    name: "History",
-    component: () => import("../views/History.vue"),
-  },
-  {
-    path: "/favorite",
-    name: "Favorite",
-    component: () => import("../views/Favorite.vue"),
+    children: [
+      {
+        path: 'history',
+        name: 'History',
+        component: () => import("../views/History.vue"),
+      },
+      {
+        path: "favorite",
+        name: "Favorite",
+        component: () => import("../views/Favorite.vue"),
+      },
+    ],
   },
 ];
 

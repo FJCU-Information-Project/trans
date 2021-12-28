@@ -1,10 +1,5 @@
 <template>
   <div class="grid-content his-banner">
-    <Navbar />
-    <div class="his-ban-title">
-      <h1>Analysis History</h1>
-      <div class="manage-btn"></div>
-    </div>
     <el-row class="his-con_flex">
       <el-col :span="18">
         <div class="grid-content bg-purple main_sec">
@@ -43,13 +38,8 @@
 </template>
 
 <script>
-import Navbar from "@/components/Navbar.vue";
-
 export default {
-  name: "DegreeAnalysis",
-  components: {
-    Navbar,
-  },
+  name: "History",
   data() {
     return {
       search: "",
