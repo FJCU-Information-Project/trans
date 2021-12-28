@@ -1,31 +1,45 @@
 <template>
-  <el-row>
-    <el-col :span="24">
-      <div class="grid-content his-banner">
-        <Navbar />
-        <div class="his-ban-title">
-          <h1>Analysis History</h1>
-          <div class="manage-btn"></div>
+  <div class="grid-content his-banner">
+    <Navbar />
+    <div class="his-ban-title">
+      <h1>Analysis History</h1>
+      <div class="manage-btn"></div>
+    </div>
+    <el-row class="his-con_flex">
+      <el-col :span="18">
+        <div class="grid-content bg-purple main_sec">
+          <el-table
+            :data="
+              tableData.filter(
+                (data) => !search || data.name.toLowerCase().includes(search.toLowerCase())
+              )
+            "
+            style="width: 100%"
+          >
+            <el-table-column label="日期" prop="date" />
+            <el-table-column label="名字" prop="name" />
+            <el-table-column label="地址" prop="address" />
+            <el-table-column align="right">
+              <template #header>
+                <el-input v-model="search" size="mini" placeholder="請輸入要尋找的日期" />
+              </template>
+              <template #default="scope">
+                <el-button size="mini" @click="handleEdit(scope.$index, scope.row)"
+                  >查看</el-button
+                >
+                <el-button
+                  size="mini"
+                  type="danger"
+                  @click="handleDelete(scope.$index, scope.row)"
+                  >刪除</el-button
+                >
+              </template>
+            </el-table-column>
+          </el-table>
         </div>
-        <el-row class="his-con_flex">
-          <el-col :span="18">
-            <div class="grid-content bg-purple main_sec">
-              <el-table :data="tableData" stripe class="table-column">
-                <el-table-column
-                  prop="date"
-                  label="Date"
-                  width="180"
-                  class="table-column"
-                />
-                <el-table-column prop="name" label="Name" width="180" />
-                <el-table-column prop="address" label="Address" />
-              </el-table>
-            </div>
-          </el-col>
-        </el-row>
-      </div>
-    </el-col>
-  </el-row>
+      </el-col>
+    </el-row>
+  </div>
 </template>
 
 <script>
@@ -38,6 +52,7 @@ export default {
   },
   data() {
     return {
+      search: "",
       tableData: [
         {
           date: "2016-05-03",
@@ -46,51 +61,29 @@ export default {
         },
         {
           date: "2016-05-02",
-          name: "Tom",
+          name: "John",
           address: "No. 189, Grove St, Los Angeles",
         },
         {
           date: "2016-05-04",
-          name: "Tom",
+          name: "Amy",
           address: "No. 189, Grove St, Los Angeles",
         },
         {
           date: "2016-05-01",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-03",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-02",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-04",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-01",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-03",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-02",
           name: "Tom",
           address: "No. 189, Grove St, Los Angeles",
         },
       ],
     };
+  },
+  methods: {
+    handleEdit(index, row) {
+      console.log(index, row)
+    },
+    handleDelete(index, row) {
+      console.log(index, row)
+    },
   },
 };
 </script>
