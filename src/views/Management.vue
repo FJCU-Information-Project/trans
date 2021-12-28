@@ -1,7 +1,7 @@
 <template>
   <el-row>
     <el-col :span="24">
-      <div class="grid-content banner">
+      <div class="grid-content man-banner">
         <Navbar />
         <div class="ban-title">
           <h1>Analysis Management</h1>
@@ -66,9 +66,9 @@ export default {
   height: 100vh;
   padding: 1em 1em;
 }
-.banner {
+.man-banner {
   // background: rgb(226, 226, 216);
-  height: 100vh;
+  height: 80vh;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;

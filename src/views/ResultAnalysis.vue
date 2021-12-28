@@ -1,5 +1,5 @@
 <template>
-  <el-row>
+  <el-row class="close">
     <el-col :span="24">
       <div class="grid-content banner">
         <Navbar />
@@ -129,6 +129,9 @@ export default {
 </script>
 
 <style lang="scss">
+.close{
+  margin-bottom: 0 !important;
+}
 .el-select{
   & span{
     margin-top: 0;
