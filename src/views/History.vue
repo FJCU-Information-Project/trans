@@ -8,7 +8,7 @@
           <div class="manage-btn"></div>
         </div>
         <el-row class="his-con_flex">
-          <el-col :span="11">
+          <el-col :span="18">
             <div class="grid-content bg-purple main_sec">
               <el-table :data="tableData" stripe class="table-column">
                 <el-table-column
