@@ -155,6 +155,17 @@ export default {
 </script>
 
 <style lang="scss">
+.manage-btn {
+  width: 25%;
+  display: flex;
+  justify-content: space-between;
+  // background: #b3c0d1;
+  margin-top: 3em;
+  & span {
+    margin-top: 0;
+    font-size: 1.25em;
+  }
+}
 .ban-title {
   height: 92vh;
   display: flex;

@@ -106,7 +106,7 @@ export default {
 <style lang="scss">
 .el-select{
   & span{
-    margin-top: 0;
+    margin-top: 0 !important;
   }
 }
 .sub-title {
