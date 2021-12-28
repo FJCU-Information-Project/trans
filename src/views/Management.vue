@@ -42,6 +42,7 @@ export default {
   & .is-active{
     background: #fff;
     color: #fc7064;
+    transition: ease-in-out .2s all;
   }
   & .el-tabs__active-bar{
     width: 10px !important;
@@ -49,13 +50,14 @@ export default {
   }
 }
 .el-tabs__item{
-  font-size: 2em;
+  font-size: 1.75em;
   padding: 3em 2em;
   color: white;
 }
 .el-tabs__item:hover{
   color: black;
   background: #fff;
+  transition: ease-in-out .2s all;
 }
 .man-tabs{
   height: 100%;
