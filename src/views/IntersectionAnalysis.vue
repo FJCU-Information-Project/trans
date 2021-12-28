@@ -138,6 +138,11 @@ export default {
 </script>
 
 <style lang="scss">
+.el-select{
+  & span{
+    margin-top: 0;
+  }
+}
 .sub-title {
   display: inline-block;
   margin-top: 3em;

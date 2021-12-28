@@ -129,6 +129,11 @@ export default {
 </script>
 
 <style lang="scss">
+.el-select{
+  & span{
+    margin-top: 0;
+  }
+}
 .sub-title {
   display: inline-block;
   margin-top: 3em;
@@ -148,6 +153,7 @@ export default {
   display: flex;
   justify-content: space-evenly;
   padding: 1.25em 0;
+  background-image: url(https://images.pexels.com/photos/10481158/pexels-photo-10481158.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
 }
 .main_sec {
   padding: 1em 1em;

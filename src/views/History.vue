@@ -1,23 +1,28 @@
 <template>
   <el-row>
     <el-col :span="24">
-      <div class="grid-content banner">
+      <div class="grid-content his-banner">
         <Navbar />
-        <div class="ban-title">
+        <div class="his-ban-title">
           <h1>Analysis History</h1>
           <div class="manage-btn"></div>
         </div>
-      </div>
-    </el-col>
-  </el-row>
-  <el-row class="con_flex">
-    <el-col :span="11">
-      <div class="grid-content bg-purple main_sec">
-        <el-table :data="tableData" stripe class="table-column">
-          <el-table-column prop="date" label="Date" width="180" class="table-column"/>
-          <el-table-column prop="name" label="Name" width="180" />
-          <el-table-column prop="address" label="Address" />
-        </el-table>
+        <el-row class="his-con_flex">
+          <el-col :span="11">
+            <div class="grid-content bg-purple main_sec">
+              <el-table :data="tableData" stripe class="table-column">
+                <el-table-column
+                  prop="date"
+                  label="Date"
+                  width="180"
+                  class="table-column"
+                />
+                <el-table-column prop="name" label="Name" width="180" />
+                <el-table-column prop="address" label="Address" />
+              </el-table>
+            </div>
+          </el-col>
+        </el-row>
       </div>
     </el-col>
   </el-row>
@@ -91,8 +96,11 @@ export default {
 </script>
 
 <style lang="scss">
-.table-column{
-  background: #000 !important;
+.el-table{
+  margin-top: 4em;
+}
+.el-table__cell{
+  text-align: center !important;
 }
 .manage-btn {
   width: 25%;
@@ -105,14 +113,15 @@ export default {
     font-size: 1.25em;
   }
 }
-.ban-title {
-  height: 92vh;
+.his-ban-title {
+  height: 40vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 }
-.con_flex {
+.his-con_flex {
+  width: 100vw;
   display: flex;
   justify-content: space-evenly;
   padding: 1.25em 0;
@@ -124,9 +133,9 @@ export default {
   height: 100vh;
   padding: 1em 1em;
 }
-.banner {
+.his-banner {
   // background: rgb(226, 226, 216);
-  height: 100vh;
+  height: 200vh;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;

@@ -109,12 +109,12 @@
                   name="type"
                 ></el-checkbox>
               </el-checkbox-group>
-                <el-input
-                  v-model="input"
-                  placeholder="新增其他"
-                  class="number_input"
-                />
-                <el-button type="danger" class="submit">確認</el-button>
+              <el-input
+                v-model="input"
+                placeholder="新增其他"
+                class="number_input"
+              />
+              <el-button type="danger" class="submit manage-btn">確認</el-button>
             </el-form-item>
           </el-form>
         </div>
