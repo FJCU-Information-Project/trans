@@ -1,7 +1,7 @@
 <template>
   <div id="index">
     <h3 id="title">TRANS</h3>
-    <router-link id="entryPoint" to="/Home">Entry</router-link>
+    <router-link id="entryPoint" to="/Dataset">Entry</router-link>
   </div>
   <img id="road" src="../assets/svg/road.svg" alt="" />
   <img id="moutain" src="../assets/svg/moutain.svg" alt="" />

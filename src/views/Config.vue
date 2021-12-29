@@ -114,7 +114,9 @@
                 placeholder="新增其他"
                 class="column_input"
               />
-              <el-button type="danger" class="submit manage-btn" round plain>確認</el-button>
+              <el-button type="danger" class="submit manage-btn" round plain
+                >確認</el-button
+              >
             </el-form-item>
           </el-form>
         </div>
@@ -155,15 +157,15 @@ export default {
 </script>
 
 <style lang="scss">
-.column_input{
+.column_input {
   width: 60%;
 }
-.el-form-item{
-  & .manage-btn{
+.el-form-item {
+  & .manage-btn {
     width: auto;
   }
 }
-.el-form-item__content{
+.el-form-item__content {
   margin-left: 0 !important;
 }
 .manage-btn {

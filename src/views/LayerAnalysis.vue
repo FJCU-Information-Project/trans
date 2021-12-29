@@ -35,9 +35,11 @@
   <el-row class="con_flex">
     <el-col :span="9" class="analysis-table">
       <h1>Layer Analysis</h1>
-      <hr>
+      <hr />
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Error provident fuga maxime molestiae eligendi at quis recusandae laborum dolorem velit? Aperiam ullam earum veniam mollitia dolorem vero sequi vitae asperiores!
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Error provident
+        fuga maxime molestiae eligendi at quis recusandae laborum dolorem velit?
+        Aperiam ullam earum veniam mollitia dolorem vero sequi vitae asperiores!
       </p>
       <div class="grid-content bg-purple main_sec">
         <el-table :data="tableData" stripe style="width: 100%">
@@ -76,6 +78,38 @@ export default {
           id: "2",
           node: "天氣2",
         },
+        {
+          id: "1",
+          node: "天氣",
+        },
+        {
+          id: "2",
+          node: "天氣2",
+        },
+        {
+          id: "1",
+          node: "天氣",
+        },
+        {
+          id: "2",
+          node: "天氣2",
+        },
+        {
+          id: "1",
+          node: "天氣",
+        },
+        {
+          id: "2",
+          node: "天氣2",
+        },
+        {
+          id: "1",
+          node: "天氣",
+        },
+        {
+          id: "2",
+          node: "天氣2",
+        },
       ],
       value: "",
     };
@@ -91,26 +125,32 @@ export default {
 </script>
 
 <style lang="scss">
-.analysis-table{
-  & p{
+.el-table {
+  margin-top: 2em;
+  border-radius: 0.45em;
+}
+.el-table__cell {
+  text-align: center !important;
+}
+.analysis-table {
+  & p {
     text-align: left;
-    margin-bottom: 2em;
     margin-top: 2em;
   }
-  & h1{
+  & h1 {
     text-align: left;
     font-size: 2.5em;
     font-weight: bolder;
   }
-  & hr{
+  & hr {
     height: 5px;
     background: #fc7064;
     border: 0;
     margin-top: 2em;
   }
 }
-.el-select{
-  & span{
+.el-select {
+  & span {
     margin-top: 0 !important;
   }
 }
@@ -139,9 +179,6 @@ export default {
   display: flex;
   justify-content: space-evenly;
   padding: 5em 2em;
-}
-.main_sec {
-  padding: 1em 1em;
 }
 .iframe_main_sec {
   height: 100vh;

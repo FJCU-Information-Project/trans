@@ -16,10 +16,10 @@
           <div class="filter">
             <h3 class="analysis-title">Oeverall</h3>
             <div class="btn-group">
-              <router-link :to="{name: 'Overall'}" class="link">
+              <router-link :to="{ name: 'Overall' }" class="link">
                 <p class="analysis-btn">entry</p>
               </router-link>
-              <p class="analysis-btn">entry</p>
+              <!-- <p class="analysis-btn">entry</p> -->
             </div>
           </div>
         </div>
@@ -29,10 +29,10 @@
           <div class="filter">
             <h3 class="analysis-title">Degree Analysis</h3>
             <div class="btn-group">
-              <router-link :to="{name: 'DegreeAnalysis'}" class="link">
+              <router-link :to="{ name: 'DegreeAnalysis' }" class="link">
                 <p class="analysis-btn">entry</p>
               </router-link>
-              <p class="analysis-btn">entry</p>
+              <!-- <p class="analysis-btn">entry</p> -->
             </div>
           </div>
         </div>
@@ -44,10 +44,10 @@
           <div class="filter">
             <h3 class="analysis-title">Result Analysis</h3>
             <div class="btn-group">
-              <router-link :to="{name: 'ResultAnalysis'}" class="link">
+              <router-link :to="{ name: 'ResultAnalysis' }" class="link">
                 <p class="analysis-btn">entry</p>
               </router-link>
-              <p class="analysis-btn">entry</p>
+              <!-- <p class="analysis-btn">entry</p> -->
             </div>
           </div>
         </div>
@@ -57,10 +57,10 @@
           <div class="filter">
             <h3 class="analysis-title">Layer Analysis</h3>
             <div class="btn-group">
-              <router-link :to="{name: 'LayerAnalysis'}" class="link">
+              <router-link :to="{ name: 'LayerAnalysis' }" class="link">
                 <p class="analysis-btn">entry</p>
               </router-link>
-              <p class="analysis-btn">entry</p>
+              <!-- <p class="analysis-btn">entry</p> -->
             </div>
           </div>
         </div>
@@ -70,10 +70,10 @@
           <div class="filter">
             <h3 class="analysis-title">Closeness Analysis</h3>
             <div class="btn-group">
-              <router-link :to="{name: 'ClosenessAnalysis'}" class="link">
+              <router-link :to="{ name: 'ClosenessAnalysis' }" class="link">
                 <p class="analysis-btn">entry</p>
               </router-link>
-              <p class="analysis-btn">entry</p>
+              <!-- <p class="analysis-btn">entry</p> -->
             </div>
           </div>
         </div>
@@ -85,10 +85,10 @@
           <div class="filter">
             <h3 class="analysis-title">MonoNode Analysis</h3>
             <div class="btn-group">
-              <router-link :to="{name:'MonoNodeAnalysis'}" class="link">
+              <router-link :to="{ name: 'MonoNodeAnalysis' }" class="link">
                 <p class="analysis-btn">entry</p>
               </router-link>
-              <p class="analysis-btn">entry</p>
+              <!-- <p class="analysis-btn">entry</p> -->
             </div>
           </div>
         </div>
@@ -98,10 +98,10 @@
           <div class="filter">
             <h3 class="analysis-title">Isolation Analysis</h3>
             <div class="btn-group">
-              <router-link :to="{name: 'DegreeAnalysis'}" class="link">
+              <router-link :to="{ name: 'DegreeAnalysis' }" class="link">
                 <p class="analysis-btn">entry</p>
               </router-link>
-              <p class="analysis-btn">entry</p>
+              <!-- <p class="analysis-btn">entry</p> -->
             </div>
           </div>
         </div>
@@ -180,7 +180,7 @@ export default {
 .btn-group {
   width: 300px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   margin-top: 2em;
 }
 .analysis-btn {

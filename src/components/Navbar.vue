@@ -6,16 +6,16 @@
           <p id="logo">TRANS</p>
         </router-link>
         <div class="menu">
-          <router-link :to="{name: 'Config'}" class="link">
+          <router-link :to="{ name: 'Config' }" class="link">
             <el-button round>Config</el-button>
           </router-link>
-          <router-link :to="{name: 'Upload'}" class="link">
-            <el-button round>Upload</el-button>
+          <router-link :to="{ name: 'Dataset' }" class="link">
+            <el-button round>Dataset</el-button>
           </router-link>
-          <router-link :to="{name: 'Management'}" class="link">
+          <router-link :to="{ name: 'Management' }" class="link">
             <el-button round>Management</el-button>
           </router-link>
-          <router-link :to="{name: 'Login'}" class="link">
+          <router-link :to="{ name: 'Login' }" class="link">
             <el-button round type="danger">Login</el-button>
           </router-link>
         </div>

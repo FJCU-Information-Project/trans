@@ -24,16 +24,23 @@
     </el-col>
   </el-row>
   <el-row class="con_flex">
-    <el-col :span="11">
+    <el-col :span="9" class="analysis-table">
+      <h1>Result Analysis</h1>
+      <hr />
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Error provident
+        fuga maxime molestiae eligendi at quis recusandae laborum dolorem velit?
+        Aperiam ullam earum veniam mollitia dolorem vero sequi vitae asperiores!
+      </p>
       <div class="grid-content bg-purple main_sec">
         <el-table :data="tableData" stripe style="width: 100%">
-          <el-table-column prop="date" label="Date" width="180" />
-          <el-table-column prop="name" label="Name" width="180" />
-          <el-table-column prop="address" label="Address" />
+          <el-table-column prop="date" label="id" width="120" />
+          <el-table-column prop="name" label="node" width="90" />
+          <el-table-column prop="address" label="node" />
         </el-table>
       </div>
     </el-col>
-    <el-col :span="12">
+    <el-col :span="14">
       <div class="grid-content bg-purple-light iframe_main_sec">
         <iframe src="/SNA.html" frameborder="0" width="100%" height="100%">
           <!-- 社會網路圖 -->
@@ -41,24 +48,6 @@
       </div>
     </el-col>
   </el-row>
-  <!-- <el-container>
-    <el-aside width="300px">
-      <el-select v-model="value" placeholder="Select">
-        <el-option
-          v-for="item in options"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value"
-        >
-        </el-option>
-      </el-select>
-    </el-aside>
-    <el-main> -->
-  <!-- <iframe src="/SNA.html" frameborder="0" width="100%" height="100%"> -->
-  <!-- 社會網路圖 -->
-  <!-- </iframe> -->
-  <!-- </el-main>
-  </el-container> -->
 </template>
 
 <script>
@@ -129,11 +118,35 @@ export default {
 </script>
 
 <style lang="scss">
-.close{
+.el-table {
+  margin-top: 2em;
+  border-radius: 0.45em;
+}
+.el-table__cell {
+  text-align: center !important;
+}
+.analysis-table {
+  & p {
+    text-align: left;
+    margin-top: 2em;
+  }
+  & h1 {
+    text-align: left;
+    font-size: 2.5em;
+    font-weight: bolder;
+  }
+  & hr {
+    height: 5px;
+    background: #fc7064;
+    border: 0;
+    margin-top: 2em;
+  }
+}
+.close {
   margin-bottom: 0 !important;
 }
-.el-select{
-  & span{
+.el-select {
+  & span {
     margin-top: 0;
   }
 }
@@ -155,11 +168,8 @@ export default {
 .con_flex {
   display: flex;
   justify-content: space-evenly;
-  padding: 1.25em 0;
-  background-image: url(https://images.pexels.com/photos/10481158/pexels-photo-10481158.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
-}
-.main_sec {
-  padding: 1em 1em;
+  padding: 5em 2em;
+  // background-image: url(https://images.pexels.com/photos/10481158/pexels-photo-10481158.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
 }
 .iframe_main_sec {
   height: 100vh;

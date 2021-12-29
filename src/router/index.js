@@ -55,7 +55,8 @@ const routes = [
     path: "/MonoNode Analysis",
     name: "MonoNodeAnalysis",
     component: () => import("../views/MonoNodeAnalysis.vue"),
-  },  {
+  },
+  {
     path: "/login",
     name: "Login",
     component: () => import("../views/Login.vue"),
@@ -63,7 +64,7 @@ const routes = [
   {
     path: "/management",
     name: "Management",
-    component: () => import("../views/Management.vue"),/*
+    component: () => import("../views/Management.vue") /*
     children: [
       {
         path: 'history',
@@ -75,7 +76,12 @@ const routes = [
         name: "Favorite",
         component: () => import("../views/Favorite.vue"),
       },
-    ],*/
+    ],*/,
+  },
+  {
+    path: "/dataset",
+    name: "Dataset",
+    component: () => import("../views/Dataset.vue"),
   },
 ];
 

@@ -1,73 +1,22 @@
 <template>
-  <div class="grid-content his-banner">
-    <el-row class="his-con_flex">
+  <div class="grid-content set-banner">
+    <el-row class="set-con_flex">
       <el-col :span="18">
-        <div class="grid-content main_sec">
-          <el-table
-            :data="
-              tableData.filter(
-                (data) =>
-                  !search ||
-                  data.time.toLowerCase().includes(search.toLowerCase())
-              )
-            "
-            style="width: 100%"
-          >
-            <el-table-column label="分析時間" prop="time" />
-            <el-table-column label="類型" prop="type" />
-            <el-table-column label="資料集" prop="dataset" />
-            <el-table-column align="right">
-              <template #header>
-                <el-input
-                  v-model="search"
-                  size="mini"
-                  placeholder="請輸入要尋找的日期"
-                />
-              </template>
-              <template #default="scope">
-                <el-button
-                  size="mini"
-                  @click="handleEdit(scope.$index, scope.row)"
-                  >查看</el-button
-                >
-                <el-button
-                  size="mini"
-                  type="danger"
-                  @click="handleDelete(scope.$index, scope.row)"
-                  >刪除</el-button
-                >
-              </template>
-            </el-table-column>
-          </el-table>
+        <div class="grid-content set-main_sec">
+          <p>範例資料集</p>
+          <span>台中市車禍資料集csv檔</span>
         </div>
-        <el-button type="text" @click="open"
-          >Click to open Message Box</el-button
-        >
+        <router-link :to="{ name: 'Home' }" class="link">
+          <el-button round style="margin-top: 4em;">進入範例資料集分析</el-button>
+        </router-link>
       </el-col>
     </el-row>
   </div>
 </template>
 
 <script>
-import { ElMessageBox } from "element-plus";
-
 export default {
   name: "History",
-  setup() {
-    const open = () => {
-      ElMessageBox.alert(
-        "<strong>proxy is <i>HTML</i> string</strong>",
-        "HTML String",
-        {
-          dangerouslyUseHTMLString: true,
-        }
-      );
-    };
-
-    return {
-      open,
-    };
-  },
   data() {
     return {
       search: "",
@@ -131,9 +80,6 @@ export default {
   margin-top: 4em;
   border-radius: 0.45em;
 }
-.el-table {
-  margin-top: 4em;
-}
 .el-table__cell {
   text-align: center !important;
 }
@@ -155,21 +101,37 @@ export default {
   align-items: center;
   justify-content: flex-end;
 }
-.his-con_flex {
+.set-con_flex {
   display: flex;
   justify-content: center;
-  padding: 1.25em 0;
+  align-items: center;
+  padding: 8em 0;
 }
-.main_sec {
-  padding: 1em 1em;
+.set-main_sec {
+  & p{
+    display: flex;
+    flex-direction: column;
+    font-size: 3em;
+    font-weight: bolder;
+    letter-spacing: .5em;
+    text-indent: .5em;
+  }
+  & span{
+    display: inline-block;
+    margin-top: 3em;
+    font-size: 1em;
+    letter-spacing: 1em;
+    text-indent: 1em;
+    background: #000;
+    padding: .5em;
+  }
 }
 .iframe_main_sec {
   height: 100vh;
   padding: 1em 1em;
 }
-.his-banner {
-  // background: rgb(226, 226, 216);
-  height: 200vh;
+.set-banner {
+  height: 100vh;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -177,6 +139,7 @@ export default {
   background-size: cover;
   background-position: center;
   color: white;
+  // justify-content: center;
   & h1 {
     font-size: 4em;
     font-weight: bolder;

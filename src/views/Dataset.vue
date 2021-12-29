@@ -9,11 +9,11 @@
           style="height: 100%; width: 100%"
           class="man-tabs"
         >
-          <el-tab-pane label="History">
-            <History />
+          <el-tab-pane label="Example">
+            <ExampleData />
           </el-tab-pane>
-          <el-tab-pane label="Favorite">
-            <Favorite />
+          <el-tab-pane label="Customized">
+            <CustomizedData />
           </el-tab-pane>
         </el-tabs>
       </div>
@@ -24,15 +24,15 @@
 
 <script>
 import Navbar from "@/components/Navbar.vue";
-import History from "@/views/History.vue";
-import Favorite from "@/views/Favorite.vue";
+import ExampleData from "@/views/ExampleData.vue";
+import CustomizedData from "@/views/CustomizedData.vue";
 
 export default {
   name: "Management",
   components: {
     Navbar,
-    History,
-    Favorite,
+    ExampleData,
+    CustomizedData,
   },
   data() {
     return {

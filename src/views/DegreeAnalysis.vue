@@ -22,12 +22,14 @@
         </el-table>
       </div>
     </el-col>
-    <el-col :span="12">
-      <div class="grid-content bg-purple-light iframe_main_sec">
-        <iframe src="/SNA.html" frameborder="0" width="100%" height="100%">
-          <!-- 社會網路圖 -->
-        </iframe>
-      </div>
+    <el-col :span="9" class="analysis-table">
+      <h1>Degree Analysis</h1>
+      <hr />
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Error provident
+        fuga maxime molestiae eligendi at quis recusandae laborum dolorem velit?
+        Aperiam ullam earum veniam mollitia dolorem vero sequi vitae asperiores!
+      </p>
     </el-col>
   </el-row>
   <el-footer>Footer</el-footer>
@@ -101,7 +103,31 @@ export default {
 </script>
 
 <style lang="scss">
-.close{
+.el-table__cell {
+  text-align: center !important;
+}
+.analysis-table {
+  & p {
+    text-align: left;
+    margin-top: 2em;
+  }
+  & h1 {
+    text-align: left;
+    font-size: 2.5em;
+    font-weight: bolder;
+  }
+  & hr {
+    height: 5px;
+    background: #fc7064;
+    border: 0;
+    margin-top: 2em;
+  }
+}
+.el-table {
+  margin-top: 0;
+  border-radius: 0.45em;
+}
+.close {
   margin-bottom: 0 !important;
 }
 .ban-title {
@@ -114,7 +140,7 @@ export default {
 .con_flex {
   display: flex;
   justify-content: space-evenly;
-  padding: 1.25em 0;
+  padding: 5em 2em;
 }
 .main_sec {
   padding: 1em 1em;

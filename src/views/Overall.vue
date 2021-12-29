@@ -129,8 +129,11 @@ export default {
 </script>
 
 <style lang="scss">
-.el-select{
-  & span{
+.el-table__cell {
+  text-align: center !important;
+}
+.el-select {
+  & span {
     margin-top: 0;
   }
 }

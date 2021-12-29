@@ -22,12 +22,14 @@
         </el-table>
       </div>
     </el-col>
-    <el-col :span="12">
-      <div class="grid-content iframe_main_sec">
-        <iframe src="/SNA.html" frameborder="0" width="100%" height="100%">
-          <!-- 社會網路圖 -->
-        </iframe>
-      </div>
+    <el-col :span="9" class="analysis-table">
+      <h1>Closeness Analysis</h1>
+      <hr />
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Error provident
+        fuga maxime molestiae eligendi at quis recusandae laborum dolorem velit?
+        Aperiam ullam earum veniam mollitia dolorem vero sequi vitae asperiores!
+      </p>
     </el-col>
   </el-row>
   <el-footer>Footer</el-footer>
@@ -101,6 +103,30 @@ export default {
 </script>
 
 <style lang="scss">
+.el-table {
+  margin-top: 2em;
+  border-radius: 0.45em;
+}
+.el-table__cell {
+  text-align: center !important;
+}
+.analysis-table {
+  & p {
+    text-align: left;
+    margin-top: 2em;
+  }
+  & h1 {
+    text-align: left;
+    font-size: 2.5em;
+    font-weight: bolder;
+  }
+  & hr {
+    height: 5px;
+    background: #fc7064;
+    border: 0;
+    margin-top: 2em;
+  }
+}
 .ban-title {
   height: 92vh;
   display: flex;
@@ -115,7 +141,7 @@ export default {
   display: flex;
   justify-content: space-evenly;
   padding: 3em 0;
-  background-image: url(https://images.pexels.com/photos/3322471/pexels-photo-3322471.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+  // background-image: url(https://images.pexels.com/photos/3322471/pexels-photo-3322471.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
   background-size: cover;
   background-position: center;
   box-sizing: border-box;

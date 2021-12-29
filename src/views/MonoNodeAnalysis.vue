@@ -129,8 +129,12 @@ export default {
 </script>
 
 <style lang="scss">
-.el-select{
-  & span{
+.el-table {
+  margin-top: 4em;
+  border-radius: 0.45em;
+}
+.el-select {
+  & span {
     margin-top: 0;
   }
 }

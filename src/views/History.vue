@@ -6,7 +6,9 @@
           <el-table
             :data="
               tableData.filter(
-                (data) => !search || data.time.toLowerCase().includes(search.toLowerCase())
+                (data) =>
+                  !search ||
+                  data.time.toLowerCase().includes(search.toLowerCase())
               )
             "
             style="width: 100%"
@@ -16,10 +18,16 @@
             <el-table-column label="資料集" prop="dataset" />
             <el-table-column align="right">
               <template #header>
-                <el-input v-model="search" size="mini" placeholder="請輸入要尋找的日期" />
+                <el-input
+                  v-model="search"
+                  size="mini"
+                  placeholder="請輸入要尋找的日期"
+                />
               </template>
               <template #default="scope">
-                <el-button size="mini" @click="handleEdit(scope.$index, scope.row)"
+                <el-button
+                  size="mini"
+                  @click="handleEdit(scope.$index, scope.row)"
                   >查看</el-button
                 >
                 <el-button
@@ -89,21 +97,21 @@ export default {
   },
   methods: {
     handleEdit(index, row) {
-      console.log(index, row)
+      console.log(index, row);
     },
     handleDelete(index, row) {
-      console.log(index, row)
+      console.log(index, row);
     },
   },
 };
 </script>
 
 <style lang="scss">
-.el-table{
+.el-table {
   margin-top: 4em;
-  border-radius: .45em;
+  border-radius: 0.45em;
 }
-.el-table__cell{
+.el-table__cell {
   text-align: center !important;
 }
 .manage-btn {

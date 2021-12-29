@@ -1,8 +1,9 @@
 <template>
   <div class="grid-content his-banner">
-    <el-row class="his-con_flex">
-      <el-col :span="18">
+    <el-row class="cusdata-con_flex">
+      <el-col :span="20">
         <div class="grid-content main_sec">
+          <el-button type="success" @click="open" round plain>新增資料集</el-button>
           <el-table
             :data="
               tableData.filter(
@@ -13,9 +14,9 @@
             "
             style="width: 100%"
           >
-            <el-table-column label="分析時間" prop="time" />
-            <el-table-column label="類型" prop="type" />
-            <el-table-column label="資料集" prop="dataset" />
+            <el-table-column label="新增日期" prop="date" />
+            <el-table-column label="資料集名稱" prop="name" />
+            <el-table-column label="說明" prop="describe" />
             <el-table-column align="right">
               <template #header>
                 <el-input
@@ -25,24 +26,24 @@
                 />
               </template>
               <template #default="scope">
-                <el-button
-                  size="mini"
-                  @click="handleEdit(scope.$index, scope.row)"
-                  >查看</el-button
-                >
+                <router-link :to="{ name: 'Home' }" class="link">
+                  <el-button
+                    size="mini"
+                    @click="handleEdit(scope.$index, scope.row)"
+                    >進行分析</el-button
+                  >
+                </router-link>
                 <el-button
                   size="mini"
                   type="danger"
                   @click="handleDelete(scope.$index, scope.row)"
+                  style="margin-left: 1em"
                   >刪除</el-button
                 >
               </template>
             </el-table-column>
           </el-table>
         </div>
-        <el-button type="text" @click="open"
-          >Click to open Message Box</el-button
-        >
       </el-col>
     </el-row>
   </div>
@@ -52,12 +53,12 @@
 import { ElMessageBox } from "element-plus";
 
 export default {
-  name: "History",
+  name: "Customer",
   setup() {
     const open = () => {
       ElMessageBox.alert(
-        "<strong>proxy is <i>HTML</i> string</strong>",
-        "HTML String",
+        "<input>",
+        "請上傳您的資料集",
         {
           dangerouslyUseHTMLString: true,
         }
@@ -73,44 +74,44 @@ export default {
       search: "",
       tableData: [
         {
-          time: "2015-05-13",
-          type: "Layer Analysis",
-          dataset: "預設資料集",
+          date: "2021-07-16",
+          describe: "None",
+          name: "台中市車禍資料",
         },
         {
-          time: "2016-03-26",
-          type: "Degree Analysis",
-          dataset: "自訂資料集:台北",
+          date: "2021-07-16",
+          describe: "None",
+          name: "台中市車禍資料",
         },
         {
-          time: "2013-02-30",
-          type: "Layer Analysis",
-          dataset: "自訂資料集:高雄",
+          date: "2021-07-16",
+          describe: "None",
+          name: "台中市車禍資料",
         },
         {
-          time: "2012-01-17",
-          type: "Closness Analysis",
-          dataset: "預設資料集",
+          date: "2021-07-16",
+          describe: "None",
+          name: "台中市車禍資料",
         },
         {
-          time: "2013-02-30",
-          type: "Layer Analysis",
-          dataset: "自訂資料集:高雄",
+          date: "2021-07-16",
+          describe: "None",
+          name: "台中市車禍資料",
         },
         {
-          time: "2012-01-17",
-          type: "Closness Analysis",
-          dataset: "預設資料集",
+          date: "2021-07-16",
+          describe: "None",
+          name: "台中市車禍資料",
         },
         {
-          time: "2013-02-30",
-          type: "Layer Analysis",
-          dataset: "自訂資料集:高雄",
+          date: "2021-07-16",
+          describe: "None",
+          name: "台中市車禍資料",
         },
         {
-          time: "2012-01-17",
-          type: "Closness Analysis",
-          dataset: "預設資料集",
+          date: "2021-07-16",
+          describe: "None",
+          name: "台中市車禍資料",
         },
       ],
     };
@@ -130,9 +131,6 @@ export default {
 .el-table {
   margin-top: 4em;
   border-radius: 0.45em;
-}
-.el-table {
-  margin-top: 4em;
 }
 .el-table__cell {
   text-align: center !important;
@@ -155,7 +153,7 @@ export default {
   align-items: center;
   justify-content: flex-end;
 }
-.his-con_flex {
+.cusdata-con_flex {
   display: flex;
   justify-content: center;
   padding: 1.25em 0;
