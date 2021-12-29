@@ -16,7 +16,7 @@
             <el-button round>Management</el-button>
           </router-link>
           <router-link :to="{ name: 'Login' }" class="link">
-            <el-button round type="danger">Login</el-button>
+            <el-button round type="danger">Auth</el-button>
           </router-link>
         </div>
       </div>
