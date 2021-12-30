@@ -104,7 +104,7 @@ export default {
         {
           dangerouslyUseHTMLString: true,
         }
-      )
+      );
       console.log(index, row);
     },
     handleDelete(index, row) {

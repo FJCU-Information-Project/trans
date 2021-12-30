@@ -3,7 +3,9 @@
     <el-row class="cusdata-con_flex">
       <el-col :span="20">
         <div class="grid-content main_sec">
-          <el-button type="success" @click="open" round plain>新增資料集</el-button>
+          <el-button type="success" @click="open" round plain
+            >新增資料集</el-button
+          >
           <el-table
             :data="
               tableData.filter(
@@ -56,13 +58,9 @@ export default {
   name: "Customer",
   setup() {
     const open = () => {
-      ElMessageBox.alert(
-        "<input>",
-        "請上傳您的資料集",
-        {
-          dangerouslyUseHTMLString: true,
-        }
-      );
+      ElMessageBox.alert("<input>", "請上傳您的資料集", {
+        dangerouslyUseHTMLString: true,
+      });
     };
 
     return {

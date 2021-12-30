@@ -7,7 +7,9 @@
           <span>台中市車禍資料集csv檔</span>
         </div>
         <router-link :to="{ name: 'Home' }" class="link">
-          <el-button round style="margin-top: 4em;">進入範例資料集分析</el-button>
+          <el-button round style="margin-top: 4em"
+            >進入範例資料集分析</el-button
+          >
         </router-link>
       </el-col>
     </el-row>
@@ -108,22 +110,22 @@ export default {
   padding: 8em 0;
 }
 .set-main_sec {
-  & p{
+  & p {
     display: flex;
     flex-direction: column;
     font-size: 3em;
     font-weight: bolder;
-    letter-spacing: .5em;
-    text-indent: .5em;
+    letter-spacing: 0.5em;
+    text-indent: 0.5em;
   }
-  & span{
+  & span {
     display: inline-block;
     margin-top: 3em;
     font-size: 1em;
     letter-spacing: 1em;
     text-indent: 1em;
     background: #000;
-    padding: .5em;
+    padding: 0.5em;
   }
 }
 .iframe_main_sec {

@@ -98,7 +98,7 @@
           <div class="filter">
             <h3 class="analysis-title">Isolation Analysis</h3>
             <div class="btn-group">
-              <router-link :to="{ name: 'DegreeAnalysis' }" class="link">
+              <router-link :to="{ name: 'IsolationAnalysis' }" class="link">
                 <p class="analysis-btn">entry</p>
               </router-link>
               <!-- <p class="analysis-btn">entry</p> -->

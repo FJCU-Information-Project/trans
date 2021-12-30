@@ -1,15 +1,15 @@
 <template>
-  <el-row class="close">
+  <el-row>
     <el-col :span="24">
       <div class="grid-content banner">
         <Navbar />
         <div class="ban-title">
-          <h1>MonoNode Analysis</h1>
+          <h1>Isolation Analysis</h1>
           <span style="font-weight: bolder" class="sub-title">
-            請選擇一個節點，我們將會為您呈現與此節點關聯性最高的前10%節點
+            此分析我們將為您呈現整個網路圖中被孤立的節點
           </span>
-          <div class="select-group">
-            <el-select v-model="value" placeholder="請選擇事故結果">
+          <!-- <div class="select-group">
+            <el-select v-model="value" placeholder="請選擇一個節點">
               <el-option
                 v-for="item in options"
                 :key="item.value"
@@ -18,29 +18,22 @@
               >
               </el-option>
             </el-select>
-          </div>
+          </div> -->
         </div>
       </div>
     </el-col>
   </el-row>
   <el-row class="con_flex">
-    <el-col :span="9" class="analysis-table">
-      <h1>MonoNode Analysis</h1>
-      <hr />
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Error provident
-        fuga maxime molestiae eligendi at quis recusandae laborum dolorem velit?
-        Aperiam ullam earum veniam mollitia dolorem vero sequi vitae asperiores!
-      </p>
+    <el-col :span="11">
       <div class="grid-content bg-purple main_sec">
         <el-table :data="tableData" stripe style="width: 100%">
-          <el-table-column prop="date" label="id" width="120" />
-          <el-table-column prop="name" label="node" width="90" />
-          <el-table-column prop="address" label="node" />
+          <el-table-column prop="date" label="Date" width="180" />
+          <el-table-column prop="name" label="Name" width="180" />
+          <el-table-column prop="address" label="Address" />
         </el-table>
       </div>
     </el-col>
-    <el-col :span="14">
+    <el-col :span="12">
       <div class="grid-content bg-purple-light iframe_main_sec">
         <iframe
           src="/snaRank10.html"
@@ -53,13 +46,31 @@
       </div>
     </el-col>
   </el-row>
+  <!-- <el-container>
+    <el-aside width="300px">
+      <el-select v-model="value" placeholder="Select">
+        <el-option
+          v-for="item in options"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value"
+        >
+        </el-option>
+      </el-select>
+    </el-aside>
+    <el-main> -->
+  <!-- <iframe src="/SNA.html" frameborder="0" width="100%" height="100%"> -->
+  <!-- 社會網路圖 -->
+  <!-- </iframe> -->
+  <!-- </el-main>
+  </el-container> -->
 </template>
 
 <script>
 import Navbar from "@/components/Navbar.vue";
 
 export default {
-  name: "ResultAnalysis",
+  name: "IntersectionAnalysis",
   components: {
     Navbar,
   },
@@ -123,32 +134,8 @@ export default {
 </script>
 
 <style lang="scss">
-.el-table {
-  margin-top: 2em;
-  border-radius: 0.45em;
-}
 .el-table__cell {
   text-align: center !important;
-}
-.analysis-table {
-  & p {
-    text-align: left;
-    margin-top: 2em;
-  }
-  & h1 {
-    text-align: left;
-    font-size: 2.5em;
-    font-weight: bolder;
-  }
-  & hr {
-    height: 5px;
-    background: #fc7064;
-    border: 0;
-    margin-top: 2em;
-  }
-}
-.close {
-  margin-bottom: 0 !important;
 }
 .el-select {
   & span {
@@ -170,11 +157,18 @@ export default {
   //   margin-top: 3em;
   // }
 }
+.select-group {
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+}
 .con_flex {
   display: flex;
   justify-content: space-evenly;
-  padding: 5em 2em;
-  // background-image: url(https://images.pexels.com/photos/10481158/pexels-photo-10481158.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+  padding: 1.25em 0;
+}
+.main_sec {
+  padding: 1em 1em;
 }
 .iframe_main_sec {
   height: 100vh;
@@ -238,9 +232,5 @@ body > .el-container {
 .grid-content {
   border-radius: 4px;
   min-height: 36px;
-}
-.select-group {
-  justify-content: center;
-  margin-top: 4em;
 }
 </style>
