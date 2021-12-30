@@ -24,7 +24,7 @@
     </el-col>
   </el-row>
   <el-row class="con_flex">
-    <el-col :span="11">
+    <!-- <el-col :span="11">
       <div class="grid-content bg-purple main_sec">
         <el-table :data="tableData" stripe style="width: 100%">
           <el-table-column prop="date" label="Date" width="180" />
@@ -32,7 +32,7 @@
           <el-table-column prop="address" label="Address" />
         </el-table>
       </div>
-    </el-col>
+    </el-col> -->
     <el-col :span="12">
       <div class="grid-content bg-purple-light iframe_main_sec">
         <iframe
@@ -45,25 +45,16 @@
         </iframe>
       </div>
     </el-col>
+    <el-col :span="9" class="analysis-table">
+      <h1>Overall</h1>
+      <hr />
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Error provident
+        fuga maxime molestiae eligendi at quis recusandae laborum dolorem velit?
+        Aperiam ullam earum veniam mollitia dolorem vero sequi vitae asperiores!
+      </p>
+    </el-col>
   </el-row>
-  <!-- <el-container>
-    <el-aside width="300px">
-      <el-select v-model="value" placeholder="Select">
-        <el-option
-          v-for="item in options"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value"
-        >
-        </el-option>
-      </el-select>
-    </el-aside>
-    <el-main> -->
-  <!-- <iframe src="/SNA.html" frameborder="0" width="100%" height="100%"> -->
-  <!-- 社會網路圖 -->
-  <!-- </iframe> -->
-  <!-- </el-main>
-  </el-container> -->
 </template>
 
 <script>

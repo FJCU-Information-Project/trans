@@ -24,7 +24,14 @@
     </el-col>
   </el-row>
   <el-row class="con_flex">
-    <el-col :span="11">
+    <el-col :span="11" class="analysis-table">
+      <h1>Isolation Analysis</h1>
+      <hr />
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Error provident
+        fuga maxime molestiae eligendi at quis recusandae laborum dolorem velit?
+        Aperiam ullam earum veniam mollitia dolorem vero sequi vitae asperiores!
+      </p>
       <div class="grid-content bg-purple main_sec">
         <el-table :data="tableData" stripe style="width: 100%">
           <el-table-column prop="date" label="Date" width="180" />
@@ -134,6 +141,23 @@ export default {
 </script>
 
 <style lang="scss">
+.analysis-table {
+  & p {
+    text-align: left;
+    margin-top: 2em;
+  }
+  & h1 {
+    text-align: left;
+    font-size: 2.5em;
+    font-weight: bolder;
+  }
+  & hr {
+    height: 5px;
+    background: #fc7064;
+    border: 0;
+    margin-top: 2em;
+  }
+}
 .el-table__cell {
   text-align: center !important;
 }
@@ -165,7 +189,7 @@ export default {
 .con_flex {
   display: flex;
   justify-content: space-evenly;
-  padding: 1.25em 0;
+  padding: 5em 2em;
 }
 .main_sec {
   padding: 1em 1em;
