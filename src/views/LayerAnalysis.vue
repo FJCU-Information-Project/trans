@@ -50,9 +50,10 @@
       </div>
     </el-col>
     <el-col :span="14">
-      <div class="grid-content bg-purple-light iframe_main_sec">
+      <div v-loading="loading" class="grid-content bg-purple-light iframe_main_sec">
         <iframe
-          src="/snaRank10.html"
+          ref=Iframe
+          :src="src"
           frameborder="0"
           width="100%"
           height="100%"
@@ -101,7 +102,25 @@ export default {
         },
       ],
       value: "",
+      loading: false,
+      src:"https://fju-trans.herokuapp.com/sna_graph",
     };
+  },
+  methods: {
+    iframeLoad(){
+      this.loading = true;
+      const iframe = this.$refs.Iframe;
+      if(iframe.attachEvent){
+        // For IE
+        iframe.attachEvent('onload',() => {this.loading = false; });
+      }else{
+        // Others Browser
+        iframe.onload = () => { this.loading = false; };
+      }
+    }
+  },
+  mounted() {
+    this.iframeLoad();
   },
   created() {
     const api = `https://fju-trans.herokuapp.com/nodes`;
