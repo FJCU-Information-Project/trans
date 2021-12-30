@@ -62,7 +62,7 @@ export default {
   name: "Customer",
   setup() {
     const open = () => {
-      ElMessageBox.alert("<input>", "請上傳您的資料集", {
+      ElMessageBox.alert("<input type=file>", "請上傳您的資料集", {
         dangerouslyUseHTMLString: true,
       });
     };

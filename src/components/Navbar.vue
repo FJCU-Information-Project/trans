@@ -6,9 +6,6 @@
           <p id="logo">TRANS</p>
         </router-link>
         <div class="menu">
-          <router-link :to="{ name: 'Config' }" class="link">
-            <el-button round>Config</el-button>
-          </router-link>
           <router-link :to="{ name: 'Home' }" class="link">
             <el-button round>Analysis</el-button>
           </router-link>
@@ -50,7 +47,7 @@ export default {
   }
 }
 .menu {
-  width: 40%;
+  width: 30%;
   display: flex;
   justify-content: space-between;
 }
