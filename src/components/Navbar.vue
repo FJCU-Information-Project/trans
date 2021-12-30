@@ -2,15 +2,15 @@
   <el-row class="close">
     <el-col :span="24">
       <div class="grid-content nav">
-        <router-link to="/home" class="link">
+        <router-link to="/dataset" class="link">
           <p id="logo">TRANS</p>
         </router-link>
         <div class="menu">
           <router-link :to="{ name: 'Config' }" class="link">
             <el-button round>Config</el-button>
           </router-link>
-          <router-link :to="{ name: 'Dataset' }" class="link">
-            <el-button round>Dataset</el-button>
+          <router-link :to="{ name: 'Home' }" class="link">
+            <el-button round>Analysis</el-button>
           </router-link>
           <router-link :to="{ name: 'Management' }" class="link">
             <el-button round>Management</el-button>
