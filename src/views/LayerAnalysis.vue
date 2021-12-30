@@ -58,7 +58,7 @@
           width="100%"
           height="100%"
         >
-          <!-- 社會網路圖 -->
+        <!-- 社會網路圖 -->
         </iframe>
       </div>
     </el-col>
@@ -103,7 +103,7 @@ export default {
       ],
       value: "",
       loading: false,
-      src:"https://fju-trans.herokuapp.com/sna_graph",
+      src:"https://fjcu-information-project.github.io/trans/snaRank10.html",
     };
   },
   methods: {

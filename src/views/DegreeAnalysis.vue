@@ -32,7 +32,7 @@
       </p>
     </el-col>
   </el-row>
-  <el-footer>Footer</el-footer>
+  <!--<el-footer>Footer</el-footer>-->
 </template>
 
 <script>

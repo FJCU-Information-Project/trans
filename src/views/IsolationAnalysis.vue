@@ -8,17 +8,6 @@
           <span style="font-weight: bolder" class="sub-title">
             此分析我們將為您呈現整個網路圖中被孤立的節點
           </span>
-          <!-- <div class="select-group">
-            <el-select v-model="value" placeholder="請選擇一個節點">
-              <el-option
-                v-for="item in options"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              >
-              </el-option>
-            </el-select>
-          </div> -->
         </div>
       </div>
     </el-col>
@@ -41,36 +30,19 @@
       </div>
     </el-col>
     <el-col :span="12">
-      <div class="grid-content bg-purple-light iframe_main_sec">
+      <div v-loading="loading" class="grid-content bg-purple-light iframe_main_sec">
         <iframe
-          src="/snaRank10.html"
+          ref=Iframe
+          :src="src"
           frameborder="0"
           width="100%"
           height="100%"
         >
-          <!-- 社會網路圖 -->
+        <!-- 社會網路圖 -->
         </iframe>
       </div>
     </el-col>
   </el-row>
-  <!-- <el-container>
-    <el-aside width="300px">
-      <el-select v-model="value" placeholder="Select">
-        <el-option
-          v-for="item in options"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value"
-        >
-        </el-option>
-      </el-select>
-    </el-aside>
-    <el-main> -->
-  <!-- <iframe src="/SNA.html" frameborder="0" width="100%" height="100%"> -->
-  <!-- 社會網路圖 -->
-  <!-- </iframe> -->
-  <!-- </el-main>
-  </el-container> -->
 </template>
 
 <script>
@@ -135,7 +107,25 @@ export default {
           address: "No. 189, Grove St, Los Angeles",
         },
       ],
-    };
+      loading: false,
+      src:"https://fju-trans.herokuapp.com/sna_graph",
+    }
+  },
+  methods: {
+    iframeLoad(){
+      this.loading = true;
+      const iframe = this.$refs.Iframe;
+      if(iframe.attachEvent){
+        // For IE
+        iframe.attachEvent('onload',() => {this.loading = false; });
+      }else{
+        // Others Browser
+        iframe.onload = () => { this.loading = false; };
+      }
+    }
+  },
+  mounted() {
+    this.iframeLoad();
   },
 };
 </script>

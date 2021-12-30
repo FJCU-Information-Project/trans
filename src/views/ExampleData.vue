@@ -4,7 +4,7 @@
       <el-col :span="18">
         <div class="grid-content set-main_sec">
           <p>範例資料集</p>
-          <span>台中市車禍資料集csv檔</span>
+          <span>台中市車禍資料集</span>
         </div>
         <router-link :to="{ name: 'Home' }" class="link">
           <el-button round style="margin-top: 4em"

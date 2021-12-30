@@ -2,10 +2,8 @@
   <div class="grid-content his-banner">
     <el-row class="cusdata-con_flex">
       <el-col :span="20">
-        <div class="grid-content main_sec">
-          <el-button type="success" @click="open" round plain
-            >新增資料集</el-button
-          >
+        <div class="grid-content cos_main_sec">
+          <p>自訂資料集</p>
           <el-table
             :data="
               tableData.filter(
@@ -28,6 +26,10 @@
                 />
               </template>
               <template #default="scope">
+                <el-button 
+                  size="mini"
+                  >設定</el-button
+                >
                 <router-link :to="{ name: 'Home' }" class="link">
                   <el-button
                     size="mini"
@@ -46,6 +48,8 @@
             </el-table-column>
           </el-table>
         </div>
+        <el-button type="success" @click="open" round plain
+              >新增資料集</el-button>
       </el-col>
     </el-row>
   </div>
@@ -156,8 +160,11 @@ export default {
   justify-content: center;
   padding: 1.25em 0;
 }
-.main_sec {
+.cos_main_sec{
   padding: 1em 1em;
+  & p{
+    font-size: 2em;
+  }
 }
 .iframe_main_sec {
   height: 100vh;
