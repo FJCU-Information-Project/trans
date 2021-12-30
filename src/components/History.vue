@@ -97,6 +97,12 @@ export default {
   },
   methods: {
     handleEdit(index, row) {
+      ElMessageBox.alert(
+        '<div class="grid-content bg-purple-light iframe_main_sec"><iframe src="/snaRank10.html" frameborder="0" width="100%" height="100%"></iframe></div>',
+        {
+          dangerouslyUseHTMLString: true,
+        }
+      )
       console.log(index, row);
     },
     handleDelete(index, row) {

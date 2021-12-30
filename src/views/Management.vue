@@ -24,8 +24,8 @@
 
 <script>
 import Navbar from "@/components/Navbar.vue";
-import History from "@/views/History.vue";
-import Favorite from "@/views/Favorite.vue";
+import History from "@/components/History.vue";
+import Favorite from "@/components/Favorite.vue";
 
 export default {
   name: "Management",
