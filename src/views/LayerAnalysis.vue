@@ -11,19 +11,19 @@
           <div class="select-group">
             <el-select v-model="value" placeholder="請選擇中心節點">
               <el-option
-                v-for="item in options"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
+                v-for="item in tableData"
+                :key="item.id"
+                :label="item.node"
+                :value="item.id"
               >
               </el-option>
             </el-select>
             <el-select v-model="value" placeholder="請選擇層級">
               <el-option
-                v-for="item in options"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
+                v-for="item in tableData"
+                :key="item.id"
+                :label="item.node"
+                :value="item.id"
               >
               </el-option>
             </el-select>
@@ -84,46 +84,30 @@ export default {
           node: "天氣2",
         },
         {
-          id: "1",
-          node: "天氣",
+          id: "3",
+          node: "天氣3",
         },
         {
-          id: "2",
-          node: "天氣2",
+          id: "4",
+          node: "天氣4",
         },
         {
-          id: "1",
-          node: "天氣",
+          id: "5",
+          node: "天氣5",
         },
         {
-          id: "2",
-          node: "天氣2",
-        },
-        {
-          id: "1",
-          node: "天氣",
-        },
-        {
-          id: "2",
-          node: "天氣2",
-        },
-        {
-          id: "1",
-          node: "天氣",
-        },
-        {
-          id: "2",
-          node: "天氣2",
+          id: "6",
+          node: "天氣6",
         },
       ],
       value: "",
     };
   },
   created() {
-    const api = `http://127.0.0.1:5000/nodes`;
+    const api = `https://fju-trans.herokuapp.com/nodes`;
     this.$http.get(api).then((response) => {
       console.log(response.data);
-      this.tableData = response.data.slice(0, 5);
+      this.tableData = response.data;
     });
   },
 };
