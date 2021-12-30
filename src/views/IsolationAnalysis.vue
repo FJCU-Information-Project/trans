@@ -32,8 +32,8 @@
     <el-col :span="12">
       <div v-loading="loading" class="grid-content bg-purple-light iframe_main_sec">
         <iframe
-          ref=Iframe
-          :src="src"
+          ref="Iframe"
+          src="/snaRank10.html"
           frameborder="0"
           width="100%"
           height="100%"

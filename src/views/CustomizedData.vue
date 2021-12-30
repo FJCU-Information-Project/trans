@@ -1,7 +1,7 @@
 <template>
   <div class="grid-content his-banner">
     <el-row class="cusdata-con_flex">
-      <el-col :span="20">
+      <el-col :span="23">
         <div class="grid-content cos_main_sec">
           <p>自訂資料集</p>
           <el-table
@@ -26,14 +26,19 @@
                 />
               </template>
               <template #default="scope">
-                <el-button 
-                  size="mini"
-                  >設定</el-button
-                >
+                <router-link :to="{ name: 'Config' }" class="link">
+                  <el-button
+                    size="mini"
+                    @click="handleEdit(scope.$index, scope.row)"
+                    style="margin-left: 1em"
+                    >設定</el-button
+                  >
+                </router-link>
                 <router-link :to="{ name: 'Home' }" class="link">
                   <el-button
                     size="mini"
                     @click="handleEdit(scope.$index, scope.row)"
+                    style="margin-left: 1em"
                     >進行分析</el-button
                   >
                 </router-link>
@@ -163,7 +168,11 @@ export default {
 .cos_main_sec{
   padding: 1em 1em;
   & p{
-    font-size: 2em;
+    font-size: 2.5em;
+    padding-top: .5em;
+    font-weight: bolder;
+    letter-spacing: 10px;
+    text-indent: 10px;
   }
 }
 .iframe_main_sec {

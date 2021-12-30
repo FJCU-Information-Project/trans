@@ -9,7 +9,7 @@
             請選擇一個節點，我們將會為您呈現與此節點關聯性最高的前10%節點
           </span>
           <div class="select-group">
-            <el-select v-model="value" placeholder="請選擇事故結果">
+            <el-select v-model="value" placeholder="請選擇事故節點">
               <el-option
                 v-for="item in options"
                 :key="item.value"
