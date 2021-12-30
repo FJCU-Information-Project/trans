@@ -46,6 +46,8 @@
 </template>
 
 <script>
+import { ElMessageBox } from "element-plus";
+
 export default {
   name: "History",
   data() {
