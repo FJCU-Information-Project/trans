@@ -54,7 +54,8 @@
           </el-table>
         </div>
         <el-button type="success" @click="open" round plain
-              >新增資料集</el-button>
+          >新增資料集</el-button
+        >
       </el-col>
     </el-row>
   </div>
@@ -165,11 +166,11 @@ export default {
   justify-content: center;
   padding: 1.25em 0;
 }
-.cos_main_sec{
+.cos_main_sec {
   padding: 1em 1em;
-  & p{
+  & p {
     font-size: 2.5em;
-    padding-top: .5em;
+    padding-top: 0.5em;
     font-weight: bolder;
     letter-spacing: 10px;
     text-indent: 10px;

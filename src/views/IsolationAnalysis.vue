@@ -30,7 +30,10 @@
       </div>
     </el-col>
     <el-col :span="12">
-      <div v-loading="loading" class="grid-content bg-purple-light iframe_main_sec">
+      <div
+        v-loading="loading"
+        class="grid-content bg-purple-light iframe_main_sec"
+      >
         <iframe
           ref="Iframe"
           src="/snaRank10.html"
@@ -38,7 +41,7 @@
           width="100%"
           height="100%"
         >
-        <!-- 社會網路圖 -->
+          <!-- 社會網路圖 -->
         </iframe>
       </div>
     </el-col>
@@ -108,21 +111,25 @@ export default {
         },
       ],
       loading: false,
-      src:"https://fju-trans.herokuapp.com/sna_graph",
-    }
+      src: "https://fju-trans.herokuapp.com/sna_graph",
+    };
   },
   methods: {
-    iframeLoad(){
+    iframeLoad() {
       this.loading = true;
       const iframe = this.$refs.Iframe;
-      if(iframe.attachEvent){
+      if (iframe.attachEvent) {
         // For IE
-        iframe.attachEvent('onload',() => {this.loading = false; });
-      }else{
+        iframe.attachEvent("onload", () => {
+          this.loading = false;
+        });
+      } else {
         // Others Browser
-        iframe.onload = () => { this.loading = false; };
+        iframe.onload = () => {
+          this.loading = false;
+        };
       }
-    }
+    },
   },
   mounted() {
     this.iframeLoad();
