@@ -16,11 +16,7 @@
     <el-col :span="11" class="analysis-table">
       <h1>Isolation Analysis</h1>
       <hr />
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Error provident
-        fuga maxime molestiae eligendi at quis recusandae laborum dolorem velit?
-        Aperiam ullam earum veniam mollitia dolorem vero sequi vitae asperiores!
-      </p>
+      <p>此處為分析功能之說明</p>
       <div class="grid-content bg-purple main_sec">
         <el-table :data="tableData" stripe style="width: 100%">
           <el-table-column prop="date" label="Date" width="180" />

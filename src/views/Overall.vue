@@ -48,11 +48,7 @@
     <el-col :span="9" class="analysis-table">
       <h1>Overall</h1>
       <hr />
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Error provident
-        fuga maxime molestiae eligendi at quis recusandae laborum dolorem velit?
-        Aperiam ullam earum veniam mollitia dolorem vero sequi vitae asperiores!
-      </p>
+      <p>此處為分析功能之說明</p>
     </el-col>
   </el-row>
 </template>
