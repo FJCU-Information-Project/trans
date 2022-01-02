@@ -6,8 +6,19 @@
         <div class="ban-title">
           <h1>Degree Analysis</h1>
           <span style="font-weight: bolder" class="sub-title">
-            我們將會為您呈現整個網路途中每個節點跟其他節點關聯性前十強的節點
+            請選取一個您感興趣的節點，我們將會為您分析出此節點有幾個關聯
           </span>
+          <div class="select-group">
+            <el-select v-model="value" placeholder="請選擇節點">
+              <el-option
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              >
+              </el-option>
+            </el-select>
+          </div>
         </div>
       </div>
     </el-col>
@@ -16,9 +27,10 @@
     <el-col :span="11">
       <div class="grid-content bg-purple main_sec">
         <el-table :data="tableData" stripe style="width: 100%">
-          <el-table-column prop="date" label="Date" width="180" />
-          <el-table-column prop="name" label="Name" width="180" />
-          <el-table-column prop="address" label="Address" />
+          <el-table-column prop="No" label="No" width="180" />
+          <el-table-column prop="To_id" label="To_id" width="180" />
+          <el-table-column prop="To_id_name" label="To_id_name" />
+          <el-table-column prop="Weight" label="Weight" />
         </el-table>
       </div>
     </el-col>
@@ -43,54 +55,52 @@ export default {
     return {
       tableData: [
         {
-          date: "2016-05-03",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
+          No: "1",
+          To_id: "1",
+          To_id_name: "晴",
+          Weight: "2500",
         },
         {
-          date: "2016-05-02",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
+          No: "1",
+          To_id: "1",
+          To_id_name: "晴",
+          Weight: "2500",
         },
         {
-          date: "2016-05-04",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
+          No: "1",
+          To_id: "1",
+          To_id_name: "晴",
+          Weight: "2500",
         },
         {
-          date: "2016-05-01",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
+          No: "1",
+          To_id: "1",
+          To_id_name: "晴",
+          Weight: "2500",
         },
         {
-          date: "2016-05-03",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
+          No: "1",
+          To_id: "1",
+          To_id_name: "晴",
+          Weight: "2500",
         },
         {
-          date: "2016-05-02",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
+          No: "1",
+          To_id: "1",
+          To_id_name: "晴",
+          Weight: "2500",
         },
         {
-          date: "2016-05-04",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
+          No: "1",
+          To_id: "1",
+          To_id_name: "晴",
+          Weight: "2500",
         },
         {
-          date: "2016-05-01",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-03",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-02",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
+          No: "1",
+          To_id: "1",
+          To_id_name: "晴",
+          Weight: "2500",
         },
       ],
     };
@@ -99,6 +109,11 @@ export default {
 </script>
 
 <style lang="scss">
+.el-select {
+  & span {
+    margin-top: 0;
+  }
+}
 .el-table__cell {
   text-align: center !important;
 }

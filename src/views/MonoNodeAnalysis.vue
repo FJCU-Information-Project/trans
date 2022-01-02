@@ -4,7 +4,7 @@
       <div class="grid-content banner">
         <Navbar />
         <div class="ban-title">
-          <h1>MonoNode Analysis</h1>
+          <h1>Factor Rank Analysis</h1>
           <span style="font-weight: bolder" class="sub-title">
             請選擇一個節點，我們將會為您呈現與此節點關聯性最高的前10%節點
           </span>
@@ -25,7 +25,7 @@
   </el-row>
   <el-row class="con_flex">
     <el-col :span="9" class="analysis-table">
-      <h1>MonoNode Analysis</h1>
+      <h1>Factor Rank Analysis</h1>
       <hr />
       <p>此處為分析功能之說明</p>
       <div class="grid-content bg-purple main_sec">

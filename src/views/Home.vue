@@ -83,7 +83,7 @@
       <el-col :xs="24" :sm="2" :md="8" :lg="13" :xl="13">
         <div class="grid-content bg-purple analysis-entry-card">
           <div class="filter">
-            <h3 class="analysis-title">MonoNode Analysis</h3>
+            <h3 class="analysis-title">Factor Rank Analysis</h3>
             <div class="btn-group">
               <router-link :to="{ name: 'MonoNodeAnalysis' }" class="link">
                 <p class="analysis-btn">entry</p>

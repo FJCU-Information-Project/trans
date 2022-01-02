@@ -13,9 +13,9 @@
             "
             style="width: 100%"
           >
-            <el-table-column label="分析時間" prop="time" />
-            <el-table-column label="類型" prop="type" />
-            <el-table-column label="資料集" prop="dataset" />
+            <el-table-column label="新增日期" prop="date" />
+            <el-table-column label="資料集名稱" prop="name" />
+            <el-table-column label="說明" prop="describe" />
             <el-table-column align="right">
               <template #header>
                 <el-input
@@ -55,45 +55,85 @@ export default {
       search: "",
       tableData: [
         {
-          time: "2015-05-13",
-          type: "Layer Analysis",
-          dataset: "預設資料集",
+          date: "2021-07-16",
+          describe: "None",
+          name: "台中市車禍資料",
         },
         {
-          time: "2016-03-26",
-          type: "Degree Analysis",
-          dataset: "自訂資料集:台北",
+          date: "2021-07-16",
+          describe: "None",
+          name: "台中市車禍資料",
         },
         {
-          time: "2013-02-30",
-          type: "Layer Analysis",
-          dataset: "自訂資料集:高雄",
+          date: "2021-07-16",
+          describe: "None",
+          name: "台中市車禍資料",
         },
         {
-          time: "2012-01-17",
-          type: "Closness Analysis",
-          dataset: "預設資料集",
+          date: "2021-07-16",
+          describe: "None",
+          name: "台中市車禍資料",
         },
         {
-          time: "2013-02-30",
-          type: "Layer Analysis",
-          dataset: "自訂資料集:高雄",
+          date: "2021-07-16",
+          describe: "None",
+          name: "台中市車禍資料",
         },
         {
-          time: "2012-01-17",
-          type: "Closness Analysis",
-          dataset: "預設資料集",
+          date: "2021-07-16",
+          describe: "None",
+          name: "台中市車禍資料",
         },
         {
-          time: "2013-02-30",
-          type: "Layer Analysis",
-          dataset: "自訂資料集:高雄",
+          date: "2021-07-16",
+          describe: "None",
+          name: "台中市車禍資料",
         },
         {
-          time: "2012-01-17",
-          type: "Closness Analysis",
-          dataset: "預設資料集",
+          date: "2021-07-16",
+          describe: "None",
+          name: "台中市車禍資料",
         },
+        // {
+        //   time: "2015-05-13",
+        //   type: "Layer Analysis",
+        //   dataset: "預設資料集",
+        // },
+        // {
+        //   time: "2016-03-26",
+        //   type: "Degree Analysis",
+        //   dataset: "自訂資料集:台北",
+        // },
+        // {
+        //   time: "2013-02-30",
+        //   type: "Layer Analysis",
+        //   dataset: "自訂資料集:高雄",
+        // },
+        // {
+        //   time: "2012-01-17",
+        //   type: "Closness Analysis",
+        //   dataset: "預設資料集",
+        // },
+        // {
+        //   time: "2013-02-30",
+        //   type: "Layer Analysis",
+        //   dataset: "自訂資料集:高雄",
+        // },
+        // {
+        //   time: "2012-01-17",
+        //   type: "Closness Analysis",
+        //   dataset: "預設資料集",
+        // },
+        // {
+        //   time: "2013-02-30",
+        //   type: "Layer Analysis",
+        //   dataset: "自訂資料集:高雄",
+        // },
+        // {
+        //   time: "2012-01-17",
+        //   type: "Closness Analysis",
+        //   dataset: "預設資料集",
+        // },
       ],
     };
   },
