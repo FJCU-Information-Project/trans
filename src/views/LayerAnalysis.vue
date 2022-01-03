@@ -75,7 +75,7 @@ export default {
   data() {
     return {
       attributes: [
-  
+        
       ],
       tableData: [
         {
@@ -127,16 +127,21 @@ export default {
         };
       }
     },
-    handleChange(value){
-      console.log(value);
+    handleChange(){
+      //const api = `https://fju-trans.herokuapp.com`;
+      const api = `http://localhost:5000`;
+      this.$http.get(api+"/receive?node="+this.value[1]).then((response) => {
+        console.log(response.data);
+        //this.attributes = response.data;
+      });
     }
   },
   mounted() {
     this.iframeLoad();
   },
   created() {
-    const api = `https://fju-trans.herokuapp.com`;
-    // const api = `http://localhost:5000`;
+    //const api = `https://fju-trans.herokuapp.com`;
+    const api = `http://localhost:5000`;
     this.$http.get(api+"/attributes").then((response) => {
       console.log(response.data);
       this.attributes = response.data;
