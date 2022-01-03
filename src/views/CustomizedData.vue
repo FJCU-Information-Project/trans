@@ -68,7 +68,7 @@ export default {
   name: "Customer",
   setup() {
     const open = () => {
-      ElMessageBox.alert("<input type=file>", "請上傳您的資料集", {
+      ElMessageBox.alert("名稱 <input type=text style='margin-top: 10px;'></br>提供單位 <input type=text style='margin-top: 10px;'></br>統計時間 <input type=text style='margin-top: 10px;'></br>查看權限 <input type=text style='margin-top: 10px;'></br><input type=file style='margin-top: 10px;'>", "請上傳您的資料集", {
         dangerouslyUseHTMLString: true,
       });
     };

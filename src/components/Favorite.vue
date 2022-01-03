@@ -1,7 +1,7 @@
 <template>
   <div class="grid-content his-banner">
     <el-row class="his-con_flex">
-      <el-col :span="18">
+      <el-col :span="22">
         <div class="grid-content main_sec">
           <el-table
             :data="
@@ -27,15 +27,21 @@
               <template #default="scope">
                 <el-button
                   size="mini"
+                  type="danger"
+                  @click="handleDelete(scope.$index, scope.row)"
+                  >取消收藏</el-button
+                >
+                <el-button
+                  size="mini"
                   @click="handleEdit(scope.$index, scope.row)"
                   >查看</el-button
                 >
-                <el-button
+                <!-- <el-button
                   size="mini"
                   type="danger"
                   @click="handleDelete(scope.$index, scope.row)"
                   >刪除</el-button
-                >
+                > -->
               </template>
             </el-table-column>
           </el-table>

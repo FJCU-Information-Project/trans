@@ -9,7 +9,16 @@
             請選擇一個節點，我們將會為您呈現與此節點關聯性最高的前10%節點
           </span>
           <div class="select-group">
-            <el-select v-model="value" placeholder="請選擇事故節點">
+            <el-select v-model="value" placeholder="請選擇節點屬性">
+              <el-option
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              >
+              </el-option>
+            </el-select>
+            <el-select v-model="value" placeholder="請選擇事故節點" style="margin-left: 2em;">
               <el-option
                 v-for="item in options"
                 :key="item.value"
@@ -30,9 +39,9 @@
       <p>此處為分析功能之說明</p>
       <div class="grid-content bg-purple main_sec">
         <el-table :data="tableData" stripe style="width: 100%">
-          <el-table-column prop="date" label="id" width="120" />
-          <el-table-column prop="name" label="node" width="90" />
-          <el-table-column prop="address" label="node" />
+          <el-table-column prop="關聯肇事因素排名" label="關聯肇事因素排名" width="90" />
+          <el-table-column prop="肇事因素" label="肇事因素" width="120" />
+          <el-table-column prop="case總數" label="case總數" />
         </el-table>
       </div>
     </el-col>
@@ -63,54 +72,54 @@ export default {
     return {
       tableData: [
         {
-          date: "2016-05-03",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
+          關聯肇事因素排名: "1",
+          肇事因素: "柏油",
+          case總數: "5010",
+        },
+{
+          關聯肇事因素排名: "2",
+          肇事因素: "無缺陷",
+          case總數: "4986",
         },
         {
-          date: "2016-05-02",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
+          關聯肇事因素排名: "3",
+          肇事因素: "柏油",
+          case總數: "5010",
         },
         {
-          date: "2016-05-04",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
+          關聯肇事因素排名: "4",
+          肇事因素: "柏油",
+          case總數: "5010",
         },
         {
-          date: "2016-05-01",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
+          關聯肇事因素排名: "5",
+          肇事因素: "柏油",
+          case總數: "5010",
         },
         {
-          date: "2016-05-03",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
+          關聯肇事因素排名: "6",
+          肇事因素: "柏油",
+          case總數: "5010",
         },
         {
-          date: "2016-05-02",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
+          關聯肇事因素排名: "7",
+          肇事因素: "柏油",
+          case總數: "5010",
         },
         {
-          date: "2016-05-04",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
+          關聯肇事因素排名: "8",
+          肇事因素: "柏油",
+          case總數: "5010",
         },
         {
-          date: "2016-05-01",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
+          關聯肇事因素排名: "9",
+          肇事因素: "柏油",
+          case總數: "5010",
         },
         {
-          date: "2016-05-03",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-02",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
+          關聯肇事因素排名: "10",
+          肇事因素: "柏油",
+          case總數: "5010",
         },
       ],
     };
