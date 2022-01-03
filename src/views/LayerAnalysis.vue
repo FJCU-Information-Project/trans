@@ -9,15 +9,15 @@
             請選擇您想分析的中心節點及階層，我們將會為您呈現中心節點向外發散的層級關係點層級
           </span>
           <div class="select-group">
-            <el-select v-model="value" placeholder="請選擇中心節點">
-              <el-option
-                v-for="item in tableData"
-                :key="item.id"
-                :label="item.node"
-                :value="item.id"
-              >
-              </el-option>
-            </el-select>
+             <div class="block">
+                <!-- <span class="demonstration">Child options expand when hovered</span> -->
+                <el-cascader
+                  v-model="value"
+                  :options="attributes"
+                  :props="props"
+                  @change="handleChange"
+                ></el-cascader>
+              </div>
             <el-select v-model="value" placeholder="請選擇層級">
               <el-option
                 v-for="item in tableData"
@@ -74,6 +74,274 @@ export default {
   },
   data() {
     return {
+      attributes: [
+        {
+          value: 'guide',
+          label: 'Guide',
+          children: [
+            {
+              value: 'disciplines',
+              label: 'Disciplines',
+              children: [
+                {
+                  value: 'consistency',
+                  label: 'Consistency',
+                },
+                {
+                  value: 'feedback',
+                  label: 'Feedback',
+                },
+                {
+                  value: 'efficiency',
+                  label: 'Efficiency',
+                },
+                {
+                  value: 'controllability',
+                  label: 'Controllability',
+                },
+              ],
+            },
+            {
+              value: 'navigation',
+              label: 'Navigation',
+              children: [
+                {
+                  value: 'side nav',
+                  label: 'Side Navigation',
+                },
+                {
+                  value: 'top nav',
+                  label: 'Top Navigation',
+                },
+              ],
+            },
+          ],
+        },
+        {
+          value: 'component',
+          label: 'Component',
+          children: [
+            {
+              value: 'basic',
+              label: 'Basic',
+              children: [
+                {
+                  value: 'layout',
+                  label: 'Layout',
+                },
+                {
+                  value: 'color',
+                  label: 'Color',
+                },
+                {
+                  value: 'typography',
+                  label: 'Typography',
+                },
+                {
+                  value: 'icon',
+                  label: 'Icon',
+                },
+                {
+                  value: 'button',
+                  label: 'Button',
+                },
+              ],
+            },
+            {
+              value: 'form',
+              label: 'Form',
+              children: [
+                {
+                  value: 'radio',
+                  label: 'Radio',
+                },
+                {
+                  value: 'checkbox',
+                  label: 'Checkbox',
+                },
+                {
+                  value: 'input',
+                  label: 'Input',
+                },
+                {
+                  value: 'input-number',
+                  label: 'InputNumber',
+                },
+                {
+                  value: 'select',
+                  label: 'Select',
+                },
+                {
+                  value: 'cascader',
+                  label: 'Cascader',
+                },
+                {
+                  value: 'switch',
+                  label: 'Switch',
+                },
+                {
+                  value: 'slider',
+                  label: 'Slider',
+                },
+                {
+                  value: 'time-picker',
+                  label: 'TimePicker',
+                },
+                {
+                  value: 'date-picker',
+                  label: 'DatePicker',
+                },
+                {
+                  value: 'datetime-picker',
+                  label: 'DateTimePicker',
+                },
+                {
+                  value: 'upload',
+                  label: 'Upload',
+                },
+                {
+                  value: 'rate',
+                  label: 'Rate',
+                },
+                {
+                  value: 'form',
+                  label: 'Form',
+                },
+              ],
+            },
+            {
+              value: 'data',
+              label: 'Data',
+              children: [
+                {
+                  value: 'table',
+                  label: 'Table',
+                },
+                {
+                  value: 'tag',
+                  label: 'Tag',
+                },
+                {
+                  value: 'progress',
+                  label: 'Progress',
+                },
+                {
+                  value: 'tree',
+                  label: 'Tree',
+                },
+                {
+                  value: 'pagination',
+                  label: 'Pagination',
+                },
+                {
+                  value: 'badge',
+                  label: 'Badge',
+                },
+              ],
+            },
+            {
+              value: 'notice',
+              label: 'Notice',
+              children: [
+                {
+                  value: 'alert',
+                  label: 'Alert',
+                },
+                {
+                  value: 'loading',
+                  label: 'Loading',
+                },
+                {
+                  value: 'message',
+                  label: 'Message',
+                },
+                {
+                  value: 'message-box',
+                  label: 'MessageBox',
+                },
+                {
+                  value: 'notification',
+                  label: 'Notification',
+                },
+              ],
+            },
+            {
+              value: 'navigation',
+              label: 'Navigation',
+              children: [
+                {
+                  value: 'menu',
+                  label: 'Menu',
+                },
+                {
+                  value: 'tabs',
+                  label: 'Tabs',
+                },
+                {
+                  value: 'breadcrumb',
+                  label: 'Breadcrumb',
+                },
+                {
+                  value: 'dropdown',
+                  label: 'Dropdown',
+                },
+                {
+                  value: 'steps',
+                  label: 'Steps',
+                },
+              ],
+            },
+            {
+              value: 'others',
+              label: 'Others',
+              children: [
+                {
+                  value: 'dialog',
+                  label: 'Dialog',
+                },
+                {
+                  value: 'tooltip',
+                  label: 'Tooltip',
+                },
+                {
+                  value: 'popover',
+                  label: 'Popover',
+                },
+                {
+                  value: 'card',
+                  label: 'Card',
+                },
+                {
+                  value: 'carousel',
+                  label: 'Carousel',
+                },
+                {
+                  value: 'collapse',
+                  label: 'Collapse',
+                },
+              ],
+            },
+          ],
+        },
+        {
+          value: 'resource',
+          label: 'Resource',
+          children: [
+            {
+              value: 'axure',
+              label: 'Axure Components',
+            },
+            {
+              value: 'sketch',
+              label: 'Sketch Templates',
+            },
+            {
+              value: 'docs',
+              label: 'Design Documentation',
+            },
+          ],
+        },
+      ],
       tableData: [
         {
           id: "1",
@@ -101,6 +369,9 @@ export default {
         },
       ],
       value: "",
+      props: {
+        expandTrigger: 'hover',
+      },
       loading: false,
       src: "https://fjcu-information-project.github.io/trans/snaRank10.html",
     };
@@ -121,21 +392,30 @@ export default {
         };
       }
     },
+    handleChange(value){
+      console.log(value);
+    }
   },
   mounted() {
     this.iframeLoad();
   },
   created() {
-    const api = `https://fju-trans.herokuapp.com/nodes`;
-    this.$http.get(api).then((response) => {
+    //const api = `https://fju-trans.herokuapp.com`;
+    const api = `http://localhost:5000`;
+    this.$http.get(api+"/attributes").then((response) => {
       console.log(response.data);
-      this.tableData = response.data;
+      this.attributes = response.data;
     });
   },
 };
 </script>
 
 <style lang="scss">
+.block{
+  & span{
+    margin-top: 0;
+  }
+}
 .el-table {
   margin-top: 2em;
   border-radius: 0.45em;
