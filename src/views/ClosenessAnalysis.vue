@@ -37,6 +37,15 @@
       <h1>Closeness Analysis</h1>
       <hr />
       <p>此處為分析功能之說明</p>
+
+      <iframe
+        src="/closeness.html"
+        frameborder="0"
+        width="100%"
+        height="100%"
+      >
+        <!-- 社會網路圖 -->
+      </iframe>
     </el-col>
   </el-row>
   <!--<el-footer>Footer</el-footer>-->
