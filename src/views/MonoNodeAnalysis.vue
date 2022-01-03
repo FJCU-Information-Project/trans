@@ -18,7 +18,11 @@
               >
               </el-option>
             </el-select>
-            <el-select v-model="value" placeholder="請選擇事故節點" style="margin-left: 2em;">
+            <el-select
+              v-model="value"
+              placeholder="請選擇事故節點"
+              style="margin-left: 2em"
+            >
               <el-option
                 v-for="item in options"
                 :key="item.value"
@@ -39,7 +43,11 @@
       <p>此處為分析功能之說明</p>
       <div class="grid-content bg-purple main_sec">
         <el-table :data="tableData" stripe style="width: 100%">
-          <el-table-column prop="關聯肇事因素排名" label="關聯肇事因素排名" width="90" />
+          <el-table-column
+            prop="關聯肇事因素排名"
+            label="關聯肇事因素排名"
+            width="90"
+          />
           <el-table-column prop="肇事因素" label="肇事因素" width="120" />
           <el-table-column prop="case總數" label="case總數" />
         </el-table>
@@ -76,7 +84,7 @@ export default {
           肇事因素: "柏油",
           case總數: "5010",
         },
-{
+        {
           關聯肇事因素排名: "2",
           肇事因素: "無缺陷",
           case總數: "4986",
