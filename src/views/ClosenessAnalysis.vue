@@ -10,15 +10,15 @@
           </span>
           <div class="select-group">
             <div class="block">
-                <!-- <span class="demonstration">Child options expand when hovered</span> -->
-                <el-cascader
-                  v-model="value"
-                  :options="attributes"
-                  :props="props"
-                  @change="handleChange"
-                  placeholder="請選擇事故節點"
-                ></el-cascader>
-              </div>
+              <!-- <span class="demonstration">Child options expand when hovered</span> -->
+              <el-cascader
+                v-model="value"
+                :options="attributes"
+                :props="props"
+                @change="handleChange"
+                placeholder="請選擇事故節點"
+              ></el-cascader>
+            </div>
           </div>
         </div>
       </div>
@@ -39,12 +39,7 @@
       <hr />
       <p>此處為分析功能之說明</p>
 
-      <iframe
-        src="/closeness.html"
-        frameborder="0"
-        width="100%"
-        height="100%"
-      >
+      <iframe src="/closeness.html" frameborder="0" width="100%" height="100%">
         <!-- 社會網路圖 -->
       </iframe>
     </el-col>
@@ -62,9 +57,7 @@ export default {
   },
   data() {
     return {
-      attributes: [
-        
-      ],
+      attributes: [],
       tableData: [
         {
           No: "1",
@@ -116,24 +109,26 @@ export default {
         },
       ],
       props: {
-        expandTrigger: 'hover',
+        expandTrigger: "hover",
       },
     };
   },
-  methods:{
-    handleChange(){
+  methods: {
+    handleChange() {
       //const api = `https://fju-trans.herokuapp.com`;
       const api = `http://localhost:5000`;
-      this.$http.get(api+"/receive?node="+this.value[1]).then((response) => {
-        console.log(response.data);
-        //this.attributes = response.data;
-      });
+      this.$http
+        .get(api + "/receive?node=" + this.value[1])
+        .then((response) => {
+          console.log(response.data);
+          //this.attributes = response.data;
+        });
     },
   },
   created() {
     const api = `https://fju-trans.herokuapp.com`;
     // const api = `http://localhost:5000`;
-    this.$http.get(api+"/attributes").then((response) => {
+    this.$http.get(api + "/attributes").then((response) => {
       console.log(response.data);
       this.attributes = response.data;
     });
@@ -142,9 +137,9 @@ export default {
 </script>
 
 <style lang="scss">
-.block{
+.block {
   margin-top: 2em;
-  & span{
+  & span {
     margin-top: 0;
   }
 }

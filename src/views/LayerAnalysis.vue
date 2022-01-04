@@ -9,15 +9,15 @@
             請選擇您想分析的中心節點及階層，我們將會為您呈現中心節點向外發散的層級關係點層級
           </span>
           <div class="select-group">
-             <div class="block">
-                <!-- <span class="demonstration">Child options expand when hovered</span> -->
-                <el-cascader
-                  v-model="value"
-                  :options="attributes"
-                  :props="props"
-                  @change="handleChange"
-                ></el-cascader>
-              </div>
+            <div class="block">
+              <!-- <span class="demonstration">Child options expand when hovered</span> -->
+              <el-cascader
+                v-model="value"
+                :options="attributes"
+                :props="props"
+                @change="handleChange"
+              ></el-cascader>
+            </div>
             <el-select v-model="layerValue" placeholder="請選擇層級">
               <el-option
                 v-for="item in tableData"
@@ -39,7 +39,11 @@
       <p>此處為分析功能之說明</p>
       <div class="grid-content bg-purple main_sec">
         <el-table :data="layerData" stripe style="width: 100%">
-          <el-table-column prop="factorRank" label="關聯肇事因素排名" width="180" />
+          <el-table-column
+            prop="factorRank"
+            label="關聯肇事因素排名"
+            width="180"
+          />
           <el-table-column prop="factor" label="肇事因素" width="180" />
           <el-table-column prop="caseNumber" label="案件總數" />
         </el-table>
@@ -74,12 +78,8 @@ export default {
   },
   data() {
     return {
-      attributes: [
-        
-      ],
-      layerData: [
-        
-      ],
+      attributes: [],
+      layerData: [],
       tableData: [
         {
           id: "1",
@@ -93,10 +93,10 @@ export default {
       value: "",
       layerValue: "",
       props: {
-        expandTrigger: 'hover',
+        expandTrigger: "hover",
       },
       loading: false,
-      // src: "https://fju-trans.herokuapp.com/sna_graph/snaRank10.html",
+      //src: "https://fju-trans.herokuapp.com/sna_graph/snaRank10.html",
       src: "http://localhost:5000/sna_graph/snaRank10.html",
     };
   },
@@ -116,17 +116,17 @@ export default {
         };
       }
     },
-    handleChange(){
+    handleChange() {
       this.loading = true;
       //const api = `https://fju-trans.herokuapp.com`;
       const api = `http://localhost:5000`;
-      this.$http.get(api+"/receive?node="+this.value[1]).then(() => {
+      this.$http.get(api + "/receive?node=" + this.value[1]).then(() => {
         const iframe = this.$refs.Iframe;
         const tempSrc = iframe.src;
         iframe.src = tempSrc;
         this.iframeLoad();
       });
-      this.$http.get(api+"/csv").then((response) => {
+      this.$http.get(api + "/csv").then((response) => {
         console.log(response.data);
         this.layerData = response.data;
       });
@@ -139,7 +139,7 @@ export default {
     console.log("created");
     //const api = `https://fju-trans.herokuapp.com`;
     const api = `http://localhost:5000`;
-    this.$http.get(api+"/attributes").then((response) => {
+    this.$http.get(api + "/attributes").then((response) => {
       console.log(response.data);
       this.attributes = response.data;
     });
@@ -148,8 +148,8 @@ export default {
 </script>
 
 <style lang="scss">
-.block{
-  & span{
+.block {
+  & span {
     margin-top: 0;
   }
 }

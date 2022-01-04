@@ -35,12 +35,7 @@
     </el-col> -->
     <el-col :span="12">
       <div class="grid-content bg-purple-light iframe_main_sec">
-        <iframe
-          src="/path.html"
-          frameborder="0"
-          width="100%"
-          height="100%"
-        >
+        <iframe src="/path.html" frameborder="0" width="100%" height="100%">
           <!-- 社會網路圖 -->
         </iframe>
       </div>
