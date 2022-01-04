@@ -140,8 +140,8 @@ export default {
     this.iframeLoad();
   },
   created() {
-    //const api = `https://fju-trans.herokuapp.com`;
-    const api = `http://localhost:5000`;
+    const api = `https://fju-trans.herokuapp.com`;
+    //const api = `http://localhost:5000`;
     this.$http.get(api+"/attributes").then((response) => {
       console.log(response.data);
       this.attributes = response.data;
