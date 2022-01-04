@@ -18,7 +18,7 @@
                   @change="handleChange"
                 ></el-cascader>
               </div>
-            <el-select v-model="value" placeholder="請選擇層級">
+            <el-select v-model="layerValue" placeholder="請選擇層級">
               <el-option
                 v-for="item in tableData"
                 :key="item.id"
@@ -38,10 +38,10 @@
       <hr />
       <p>此處為分析功能之說明</p>
       <div class="grid-content bg-purple main_sec">
-        <el-table :data="tableData" stripe style="width: 100%">
-          <el-table-column prop="id" label="id" width="180" />
-          <el-table-column prop="node" label="node" width="180" />
-          <el-table-column prop="node" label="node" />
+        <el-table :data="layerData" stripe style="width: 100%">
+          <el-table-column prop="factorRank" label="關聯肇事因素排名" width="180" />
+          <el-table-column prop="factor" label="肇事因素" width="180" />
+          <el-table-column prop="caseNumber" label="案件總數" />
         </el-table>
       </div>
     </el-col>
@@ -77,38 +77,27 @@ export default {
       attributes: [
         
       ],
+      layerData: [
+        
+      ],
       tableData: [
         {
           id: "1",
-          node: "天氣",
+          node: "第一層",
         },
         {
           id: "2",
-          node: "天氣2",
-        },
-        {
-          id: "3",
-          node: "天氣3",
-        },
-        {
-          id: "4",
-          node: "天氣4",
-        },
-        {
-          id: "5",
-          node: "天氣5",
-        },
-        {
-          id: "6",
-          node: "天氣6",
+          node: "第二層",
         },
       ],
       value: "",
+      layerValue: "",
       props: {
         expandTrigger: 'hover',
       },
       loading: false,
-      src: "https://fjcu-information-project.github.io/trans/snaRank10.html",
+      // src: "https://fju-trans.herokuapp.com/sna_graph/snaRank10.html",
+      src: "http://localhost:5000/sna_graph/snaRank10.html",
     };
   },
   methods: {
@@ -128,20 +117,28 @@ export default {
       }
     },
     handleChange(){
+      this.loading = true;
       //const api = `https://fju-trans.herokuapp.com`;
       const api = `http://localhost:5000`;
-      this.$http.get(api+"/receive?node="+this.value[1]).then((response) => {
-        console.log(response.data);
-        //this.attributes = response.data;
+      this.$http.get(api+"/receive?node="+this.value[1]).then(() => {
+        const iframe = this.$refs.Iframe;
+        const tempSrc = iframe.src;
+        iframe.src = tempSrc;
+        this.iframeLoad();
       });
-    }
+      this.$http.get(api+"/csv").then((response) => {
+        console.log(response.data);
+        this.layerData = response.data;
+      });
+    },
   },
   mounted() {
     this.iframeLoad();
   },
   created() {
-    const api = `https://fju-trans.herokuapp.com`;
-    //const api = `http://localhost:5000`;
+    console.log("created");
+    //const api = `https://fju-trans.herokuapp.com`;
+    const api = `http://localhost:5000`;
     this.$http.get(api+"/attributes").then((response) => {
       console.log(response.data);
       this.attributes = response.data;
