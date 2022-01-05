@@ -42,7 +42,11 @@
         class="grid-content bg-purple main_sec"
       >
         <el-table :data="layerData" stripe style="width: 100%">
-          <el-table-column prop="factorRank" label="關聯肇事因素排名" width="180" />
+          <el-table-column
+            prop="factorRank"
+            label="關聯肇事因素排名"
+            width="180"
+          />
           <el-table-column prop="factor" label="肇事因素" width="180" />
           <el-table-column prop="caseNumber" label="案件總數" />
         </el-table>
@@ -77,12 +81,8 @@ export default {
   },
   data() {
     return {
-      attributes: [
-        
-      ],
-      layerData: [
-        
-      ],
+      attributes: [],
+      layerData: [],
       tableData: [
         {
           id: "1",
@@ -96,10 +96,10 @@ export default {
       value: "",
       layerValue: "",
       props: {
-        expandTrigger: 'hover',
+        expandTrigger: "hover",
       },
       loading: false,
-      // src: "https://fju-trans.herokuapp.com/sna_graph/snaRank10.html",
+      //src: "https://fju-trans.herokuapp.com/sna_graph/snaRank10.html",
       src: "http://localhost:5000/sna_graph/snaRank10.html",
     };
   },
@@ -119,7 +119,7 @@ export default {
         };
       }
     },
-    handleChange(){
+    handleChange() {
       this.loading = true;
       const api = `https://fju-trans.herokuapp.com`;
       //const api = `http://localhost:5000`;
@@ -152,8 +152,8 @@ export default {
 </script>
 
 <style lang="scss">
-.block{
-  & span{
+.block {
+  & span {
     margin-top: 0;
   }
 }
