@@ -29,28 +29,28 @@
       <h1>Factor Rank Analysis</h1>
       <hr />
       <p>此處為分析功能之說明</p>
-      <div class="grid-content bg-purple main_sec">
-        <el-table :data="tableData" stripe style="width: 100%">
-          <el-table-column
-            prop="關聯肇事因素排名"
-            label="關聯肇事因素排名"
-            width="90"
-          />
-          <el-table-column prop="肇事因素" label="肇事因素" width="120" />
-          <el-table-column prop="case總數" label="case總數" />
+      <div
+        v-loading="loading"
+        class="grid-content bg-purple main_sec"
+      >
+        <el-table :data="factorRankData" stripe style="width: 100%">
+          <el-table-column prop="factorRank" label="關聯肇事因素排名" width="180" />
+          <el-table-column prop="factor" label="肇事因素" width="180" />
+          <el-table-column prop="caseNumber" label="案件總數" />
         </el-table>
       </div>
     </el-col>
     <el-col :span="14">
       <div class="grid-content bg-purple-light iframe_main_sec">
         <iframe
-          src="/snaRank10.html"
+          ref="Iframe"
+          :src="src"
           frameborder="0"
           width="100%"
           height="100%"
         >
-          <!-- 社會網路圖 -->
-        </iframe>
+        <!-- 社會網路圖 -->
+      </iframe>
       </div>
     </el-col>
   </el-row>
@@ -69,73 +69,54 @@ export default {
       attributes: [
         
       ],
-      tableData: [
-        {
-          關聯肇事因素排名: "1",
-          肇事因素: "柏油",
-          case總數: "5010",
-        },
-        {
-          關聯肇事因素排名: "2",
-          肇事因素: "無缺陷",
-          case總數: "4986",
-        },
-        {
-          關聯肇事因素排名: "3",
-          肇事因素: "柏油",
-          case總數: "5010",
-        },
-        {
-          關聯肇事因素排名: "4",
-          肇事因素: "柏油",
-          case總數: "5010",
-        },
-        {
-          關聯肇事因素排名: "5",
-          肇事因素: "柏油",
-          case總數: "5010",
-        },
-        {
-          關聯肇事因素排名: "6",
-          肇事因素: "柏油",
-          case總數: "5010",
-        },
-        {
-          關聯肇事因素排名: "7",
-          肇事因素: "柏油",
-          case總數: "5010",
-        },
-        {
-          關聯肇事因素排名: "8",
-          肇事因素: "柏油",
-          case總數: "5010",
-        },
-        {
-          關聯肇事因素排名: "9",
-          肇事因素: "柏油",
-          case總數: "5010",
-        },
-        {
-          關聯肇事因素排名: "10",
-          肇事因素: "柏油",
-          case總數: "5010",
-        },
+      factorRankData: [
+        
       ],
-       props: {
+      tableData: [
+      ],
+      props: {
         expandTrigger: 'hover',
       },
+      value: "",
+      loading: false,
+      // src: "https://fju-trans.herokuapp.com/sna_graph/snaRank10.html",
+      src: "http://localhost:5000/sna_graph/snaRank10.html",
     };
   },
   methods:{
+    iframeLoad() {
+      this.loading = true;
+      const iframe = this.$refs.Iframe;
+      if (iframe.attachEvent) {
+        // For IE
+        iframe.attachEvent("onload", () => {
+          this.loading = false;
+        });
+      } else {
+        // Others Browser
+        iframe.onload = () => {
+          this.loading = false;
+        };
+      }
+    },
     handleChange(){
+      this.loading = true;
       //const api = `https://fju-trans.herokuapp.com`;
       const api = `http://localhost:5000`;
-      this.$http.get(api+"/receive?node="+this.value[1]).then((response) => {
-        console.log(response.data);
-        //this.attributes = response.data;
+      this.$http.get(api+"/factorRankReceive?node="+this.value[1]).then(() => {
+        const iframe = this.$refs.Iframe;
+        const tempSrc = iframe.src;
+        iframe.src = tempSrc;
+        this.iframeLoad();
+        this.$http.get(api+"/factorRankcsv").then((response) => {
+          this.loading = false;
+          console.log(response.data);
+          this.factorRankData = response.data;
+        });
       });
     },
   },
+ 
   created() {
     const api = `https://fju-trans.herokuapp.com`;
     // const api = `http://localhost:5000`;

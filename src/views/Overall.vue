@@ -6,7 +6,7 @@
         <div class="ban-title">
           <h1>Overall</h1>
           <span style="font-weight: bolder" class="sub-title">
-            此功能將為您呈現您所選資料及德社會網路圖全貌
+            此功能將為您呈現您所選資料及的社會網路圖全貌
           </span>
           <!-- <div class="select-group">
             <el-select v-model="value" placeholder="請選擇一個節點">
@@ -36,7 +36,7 @@
     <el-col :span="12">
       <div class="grid-content bg-purple-light iframe_main_sec">
         <iframe
-          src="/path.html"
+          :src="src"
           frameborder="0"
           width="100%"
           height="100%"
@@ -115,7 +115,50 @@ export default {
           address: "No. 189, Grove St, Los Angeles",
         },
       ],
+      props: {
+        expandTrigger: 'hover',
+      },
+      value: "",
+      loading: false,
+      // src: "https://fju-trans.herokuapp.com/sna_graph/snaRank10.html",
+      src: "http://localhost:5000/sna_graph/overall.html",
     };
+  },
+  methods:{
+    iframeLoad() {
+      this.loading = true;
+      const iframe = this.$refs.Iframe;
+      if (iframe.attachEvent) {
+        // For IE
+        iframe.attachEvent("onload", () => {
+          this.loading = false;
+        });
+      } else {
+        // Others Browser
+        iframe.onload = () => {
+          this.loading = false;
+        };
+      }
+    },
+    handleChange(){
+      this.loading = true;
+      //const api = `https://fju-trans.herokuapp.com`;
+      const api = `http://localhost:5000`;
+      this.$http.get(api+"/overallReceive").then(() => {
+        const iframe = this.$refs.Iframe;
+        const tempSrc = iframe.src;
+        iframe.src = tempSrc;
+        this.iframeLoad();
+      });
+    },
+  },
+  created() {
+    // const api = `https://fju-trans.herokuapp.com`;
+    const api = `http://localhost:5000`;
+    this.$http.get(api+"/attributes").then((response) => {
+      console.log(response.data);
+      this.attributes = response.data;
+    });
   },
 };
 </script>

@@ -27,11 +27,10 @@
   <el-row class="con_flex">
     <el-col :span="11">
       <div class="grid-content bg-purple main_sec">
-        <el-table :data="tableData" stripe style="width: 100%">
-          <el-table-column prop="No" label="No" width="180" />
-          <el-table-column prop="To_id" label="To_id" width="180" />
-          <el-table-column prop="To_id_name" label="To_id_name" />
-          <el-table-column prop="Weight" label="Weight" />
+        <el-table :data="degreeData" stripe style="width: 100%">
+          <el-table-column prop="from_id_name" label="使用所選節點" width="200" />
+          <el-table-column prop="to_id_name" label="肇事因素名稱" width="200" />
+          <el-table-column prop="weight" label="權重" />
         </el-table>
       </div>
     </el-col>
@@ -40,7 +39,8 @@
       <hr />
       <p>此處為分析功能之說明</p>
       <iframe
-        src="/degree.html"
+        ref="Iframe"
+        :src="src"
         frameborder="0"
         width="100%"
         height="100%"
@@ -64,6 +64,9 @@ export default {
     return {
       attributes: [
       
+      ],
+      degreeData: [
+        
       ],
       tableData: [
         {
@@ -118,16 +121,43 @@ export default {
       props: {
         expandTrigger: 'hover',
       },
+      value: "",
+      loading: false,
+      // src: "https://fju-trans.herokuapp.com/sna_graph/snaRank10.html",
+      src: "http://localhost:5000/sna_graph/degree.html",
     };
     
   },
   methods:{
+    iframeLoad() {
+      this.loading = true;
+      const iframe = this.$refs.Iframe;
+      if (iframe.attachEvent) {
+        // For IE
+        iframe.attachEvent("onload", () => {
+          this.loading = false;
+        });
+      } else {
+        // Others Browser
+        iframe.onload = () => {
+          this.loading = false;
+        };
+      }
+    },
     handleChange(){
+      this.loading = true;
       //const api = `https://fju-trans.herokuapp.com`;
       const api = `http://localhost:5000`;
-      this.$http.get(api+"/receive?node="+this.value[1]).then((response) => {
-        console.log(response.data);
-        //this.attributes = response.data;
+      this.$http.get(api+"/degreeReceive?node="+this.value[1]).then(() => {
+        const iframe = this.$refs.Iframe;
+        const tempSrc = iframe.src;
+        iframe.src = tempSrc;
+        this.iframeLoad();
+        this.$http.get(api+"/degreecsv").then((response) => {
+          this.loading = false;
+          console.log(response.data);
+          this.degreeData = response.data;
+        });
       });
     },
   },
