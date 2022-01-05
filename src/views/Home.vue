@@ -14,7 +14,7 @@
       <el-col :xs="24" :sm="2" :md="8" :lg="11" :xl="11">
         <div class="grid-content bg-purple analysis-entry-card">
           <div class="filter">
-            <h3 class="analysis-title">Oeverall</h3>
+            <h3 class="analysis-title">Overall</h3>
             <div class="btn-group">
               <router-link :to="{ name: 'Overall' }" class="link">
                 <p class="analysis-btn">entry</p>
