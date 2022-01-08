@@ -27,17 +27,17 @@
   <el-row class="con_flex">
     <el-col :span="11">
       <div class="grid-content main_sec">
-        <el-table :data="tableData" stripe style="width: 100%">
-          <el-table-column prop="No" label="No" width="180" />
-          <el-table-column prop="To_id" label="To_id" width="180" />
-          <el-table-column prop="To_id_name" label="To_id_name" />
+        <el-table :data="closenessData" stripe style="width: 100%">
+          <el-table-column prop="from_id" label="肇事因素編號" width="180" />
+          <el-table-column prop="from_id_name" label="肇事因素名稱" width="180" />
+          <el-table-column prop="weight" label="Closeness Centrality" />
         </el-table>
       </div>
     </el-col>
     <el-col :span="9" class="analysis-table">
       <h1>Closeness Analysis</h1>
       <hr />
-      <p>此處為分析功能之說明</p>
+      <p>使用者選擇一個肇事因素做為中心起始節點，透過分析起始節點與周遭其他節點，找出與該節點擁有幾種不同的關聯</p><br>
       <iframe
         ref="Iframe"
         :src="src"
@@ -63,6 +63,9 @@ export default {
   data() {
     return {
       attributes: [],
+      closenessData: [
+        
+      ],
       tableData: [
         {
           No: "1",
@@ -147,6 +150,11 @@ export default {
         const tempSrc = iframe.src;
         iframe.src = tempSrc;
         this.iframeLoad();
+        this.$http.get(api+"/closenesscsv").then((response) => {
+          this.loading = false;
+          console.log(response.data);
+          this.closenessData = response.data;
+        });
       });
     },
   },

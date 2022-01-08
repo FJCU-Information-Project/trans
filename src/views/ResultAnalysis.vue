@@ -28,7 +28,7 @@
     <el-col :span="9" class="analysis-table">
       <h1>Result Analysis</h1>
       <hr />
-      <p>此處為分析功能之說明</p>
+      <p>使用者先選擇事故結果(例如：受傷程度、主要傷處、車輛撞擊部位），藉由該節點做SNA的集中點（Degree Centrality）分析，找出肇事因素跟車禍案件結果關聯的高低，哪些節點組合最容易造成此結果並對其進行排名<br><br>在本系統中，使用者可以藉由排名結果，得知造成車禍致死的關鍵因素，也能配合受傷程度屬性關聯，得出可能造成的死傷結果，來幫助其觀察分析結果，進而避免高致死率的肇事因素發生</p>
       <div class="grid-content bg-purple main_sec">
         <el-table :data="tableData" stripe style="width: 100%">
           <el-table-column prop="date" label="id" width="120" />

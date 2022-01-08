@@ -28,16 +28,16 @@
     <el-col :span="11">
       <div class="grid-content bg-purple main_sec">
         <el-table :data="degreeData" stripe style="width: 100%">
-          <el-table-column prop="from_id_name" label="使用所選節點" width="200" />
-          <el-table-column prop="to_id_name" label="肇事因素名稱" width="200" />
-          <el-table-column prop="weight" label="權重" />
+          <el-table-column prop="from_id" label="肇事因素編號" width="200" />
+          <el-table-column prop="from_id_name" label="肇事因素名稱" width="200" />
+          <el-table-column prop="SUM..total.." label="Degree Centrality" />
         </el-table>
       </div>
     </el-col>
     <el-col :span="9" class="analysis-table">
       <h1>Degree Analysis</h1>
       <hr />
-      <p>此處為分析功能之說明</p>
+      <p>使用者選擇一個肇事因素做為中心起始節點，透過分析起始節點與周圍其他節點，找出與該節點擁有的關聯總數量</p><br>
       <iframe
         ref="Iframe"
         :src="src"

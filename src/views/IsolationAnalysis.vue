@@ -16,7 +16,7 @@
     <el-col :span="11" class="analysis-table">
       <h1>Isolation Analysis</h1>
       <hr />
-      <p>此處為分析功能之說明</p>
+      <p>使用者透過此分析的SNA圖分布狀態可得知在該資料集中並非造成車禍發生的因素</p>
       <div class="grid-content bg-purple main_sec">
         <el-table :data="tableData" stripe style="width: 100%">
           <el-table-column prop="date" label="Date" width="180" />

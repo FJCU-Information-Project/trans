@@ -48,7 +48,7 @@
     <el-col :span="9" class="analysis-table">
       <h1>Overall</h1>
       <hr />
-      <p>此處為分析功能之說明</p>
+      <p>使用者透過此分析得知所有肇事因素節點周遭的網路分布狀態</p>
     </el-col>
   </el-row>
 </template>

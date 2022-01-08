@@ -36,7 +36,7 @@
     <el-col :span="9" class="analysis-table">
       <h1>Layer Analysis</h1>
       <hr />
-      <p>此處為分析功能之說明</p>
+      <p>使用者選擇一個肇事因素做為中心起始節點，從起始節點發散並展開來檢視第一層、第二層的關聯節點分析，並呈現以該起始節點為中心所分析的第一層網路圖，再進一步以第一層的節點作為起始點，各自發散出第二層的網路圖</p>
       <div
         v-loading="loading"
         class="grid-content bg-purple main_sec"
