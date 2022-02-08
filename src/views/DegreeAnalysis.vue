@@ -25,7 +25,7 @@
     </el-col>
   </el-row>
   <el-row class="con_flex">
-    <el-col :span="11">
+    <el-col :span="10">
       <div class="grid-content bg-purple main_sec">
         <el-table :data="degreeData" stripe style="width: 100%">
           <el-table-column prop="from_id" label="肇事因素編號" width="200" />
@@ -173,6 +173,8 @@ export default {
 <style lang="scss">
 .block {
   margin-top: 2em;
+  display: flex;
+  justify-content: center;
   & span {
     margin-top: 0;
   }

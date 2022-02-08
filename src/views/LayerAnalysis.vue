@@ -99,8 +99,8 @@ export default {
         expandTrigger: "hover",
       },
       loading: false,
-      //src: "https://fju-trans.herokuapp.com/sna_graph/snaRank10.html",
-      src: "http://localhost:5000/sna_graph/snaRank10.html",
+      //src: "https://fju-trans.herokuapp.com/sna_graph/layer.html",
+      src: "http://140.136.155.121/sna_graph/layer.html",
     };
   },
   methods: {
@@ -121,15 +121,15 @@ export default {
     },
     handleChange() {
       this.loading = true;
-      const api = `https://fju-trans.herokuapp.com`;
-      //const api = `http://localhost:5000`;
-      this.$http.get(api+"/receive?node="+this.value[1]).then(() => {
+      //const api = `https://fju-trans.herokuapp.com`;
+      const api = `http://140.136.155.121:5000`;
+      this.$http.get(api+"/layerReceive?node="+this.value[1]).then(() => {
         const iframe = this.$refs.Iframe;
         const tempSrc = iframe.src;
         iframe.src = tempSrc;
         this.iframeLoad();
       });
-      this.$http.get(api+"/csv").then((response) => {
+      this.$http.get(api+"/layercsv").then((response) => {
         this.loading = false;
         console.log(response.data);
         this.layerData = response.data;
