@@ -63,9 +63,7 @@ export default {
   data() {
     return {
       attributes: [],
-      closenessData: [
-        
-      ],
+      closenessData: [],
       tableData: [
         {
           No: "1",
@@ -81,36 +79,6 @@ export default {
         },
         {
           No: "3",
-          To_id: "1",
-          To_id_name: "晴",
-          Weight: "2500",
-        },
-        {
-          No: "4",
-          To_id: "1",
-          To_id_name: "晴",
-          Weight: "2500",
-        },
-        {
-          No: "5",
-          To_id: "1",
-          To_id_name: "晴",
-          Weight: "2500",
-        },
-        {
-          No: "6",
-          To_id: "1",
-          To_id_name: "晴",
-          Weight: "2500",
-        },
-        {
-          No: "7",
-          To_id: "1",
-          To_id_name: "晴",
-          Weight: "2500",
-        },
-        {
-          No: "8",
           To_id: "1",
           To_id_name: "晴",
           Weight: "2500",
@@ -143,7 +111,7 @@ export default {
     },
     handleChange(){
       this.loading = true;
-      //const api = `https://fju-trans.herokuapp.com`;
+      // const api = `https://fju-trans.herokuapp.com`;
       const api = `http://localhost:5000`;
       this.$http.get(api+"/closenessReceive?node="+this.value[1]).then(() => {
         const iframe = this.$refs.Iframe;
@@ -159,8 +127,8 @@ export default {
     },
   },
   created() {
-    const api = `https://fju-trans.herokuapp.com`;
-    // const api = `http://localhost:5000`;
+    // const api = `https://fju-trans.herokuapp.com`;
+    const api = `http://localhost:5000`;
     this.$http.get(api + "/attributes").then((response) => {
       console.log(response.data);
       this.attributes = response.data;

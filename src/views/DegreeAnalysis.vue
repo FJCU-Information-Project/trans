@@ -1,4 +1,5 @@
 <template>
+<div>
   <el-row class="close">
     <el-col :span="24">
       <div class="grid-content banner">
@@ -49,6 +50,7 @@
     </el-col>
   </el-row>
   <!--<el-footer>Footer</el-footer>-->
+</div>
 </template>
 
 <script>

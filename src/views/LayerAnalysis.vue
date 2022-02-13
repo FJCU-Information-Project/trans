@@ -1,74 +1,84 @@
 <template>
-  <el-row>
-    <el-col :span="24">
-      <div class="grid-content banner">
-        <Navbar />
-        <div class="ban-title">
-          <h1>Layer Analysis</h1>
-          <span style="font-weight: bolder" class="sub-title">
-            請選擇您想分析的中心節點及階層，我們將會為您呈現中心節點向外發散的層級關係點層級
-          </span>
-          <div class="select-group">
-            <div class="block">
-                <!-- <span class="demonstration">Child options expand when hovered</span> -->
-                <el-cascader
-                  v-model="value"
-                  :options="attributes"
-                  :props="props"
-                  @change="handleChange"
-                ></el-cascader>
-              </div>
-            <el-select v-model="tableValue" placeholder="請選擇層級">
-              <el-option
-                v-for="item in tableData"
-                :key="item.id"
-                :label="item.node"
-                :value="item.id"
-              >
-              </el-option>
-            </el-select>
+  <div>
+    <el-row>
+      <el-col :span="24">
+        <div class="grid-content banner">
+          <Navbar />
+          <div class="ban-title">
+            <h1>Layer Analysis</h1>
+            <span style="font-weight: bolder" class="sub-title">
+              請選擇您想分析的中心節點及階層，我們將會為您呈現中心節點向外發散的層級關係點層級
+            </span>
+            <div class="select-group">
+              <div class="block">
+                  <!-- <span class="demonstration">Child options expand when hovered</span> -->
+                  <el-cascader
+                    v-model="value"
+                    :options="attributes"
+                    :props="props"
+                    @change="handleChange"
+                  ></el-cascader>
+                </div>
+              <el-select v-model="layerValue" placeholder="請選擇層級">
+                <el-option
+                  v-for="item in tableData"
+                  :key="item.id"
+                  :label="item.node"
+                  :value="item.id"
+                >
+                </el-option>
+              </el-select>
+            </div>
           </div>
         </div>
-      </div>
-    </el-col>
-  </el-row>
-  <el-row class="con_flex">
-    <el-col :span="9" class="analysis-table">
-      <h1>Layer Analysis</h1>
-      <hr />
-      <p>使用者選擇一個肇事因素做為中心起始節點，從起始節點發散並展開來檢視第一層、第二層的關聯節點分析，並呈現以該起始節點為中心所分析的第一層網路圖，再進一步以第一層的節點作為起始點，各自發散出第二層的網路圖</p>
-      <div
-        v-loading="loading"
-        class="grid-content bg-purple main_sec"
-      >
-        <el-table :data="layerData" stripe style="width: 100%">
-          <el-table-column
-            prop="factorRank"
-            label="關聯肇事因素排名"
-            width="180"
-          />
-          <el-table-column prop="factor" label="肇事因素" width="180" />
-          <el-table-column prop="caseNumber" label="案件總數" />
-        </el-table>
-      </div>
-    </el-col>
-    <el-col :span="14">
-      <div
-        v-loading="loading"
-        class="grid-content bg-purple-light iframe_main_sec"
-      >
-        <iframe
-          ref="Iframe"
-          :src="src"
-          frameborder="0"
-          width="100%"
-          height="100%"
+      </el-col>
+    </el-row>
+    <el-row class="con_flex">
+      <el-col :span="9" class="analysis-table">
+        <h1>Layer Analysis</h1>
+        <hr />
+        <p>使用者選擇一個肇事因素做為中心起始節點，從起始節點發散並展開來檢視第一層、第二層的關聯節點分析，並呈現以該起始節點為中心所分析的第一層網路圖，再進一步以第一層的節點作為起始點，各自發散出第二層的網路圖</p>
+        <div
+          v-loading="loading"
+          class="grid-content bg-purple main_sec"
         >
-          <!-- 社會網路圖 -->
-        </iframe>
-      </div>
-    </el-col>
-  </el-row>
+          <el-table :data="layerData" stripe style="width: 100%">
+            <el-table-column prop="factor_id" label="factor_id" width="180"/>
+            <el-table-column 
+              prop="level" 
+              label="level" 
+              width="180" 
+              sortable
+              column-key="level" 
+              :filters="[
+                { text: '第一層', value: '1'},
+                { text: '第二層', value: '2'},
+              ]"
+              :filter-method="levelFilter"
+              />
+            <el-table-column prop="near_id" label="near_id" />
+            <el-table-column prop="weight" label="weight" />
+          </el-table>
+        </div>
+      </el-col>
+      <el-col :span="14">
+        <div
+          v-loading="loading"
+          class="grid-content bg-purple-light iframe_main_sec"
+        >
+          <iframe
+            ref="Iframe"
+            :src="src"
+            frameborder="0"
+            width="100%"
+            height="100%"
+          >
+            <!-- 社會網路圖 -->
+          </iframe>
+        </div>
+      </el-col>
+    </el-row>
+  </div>
 </template>
 
 <script>
@@ -99,8 +109,9 @@ export default {
         expandTrigger: "hover",
       },
       loading: false,
-      //src: "https://fju-trans.herokuapp.com/sna_graph/layer.html",
-      src: "http://140.136.155.121/sna_graph/layer.html",
+      // src: "https://fju-trans.herokuapp.com/sna_graph/layer.html",
+      // src: "http://140.136.155.121:5000/sna_graph/layer.html",
+      src: "http://localhost:5000/sna_graph/layer.html",
     };
   },
   methods: {
@@ -121,8 +132,9 @@ export default {
     },
     handleChange() {
       this.loading = true;
-      //const api = `https://fju-trans.herokuapp.com`;
-      const api = `http://140.136.155.121:5000`;
+      // const api = `https://fju-trans.herokuapp.com`;
+      // const api = `http://140.136.155.121:5000`;
+      const api = `http://localhost:5000`;
       this.$http.get(api+"/layerReceive?node="+this.value[1]).then(() => {
         const iframe = this.$refs.Iframe;
         const tempSrc = iframe.src;
@@ -135,14 +147,17 @@ export default {
         this.layerData = response.data;
       });
     },
+    levelFilter(value, row){
+      return row.tag === value
+    },
   },
   mounted() {
     this.iframeLoad();
   },
   created() {
     console.log("created");
-    const api = `https://fju-trans.herokuapp.com`;
-    //const api = `http://localhost:5000`;
+    // const api = `https://fju-trans.herokuapp.com`;
+    const api = `http://localhost:5000`;
     this.$http.get(api+"/attributes").then((response) => {
       console.log(response.data);
       this.attributes = response.data;
