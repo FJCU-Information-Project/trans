@@ -1,55 +1,62 @@
 <template>
-  <el-row class="close">
-    <el-col :span="24">
-      <div class="grid-content banner">
-        <Navbar />
-        <div class="ban-title">
-          <h1>Result Analysis</h1>
-          <span style="font-weight: bolder" class="sub-title">
-            請選擇事故結果，我們將為您分析出哪些節點組合最容易造成此結果的產生，並加以排名
-          </span>
-          <div class="select-group">
-            <div class="block">
-              <!-- <span class="demonstration">Child options expand when hovered</span> -->
-              <el-cascader
-                v-model="value"
-                :options="attributes"
-                :props="props"
-                @change="handleChange"
-                placeholder="請選擇事故節點"
-              ></el-cascader>
+  <div>
+    <el-row class="close">
+      <el-col :span="24">
+        <div class="grid-content banner">
+          <Navbar />
+          <div class="ban-title">
+            <h1>Result Analysis</h1>
+            <span style="font-weight: bolder" class="sub-title">
+              請選擇事故結果，我們將為您分析出哪些節點組合最容易造成此結果的產生，並加以排名
+            </span>
+            <div class="select-group">
+              <div class="block">
+                <!-- <span class="demonstration">Child options expand when hovered</span> -->
+                <el-cascader
+                  v-model="value"
+                  :options="attributes"
+                  :props="props"
+                  @change="handleChange"
+                  placeholder="請選擇事故節點"
+                ></el-cascader>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </el-col>
-  </el-row>
-  <el-row class="con_flex">
-    <el-col :span="9" class="analysis-table">
-      <h1>Result Analysis</h1>
-      <hr />
-      <p>使用者先選擇事故結果(例如：受傷程度、主要傷處、車輛撞擊部位），藉由該節點做SNA的集中點（Degree Centrality）分析，找出肇事因素跟車禍案件結果關聯的高低，哪些節點組合最容易造成此結果並對其進行排名<br><br>在本系統中，使用者可以藉由排名結果，得知造成車禍致死的關鍵因素，也能配合受傷程度屬性關聯，得出可能造成的死傷結果，來幫助其觀察分析結果，進而避免高致死率的肇事因素發生</p>
-      <div class="grid-content bg-purple main_sec">
-        <el-table :data="tableData" stripe style="width: 100%">
-          <el-table-column prop="date" label="id" width="120" />
-          <el-table-column prop="name" label="node" width="90" />
-          <el-table-column prop="address" label="node" />
-        </el-table>
-      </div>
-    </el-col>
-    <el-col :span="14">
-      <div class="grid-content bg-purple-light iframe_main_sec">
-        <iframe
-          src="/snaRank10.html"
-          frameborder="0"
-          width="100%"
-          height="100%"
+      </el-col>
+    </el-row>
+    <el-row class="con_flex">
+      <el-col :span="9" class="analysis-table">
+        <h1>Result Analysis</h1>
+        <hr />
+        <p>使用者先選擇事故結果(例如：受傷程度、主要傷處、車輛撞擊部位），藉由該節點做SNA的集中點（Degree Centrality）分析，找出肇事因素跟車禍案件結果關聯的高低，哪些節點組合最容易造成此結果並對其進行排名<br><br>在本系統中，使用者可以藉由排名結果，得知造成車禍致死的關鍵因素，也能配合受傷程度屬性關聯，得出可能造成的死傷結果，來幫助其觀察分析結果，進而避免高致死率的肇事因素發生</p>
+        <div class="grid-content bg-purple main_sec">
+          <el-table :data="tableData" stripe style="width: 100%">
+            <el-table-column prop="from_id_name" label="from_id_name"/>
+            <el-table-column prop="rank" label="rank" />
+            <el-table-column prop="to_id_name" label="to_id_name" />
+            <el-table-column prop="total" label="total" />
+          </el-table>
+        </div>
+      </el-col>
+      <el-col :span="14">
+        <div 
+          v-loading="loading"
+          class="grid-content bg-purple-light iframe_main_sec"
         >
-          <!-- 社會網路圖 -->
-        </iframe>
-      </div>
-    </el-col>
-  </el-row>
+          <iframe
+            ref="Iframe"
+            :src="src"
+            frameborder="0"
+            width="100%"
+            height="100%"
+          >
+            <!-- 社會網路圖 -->
+          </iframe>
+        </div>
+      </el-col>
+    </el-row>
+  </div>
 </template>
 
 <script>
@@ -65,77 +72,63 @@ export default {
       attributes: [],
       tableData: [
         {
-          date: "2016-05-03",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-02",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-04",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-01",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-03",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-02",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-04",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-01",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-03",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-02",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
+          from_id: "139",
+          from_id_name: "無缺陷",
+          rank: "1",
+          to_id: "184",
+          to_id_name: "無繪設快慢車道分隔線",
+          total: "21774",
         },
       ],
       props: {
         expandTrigger: "hover",
       },
+      value: "",
+      loading: false,
+      src: "http://localhost:5000/sna_graph/result.html",
     };
   },
   methods: {
+    iframeLoad() {
+      this.loading = true;
+      const iframe = this.$refs.Iframe;
+      if (iframe.attachEvent) {
+        // For IE
+        iframe.attachEvent("onload", () => {
+          this.loading = false;
+        });
+      } else {
+        // Others Browser
+        iframe.onload = () => {
+          this.loading = false;
+        };
+      }
+    },
     handleChange() {
       //const api = `https://fju-trans.herokuapp.com`;
       const api = `http://localhost:5000`;
       this.$http
-        .get(api + "/receive?node=" + this.value[1])
-        .then((response) => {
-          console.log(response.data);
-          //this.attributes = response.data;
+        .get(api + "/resultReceive?node=" + this.attributes[parseInt(this.value[0])-1].label + "&rank=" + (parseInt(this.value[0])-1))
+        .then(() => {
+          const iframe = this.$refs.Iframe;
+          const tempSrc = iframe.src;
+          iframe.src = tempSrc;
+          this.iframeLoad();
+          this.$http
+            .get(api+"/resultcsv")
+            .then((response) => {
+              this.loading = false;
+              console.log(response.data);
+              this.tableData = response.data;
+            });
         });
+      
     },
   },
   created() {
-    const api = `https://fju-trans.herokuapp.com`;
-    // const api = `http://localhost:5000`;
-    this.$http.get(api + "/attributes").then((response) => {
+    // const api = `https://fju-trans.herokuapp.com`;
+    const api = `http://localhost:5000`;
+    this.$http.get(api + "/resultAttributes").then((response) => {
       console.log(response.data);
       this.attributes = response.data;
     });

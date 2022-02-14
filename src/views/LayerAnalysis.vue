@@ -11,14 +11,14 @@
             </span>
             <div class="select-group">
               <div class="block">
-                  <!-- <span class="demonstration">Child options expand when hovered</span> -->
-                  <el-cascader
-                    v-model="value"
-                    :options="attributes"
-                    :props="props"
-                    @change="handleChange"
-                  ></el-cascader>
-                </div>
+                <!-- <span class="demonstration">Child options expand when hovered</span> -->
+                <el-cascader
+                  v-model="value"
+                  :options="attributes"
+                  :props="props"
+                  @change="handleChange"
+                ></el-cascader>
+              </div>
               <el-select v-model="layerValue" placeholder="請選擇層級">
                 <el-option
                   v-for="item in tableData"
