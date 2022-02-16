@@ -19,12 +19,12 @@
                   @change="handleChange"
                 ></el-cascader>
               </div>
-              <el-select v-model="layerValue" placeholder="請選擇層級">
+              <el-select v-model="layerValue" placeholder="請選擇層級" @change="layerChange">
                 <el-option
                   v-for="item in tableData"
                   :key="item.id"
                   :label="item.node"
-                  :value="item.id"
+                  :value="item.node"
                 >
                 </el-option>
               </el-select>
@@ -43,21 +43,10 @@
           class="grid-content bg-purple main_sec"
         >
           <el-table :data="layerData" stripe style="width: 100%">
-            <el-table-column prop="factor_id" label="factor_id" width="180"/>
-            <el-table-column 
-              prop="level" 
-              label="level" 
-              width="180" 
-              sortable
-              column-key="level" 
-              :filters="[
-                { text: '第一層', value: '1'},
-                { text: '第二層', value: '2'},
-              ]"
-              :filter-method="levelFilter"
-              />
-            <el-table-column prop="near_id" label="near_id" />
-            <el-table-column prop="weight" label="weight" />
+            <el-table-column prop="factor_id" label="第一層節點編號" width="180"/>
+            <el-table-column prop="level" label="等級" width="180"/>
+            <el-table-column prop="near_id" label="第二層節點編號"/>
+            <el-table-column prop="weight" label="權重" sortable/>
           </el-table>
         </div>
       </el-col>
@@ -91,19 +80,23 @@ export default {
   },
   data() {
     return {
+      value: "",
       attributes: [],
       layerData: [],
       tableData: [
         {
+          id: "0",
+          node: "起始點",
+        },
+        {
           id: "1",
-          node: "第一層",
+          node: "第1層",
         },
         {
           id: "2",
-          node: "第二層",
+          node: "第2層",
         },
       ],
-      value: "",
       layerValue: "",
       props: {
         expandTrigger: "hover",
@@ -140,15 +133,35 @@ export default {
         const tempSrc = iframe.src;
         iframe.src = tempSrc;
         this.iframeLoad();
-      });
-      this.$http.get(api+"/layercsv").then((response) => {
-        this.loading = false;
-        console.log(response.data);
-        this.layerData = response.data;
+        this.$http.get(api+"/layercsv").then((response) => {
+          this.loading = false;
+          console.log(response.data);
+          this.layerData = response.data;
+        });
       });
     },
-    levelFilter(value, row){
-      return row.tag === value
+    layerChange() {
+      this.loading = true;
+      // const api = `https://fju-trans.herokuapp.com`;
+      // const api = `http://140.136.155.121:5000`;
+      const api = `http://localhost:5000`;
+      this.$http.get(api+"/layerReceive?node="+this.value[1]).then(() => {
+        const iframe = this.$refs.Iframe;
+        const tempSrc = iframe.src;
+        iframe.src = tempSrc;
+        this.iframeLoad();
+        this.$http.get(api+"/layercsv").then((response) => {
+          this.loading = false;
+          console.log(response.data);
+          this.layerData = response.data
+            .map( (value) => {
+              if(value.level === this.layerValue){
+                return value;
+              }
+            })
+            .filter( item => item );
+        });
+      });
     },
   },
   mounted() {
