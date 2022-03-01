@@ -1,113 +1,97 @@
 <template>
-  <el-row>
-    <el-col :span="24">
-      <div class="grid-content banner">
-        <Navbar />
-        <div class="ban-title">
-          <h1>Isolation Analysis</h1>
-          <span style="font-weight: bolder" class="sub-title">
-            此分析我們將為您呈現整個網路圖中被孤立的節點
-          </span>
+  <div>
+    <el-row>
+      <el-col :span="24">
+        <div class="grid-content banner">
+          <Navbar />
+          <div class="ban-title">
+            <h1>Isolation Analysis</h1>
+            <span style="font-weight: bolder" class="sub-title">
+              此分析我們將為您呈現整個網路圖中被孤立的節點
+            </span>
+            <div class="select-group">
+            <div class="block">
+              <!-- <span class="demonstration">Child options expand when hovered</span> -->
+              <el-cascader
+                v-model="value"
+                :options="attributes"
+                :props="props"
+                @change="handleChange"
+                placeholder="請選擇事故節點"
+              ></el-cascader>
+            </div>
+          </div>
+          </div>
         </div>
-      </div>
-    </el-col>
-  </el-row>
-  <el-row class="con_flex">
-    <el-col :span="11" class="analysis-table">
-      <h1>Isolation Analysis</h1>
-      <hr />
-      <p>使用者透過此分析的SNA圖分布狀態可得知在該資料集中並非造成車禍發生的因素</p>
-      <div class="grid-content bg-purple main_sec">
-        <el-table :data="tableData" stripe style="width: 100%">
-          <el-table-column prop="date" label="Date" width="180" />
-          <el-table-column prop="name" label="Name" width="180" />
-          <el-table-column prop="address" label="Address" />
-        </el-table>
-      </div>
-    </el-col>
-    <el-col :span="12">
-      <div
-        v-loading="loading"
-        class="grid-content bg-purple-light iframe_main_sec"
-      >
-        <iframe
-          ref="Iframe"
-          src="/snaRank10.html"
-          frameborder="0"
-          width="100%"
-          height="100%"
+      </el-col>
+    </el-row>
+    
+    <el-row class="con_flex">
+      <el-col :span="11" class="analysis-table">
+        <h1>Isolation Analysis</h1>
+        <hr />
+        <p>使用者透過此分析的 SNA 圖可得知在該資料集中並非造成車禍發生的因素節點。其中表格中所顯示的關聯組合皆為相同的起始因素節點，而其每一組組合的權重皆為0，亦可解釋為「在該資料集中並沒有出現過的關聯組合」。</p>
+        <br>
+        <!--
+          <el-card class="box-card" v-if="value !== ''">
+          <div class="card-header">
+            <span>起始節點:</span>
+            <span>{{isolationData[0].from_id_name}}</span>
+          </div>
+        </el-card>
+        -->
+        <div v-loading="loading" class="grid-content bg-purple main_sec">
+          <el-table :data="isolationData" stripe style="width: 100%">
+            <el-table-column prop="from_id_name" label="起始節點" />
+            <el-table-column prop="to_id_name" label="終點節點" />
+            <el-table-column prop="total" label="權重值" />
+          </el-table>
+        </div>
+      </el-col>
+      <el-col :span="12">
+        <div
+          v-loading="loading"
+          class="grid-content bg-purple-light iframe_main_sec"
         >
-          <!-- 社會網路圖 -->
-        </iframe>
-      </div>
-    </el-col>
-  </el-row>
+          <iframe
+            ref="Iframe"
+            :src="src"
+            frameborder="0"
+            width="100%"
+            height="100%"
+          >
+            <!-- 社會網路圖 -->
+          </iframe>
+        </div>
+      </el-col>
+    </el-row>
+  </div>
 </template>
 
 <script>
 import Navbar from "@/components/Navbar.vue";
 
 export default {
-  name: "IntersectionAnalysis",
+  name: "IslationAnalysis",
   components: {
     Navbar,
   },
   data() {
     return {
-      tableData: [
-        {
-          date: "2016-05-03",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-02",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-04",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-01",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-03",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-02",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-04",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-01",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-03",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-02",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
+      attributes: [
+      
       ],
+      value: "",
+      isolationData: [
+        
+      ],
+      tableData: [
+      ],
+      props: {
+        expandTrigger: "hover",
+      },
       loading: false,
-      src: "https://fju-trans.herokuapp.com/sna_graph",
+      src: "http://localhost:5000/sna_graph/isolation.html",
     };
   },
   methods: {
@@ -126,14 +110,47 @@ export default {
         };
       }
     },
+    handleChange(){
+      this.loading = true;
+      // const api = `https://fju-trans.herokuapp.com`;
+      const api = `http://localhost:5000`;
+      this.$http.get(api+"/isolationReceive?node="+this.value[1]).then(() => {
+        const iframe = this.$refs.Iframe;
+        const tempSrc = iframe.src;
+        iframe.src = tempSrc;
+        this.iframeLoad();
+        this.$http.get(api+"/isolationcsv").then((response) => {
+          this.loading = false;
+          console.log(response.data);
+          this.isolationData = response.data;
+        });
+      });
+    },
   },
   mounted() {
     this.iframeLoad();
+  },
+  created() {
+    // const api = `https://fju-trans.herokuapp.com`;
+    const api = `http://localhost:5000`;
+    this.$http.get(api + "/attributes").then((response) => {
+      console.log(response.data);
+      this.attributes = response.data;
+    });
   },
 };
 </script>
 
 <style lang="scss">
+.block {
+  width: 100%;
+  margin-top: 2em;
+  display: flex;
+  justify-content: center;
+  & span {
+    margin-top: 0;
+  }
+}
 .analysis-table {
   & p {
     text-align: left;

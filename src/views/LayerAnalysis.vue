@@ -17,6 +17,7 @@
                   :options="attributes"
                   :props="props"
                   @change="handleChange"
+                  placeholder="請選擇起始節點"
                 ></el-cascader>
               </div>
               <el-select v-model="layerValue" placeholder="請選擇層級" @change="layerChange">
@@ -37,16 +38,15 @@
       <el-col :span="9" class="analysis-table">
         <h1>Layer Analysis</h1>
         <hr />
-        <p>使用者選擇一個肇事因素做為中心起始節點，從起始節點發散並展開來檢視第一層、第二層的關聯節點分析，並呈現以該起始節點為中心所分析的第一層網路圖，再進一步以第一層的節點作為起始點，各自發散出第二層的網路圖</p>
+        <p>使用者選擇一個肇事因素做為中心起始節點，從起始節點發散並展開來檢視第一層、第二層的關聯節點分析，並呈現以該起始節點為中心所分析的第一層網路圖，再進一步以第一層的節點作為起始點，各自發散出第二層的網路圖</p>     
         <div
           v-loading="loading"
           class="grid-content bg-purple main_sec"
         >
           <el-table :data="layerData" stripe style="width: 100%">
-            <el-table-column prop="factor_id" label="第一層節點編號" width="180"/>
-            <el-table-column prop="level" label="等級" width="180"/>
-            <el-table-column prop="near_id" label="第二層節點編號"/>
-            <el-table-column prop="weight" label="權重" sortable/>
+            <el-table-column prop="first_name" label="起始節點" width="180"/>
+            <el-table-column prop="second_name" label="層級節點" width="180"/>
+            <el-table-column prop="group" label="層級"/>
           </el-table>
         </div>
       </el-col>
@@ -62,7 +62,6 @@
             width="100%"
             height="100%"
           >
-            <!-- 社會網路圖 -->
           </iframe>
         </div>
       </el-col>
@@ -105,6 +104,7 @@ export default {
       // src: "https://fju-trans.herokuapp.com/sna_graph/layer.html",
       // src: "http://140.136.155.121:5000/sna_graph/layer.html",
       src: "http://localhost:5000/sna_graph/layer.html",
+      // src: "http://localhost:8080",
     };
   },
   methods: {
@@ -155,7 +155,7 @@ export default {
           console.log(response.data);
           this.layerData = response.data
             .map( (value) => {
-              if(value.level === this.layerValue){
+              if(value.group === this.layerValue){
                 return value;
               }
             })

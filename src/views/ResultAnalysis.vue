@@ -40,10 +40,8 @@
         <p>使用者先選擇事故結果(例如：受傷程度、主要傷處、車輛撞擊部位），藉由該節點做SNA的集中點（Degree Centrality）分析，找出肇事因素跟車禍案件結果關聯的高低，哪些節點組合最容易造成此結果並對其進行排名<br><br>在本系統中，使用者可以藉由排名結果，得知造成車禍致死的關鍵因素，也能配合受傷程度屬性關聯，得出可能造成的死傷結果，來幫助其觀察分析結果，進而避免高致死率的肇事因素發生</p>
         <div class="grid-content bg-purple main_sec">
           <el-table :data="tableData" stripe style="width: 100%">
-            <el-table-column prop="from_id" label="起始節點編號"/>
-            <el-table-column prop="from_id_name" label="起始節點名稱"/>
             <el-table-column prop="rank" label="權重排名" />
-            <el-table-column prop="to_id" label="終點節點編號" />
+            <el-table-column prop="from_id_name" label="起始節點名稱"/>
             <el-table-column prop="to_id_name" label="終點節點名稱" />
             <el-table-column prop="total" label="權重" />
             <el-table-column label="查看SNA圖">
@@ -126,6 +124,7 @@ export default {
     nodeChange() {
       //const api = `https://fju-trans.herokuapp.com`;
       const api = `http://localhost:5000`;
+      this.loading = true;
       this.$http
         .get(api + "/resultReceive?node=" + this.attributes[parseInt(this.value[0])-1].label + "&rank=1")
         .then(() => {
@@ -153,7 +152,7 @@ export default {
       //const api = `https://fju-trans.herokuapp.com`;
       const api = `http://localhost:5000`;
       this.$http
-        .get(api + "/resultReceive?node=" + this.attributes[parseInt(this.value[0])-1].label + "&rank=" + index)
+        .get(api + "/resultReceive?node=" + this.attributes[parseInt(this.value[0])-1].label + "&rank=" + (parseInt(index)+1))
         .then(() => {
           const iframe = this.$refs.Iframe;
           const tempSrc = iframe.src;
