@@ -88,6 +88,11 @@ const routes = [
     name: "Dataset",
     component: () => import("../views/Dataset.vue"),
   },
+  {
+    path: "/test",
+    name: "Test",
+    component: () => import("../views/Test.vue"),
+  },
 ];
 
 const router = createRouter({
