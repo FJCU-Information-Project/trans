@@ -60,13 +60,15 @@ export default {
   margin-right: 0.5em;
 }
 .nav {
+  width: 100%;
   padding: 1em 2em;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 8px 8px 15px rgb(255, 255, 255);
+  box-shadow: 8px 8px 15px rgb(0,0,0, .6);
   border-radius: 0 !important;
   background: transparent;
+  box-sizing: border-box;
 }
 #logo {
   padding: 0.5em 1em;
@@ -75,7 +77,7 @@ export default {
   letter-spacing: 4px;
   text-indent: 4px;
   font-size: 1.25em;
-  color: white;
+  color: #fc6471 !important;
 }
 button {
   display: flex;

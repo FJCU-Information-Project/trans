@@ -3,9 +3,9 @@
     <el-col :span="24">
       <div class="grid-content home-banner">
         <Navbar />
-        <div class="ban-title">
+        <!--<div class="ban-title">
           <h1>Welcome to Trans</h1>
-        </div>
+        </div>-->
       </div>
     </el-col>
   </el-row>
@@ -213,14 +213,8 @@ export default {
 //
 .home-banner {
   // background: rgb(226, 226, 216);
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  background-image: url(https://images.pexels.com/photos/2705755/pexels-photo-2705755.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
-  background-size: cover;
-  background-position: center;
-  color: white;
+  height: auto; 
+  color: black;
   & h1 {
     font-size: 4em;
     font-weight: bolder;

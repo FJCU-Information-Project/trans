@@ -7,9 +7,10 @@
           <el-card shadow="always" class="con-flex">
             <h1>授權碼</h1>
             <el-input
-              v-model="input"
+              v-model="token"
               placeholder="請輸入授權碼"
               class="number_input"
+              @change="authcheck"
             />
             <el-button type="danger" class="submit">確認</el-button>
           </el-card>
@@ -26,6 +27,32 @@ export default {
   name: "Login",
   components: {
     Navbar,
+  },
+  data() {
+    return {
+      token: "",
+    }
+  },
+  methods: {
+    authcheck() {
+      //const api = `https://fju-trans.herokuapp.com`;
+      const api = `http://localhost:50000`;
+      this.$http
+        .post(api + "/auth", {"token": this.token})
+        .then((req) => {
+          console.log(req.data);
+          if (req.data.valid === true){
+            console.log("Token 是有用的!!");
+            // TODO:
+            // 1.把this.token存到localstorage
+            // 2.然後跳轉到登入之後的頁面
+          }else{
+            console.log("Token 是廢物");
+            // TODO:
+            // 1.讓使用者知道這個token不能用
+          }
+        });
+    },
   },
 };
 </script>
