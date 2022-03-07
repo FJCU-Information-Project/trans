@@ -36,7 +36,7 @@ export default {
   methods: {
     authcheck() {
       //const api = `https://fju-trans.herokuapp.com`;
-      const api = `http://localhost:50000`;
+      const api = `http://localhost:500000`;
       this.$http
         .post(api + "/auth", {"token": this.token})
         .then((req) => {

@@ -102,7 +102,7 @@ export default {
         expandTrigger: "hover",
       },
       loading: false,
-      src: "http://localhost:5000/sna_graph/result.html",
+      src: "http://localhost:50000/sna_graph/result.html",
     };
   },
   methods: {
@@ -123,7 +123,7 @@ export default {
     },
     nodeChange() {
       //const api = `https://fju-trans.herokuapp.com`;
-      const api = `http://localhost:5000`;
+      const api = `http://localhost:50000`;
       this.loading = true;
       this.$http
         .get(api + "/resultReceive?node=" + this.attributes[parseInt(this.value[0])-1].label + "&rank=1")
@@ -150,7 +150,7 @@ export default {
     checkRank(index,rowItem) {
       console.log(rowItem);
       //const api = `https://fju-trans.herokuapp.com`;
-      const api = `http://localhost:5000`;
+      const api = `http://localhost:50000`;
       this.$http
         .get(api + "/resultReceive?node=" + this.attributes[parseInt(this.value[0])-1].label + "&rank=" + (parseInt(index)+1))
         .then(() => {
@@ -163,7 +163,7 @@ export default {
   },
   created() {
     // const api = `https://fju-trans.herokuapp.com`;
-    const api = `http://localhost:5000`;
+    const api = `http://localhost:50000`;
     this.$http.get(api + "/resultAttributes").then((response) => {
       console.log(response.data);
       this.attributes = response.data;

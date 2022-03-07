@@ -91,7 +91,7 @@ export default {
         expandTrigger: "hover",
       },
       loading: false,
-      src: "http://localhost:5000/sna_graph/isolation.html",
+      src: "http://localhost:50000/sna_graph/isolation.html",
     };
   },
   methods: {
@@ -113,7 +113,7 @@ export default {
     handleChange(){
       this.loading = true;
       // const api = `https://fju-trans.herokuapp.com`;
-      const api = `http://localhost:5000`;
+      const api = `http://localhost:50000`;
       this.$http.get(api+"/isolationReceive?node="+this.value[1]).then(() => {
         const iframe = this.$refs.Iframe;
         const tempSrc = iframe.src;
@@ -132,7 +132,7 @@ export default {
   },
   created() {
     // const api = `https://fju-trans.herokuapp.com`;
-    const api = `http://localhost:5000`;
+    const api = `http://localhost:50000`;
     this.$http.get(api + "/attributes").then((response) => {
       console.log(response.data);
       this.attributes = response.data;
