@@ -1,40 +1,44 @@
 <template>
-<div>
-  <el-row class="close">
-    <el-col :span="24">
-      <Navbar />
+  <div>
+    <el-row class="close">
+      <el-col :span="24">
+        <Navbar />
         <div class="select-group">
           <div class="block">
-          <!-- <span class="demonstration">Child options expand when hovered</span> -->
-          <el-cascader
-            v-model="value"
-            :options="attributes"
-            :props="props"
-            @change="handleChange"
-            placeholder="請選擇事故節點"
-          ></el-cascader>
+            <!-- <span class="demonstration">Child options expand when hovered</span> -->
+            <el-cascader
+              v-model="value"
+              :options="attributes"
+              :props="props"
+              @change="handleChange"
+              placeholder="請選擇事故節點"
+            ></el-cascader>
+          </div>
         </div>
-      </div>
-    </el-col>
-  </el-row>
-  <el-row class="con_flex">
-    <el-col :span="10">
-      <div class="grid-content bg-purple main_sec">
-        <el-table :data="degreeData" stripe style="width: 100%">
-          <el-table-column prop="from_id" label="肇事因素編號" width="200" />
-          <el-table-column prop="from_id_name" label="肇事因素名稱" width="200" />
-          <el-table-column prop="SUM..total.." label="Degree Centrality" />
-        </el-table>
-      </div>
-    </el-col>
-    <el-col :span="9" class="analysis-table">
-      <h1>Test Analysis</h1>
-      <hr />
-      <div id="mynetwork"></div>
-    </el-col>
-  </el-row>
-  <!--<el-footer>Footer</el-footer>-->
-</div>
+      </el-col>
+    </el-row>
+    <el-row class="con_flex">
+      <el-col :span="10">
+        <div class="grid-content bg-purple main_sec">
+          <el-table :data="degreeData" stripe style="width: 100%">
+            <el-table-column prop="from_id" label="肇事因素編號" width="200" />
+            <el-table-column
+              prop="from_id_name"
+              label="肇事因素名稱"
+              width="200"
+            />
+            <el-table-column prop="SUM..total.." label="Degree Centrality" />
+          </el-table>
+        </div>
+      </el-col>
+      <el-col :span="9" class="analysis-table">
+        <h1>Test Analysis</h1>
+        <hr />
+        <div id="mynetwork"></div>
+      </el-col>
+    </el-row>
+    <!--<el-footer>Footer</el-footer>-->
+  </div>
 </template>
 
 <script>
@@ -49,12 +53,8 @@ export default {
   data() {
     return {
       network: null,
-      attributes: [
-      
-      ],
-      degreeData: [
-        
-      ],
+      attributes: [],
+      degreeData: [],
       tableData: [
         {
           No: "1",
@@ -78,7 +78,7 @@ export default {
       src: "http://localhost:5000/sna_graph/degree.html",
     };
   },
-  methods:{
+  methods: {
     iframeLoad() {
       this.loading = true;
       const iframe = this.$refs.Iframe;
@@ -94,16 +94,16 @@ export default {
         };
       }
     },
-    handleChange(){
+    handleChange() {
       this.loading = true;
       //const api = `https://fju-trans.herokuapp.com`;
       const api = `http://localhost:5000`;
-      this.$http.get(api+"/degreeReceive?node="+this.value[1]).then(() => {
+      this.$http.get(api + "/degreeReceive?node=" + this.value[1]).then(() => {
         const iframe = this.$refs.Iframe;
         const tempSrc = iframe.src;
         iframe.src = tempSrc;
         this.iframeLoad();
-        this.$http.get(api+"/degreecsv").then((response) => {
+        this.$http.get(api + "/degreecsv").then((response) => {
           this.loading = false;
           console.log(response.data);
           this.degreeData = response.data;

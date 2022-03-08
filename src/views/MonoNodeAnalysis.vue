@@ -10,15 +10,15 @@
           </span>
           <div class="select-group">
             <div class="block">
-                <!-- <span class="demonstration">Child options expand when hovered</span> -->
-                <el-cascader
-                  v-model="value"
-                  :options="attributes"
-                  :props="props"
-                  @change="handleChange"
-                  placeholder="請選擇事故節點"
-                ></el-cascader>
-              </div>
+              <!-- <span class="demonstration">Child options expand when hovered</span> -->
+              <el-cascader
+                v-model="value"
+                :options="attributes"
+                :props="props"
+                @change="handleChange"
+                placeholder="請選擇事故節點"
+              ></el-cascader>
+            </div>
           </div>
         </div>
       </div>
@@ -28,15 +28,17 @@
     <el-col :span="9" class="analysis-table">
       <h1>Factor Rank Analysis</h1>
       <hr />
-      <p>使用者先選擇肇事因素的屬性(例如:天候、道路類別)，再依照所選類別選取目標的中心節點，系統會呈現使用者所選的中心節點和其中關聯權重前10%高的肇事因素節點<br><br>
-使用者可以藉由選取特定肇事因素節點，來找出該肇事因素節點和其他節點的關聯性強弱。藉此讓使用者觀察對於自己感興趣的肇事因素節點，去尋找與此相關的其他肇事因素並進行關聯權重排名。圖中的線會因兩個節點間的關聯權重增加而加粗
-</p>
-      <div
-        v-loading="loading"
-        class="grid-content bg-purple main_sec"
-      >
+      <p>
+        使用者先選擇肇事因素的屬性(例如:天候、道路類別)，再依照所選類別選取目標的中心節點，系統會呈現使用者所選的中心節點和其中關聯權重前10%高的肇事因素節點<br /><br />
+        使用者可以藉由選取特定肇事因素節點，來找出該肇事因素節點和其他節點的關聯性強弱。藉此讓使用者觀察對於自己感興趣的肇事因素節點，去尋找與此相關的其他肇事因素並進行關聯權重排名。圖中的線會因兩個節點間的關聯權重增加而加粗
+      </p>
+      <div v-loading="loading" class="grid-content bg-purple main_sec">
         <el-table :data="factorRankData" stripe style="width: 100%">
-          <el-table-column prop="factorRank" label="關聯肇事因素排名" width="180" />
+          <el-table-column
+            prop="factorRank"
+            label="關聯肇事因素排名"
+            width="180"
+          />
           <el-table-column prop="factor" label="肇事因素" width="180" />
           <el-table-column prop="caseNumber" label="案件總數" />
         </el-table>
@@ -51,8 +53,8 @@
           width="100%"
           height="100%"
         >
-        <!-- 社會網路圖 -->
-      </iframe>
+          <!-- 社會網路圖 -->
+        </iframe>
       </div>
     </el-col>
   </el-row>
@@ -68,16 +70,11 @@ export default {
   },
   data() {
     return {
-      attributes: [
-        
-      ],
-      factorRankData: [
-        
-      ],
-      tableData: [
-      ],
+      attributes: [],
+      factorRankData: [],
+      tableData: [],
       props: {
-        expandTrigger: 'hover',
+        expandTrigger: "hover",
       },
       value: "",
       loading: false,
@@ -85,7 +82,7 @@ export default {
       src: "http://localhost:5000/sna_graph/snaRank10.html",
     };
   },
-  methods:{
+  methods: {
     iframeLoad() {
       this.loading = true;
       const iframe = this.$refs.Iframe;
@@ -101,28 +98,30 @@ export default {
         };
       }
     },
-    handleChange(){
+    handleChange() {
       this.loading = true;
       //const api = `https://fju-trans.herokuapp.com`;
       const api = `http://localhost:5000`;
-      this.$http.get(api+"/factorRankReceive?node="+this.value[1]).then(() => {
-        const iframe = this.$refs.Iframe;
-        const tempSrc = iframe.src;
-        iframe.src = tempSrc;
-        this.iframeLoad();
-        this.$http.get(api+"/factorRankcsv").then((response) => {
-          this.loading = false;
-          console.log(response.data);
-          this.factorRankData = response.data;
+      this.$http
+        .get(api + "/factorRankReceive?node=" + this.value[1])
+        .then(() => {
+          const iframe = this.$refs.Iframe;
+          const tempSrc = iframe.src;
+          iframe.src = tempSrc;
+          this.iframeLoad();
+          this.$http.get(api + "/factorRankcsv").then((response) => {
+            this.loading = false;
+            console.log(response.data);
+            this.factorRankData = response.data;
+          });
         });
-      });
     },
   },
- 
+
   created() {
     //const api = `https://fju-trans.herokuapp.com`;
     const api = `http://localhost:5000`;
-    this.$http.get(api+"/attributes").then((response) => {
+    this.$http.get(api + "/attributes").then((response) => {
       console.log(response.data);
       this.attributes = response.data;
     });
@@ -131,9 +130,9 @@ export default {
 </script>
 
 <style lang="scss">
-.block{
+.block {
   margin-top: 2em;
-  & span{
+  & span {
     margin-top: 0;
   }
 }

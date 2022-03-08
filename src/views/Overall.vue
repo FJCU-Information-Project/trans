@@ -35,12 +35,7 @@
     </el-col> -->
     <el-col :span="12">
       <div class="grid-content bg-purple-light iframe_main_sec">
-        <iframe
-          :src="src"
-          frameborder="0"
-          width="100%"
-          height="100%"
-        >
+        <iframe :src="src" frameborder="0" width="100%" height="100%">
           <!-- 社會網路圖 -->
         </iframe>
       </div>
@@ -116,7 +111,7 @@ export default {
         },
       ],
       props: {
-        expandTrigger: 'hover',
+        expandTrigger: "hover",
       },
       value: "",
       loading: false,
@@ -124,7 +119,7 @@ export default {
       src: "http://localhost:5000/sna_graph/overall.html",
     };
   },
-  methods:{
+  methods: {
     iframeLoad() {
       this.loading = true;
       const iframe = this.$refs.Iframe;
@@ -140,11 +135,11 @@ export default {
         };
       }
     },
-    handleChange(){
+    handleChange() {
       this.loading = true;
       //const api = `https://fju-trans.herokuapp.com`;
       const api = `http://localhost:5000`;
-      this.$http.get(api+"/overallReceive").then(() => {
+      this.$http.get(api + "/overallReceive").then(() => {
         const iframe = this.$refs.Iframe;
         const tempSrc = iframe.src;
         iframe.src = tempSrc;
@@ -155,7 +150,7 @@ export default {
   created() {
     // const api = `https://fju-trans.herokuapp.com`;
     const api = `http://localhost:5000`;
-    this.$http.get(api+"/attributes").then((response) => {
+    this.$http.get(api + "/attributes").then((response) => {
       console.log(response.data);
       this.attributes = response.data;
     });

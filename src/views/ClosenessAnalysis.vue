@@ -29,7 +29,11 @@
       <div class="grid-content main_sec">
         <el-table :data="closenessData" stripe style="width: 100%">
           <el-table-column prop="from_id" label="肇事因素編號" width="180" />
-          <el-table-column prop="from_id_name" label="肇事因素名稱" width="180" />
+          <el-table-column
+            prop="from_id_name"
+            label="肇事因素名稱"
+            width="180"
+          />
           <el-table-column prop="weight" label="Closeness Centrality" />
         </el-table>
       </div>
@@ -37,7 +41,10 @@
     <el-col :span="9" class="analysis-table">
       <h1>Closeness Analysis</h1>
       <hr />
-      <p>使用者選擇一個肇事因素做為中心起始節點，透過分析起始節點與周遭其他節點，找出與該節點擁有幾種不同的關聯</p><br>
+      <p>
+        使用者選擇一個肇事因素做為中心起始節點，透過分析起始節點與周遭其他節點，找出與該節點擁有幾種不同的關聯
+      </p>
+      <br />
       <iframe
         ref="Iframe"
         :src="src"
@@ -93,7 +100,7 @@ export default {
       src: "http://localhost:5000/sna_graph/closeness.html",
     };
   },
-  methods:{
+  methods: {
     iframeLoad() {
       this.loading = true;
       const iframe = this.$refs.Iframe;
@@ -109,21 +116,23 @@ export default {
         };
       }
     },
-    handleChange(){
+    handleChange() {
       this.loading = true;
       // const api = `https://fju-trans.herokuapp.com`;
       const api = `http://localhost:5000`;
-      this.$http.get(api+"/closenessReceive?node="+this.value[1]).then(() => {
-        const iframe = this.$refs.Iframe;
-        const tempSrc = iframe.src;
-        iframe.src = tempSrc;
-        this.iframeLoad();
-        this.$http.get(api+"/closenesscsv").then((response) => {
-          this.loading = false;
-          console.log(response.data);
-          this.closenessData = response.data;
+      this.$http
+        .get(api + "/closenessReceive?node=" + this.value[1])
+        .then(() => {
+          const iframe = this.$refs.Iframe;
+          const tempSrc = iframe.src;
+          iframe.src = tempSrc;
+          this.iframeLoad();
+          this.$http.get(api + "/closenesscsv").then((response) => {
+            this.loading = false;
+            console.log(response.data);
+            this.closenessData = response.data;
+          });
         });
-      });
     },
   },
   created() {

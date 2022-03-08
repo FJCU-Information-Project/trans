@@ -10,34 +10,47 @@
           class="man-tabs"
         >
           <el-tab-pane label="Example">
-            <ExampleData />
+            <Example />
           </el-tab-pane>
           <el-tab-pane label="Customized">
-            <CustomizedData />
+            <Customized v-if="isAuth" />
+            <Login v-else />
+            <el-alert
+              v-if="false"
+              title="info alert"
+              type="info"
+              description="請先登入再使用本系統"
+              show-icon
+            >
+            </el-alert>
           </el-tab-pane>
         </el-tabs>
       </div>
     </el-col>
   </el-row>
-  <router-view />
 </template>
 
 <script>
 import Navbar from "@/components/Navbar.vue";
-import ExampleData from "@/views/ExampleData.vue";
-import CustomizedData from "@/views/CustomizedData.vue";
+import Example from "@/views/DatasetExample.vue";
+import Customized from "@/views/DatasetCustomized.vue";
+import Login from "@/views/Login.vue";
 
 export default {
-  name: "Management",
   components: {
     Navbar,
-    ExampleData,
-    CustomizedData,
+    Example,
+    Customized,
+    Login,
   },
   data() {
     return {
       tabPosition: "left",
+      isAuth: null,
     };
+  },
+  mounted() {
+    this.isAuth = localStorage.getItem("token");
   },
 };
 </script>

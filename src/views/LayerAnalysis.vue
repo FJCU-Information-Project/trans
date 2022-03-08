@@ -20,7 +20,11 @@
                   placeholder="請選擇起始節點"
                 ></el-cascader>
               </div>
-              <el-select v-model="layerValue" placeholder="請選擇層級" @change="layerChange">
+              <el-select
+                v-model="layerValue"
+                placeholder="請選擇層級"
+                @change="layerChange"
+              >
                 <el-option
                   v-for="item in tableData"
                   :key="item.id"
@@ -38,15 +42,14 @@
       <el-col :span="9" class="analysis-table">
         <h1>Layer Analysis</h1>
         <hr />
-        <p>使用者選擇一個肇事因素做為中心起始節點，從起始節點發散並展開來檢視第一層、第二層的關聯節點分析，並呈現以該起始節點為中心所分析的第一層網路圖，再進一步以第一層的節點作為起始點，各自發散出第二層的網路圖</p>     
-        <div
-          v-loading="loading"
-          class="grid-content bg-purple main_sec"
-        >
+        <p>
+          使用者選擇一個肇事因素做為中心起始節點，從起始節點發散並展開來檢視第一層、第二層的關聯節點分析，並呈現以該起始節點為中心所分析的第一層網路圖，再進一步以第一層的節點作為起始點，各自發散出第二層的網路圖
+        </p>
+        <div v-loading="loading" class="grid-content bg-purple main_sec">
           <el-table :data="layerData" stripe style="width: 100%">
-            <el-table-column prop="first_name" label="起始節點" width="180"/>
-            <el-table-column prop="second_name" label="層級節點" width="180"/>
-            <el-table-column prop="group" label="層級"/>
+            <el-table-column prop="first_name" label="起始節點" width="180" />
+            <el-table-column prop="second_name" label="層級節點" width="180" />
+            <el-table-column prop="group" label="層級" />
           </el-table>
         </div>
       </el-col>
@@ -128,12 +131,12 @@ export default {
       // const api = `https://fju-trans.herokuapp.com`;
       // const api = `http://140.136.155.121:50000`;
       const api = `http://localhost:500000`;
-      this.$http.get(api+"/layerReceive?node="+this.value[1]).then(() => {
+      this.$http.get(api + "/layerReceive?node=" + this.value[1]).then(() => {
         const iframe = this.$refs.Iframe;
         const tempSrc = iframe.src;
         iframe.src = tempSrc;
         this.iframeLoad();
-        this.$http.get(api+"/layercsv").then((response) => {
+        this.$http.get(api + "/layercsv").then((response) => {
           this.loading = false;
           console.log(response.data);
           this.layerData = response.data;
@@ -145,21 +148,21 @@ export default {
       // const api = `https://fju-trans.herokuapp.com`;
       // const api = `http://140.136.155.121:50000`;
       const api = `http://localhost:500000`;
-      this.$http.get(api+"/layerReceive?node="+this.value[1]).then(() => {
+      this.$http.get(api + "/layerReceive?node=" + this.value[1]).then(() => {
         const iframe = this.$refs.Iframe;
         const tempSrc = iframe.src;
         iframe.src = tempSrc;
         this.iframeLoad();
-        this.$http.get(api+"/layercsv").then((response) => {
+        this.$http.get(api + "/layercsv").then((response) => {
           this.loading = false;
           console.log(response.data);
           this.layerData = response.data
-            .map( (value) => {
-              if(value.group === this.layerValue){
+            .map((value) => {
+              if (value.group === this.layerValue) {
                 return value;
               }
             })
-            .filter( item => item );
+            .filter((item) => item);
         });
       });
     },
@@ -171,7 +174,7 @@ export default {
     console.log("created");
     // const api = `https://fju-trans.herokuapp.com`;
     const api = `http://localhost:500000`;
-    this.$http.get(api+"/attributes").then((response) => {
+    this.$http.get(api + "/attributes").then((response) => {
       console.log(response.data);
       this.attributes = response.data;
     });

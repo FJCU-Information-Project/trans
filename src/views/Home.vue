@@ -213,7 +213,7 @@ export default {
 //
 .home-banner {
   // background: rgb(226, 226, 216);
-  height: auto; 
+  height: auto;
   color: black;
   & h1 {
     font-size: 4em;

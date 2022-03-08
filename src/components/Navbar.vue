@@ -65,7 +65,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 8px 8px 15px rgb(0,0,0, .6);
+  box-shadow: 8px 8px 15px rgb(0, 0, 0, 0.6);
   border-radius: 0 !important;
   background: transparent;
   box-sizing: border-box;

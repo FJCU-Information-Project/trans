@@ -10,28 +10,31 @@
               此分析我們將為您呈現整個網路圖中被孤立的節點
             </span>
             <div class="select-group">
-            <div class="block">
-              <!-- <span class="demonstration">Child options expand when hovered</span> -->
-              <el-cascader
-                v-model="value"
-                :options="attributes"
-                :props="props"
-                @change="handleChange"
-                placeholder="請選擇事故節點"
-              ></el-cascader>
+              <div class="block">
+                <!-- <span class="demonstration">Child options expand when hovered</span> -->
+                <el-cascader
+                  v-model="value"
+                  :options="attributes"
+                  :props="props"
+                  @change="handleChange"
+                  placeholder="請選擇事故節點"
+                ></el-cascader>
+              </div>
             </div>
-          </div>
           </div>
         </div>
       </el-col>
     </el-row>
-    
+
     <el-row class="con_flex">
       <el-col :span="11" class="analysis-table">
         <h1>Isolation Analysis</h1>
         <hr />
-        <p>使用者透過此分析的 SNA 圖可得知在該資料集中並非造成車禍發生的因素節點。其中表格中所顯示的關聯組合皆為相同的起始因素節點，而其每一組組合的權重皆為0，亦可解釋為「在該資料集中並沒有出現過的關聯組合」。</p>
-        <br>
+        <p>
+          使用者透過此分析的 SNA
+          圖可得知在該資料集中並非造成車禍發生的因素節點。其中表格中所顯示的關聯組合皆為相同的起始因素節點，而其每一組組合的權重皆為0，亦可解釋為「在該資料集中並沒有出現過的關聯組合」。
+        </p>
+        <br />
         <!--
           <el-card class="box-card" v-if="value !== ''">
           <div class="card-header">
@@ -78,15 +81,10 @@ export default {
   },
   data() {
     return {
-      attributes: [
-      
-      ],
+      attributes: [],
       value: "",
-      isolationData: [
-        
-      ],
-      tableData: [
-      ],
+      isolationData: [],
+      tableData: [],
       props: {
         expandTrigger: "hover",
       },
@@ -110,21 +108,23 @@ export default {
         };
       }
     },
-    handleChange(){
+    handleChange() {
       this.loading = true;
       // const api = `https://fju-trans.herokuapp.com`;
       const api = `http://localhost:50000`;
-      this.$http.get(api+"/isolationReceive?node="+this.value[1]).then(() => {
-        const iframe = this.$refs.Iframe;
-        const tempSrc = iframe.src;
-        iframe.src = tempSrc;
-        this.iframeLoad();
-        this.$http.get(api+"/isolationcsv").then((response) => {
-          this.loading = false;
-          console.log(response.data);
-          this.isolationData = response.data;
+      this.$http
+        .get(api + "/isolationReceive?node=" + this.value[1])
+        .then(() => {
+          const iframe = this.$refs.Iframe;
+          const tempSrc = iframe.src;
+          iframe.src = tempSrc;
+          this.iframeLoad();
+          this.$http.get(api + "/isolationcsv").then((response) => {
+            this.loading = false;
+            console.log(response.data);
+            this.isolationData = response.data;
+          });
         });
-      });
     },
   },
   mounted() {

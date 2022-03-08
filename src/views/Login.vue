@@ -2,7 +2,7 @@
   <el-row>
     <el-col :span="24">
       <div class="grid-content login-banner">
-        <Navbar />
+        <Navbar v-if="this.$route.path !== '/dataset'" />
         <div class="login-title">
           <el-card shadow="always" class="con-flex">
             <h1>授權碼</h1>
@@ -12,6 +12,14 @@
               class="number_input"
               @change="authcheck"
             />
+            <el-alert
+              v-if="alert"
+              title="error alert"
+              type="error"
+              description="授權碼無效"
+              show-icon
+            >
+            </el-alert>
             <el-button type="danger" class="submit">確認</el-button>
           </el-card>
         </div>
@@ -31,33 +39,45 @@ export default {
   data() {
     return {
       token: "",
-    }
+      alert: false,
+    };
   },
   methods: {
     authcheck() {
       //const api = `https://fju-trans.herokuapp.com`;
-      const api = `http://localhost:500000`;
-      this.$http
-        .post(api + "/auth", {"token": this.token})
-        .then((req) => {
-          console.log(req.data);
-          if (req.data.valid === true){
-            console.log("Token 是有用的!!");
-            // TODO:
-            // 1.把this.token存到localstorage
-            // 2.然後跳轉到登入之後的頁面
-          }else{
-            console.log("Token 是廢物");
-            // TODO:
-            // 1.讓使用者知道這個token不能用
-          }
-        });
+      const api = `http://140.136.155.121:50000`;
+      this.$http.post(api + "/auth", { token: this.token }).then((req) => {
+        console.log(req.data);
+        if (req.data.valid === true) {
+          console.log("Token 是有用的!!");
+          // TODO:
+          // 1.把this.token存到localstorage
+          localStorage.setItem("token", this.token);
+          // 2.然後跳轉到登入之後的頁面
+          this.$router.push({ name: "Management" });
+          this.alert = false;
+        } else {
+          console.log("Token 是廢物");
+          // TODO:
+          // 1.讓使用者知道這個token不能用
+          this.alert = true;
+        }
+      });
     },
+  },
+  mounted() {
+    console.log(this.$route.path);
   },
 };
 </script>
 
 <style lang="scss">
+.el-alert {
+  margin: 20px 0 0;
+}
+.el-alert:first-child {
+  margin: 0;
+}
 .login-title {
   height: 92vh;
   display: flex;

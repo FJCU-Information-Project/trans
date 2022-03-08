@@ -100,6 +100,13 @@ const router = createRouter({
   routes,
 });
 
+router.beforeEach((to) => {
+  let isAuth = localStorage.getItem("token");
+  if (to.name !== "Dataset" && to.name !== "Login" && !isAuth) {
+    return { name: "Login" };
+  }
+});
+
 router.afterEach(() => {
   window.scrollTo(0, 0);
 });

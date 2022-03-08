@@ -1,56 +1,63 @@
 <template>
-<div>
-  <el-row class="close">
-    <el-col :span="24">
-      <div class="grid-content banner">
-        <Navbar />
-        <div class="ban-title">
-          <h1>Degree Analysis</h1>
-          <span style="font-weight: bolder" class="sub-title">
-            請選取一個您感興趣的節點，我們將會為您分析出此節點有幾個關聯
-          </span>
-          <div class="select-group">
-            <div class="block">
-              <!-- <span class="demonstration">Child options expand when hovered</span> -->
-              <el-cascader
-                v-model="value"
-                :options="attributes"
-                :props="props"
-                @change="handleChange"
-                placeholder="請選擇事故節點"
-              ></el-cascader>
+  <div>
+    <el-row class="close">
+      <el-col :span="24">
+        <div class="grid-content banner">
+          <Navbar />
+          <div class="ban-title">
+            <h1>Degree Analysis</h1>
+            <span style="font-weight: bolder" class="sub-title">
+              請選取一個您感興趣的節點，我們將會為您分析出此節點有幾個關聯
+            </span>
+            <div class="select-group">
+              <div class="block">
+                <!-- <span class="demonstration">Child options expand when hovered</span> -->
+                <el-cascader
+                  v-model="value"
+                  :options="attributes"
+                  :props="props"
+                  @change="handleChange"
+                  placeholder="請選擇事故節點"
+                ></el-cascader>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </el-col>
-  </el-row>
-  <el-row class="con_flex">
-    <el-col :span="10">
-      <div class="grid-content bg-purple main_sec">
-        <el-table :data="degreeData" stripe style="width: 100%">
-          <el-table-column prop="from_id" label="肇事因素編號" width="200" />
-          <el-table-column prop="from_id_name" label="肇事因素名稱" width="200" />
-          <el-table-column prop="SUM..total.." label="Degree Centrality" />
-        </el-table>
-      </div>
-    </el-col>
-    <el-col :span="9" class="analysis-table">
-      <h1>Degree Analysis</h1>
-      <hr />
-      <p>使用者選擇一個肇事因素做為中心起始節點，透過分析起始節點與周圍其他節點，找出與該節點擁有的關聯總數量</p><br>
-      <iframe
-        ref="Iframe"
-        :src="src"
-        frameborder="0"
-        width="100%"
-        height="100%"
-      >
-      </iframe>
-    </el-col>
-  </el-row>
-  <!--<el-footer>Footer</el-footer>-->
-</div>
+      </el-col>
+    </el-row>
+    <el-row class="con_flex">
+      <el-col :span="10">
+        <div class="grid-content bg-purple main_sec">
+          <el-table :data="degreeData" stripe style="width: 100%">
+            <el-table-column prop="from_id" label="肇事因素編號" width="200" />
+            <el-table-column
+              prop="from_id_name"
+              label="肇事因素名稱"
+              width="200"
+            />
+            <el-table-column prop="SUM..total.." label="Degree Centrality" />
+          </el-table>
+        </div>
+      </el-col>
+      <el-col :span="9" class="analysis-table">
+        <h1>Degree Analysis</h1>
+        <hr />
+        <p>
+          使用者選擇一個肇事因素做為中心起始節點，透過分析起始節點與周圍其他節點，找出與該節點擁有的關聯總數量
+        </p>
+        <br />
+        <iframe
+          ref="Iframe"
+          :src="src"
+          frameborder="0"
+          width="100%"
+          height="100%"
+        >
+        </iframe>
+      </el-col>
+    </el-row>
+    <!--<el-footer>Footer</el-footer>-->
+  </div>
 </template>
 
 <script>
@@ -63,12 +70,8 @@ export default {
   },
   data() {
     return {
-      attributes: [
-      
-      ],
-      degreeData: [
-        
-      ],
+      attributes: [],
+      degreeData: [],
       tableData: [
         {
           No: "1",
@@ -128,7 +131,7 @@ export default {
       src: "http://localhost:50000/sna_graph/degree.html",
     };
   },
-  methods:{
+  methods: {
     iframeLoad() {
       this.loading = true;
       const iframe = this.$refs.Iframe;
@@ -144,16 +147,16 @@ export default {
         };
       }
     },
-    handleChange(){
+    handleChange() {
       this.loading = true;
       //const api = `https://fju-trans.herokuapp.com`;
       const api = `http://localhost:50000`;
-      this.$http.get(api+"/degreeReceive?node="+this.value[1]).then(() => {
+      this.$http.get(api + "/degreeReceive?node=" + this.value[1]).then(() => {
         const iframe = this.$refs.Iframe;
         const tempSrc = iframe.src;
         iframe.src = tempSrc;
         this.iframeLoad();
-        this.$http.get(api+"/degreecsv").then((response) => {
+        this.$http.get(api + "/degreecsv").then((response) => {
           this.loading = false;
           console.log(response.data);
           this.degreeData = response.data;
