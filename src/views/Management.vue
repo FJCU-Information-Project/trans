@@ -19,7 +19,6 @@
       </div>
     </el-col>
   </el-row>
-  <router-view />
 </template>
 
 <script>

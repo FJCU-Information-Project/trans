@@ -106,8 +106,8 @@ export default {
       loading: false,
       // src: "https://fju-trans.herokuapp.com/sna_graph/layer.html",
       // src: "http://140.136.155.121:50000/sna_graph/layer.html",
-      src: "http://localhost:500000/sna_graph/layer.html",
-      // src: "http://localhost:8080",
+      src: "http://140.136.155.121:50000/sna_graph/layer.html",
+      // src: "http://140.136.155.121:8080",
     };
   },
   methods: {
@@ -130,7 +130,7 @@ export default {
       this.loading = true;
       // const api = `https://fju-trans.herokuapp.com`;
       // const api = `http://140.136.155.121:50000`;
-      const api = `http://localhost:500000`;
+      const api = `http://140.136.155.121:50000`;
       this.$http.get(api + "/layerReceive?node=" + this.value[1]).then(() => {
         const iframe = this.$refs.Iframe;
         const tempSrc = iframe.src;
@@ -147,7 +147,7 @@ export default {
       this.loading = true;
       // const api = `https://fju-trans.herokuapp.com`;
       // const api = `http://140.136.155.121:50000`;
-      const api = `http://localhost:500000`;
+      const api = `http://140.136.155.121:50000`;
       this.$http.get(api + "/layerReceive?node=" + this.value[1]).then(() => {
         const iframe = this.$refs.Iframe;
         const tempSrc = iframe.src;
@@ -173,7 +173,7 @@ export default {
   created() {
     console.log("created");
     // const api = `https://fju-trans.herokuapp.com`;
-    const api = `http://localhost:500000`;
+    const api = `http://140.136.155.121:50000`;
     this.$http.get(api + "/attributes").then((response) => {
       console.log(response.data);
       this.attributes = response.data;

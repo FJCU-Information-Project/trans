@@ -89,7 +89,7 @@ export default {
         expandTrigger: "hover",
       },
       loading: false,
-      src: "http://localhost:50000/sna_graph/isolation.html",
+      src: "http://140.136.155.121:50000/sna_graph/isolation.html",
     };
   },
   methods: {
@@ -111,7 +111,7 @@ export default {
     handleChange() {
       this.loading = true;
       // const api = `https://fju-trans.herokuapp.com`;
-      const api = `http://localhost:50000`;
+      const api = `http://140.136.155.121:50000`;
       this.$http
         .get(api + "/isolationReceive?node=" + this.value[1])
         .then(() => {
@@ -132,7 +132,7 @@ export default {
   },
   created() {
     // const api = `https://fju-trans.herokuapp.com`;
-    const api = `http://localhost:50000`;
+    const api = `http://140.136.155.121:50000`;
     this.$http.get(api + "/attributes").then((response) => {
       console.log(response.data);
       this.attributes = response.data;

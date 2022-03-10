@@ -116,7 +116,7 @@ export default {
       value: "",
       loading: false,
       // src: "https://fju-trans.herokuapp.com/sna_graph/snaRank10.html",
-      src: "http://localhost:5000/sna_graph/overall.html",
+      src: "http://140.136.155.121:5000/sna_graph/overall.html",
     };
   },
   methods: {
@@ -138,7 +138,7 @@ export default {
     handleChange() {
       this.loading = true;
       //const api = `https://fju-trans.herokuapp.com`;
-      const api = `http://localhost:5000`;
+      const api = `http://140.136.155.121:5000`;
       this.$http.get(api + "/overallReceive").then(() => {
         const iframe = this.$refs.Iframe;
         const tempSrc = iframe.src;
@@ -149,7 +149,7 @@ export default {
   },
   created() {
     // const api = `https://fju-trans.herokuapp.com`;
-    const api = `http://localhost:5000`;
+    const api = `http://140.136.155.121:5000`;
     this.$http.get(api + "/attributes").then((response) => {
       console.log(response.data);
       this.attributes = response.data;
