@@ -6,10 +6,10 @@
           <p id="logo">TRANS</p>
         </router-link>
         <div class="menu">
-          <router-link :to="{ name: 'Home' }" class="link">
+          <router-link v-if="false" :to="{ name: 'Analysis' }" class="link">
             <el-button round>Analysis</el-button>
           </router-link>
-          <router-link :to="{ name: 'Management' }" class="link">
+          <router-link v-if="isAuth" :to="{ name: 'Management' }" class="link">
             <el-button round>Management</el-button>
           </router-link>
           <router-link :to="{ name: 'Login' }" class="link">
@@ -29,7 +29,11 @@ export default {
     //var path = this.$route.params.path;
     return {
       //path,
+      isAuth: "",
     };
+  },
+  mounted() {
+    this.isAuth = localStorage.getItem('token');
   },
 };
 </script>
@@ -49,7 +53,7 @@ export default {
 .menu {
   width: 30%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 .close {
   margin-bottom: 0 !important;

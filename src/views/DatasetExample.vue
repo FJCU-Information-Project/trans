@@ -26,7 +26,7 @@
                 />
               </template>
               <template #default="scope">
-                <router-link :to="{ name: 'Home' }" class="link">
+                <router-link :to="{ name: 'Analysis' }" class="link">
                   <el-button
                     size="mini"
                     @click="handleEdit(scope.$index, scope.row)"
@@ -68,36 +68,6 @@ export default {
     return {
       search: "",
       tableData: [
-        {
-          date: "2021-07-16",
-          describe: "None",
-          name: "台中市車禍資料",
-        },
-        {
-          date: "2021-07-16",
-          describe: "None",
-          name: "台中市車禍資料",
-        },
-        {
-          date: "2021-07-16",
-          describe: "None",
-          name: "台中市車禍資料",
-        },
-        {
-          date: "2021-07-16",
-          describe: "None",
-          name: "台中市車禍資料",
-        },
-        {
-          date: "2021-07-16",
-          describe: "None",
-          name: "台中市車禍資料",
-        },
-        {
-          date: "2021-07-16",
-          describe: "None",
-          name: "台中市車禍資料",
-        },
         {
           date: "2021-07-16",
           describe: "None",

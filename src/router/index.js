@@ -12,9 +12,9 @@ const routes = [
     component: () => import("../views/Index.vue"),
   },
   {
-    path: "/home",
-    name: "Home",
-    component: () => import("../views/Home.vue"),
+    path: "/analysis",
+    name: "Analysis",
+    component: () => import("../views/Analysis.vue"),
   },
   {
     path: "/upload",
@@ -40,6 +40,11 @@ const routes = [
     path: "/resultanalysis",
     name: "ResultAnalysis",
     component: () => import("../views/ResultAnalysis.vue"),
+  },
+  {
+    path: "/basicanalysis",
+    name: "BasicAnalysis",
+    component: () => import("../views/BasicAnalysis.vue"),
   },
   {
     path: "/closenessanalysis",
