@@ -1,0 +1,6 @@
+<svg id="bluecar-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 300 150" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" transform="rotate(-14.5)">
+  <path id="bluecar-svg-path1" d="M65.76903,116.59615L65.76903,59.67307L95,59.67307L95,19.67307L205,19.67307L205,59.67307L234.23098,59.67307L234.23098,116.59615L65.76903,116.59615Z" fill="rgb(20,174,186)" stroke="none" stroke-width="0"/>
+  <rect id="bluecar-svg-rect1" width="35" height="35" rx="0" ry="0" transform="matrix(1.128587 0 0 0.823625 150.329034 30)" fill="rgb(255,255,255)" stroke="none" stroke-width="0"/>
+  <ellipse id="bluecar-svg-ellipse1" rx="22.5" ry="22.5" transform="matrix(1 0 0 1 107.5 116.596153)" fill="rgb(0,0,0)" stroke="none" stroke-width="0"/>
+  <ellipse id="bluecar-svg-copy-of-ellipse" rx="22.5" ry="22.5" transform="matrix(1 0 0 1 192.5 116.596153)" fill="rgb(0,0,0)" stroke="none" stroke-width="0"/>
+</svg>
