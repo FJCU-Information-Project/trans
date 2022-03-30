@@ -94,6 +94,21 @@ const routes = [
     component: () => import("../views/Dataset.vue"),
   },
   {
+    path: "/adddataset",
+    name: "AddDataSet",
+    component: () => import("../views/AddDataSet.vue"),
+  },
+  {
+    path: "/sysmannul",
+    name: "SysMannul",
+    component: () => import("../views/SysMannul.vue"),
+  },
+  {
+    path: "/footer",
+    name: "Footer",
+    component: () => import("../components/Footer.vue"),
+  },
+  {
     path: "/test",
     name: "Test",
     component: () => import("../views/Test.vue"),

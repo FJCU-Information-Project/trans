@@ -3,7 +3,13 @@
     <el-row class="cusdata-con_flex">
       <el-col :span="23">
         <div class="grid-content cos_main_sec">
-          <p>自訂資料集</p>
+          <div style="display:flex;justify-content:center">
+            <p>自訂資料集</p>
+            <router-link :to="{ name: 'AddDataSet' }" class="link">
+                  <el-button class="addbtn" type="button">新增資料集</el-button
+                  >
+                </router-link>
+          </div>
           <el-table
             :data="
               tableData.filter(
@@ -13,36 +19,56 @@
               )
             "
             style="width: 100%"
+            border
+            height="500"
+            type="danger" plain
           >
-            <el-table-column label="新增日期" prop="date" />
-            <el-table-column label="資料集名稱" prop="name" />
-            <el-table-column label="說明" prop="describe" />
-            <el-table-column align="right">
-              <template #header>
-                <el-input
-                  v-model="search"
-                  size="mini"
-                  placeholder="請輸入要尋找的日期"
-                />
+            <el-table-column label="新增日期" prop="date" width='150' sortable/>
+            <el-table-column label="資料集名稱" prop="name" width='300' >
+              <template #default="scope">
+                <el-popover effect="light" trigger="hover" placement="top" width="auto">
+              <template #default class="fs-20">
+                <div>統計開始時間 : {{ scope.row.period_start }}</div>
+                <div>統計截止時間 : {{ scope.row.period_end }}</div>
               </template>
+              <template #reference>
+                <el-tag class="fs-20">{{ scope.row.name }}</el-tag>
+              </template>
+                </el-popover>
+              </template>
+            </el-table-column>
+            <el-table-column label="提供單位" prop="unit" width='300'/>
+            <el-table-column label="是否公開" prop="is_public" width='150'>
+              <template #default="scope">
+                <el-tag class="fs-20"
+                  :type="scope.row.is_public === '是' ? '' : 'danger'"
+                  disable-transitions
+                  >{{ scope.row.is_public }}</el-tag
+                >
+              </template>
+            </el-table-column>
+            <el-table-column label="使用操作" prop="" >
+
+              
               <template #default="scope">
                 <router-link :to="{ name: 'Config' }" class="link">
-                  <el-button
+                  <el-button class="fs-20"
                     size="mini"
                     @click="handleEdit(scope.$index, scope.row)"
                     style="margin-left: 1em"
-                    >設定</el-button
+                    >上傳資料</el-button
                   >
                 </router-link>
-                <router-link :to="{ name: 'Home' }" class="link">
-                  <el-button
+                <router-link :to="{ name: 'Analysis' }" class="link">
+                  <el-button class="fs-20"
+                    type="warning"
                     size="mini"
                     @click="handleEdit(scope.$index, scope.row)"
                     style="margin-left: 1em"
                     >進行分析</el-button
                   >
                 </router-link>
-                <el-button
+                <el-button class="fs-20"
                   size="mini"
                   type="danger"
                   @click="handleDelete(scope.$index, scope.row)"
@@ -53,28 +79,45 @@
             </el-table-column>
           </el-table>
         </div>
-        <el-button type="success" @click="open" round plain
-          >新增資料集</el-button
-        >
+        
       </el-col>
     </el-row>
+
+    <!-- <div id="AddDataSet" style="margin-top:200px">
+        <div style="font-size:20px">
+          <p style="font-weight:bold;background-color:#10afafca">請填寫資料集基本資料</p>  
+          <br>資料集名稱 : <input type=text style="margin-top: 10px;">
+          <br>提供單位 : <input type=text style="margin-top: 10px;">
+          <br>資料集統計開始時間 : <div class="block"><span class="demonstration">Default</span><el-date-picker v-model="value1" type="date" placeholder="Pick a day" /></div>
+          <input type=text style="margin-top: 10px;">
+          <br>資料集統計截止時間<input type=text style="margin-top: 10px;">
+          <br>備註<input type=text style="margin-top: 10px;">
+          <br>是否公開<el-radio v-model="radio1" label="1" size="large">Option 1</el-radio><el-radio v-model="radio1" label="2" size="large">Option 2</el-radio>
+          <br>上傳節點表 : <input type=file style="margin-top: 10px;">
+          <br>上傳屬性表 : <input type=file style="margin-top: 10px;">
+          <br>上傳肇事結果屬性表 : <input type=file style="margin-top: 10px;">
+          <br>上傳肇事結果表 : <input type=file style="margin-top: 10px;">
+          <br>上傳交通案件表 : <input type=file style="margin-top: 10px;"></div>
+    </div> -->
+
   </div>
 </template>
 
+
 <script>
 import { ElMessageBox } from "element-plus";
-
 export default {
   name: "Customer",
   setup() {
     const open = () => {
       ElMessageBox.alert(
-        "名稱 <input type=text style='margin-top: 10px;'></br>提供單位 <input type=text style='margin-top: 10px;'></br>統計時間 <input type=text style='margin-top: 10px;'></br>查看權限 <input type=text style='margin-top: 10px;'></br><input type=file style='margin-top: 10px;'>",
+        "<div style='font-size:20px'><p style='font-weight:bold;background-color:#10afafca'>請填寫資料集基本資料</p>  <br>資料集名稱 : <input type=text style='margin-top: 10px;'><br>提供單位 : <input type=text style='margin-top: 10px;'><br>資料集統計開始時間 : <div class='block'><span class='demonstration'>Default</span><el-date-picker v-model='value1' type='date' placeholder='Pick a day' /></div><input type=text style='margin-top: 10px;'><br>資料集統計截止時間<input type=text style='margin-top: 10px;'><br>備註<input type=text style='margin-top: 10px;'><br>是否公開<el-radio v-model='radio1' label='1' size='large'>Option 1</el-radio><el-radio v-model='radio1' label='2' size='large'>Option 2</el-radio><br>上傳節點表 : <input type=file style='margin-top: 10px;'></br>上傳屬性表 : <input type=file style='margin-top: 10px;'></br>上傳肇事結果屬性表 : <input type=file style='margin-top: 10px;'></br>上傳肇事結果表 : <input type=file style='margin-top: 10px;'></br>上傳交通案件表 : <input type=file style='margin-top: 10px;'></div>",
         "請上傳您的資料集",
         {
           dangerouslyUseHTMLString: true,
         }
       );
+      
     };
 
     return {
@@ -87,43 +130,67 @@ export default {
       tableData: [
         {
           date: "2021-07-16",
-          describe: "None",
+          unit: "台中市政府交通部",
           name: "台中市車禍資料",
+          period_start: "2020-06-03",
+          period_end: "2021-03-02",
+          is_public:"是",
         },
         {
           date: "2021-07-16",
-          describe: "None",
+          unit: "台中市政府交通部",
           name: "台中市車禍資料",
+          period_start: "2020-06-03",
+          period_end: "2021-03-02",
+          is_public:"否",
         },
         {
           date: "2021-07-16",
-          describe: "None",
+          unit: "台中市政府交通部",
           name: "台中市車禍資料",
+          period_start: "2020-06-03",
+          period_end: "2021-03-02",
+          is_public:"是",
         },
         {
           date: "2021-07-16",
-          describe: "None",
+          unit: "台中市政府交通部",
           name: "台中市車禍資料",
+          period_start: "2020-06-03",
+          period_end: "2021-03-02",
+          is_public:"是",
         },
         {
           date: "2021-07-16",
-          describe: "None",
+          unit: "台中市政府交通部",
           name: "台中市車禍資料",
+          period_start: "2020-06-03",
+          period_end: "2021-03-02",
+          is_public:"是",
         },
         {
           date: "2021-07-16",
-          describe: "None",
+          unit: "台中市政府交通部",
           name: "台中市車禍資料",
+          period_start: "2020-06-03",
+          period_end: "2021-03-02",
+          is_public:"是",
         },
         {
           date: "2021-07-16",
-          describe: "None",
+          unit: "台中市政府交通部",
           name: "台中市車禍資料",
+          period_start: "2020-06-03",
+          period_end: "2021-03-02",
+          is_public:"是",
         },
         {
           date: "2021-07-16",
-          describe: "None",
+          unit: "台中市政府交通部",
           name: "台中市車禍資料",
+          period_start: "2020-06-03",
+          period_end: "2021-03-02",
+          is_public:"是",
         },
       ],
     };
@@ -242,5 +309,21 @@ body > .el-container {
 .grid-content {
   border-radius: 4px;
   min-height: 36px;
+}
+.addbtn{
+  font-weight: bold;
+  color: #10afaf;
+  background: #fff;
+  font-size: 20px;
+  border: 3px solid #10afaf;
+  margin: 20px;
+  display: block;
+  &:hover{
+    background: #10afafad;
+    color:#fff;
+  }
+}
+.fs-20{
+  font-size:20px
 }
 </style>

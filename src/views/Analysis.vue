@@ -1,15 +1,19 @@
 <template>
   <div>
-  <el-row class="close">
+  <Navbar />
+  
+  <!-- <el-row class="close">
     <el-col :span="24">
-      <div class="grid-content home-banner">
-        <Navbar />
-        <!--<div class="ban-title">
-          <h1>Welcome to Trans</h1>
-        </div>-->
-      </div>
+    <div id="index">
+      <h3 id="title">TRANS</h3>
+      <router-link id="entryPoint" to="/Dataset">Entry</router-link>
+    </div>
+    <img id="road" src="../assets/svg/road.svg" alt="" />
+    <img id="moutain" src="../assets/svg/moutain.svg" alt="" />
+    <img id="redcar" src="../assets/svg/redcar.svg" alt="" />
+    <img id="bluecar" src="../assets/svg/bluecar.svg" alt="" />
     </el-col>
-  </el-row>
+  </el-row> -->
   <div class="container">
     <el-row :gutter="20">
       <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
@@ -26,7 +30,7 @@
         </div>
       </el-col>
       <el-col v-if="false" :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
-        <div class="grid-content bg-purple analysis-entry-card">
+        <div class="grid-content bg-purple analysis-entry-card degree-bg">
           <div class="filter">
             <h3 class="analysis-title">Degree Analysis</h3>
             <div class="btn-group">
@@ -38,7 +42,7 @@
           </div>
         </div>
       </el-col>
-      <el-col v-if="false" :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
+      <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
         <div class="grid-content bg-purple analysis-entry-card">
           <div class="filter">
             <h3 class="analysis-title">Result Analysis</h3>
@@ -136,6 +140,7 @@ export default {
     };
   },
 };
+
 </script>
 
 <style lang="scss">
@@ -301,11 +306,15 @@ iframe {
 .analysis-entry-card {
   height: 30em;
   background-image: url(https://images.pexels.com/photos/10123275/pexels-photo-10123275.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+  //background-image: url(../assets/svg/degreebg.svg);
   background-position: center;
   background-size: cover;
   // box-shadow: 8px 8px 15px rgba(255, 255, 255, .5);
   box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
   z-index: 100;
+}
+.degree-bg{
+  background-image: url(../assets/svg/bluecar.svg);
 }
 .link {
   text-decoration: none;
@@ -346,4 +355,56 @@ iframe {
 // .el-carousel__item:nth-child(2n + 1) {
 //   background-color: #d3dce6;
 // }
+@mixin svg($bottom, $size, $layer) {
+  position: absolute;
+  bottom: $bottom;
+  width: $size;
+  z-index: $layer;
+}
+#road {
+  @include svg(0, 100%, -2);
+  left: 0;
+}
+#moutain {
+  @include svg(0, 40vw, -1);
+  left: 0;
+}
+#redcar {
+  @include svg(5vw, 25vw, -1);
+  right: 30vw;
+}
+#bluecar {
+  @include svg(11vw, 25vw, -1);
+  right: 5vw;
+}
+#index {
+  margin: 25vh auto;
+  width: 80%;
+  #title {
+    color: #475669;
+    font-size: 500%;
+    letter-spacing: 0.5em;
+    text-indent: 0.5em;
+  }
+  #entryPoint {
+    margin-top: 4em;
+    letter-spacing: 0.5em;
+    text-indent: 0.5em;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5em;
+    color: white;
+    display: inline-block;
+    background-color: #655a65;
+    box-sizing: border-box;
+    padding: 0.5em 1.5em;
+    border-radius: 3em;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    &.router-link-exact-active {
+      color: #42b983;
+    }
+  }
+}
 </style>

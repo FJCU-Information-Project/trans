@@ -1,128 +1,65 @@
 <template>
-  <el-row>
-    <el-col :span="24">
+<div>
+    <Navbar />
       <div class="grid-content banner">
-        <Navbar />
-        <div class="ban-title">
-          <el-form
-            ref="form"
-            :model="form"
-            label-width="120px"
-            class="config-form"
-          >
-            <el-form-item>
-              <el-checkbox-group v-model="form.type">
-                <el-checkbox
-                  label="Online activities"
-                  name="type"
-                ></el-checkbox>
-                <el-checkbox
-                  label="Promotion activities"
-                  name="type"
-                ></el-checkbox>
-                <el-checkbox
-                  label="Offline activities"
-                  name="type"
-                ></el-checkbox>
-                <el-checkbox
-                  label="Simple brand exposure"
-                  name="type"
-                ></el-checkbox>
-                <el-checkbox
-                  label="Online activities"
-                  name="type"
-                ></el-checkbox>
-                <el-checkbox
-                  label="Promotion activities"
-                  name="type"
-                ></el-checkbox>
-                <el-checkbox
-                  label="Offline activities"
-                  name="type"
-                ></el-checkbox>
-                <el-checkbox
-                  label="Simple brand exposure"
-                  name="type"
-                ></el-checkbox>
-                <el-checkbox
-                  label="Online activities"
-                  name="type"
-                ></el-checkbox>
-                <el-checkbox
-                  label="Promotion activities"
-                  name="type"
-                ></el-checkbox>
-                <el-checkbox
-                  label="Offline activities"
-                  name="type"
-                ></el-checkbox>
-                <el-checkbox
-                  label="Simple brand exposure"
-                  name="type"
-                ></el-checkbox>
-                <el-checkbox
-                  label="Online activities"
-                  name="type"
-                ></el-checkbox>
-                <el-checkbox
-                  label="Promotion activities"
-                  name="type"
-                ></el-checkbox>
-                <el-checkbox
-                  label="Offline activities"
-                  name="type"
-                ></el-checkbox>
-                <el-checkbox
-                  label="Simple brand exposure"
-                  name="type"
-                ></el-checkbox>
-                <el-checkbox
-                  label="Online activities"
-                  name="type"
-                ></el-checkbox>
-                <el-checkbox
-                  label="Promotion activities"
-                  name="type"
-                ></el-checkbox>
-                <el-checkbox
-                  label="Offline activities"
-                  name="type"
-                ></el-checkbox>
-                <el-checkbox
-                  label="Simple brand exposure"
-                  name="type"
-                ></el-checkbox>
-                <el-checkbox
-                  label="Online activities"
-                  name="type"
-                ></el-checkbox>
-                <el-checkbox
-                  label="Promotion activities"
-                  name="type"
-                ></el-checkbox>
-                <el-checkbox
-                  label="Offline activities"
-                  name="type"
-                ></el-checkbox>
-                <el-checkbox
-                  label="Simple brand exposure"
-                  name="type"
-                ></el-checkbox>
-              </el-checkbox-group>
-              <el-input
-                v-model="input"
-                placeholder="新增其他"
-                class="column_input"
+         <p>新增資料集</p>
+         <el-form :model="form" label-width="120px" class="AddDataSetForm">
+          <el-form-item label="Activity name">
+            <el-input v-model="form.name" />
+          </el-form-item>
+          <el-form-item label="Activity zone">
+            <el-select v-model="form.region" placeholder="please select your zone">
+              <el-option label="Zone one" value="shanghai" />
+              <el-option label="Zone two" value="beijing" />
+            </el-select>
+          </el-form-item>
+          <el-form-item label="Activity time">
+            <el-col :span="11">
+              <el-date-picker
+                v-model="form.date1"
+                type="date"
+                placeholder="Pick a date"
+                style="width: 100%"
               />
-              <el-button type="danger" class="submit manage-btn" round plain
-                >確認</el-button
-              >
-            </el-form-item>
-          </el-form>
-        </div>
+            </el-col>
+            <el-col :span="2" class="text-center">
+              <span class="text-gray-500">-</span>
+            </el-col>
+            <el-col :span="11">
+              <el-time-picker
+                v-model="form.date2"
+                placeholder="Pick a time"
+                style="width: 100%"
+              />
+            </el-col>
+          </el-form-item>
+          <el-form-item label="Instant delivery">
+            <el-switch v-model="form.delivery" />
+          </el-form-item>
+          <el-form-item label="Activity type">
+            <el-checkbox-group v-model="form.type">
+              <el-checkbox label="Online activities" name="type" />
+              <el-checkbox label="Promotion activities" name="type" />
+              <el-checkbox label="Offline activities" name="type" />
+              <el-checkbox label="Simple brand exposure" name="type" />
+            </el-checkbox-group>
+          </el-form-item>
+          <el-form-item label="Resources">
+            <el-radio-group v-model="form.resource">
+              <el-radio label="Sponsor" />
+              <el-radio label="Venue" />
+            </el-radio-group>
+          </el-form-item>
+          <el-form-item label="Activity form">
+            <el-input v-model="form.desc" type="textarea" />
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" @click="onSubmit">Create</el-button>
+            <el-button>Cancel</el-button>
+          </el-form-item>
+      </el-form> 
       </div>
-    </el-col>
-  </el-row>
+    </div>
 </template>
 
 <script>
@@ -154,6 +91,7 @@ export default {
     },
   },
 };
+
 </script>
 
 <style lang="scss">
@@ -220,5 +158,10 @@ export default {
   padding: 2em 2em;
   background: #fff;
   border-radius: 10px;
+}
+.AddDataSetForm{
+  background:lightblue;
+  width:80%;
+  margin:100px auto;
 }
 </style>

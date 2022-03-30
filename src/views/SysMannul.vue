@@ -1,82 +1,47 @@
 <template>
-<div>
- <Navbar />
   <el-row>
     <el-col :span="24">
       <div class="grid-content man-banner">
-        
+        <Navbar />
         <el-tabs
           stretch="true"
           :tab-position="tabPosition"
           style="height: 100%; width: 100%"
           class="man-tabs"
         >
-          <el-tab-pane label="自訂資料集">
-            <Customized v-if="isAuth" />
-            <Login v-else />
-            <el-alert
-              v-if="false"
-              title="info alert"
-              type="info"
-              description="請先登入再使用本系統"
-              show-icon>
-            </el-alert>
-          </el-tab-pane>
-          <el-tab-pane label="範例資料集">
-            <Example />
-          </el-tab-pane>
-          <el-tab-pane label="歷史紀錄資料">
+          <el-tab-pane label="History">
             <History />
           </el-tab-pane>
-           <!-- <el-tab-pane label="History">
-            <Customized v-if="isAuth" />
-            <Login v-else />
-            <el-alert
-              v-if="false"
-              title="info alert"
-              type="info"
-              description="請先登入再使用本系統"
-              show-icon
-            >
-            </el-alert>
-          </el-tab-pane> -->
+          <el-tab-pane label="Favorite">
+            <Favorite />
+          </el-tab-pane>
         </el-tabs>
       </div>
     </el-col>
-  </el-row></div>
+  </el-row>
 </template>
 
 <script>
 import Navbar from "@/components/Navbar.vue";
-import Example from "@/views/DatasetExample.vue";
-import Customized from "@/views/DatasetCustomized.vue";
 import History from "@/components/History.vue";
-import Login from "@/views/Login.vue";
+import Favorite from "@/components/Favorite.vue";
 
 export default {
+  name: "Management",
   components: {
     Navbar,
-    Example,
-    Customized,
     History,
-    Login,
+    Favorite,
   },
   data() {
     return {
       tabPosition: "left",
-      isAuth: null,
     };
-  },
-  mounted() {
-    this.isAuth = localStorage.getItem("token");
   },
 };
 </script>
 
 <style lang="scss">
-table{
-  font-size: 20px;
-}
 .el-tabs {
   & .is-active {
     background: #fff;

@@ -1,5 +1,5 @@
 <template>
-  <el-row class="close">
+  <el-row class="close sticky-top">
     <el-col :span="24">
       <div class="grid-content nav">
         <router-link to="/dataset" class="link">
@@ -9,11 +9,14 @@
           <router-link v-if="false" :to="{ name: 'Analysis' }" class="link">
             <el-button round>Analysis</el-button>
           </router-link>
-          <router-link v-if="isAuth" :to="{ name: 'Management' }" class="link">
-            <el-button round>Management</el-button>
+          <router-link :to="{ name: 'Index' }" class="link">
+            <el-button round type="danger" class="fz-20 homebtn">首頁</el-button>
           </router-link>
+          <!-- <router-link v-if="isAuth" :to="{ name: 'Management' }" class="link">
+            <el-button round>Management</el-button>
+          </router-link> -->
           <router-link :to="{ name: 'Login' }" class="link">
-            <el-button round type="danger">Auth</el-button>
+            <el-button round type="danger" class="fz-20">登入授權碼</el-button>
           </router-link>
         </div>
       </div>
@@ -143,6 +146,12 @@ button {
 }
 .link {
   text-decoration: none;
+  margin: 0 10px;
+  font-size: 25px;
+}
+.fz-20{
+  font-size:22px;
+  border: 3px solid #10afaf6e;
 }
 // 原navbar scss
 // nav{
@@ -174,4 +183,11 @@ button {
 //     }
 //   }
 // }
+.sticky-top {
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+    background: #fff;
+}
+
 </style>

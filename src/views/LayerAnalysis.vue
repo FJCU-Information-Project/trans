@@ -48,8 +48,8 @@
         <div v-loading="loading" class="grid-content bg-purple main_sec">
           <el-table :data="layerData" stripe style="width: 100%">
             <el-table-column prop="first_name" label="起始節點" width="180" />
-            <el-table-column prop="second_name" label="層級節點" width="180" />
-            <el-table-column prop="group" label="層級" />
+            <el-table-column prop="second_name" label="第一層節點" width="180" />
+            <el-table-column prop="group" label="第二層節點" />
           </el-table>
         </div>
       </el-col>

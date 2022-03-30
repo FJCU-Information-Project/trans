@@ -12,24 +12,28 @@
                   data.time.toLowerCase().includes(search.toLowerCase())
               )
             "
+            border
+            height="350"
             style="width: 100%"
           >
-            <el-table-column label="新增日期" prop="date" />
+            <el-table-column label="新增日期" prop="date" sortable/>
             <el-table-column label="資料集名稱" prop="name" />
-            <el-table-column label="說明" prop="describe" />
-            <el-table-column align="right">
-              <template #header>
+            <el-table-column label="提供單位" prop="unit" />
+            <el-table-column label="使用操作" prop="" >
+              <!-- <template #header>
                 <el-input
                   v-model="search"
                   size="mini"
                   placeholder="請輸入要尋找的日期"
                 />
-              </template>
+              </template> -->
               <template #default="scope">
                 <router-link :to="{ name: 'Analysis' }" class="link">
                   <el-button
+                    class="fs-20"
+                    type="warning"
                     size="mini"
-                    @click="handleEdit(scope.$index, scope.row)"
+                    @click="handleEdit(scope.$index, scope)"
                     style="margin-left: 1em"
                     >進行分析</el-button
                   >
@@ -42,25 +46,6 @@
     </el-row>
   </div>
 </template>
-<!--
-<template>
-  <div class="grid-content set-banner">
-    <el-row class="set-con_flex">
-      <el-col :span="18">
-        <div class="grid-content set-main_sec">
-          <p>範例資料集</p>
-          <span>台中市車禍資料集</span>
-        </div>
-        <router-link :to="{ name: 'Home' }" class="link">
-          <el-button round style="margin-top: 4em"
-            >進入範例資料集分析</el-button
-          >
-        </router-link>
-      </el-col>
-    </el-row>
-  </div>
-</template>
--->
 
 <script>
 export default {
@@ -70,20 +55,35 @@ export default {
       tableData: [
         {
           date: "2021-07-16",
-          describe: "None",
+          unit: "None",
           name: "台中市車禍資料",
         },
         {
           date: "2021-07-16",
-          describe: "None",
+          unit: "None",
+          name: "台中市車禍資料",
+        },
+        {
+          date: "2021-07-15",
+          unit: "None",
+          name: "台中市車禍資料",
+        },
+        {
+          date: "2021-07-14",
+          unit: "None",
+          name: "台中市車禍資料",
+        },
+        {
+          date: "2021-07-13",
+          unit: "None",
           name: "台中市車禍資料",
         },
       ],
     };
   },
   methods: {
-    handleEdit(index, row) {
-      console.log(index, row);
+    handleEdit(index, scope) {
+      console.log(index, scope);
     },
     handleDelete(index, row) {
       console.log(index, row);
