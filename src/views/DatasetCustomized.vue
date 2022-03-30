@@ -5,7 +5,7 @@
         <div class="grid-content cos_main_sec">
           <div style="display:flex;justify-content:center">
             <p>自訂資料集</p>
-            <router-link :to="{ name: 'AddDataSet' }" class="link">
+            <router-link :to="{ name: 'AddDataSet' }" class="link" style="text-decoration:none">
                   <el-button class="addbtn" type="button">新增資料集</el-button
                   >
                 </router-link>
@@ -48,17 +48,13 @@
               </template>
             </el-table-column>
             <el-table-column label="使用操作" prop="" >
-
-              
               <template #default="scope">
-                <router-link :to="{ name: 'Config' }" class="link">
                   <el-button class="fs-20"
                     size="mini"
-                    @click="handleEdit(scope.$index, scope.row)"
+                    @click="open"
                     style="margin-left: 1em"
-                    >上傳資料</el-button
-                  >
-                </router-link>
+                    >上傳資料
+                  </el-button> 
                 <router-link :to="{ name: 'Analysis' }" class="link">
                   <el-button class="fs-20"
                     type="warning"
@@ -83,7 +79,7 @@
       </el-col>
     </el-row>
 
-    <!-- <div id="AddDataSet" style="margin-top:200px">
+    <div id="AddDataSet" style="margin-top:200px">
         <div style="font-size:20px">
           <p style="font-weight:bold;background-color:#10afafca">請填寫資料集基本資料</p>  
           <br>資料集名稱 : <input type=text style="margin-top: 10px;">
@@ -98,28 +94,28 @@
           <br>上傳肇事結果屬性表 : <input type=file style="margin-top: 10px;">
           <br>上傳肇事結果表 : <input type=file style="margin-top: 10px;">
           <br>上傳交通案件表 : <input type=file style="margin-top: 10px;"></div>
-    </div> -->
-
+    </div>
   </div>
 </template>
 
 
 <script>
+// import AddDataSet from "@/views/AddDataSet.vue";
+//import { ElMessage, ElMessageBox } from 'element-plus';
 import { ElMessageBox } from "element-plus";
 export default {
   name: "Customer",
   setup() {
     const open = () => {
       ElMessageBox.alert(
-        "<div style='font-size:20px'><p style='font-weight:bold;background-color:#10afafca'>請填寫資料集基本資料</p>  <br>資料集名稱 : <input type=text style='margin-top: 10px;'><br>提供單位 : <input type=text style='margin-top: 10px;'><br>資料集統計開始時間 : <div class='block'><span class='demonstration'>Default</span><el-date-picker v-model='value1' type='date' placeholder='Pick a day' /></div><input type=text style='margin-top: 10px;'><br>資料集統計截止時間<input type=text style='margin-top: 10px;'><br>備註<input type=text style='margin-top: 10px;'><br>是否公開<el-radio v-model='radio1' label='1' size='large'>Option 1</el-radio><el-radio v-model='radio1' label='2' size='large'>Option 2</el-radio><br>上傳節點表 : <input type=file style='margin-top: 10px;'></br>上傳屬性表 : <input type=file style='margin-top: 10px;'></br>上傳肇事結果屬性表 : <input type=file style='margin-top: 10px;'></br>上傳肇事結果表 : <input type=file style='margin-top: 10px;'></br>上傳交通案件表 : <input type=file style='margin-top: 10px;'></div>",
-        "請上傳您的資料集",
+        //"<div style='font-size:20px'><p style='font-weight:bold;background-color:#10afafca'>請填寫資料集基本資料</p>  <br>資料集名稱 : <input type=text style='margin-top: 10px;'><br>提供單位 : <input type=text style='margin-top: 10px;'><br>資料集統計開始時間 : <div class='block'><span class='demonstration'>Default</span><el-date-picker v-model='value1' type='date' placeholder='Pick a day' /></div><input type=text style='margin-top: 10px;'><br>資料集統計截止時間<input type=text style='margin-top: 10px;'><br>備註<input type=text style='margin-top: 10px;'><br>是否公開<el-radio v-model='radio1' label='1' size='large'>Option 1</el-radio><el-radio v-model='radio1' label='2' size='large'>Option 2</el-radio><br>上傳節點表 : <input type=file style='margin-top: 10px;'></br>上傳屬性表 : <input type=file style='margin-top: 10px;'></br>上傳肇事結果屬性表 : <input type=file style='margin-top: 10px;'></br>上傳肇事結果表 : <input type=file style='margin-top: 10px;'></br>上傳交通案件表 : <input type=file style='margin-top: 10px;'></div>",
+        "<h3 style='font-size:18px;color:#fff;background:#10afafca'>交通案件表 :</h3> <input type=file style='margin-top: 10px;font-size:18px;'>",
+        "請上傳您的交通案件資料",
         {
           dangerouslyUseHTMLString: true,
         }
       );
-      
     };
-
     return {
       open,
     };
@@ -152,46 +148,6 @@ export default {
           period_end: "2021-03-02",
           is_public:"是",
         },
-        {
-          date: "2021-07-16",
-          unit: "台中市政府交通部",
-          name: "台中市車禍資料",
-          period_start: "2020-06-03",
-          period_end: "2021-03-02",
-          is_public:"是",
-        },
-        {
-          date: "2021-07-16",
-          unit: "台中市政府交通部",
-          name: "台中市車禍資料",
-          period_start: "2020-06-03",
-          period_end: "2021-03-02",
-          is_public:"是",
-        },
-        {
-          date: "2021-07-16",
-          unit: "台中市政府交通部",
-          name: "台中市車禍資料",
-          period_start: "2020-06-03",
-          period_end: "2021-03-02",
-          is_public:"是",
-        },
-        {
-          date: "2021-07-16",
-          unit: "台中市政府交通部",
-          name: "台中市車禍資料",
-          period_start: "2020-06-03",
-          period_end: "2021-03-02",
-          is_public:"是",
-        },
-        {
-          date: "2021-07-16",
-          unit: "台中市政府交通部",
-          name: "台中市車禍資料",
-          period_start: "2020-06-03",
-          period_end: "2021-03-02",
-          is_public:"是",
-        },
       ],
     };
   },
@@ -202,7 +158,29 @@ export default {
     handleDelete(index, row) {
       console.log(index, row);
     },
+    // const uploadata =() =>{
+    //   ElMessageBox.prompt('Please input your e-mail', 'Tip', {
+    //     confirmButtonText: 'OK',
+    //     cancelButtonText: 'Cancel',
+    //     inputPattern:
+    //       /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/,
+    //     inputErrorMessage: 'Invalid Email',
+    //   })
+    //     .then(({ value }) => {
+    //       ElMessage({
+    //         type: 'success',
+    //         message: `Your email is:${value}`,
+    //       })
+    //     })
+    //     .catch(() => {
+    //       ElMessage({
+    //         type: 'info',
+    //         message: 'Input canceled',
+    //       })
+    //     })
+    // },
   },
+  
 };
 </script>
 
@@ -312,14 +290,14 @@ body > .el-container {
 }
 .addbtn{
   font-weight: bold;
-  color: #10afaf;
+  color: #2670c5;
   background: #fff;
   font-size: 20px;
-  border: 3px solid #10afaf;
+  border: 3px solid #2670c5;
   margin: 20px;
   display: block;
   &:hover{
-    background: #10afafad;
+    background: #2670c5bb;
     color:#fff;
   }
 }

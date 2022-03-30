@@ -1,19 +1,25 @@
 <template>
 <div>
     <Navbar />
-      <div class="banner">
+      <div class="banner fs">
+        
+        <el-breadcrumb class="fs breadcrumb">
+          <el-breadcrumb-item :to="{ path: 'dataset' }" class="fs breadcrumb">自訂資料集</el-breadcrumb-item>
+          <el-breadcrumb-item class="fs breadcrumb">新增資料集</el-breadcrumb-item>
+        </el-breadcrumb>
         <p class="addDataTitle">新增資料集</p>
-        <el-form :model="form" label-width="120px" class="AddDataSetForm">
-            <div class="d-flex">
-              <div>
-                <el-form-item label="資料集名稱">
+     
+        <el-form :model="form" label-width="180px" class="AddDataSetForm" :rules="rules">
+            <div class="d-flex jcsb">
+              <div class="fs">
+                <el-form-item label="資料集名稱" prop="name" required>
                   <el-input v-model="form.name" />
                 </el-form-item>
-                <el-form-item label="資料集提供單位">
+                <el-form-item label="資料集提供單位" prop="unit" required>
                   <el-input v-model="form.unit" />
                 </el-form-item>
                 <div class="d-flex"> 
-                <el-form-item label="統計開始時間">
+                <el-form-item label="統計開始時間" prop="period_start" required>
                 <el-date-picker
                   v-model="form.period_start"
                   type="date"
@@ -21,7 +27,7 @@
                   :disabled-date="disabledDate"
                   :shortcuts="shortcuts"/>
                 </el-form-item>
-                <el-form-item label="統計截止時間">
+                <el-form-item label="統計截止時間" prop="period_end" required>
                 <el-date-picker
                   v-model="form.period_end"
                   type="date"
@@ -30,20 +36,29 @@
                   :shortcuts="shortcuts"/>
                 </el-form-item>
                 </div>
-                <el-form-item label="備註欄">
+                <el-form-item label="備註欄" prop="note">
                   <el-input v-model="form.note" type="textarea" />
                 </el-form-item>
                 <div  class="d-flex">
-                <el-form-item label="使否公開">
-                  <el-radio-group v-model="form.is_public">
-                    <el-radio border label="是" />
-                    <el-radio border label="否" />
-                  </el-radio-group>
+                  <el-form-item label="使否公開" prop="is_public">
+                    <el-radio-group v-model="form.is_public">
+                      <el-radio border label="是" />
+                      <el-radio border label="否" />
+                    </el-radio-group>
+                  </el-form-item>
+                </div>
+                <div class="d-flex" style="justify-content:end">
+                  <el-form-item class="d-flex">
+                    <el-button type="warning" @click="onSubmit">確定新增</el-button>
+                    <router-link :to="{ name: 'Dataset' }" class="link">
+                      <el-button>取消新增</el-button>
+                    </router-link>
                 </el-form-item>
-              </div>
+                </div>
             </div>
+            
             <div>
-              <el-form-item label="上傳節點表">
+              <el-form-item label="節點表" required>
                   <!-- <el-input v-model="form.name" /> -->
                   <el-upload
                     ref="Upload"
@@ -51,41 +66,106 @@
                     action="https://jsonplaceholder.typicode.com/posts/"
                     :limit="1"
                     :on-exceed="handleExceed"
-                    :auto-upload="false"
-                  >
+                    :auto-upload="false">
                     <template #trigger>
-                      <el-button type="primary">select file</el-button>
+                      <el-button type="primary">選取csv檔案</el-button>
+                    </template>
+                    
+                    <template #tip>
+                      僅限上傳一個檔案，新檔會覆蓋舊檔
+                    </template>
+                  </el-upload>
+                </el-form-item>
+                <el-form-item label="屬性表" required>
+                  <el-upload
+                    ref="Upload"
+                    class="upload-demo"
+                    action="https://jsonplaceholder.typicode.com/posts/"
+                    :limit="1"
+                    :on-exceed="handleExceed"
+                    :auto-upload="false">
+                    <template #trigger>
+                      <el-button type="primary">選取csv檔案</el-button>
                     </template>
                     <el-button class="ml-3" type="success" @click="submitUpload">
-                      upload to server
+                      上傳檔案
                     </el-button>
                     <template #tip>
                       <div class="el-upload__tip text-red">
-                        limit 1 file, new file will cover the old file
+                        僅限上傳一個檔案，新檔會覆蓋舊檔
                       </div>
                     </template>
                   </el-upload>
                 </el-form-item>
-                <el-form-item label="上傳屬性表">
-                  <el-input v-model="form.name" />
+                <el-form-item label="肇事結果屬性表" required>
+                  <el-upload
+                    ref="Upload"
+                    class="upload-demo"
+                    action="https://jsonplaceholder.typicode.com/posts/"
+                    :limit="1"
+                    :on-exceed="handleExceed"
+                    :auto-upload="false">
+                    <template #trigger>
+                      <el-button type="primary">選取csv檔案</el-button>
+                    </template>
+                    <el-button class="ml-3" type="success" @click="submitUpload">
+                      上傳檔案
+                    </el-button>
+                    <template #tip>
+                      <div class="el-upload__tip text-red">
+                        僅限上傳一個檔案，新檔會覆蓋舊檔
+                      </div>
+                    </template>
+                  </el-upload>
                 </el-form-item>
-                <el-form-item label="上傳肇事結果屬性表">
-                  <el-input v-model="form.name" />
+                <el-form-item label="肇事結果表" required>
+                  <el-upload
+                    ref="Upload"
+                    class="upload-demo"
+                    action="https://jsonplaceholder.typicode.com/posts/"
+                    :limit="1"
+                    :on-exceed="handleExceed"
+                    :auto-upload="false">
+                    <template #trigger>
+                      <el-button type="primary">選取csv檔案</el-button>
+                    </template>
+                    <el-button class="ml-3" type="success" @click="submitUpload">
+                      上傳檔案
+                    </el-button>
+                    <template #tip>
+                      <div class="el-upload__tip text-red">
+                        僅限上傳一個檔案，新檔會覆蓋舊檔
+                      </div>
+                    </template>
+                  </el-upload>
                 </el-form-item>
-                <el-form-item label="上傳肇事結果表">
-                  <el-input v-model="form.name" />
+                <el-form-item label="交通案件表" required>
+                  <el-upload
+                    ref="Upload"
+                    class="upload-demo"
+                    action="https://jsonplaceholder.typicode.com/posts/"
+                    :limit="1"
+                    :on-exceed="handleExceed"
+                    :auto-upload="false">
+                    <template #trigger>
+                      <el-button type="primary">選取csv檔案</el-button>
+                    </template>
+                    <el-button class="ml-3" type="success" @click="submitUpload">
+                      上傳檔案
+                    </el-button>
+                    <template #tip>
+                      <div class="el-upload__tip text-red">
+                        僅限上傳一個檔案，新檔會覆蓋舊檔
+                      </div>
+                    </template>
+                  </el-upload>
                 </el-form-item>
-                <el-form-item label="上傳交通案件表">
-                  <el-input v-model="form.name" />
-                </el-form-item>
+              <el-button class="ml-3" type="success" @click="submitUpload">
+                上傳檔案
+              </el-button>
             </div>
           </div>
-          <el-form-item>
-            <el-button type="primary" @click="onSubmit">建立新增</el-button>
-            <router-link :to="{ name: 'Dataset' }" class="link">
-              <el-button>取消新增</el-button>
-            </router-link>
-          </el-form-item>
+          
       </el-form> 
       </div>
     </div>
@@ -93,11 +173,17 @@
 
 <script>
 import Navbar from "@/components/Navbar.vue";
-
+//import  ArrowRight  from "@/element-plus/icons-vue";
 export default {
   name: "AddDataSet",
   components: {
     Navbar,
+    datasetFiles:[
+      "nodeFileName",
+      "attributeFileName",
+      "resultFileName",
+      "resultAttributeFileName"
+    ]
   },
   data() {
     return {
@@ -133,7 +219,46 @@ export default {
     this.upload = this.$refs.Upload;
   },
 };
-
+// const form = reactive({
+//   name: [
+//     { required: true, message: 'Please input Activity name', trigger: 'blur' },
+//     { min: 3, max: 5, message: 'Length should be 3 to 5', trigger: 'blur' },
+//   ],
+//   unit: [
+//     {
+//       required: true,
+//       message: 'Please select Activity zone',
+//       trigger: 'change',
+//     },
+//   ],
+//   period_start: [
+//     {
+//       type: 'date',
+//       required: true,
+//       message: 'Please pick a date',
+//       trigger: 'change',
+//     },
+//   ],
+//   period_end: [
+//     {
+//       type: 'date',
+//       required: true,
+//       message: 'Please pick a time',
+//       trigger: 'change',
+//     },
+//   ],
+  
+//   is_public: [
+//     {
+//       required: true,
+//       message: 'Please select activity resource',
+//       trigger: 'change',
+//     },
+//   ],
+//   note: [
+//     { required: true, message: 'Please input activity form', trigger: 'blur' },
+//   ],
+// })
 </script>
 
 <style lang="scss">
@@ -177,7 +302,7 @@ export default {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  background-image: url(https://images.pexels.com/photos/10003543/pexels-photo-10003543.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+  background-image: url(../assets/bggradient.png);
   background-size: cover;
   background-position: center;
   color: white;
@@ -190,7 +315,7 @@ export default {
 }
 .addDataTitle{
     font-size: 2.5em;
-    padding-top: 0.5em;
+    padding-top: 0.2em;
     font-weight: bolder;
     letter-spacing: 10px;
     text-indent: 10px;
@@ -210,15 +335,31 @@ export default {
   border-radius: 10px;
 }
 .AddDataSetForm{
-  background:lightblue;
+  background:rgba(173, 216, 230, 0.822);
   width:80%;
-  margin:50px 100px auto;
-  padding:50px;
+  margin:20px  auto;
+  padding:30px 25px 10px 25px;
+  border: 2px solid rgba(112, 208, 240, 0.822);
+
 }
-.el-form-item{
-  font-size: 2.5em;
+.fs{
+  font-size: 18px;
 }
 .d-flex{
   display: flex;
+}
+.jcsb{
+  justify-content: space-evenly;
+}
+.el-breadcrumb__item,.el-breadcrumb__inner{
+  color:#fff !important;
+  margin: 10px 0 0 10px;
+}
+.el-form-item__label{
+  font-size: 18px !important;
+  font-weight: bold;
+}
+.el-button{
+  font-size: 18px !important;
 }
 </style>

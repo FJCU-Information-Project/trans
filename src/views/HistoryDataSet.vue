@@ -3,7 +3,9 @@
     <el-row class="cusdata-con_flex">
       <el-col :span="23">
         <div class="grid-content cos_main_sec">
-          <p>範例資料集</p>
+          <div style="display:flex;justify-content:center">
+            <p>歷史紀錄資料</p>
+          </div>
           <el-table
             :data="
               tableData.filter(
@@ -12,12 +14,13 @@
                   data.time.toLowerCase().includes(search.toLowerCase())
               )
             "
-            border
-            height="350"
             style="width: 100%"
+            border
+            height="500"
+            type="danger" plain
           >
-            <el-table-column label="新增日期" prop="date" sortable/>
-           <el-table-column label="資料集名稱" prop="name" width='300' >
+            <el-table-column label="新增日期" prop="date" width='150' sortable/>
+            <el-table-column label="資料集名稱" prop="name" width='300' >
               <template #default="scope">
                 <el-popover effect="light" trigger="hover" placement="top" width="auto">
               <template #default class="fs-20">
@@ -30,7 +33,7 @@
                 </el-popover>
               </template>
             </el-table-column>
-            <el-table-column label="提供單位" prop="unit" />
+            <el-table-column label="提供單位" prop="unit" width='300'/>
             <el-table-column label="是否公開" prop="is_public" width='150'>
               <template #default="scope">
                 <el-tag class="fs-20"
@@ -41,42 +44,71 @@
               </template>
             </el-table-column>
             <el-table-column label="使用操作" prop="" >
-              <!-- <template #header>
-                <el-input
-                  v-model="search"
-                  size="mini"
-                  placeholder="請輸入要尋找的日期"
-                />
-              </template> -->
               <template #default="scope">
+                  
                 <router-link :to="{ name: 'Analysis' }" class="link">
-                  <el-button
-                    class="fs-20"
+                  <el-button class="fs-20"
                     type="warning"
                     size="mini"
-                    @click="handleEdit(scope.$index, scope)"
+                    @click="handleEdit(scope.$index, scope.row)"
                     style="margin-left: 1em"
                     >查看分析</el-button
                   >
                 </router-link>
+                <el-button class="fs-20"
+                  size="mini"
+                  type="danger"
+                  @click="handleDelete(scope.$index, scope.row)"
+                  style="margin-left: 1em"
+                  >刪除</el-button
+                >
               </template>
             </el-table-column>
           </el-table>
         </div>
+        
       </el-col>
     </el-row>
+
+    <div id="AddDataSet" style="margin-top:200px">
+        <div style="font-size:20px">
+          <p style="font-weight:bold;background-color:#10afafca">請填寫資料集基本資料</p>  
+          <br>資料集名稱 : <input type=text style="margin-top: 10px;">
+          <br>提供單位 : <input type=text style="margin-top: 10px;">
+          <br>資料集統計開始時間 : <div class="block"><span class="demonstration">Default</span><el-date-picker v-model="value1" type="date" placeholder="Pick a day" /></div>
+          <input type=text style="margin-top: 10px;">
+          <br>資料集統計截止時間<input type=text style="margin-top: 10px;">
+          <br>備註<input type=text style="margin-top: 10px;">
+          <br>是否公開<el-radio v-model="radio1" label="1" size="large">Option 1</el-radio><el-radio v-model="radio1" label="2" size="large">Option 2</el-radio>
+          <br>上傳節點表 : <input type=file style="margin-top: 10px;">
+          <br>上傳屬性表 : <input type=file style="margin-top: 10px;">
+          <br>上傳肇事結果屬性表 : <input type=file style="margin-top: 10px;">
+          <br>上傳肇事結果表 : <input type=file style="margin-top: 10px;">
+          <br>上傳交通案件表 : <input type=file style="margin-top: 10px;"></div>
+    </div>
   </div>
 </template>
 
+
 <script>
+// import AddDataSet from "@/views/AddDataSet.vue";
+//import { ElMessage, ElMessageBox } from 'element-plus';
+import { ElMessageBox } from "element-plus";
 export default {
+  name: "Customer",
+  setup() {
+    
+    return {
+      open,
+    };
+  },
   data() {
     return {
       search: "",
       tableData: [
         {
           date: "2021-07-16",
-          unit: "None",
+          unit: "台中市政府交通部",
           name: "台中市車禍資料",
           period_start: "2020-06-03",
           period_end: "2021-03-02",
@@ -84,41 +116,53 @@ export default {
         },
         {
           date: "2021-07-16",
-          unit: "None",
+          unit: "台中市政府交通部",
           name: "台中市車禍資料",
           period_start: "2020-06-03",
           period_end: "2021-03-02",
           is_public:"否",
         },
         {
-          date: "2021-07-15",
-          unit: "None",
+          date: "2021-07-16",
+          unit: "台中市政府交通部",
           name: "台中市車禍資料",
           period_start: "2020-06-03",
           period_end: "2021-03-02",
           is_public:"是",
         },
-        {
-          date: "2021-07-14",
-          unit: "None",
-          name: "台中市車禍資料",
-        },
-        {
-          date: "2021-07-13",
-          unit: "None",
-          name: "台中市車禍資料",
-        },
       ],
     };
   },
   methods: {
-    handleEdit(index, scope) {
-      console.log(index, scope);
+    handleEdit(index, row) {
+      console.log(index, row);
     },
     handleDelete(index, row) {
       console.log(index, row);
     },
+    // const uploadata =() =>{
+    //   ElMessageBox.prompt('Please input your e-mail', 'Tip', {
+    //     confirmButtonText: 'OK',
+    //     cancelButtonText: 'Cancel',
+    //     inputPattern:
+    //       /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/,
+    //     inputErrorMessage: 'Invalid Email',
+    //   })
+    //     .then(({ value }) => {
+    //       ElMessage({
+    //         type: 'success',
+    //         message: `Your email is:${value}`,
+    //       })
+    //     })
+    //     .catch(() => {
+    //       ElMessage({
+    //         type: 'info',
+    //         message: 'Input canceled',
+    //       })
+    //     })
+    // },
   },
+  
 };
 </script>
 
@@ -148,37 +192,28 @@ export default {
   align-items: center;
   justify-content: flex-end;
 }
-.set-con_flex {
+.cusdata-con_flex {
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 8em 0;
+  padding: 1.25em 0;
 }
-.set-main_sec {
+.cos_main_sec {
+  padding: 1em 1em;
   & p {
-    display: flex;
-    flex-direction: column;
-    font-size: 3em;
+    font-size: 2.5em;
+    padding-top: 0.5em;
     font-weight: bolder;
-    letter-spacing: 0.5em;
-    text-indent: 0.5em;
-  }
-  & span {
-    display: inline-block;
-    margin-top: 3em;
-    font-size: 1em;
-    letter-spacing: 1em;
-    text-indent: 1em;
-    background: #000;
-    padding: 0.5em;
+    letter-spacing: 10px;
+    text-indent: 10px;
   }
 }
 .iframe_main_sec {
   height: 100vh;
   padding: 1em 1em;
 }
-.set-banner {
-  height: 100vh;
+.his-banner {
+  // background: rgb(226, 226, 216);
+  height: 200vh;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -186,7 +221,6 @@ export default {
   background-size: cover;
   background-position: center;
   color: white;
-  // justify-content: center;
   & h1 {
     font-size: 4em;
     font-weight: bolder;
@@ -235,5 +269,21 @@ body > .el-container {
 .grid-content {
   border-radius: 4px;
   min-height: 36px;
+}
+.addbtn{
+  font-weight: bold;
+  color: #2670c5;
+  background: #fff;
+  font-size: 20px;
+  border: 3px solid #2670c5;
+  margin: 20px;
+  display: block;
+  &:hover{
+    background: #2670c5bb;
+    color:#fff;
+  }
+}
+.fs-20{
+  font-size:20px
 }
 </style>

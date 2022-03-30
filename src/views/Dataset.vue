@@ -1,6 +1,6 @@
 <template>
 <div>
- <Navbar />
+  <Navbar />
   <el-row>
     <el-col :span="24">
       <div class="grid-content man-banner">
@@ -11,6 +11,9 @@
           style="height: 100%; width: 100%"
           class="man-tabs"
         >
+          <el-tab-pane label="範例資料集">
+            <Example />
+          </el-tab-pane>
           <el-tab-pane label="自訂資料集">
             <Customized v-if="isAuth" />
             <Login v-else />
@@ -22,11 +25,8 @@
               show-icon>
             </el-alert>
           </el-tab-pane>
-          <el-tab-pane label="範例資料集">
-            <Example />
-          </el-tab-pane>
           <el-tab-pane label="歷史紀錄資料">
-            <History />
+            <HistoryDataSet />
           </el-tab-pane>
            <!-- <el-tab-pane label="History">
             <Customized v-if="isAuth" />
@@ -51,6 +51,7 @@ import Navbar from "@/components/Navbar.vue";
 import Example from "@/views/DatasetExample.vue";
 import Customized from "@/views/DatasetCustomized.vue";
 import History from "@/components/History.vue";
+import HistoryDataSet from "@/views/HistoryDataSet.vue";
 import Login from "@/views/Login.vue";
 
 export default {
@@ -59,6 +60,7 @@ export default {
     Example,
     Customized,
     History,
+    HistoryDataSet,
     Login,
   },
   data() {
@@ -140,7 +142,7 @@ table{
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  background-image: url(https://images.pexels.com/photos/10003543/pexels-photo-10003543.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+  background-image: url(../assets/greenbg.png);
   background-size: cover;
   background-position: center;
   color: white;

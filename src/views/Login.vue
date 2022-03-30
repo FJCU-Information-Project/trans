@@ -114,10 +114,11 @@ export default {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  background-image: url(https://images.pexels.com/photos/10003543/pexels-photo-10003543.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+  background-image: url(../assets/loginbg.jpg);
   background-size: cover;
   background-position: center;
   color: white;
+  backdrop-filter: opacity(20%);
   & h1 {
     font-size: 4em;
     font-weight: bolder;

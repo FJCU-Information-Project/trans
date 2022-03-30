@@ -99,6 +99,11 @@ const routes = [
     component: () => import("../views/AddDataSet.vue"),
   },
   {
+    path: "/historydataset",
+    name: "HistoryDataSet",
+    component: () => import("../views/HistoryDataSet.vue"),
+  },
+  {
     path: "/sysmannul",
     name: "SysMannul",
     component: () => import("../views/SysMannul.vue"),
@@ -112,6 +117,11 @@ const routes = [
     path: "/test",
     name: "Test",
     component: () => import("../views/Test.vue"),
+  },
+  {
+    path: "/description",
+    name: "Description",
+    component: () => import("../views/Description.vue"),
   },
 ];
 

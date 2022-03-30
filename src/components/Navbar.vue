@@ -41,7 +41,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .ban-title {
   height: 92vh;
   display: flex;
@@ -94,7 +94,7 @@ button {
   font-size: 1.25em;
   font-weight: bolder;
   border: 0;
-  background-color: transparent;
+  background-color: #fc6471;
   color: white;
   letter-spacing: 3px;
   text-indent: 3px;
@@ -138,6 +138,9 @@ button {
     margin-bottom: 0;
   }
 }
+.el-col{
+  margin-bottom: 0;
+}
 .bg-purple-dark {
   background: #99a9bf;
 }
@@ -151,7 +154,6 @@ button {
 }
 .fz-20{
   font-size:22px;
-  border: 3px solid #10afaf6e;
 }
 // 原navbar scss
 // nav{
