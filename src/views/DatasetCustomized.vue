@@ -3,12 +3,15 @@
     <el-row class="cusdata-con_flex">
       <el-col :span="23">
         <div class="grid-content cos_main_sec">
-          <div style="display:flex;justify-content:center">
+          <div style="display: flex; justify-content: center">
             <p>自訂資料集</p>
-            <router-link :to="{ name: 'AddDataSet' }" class="link" style="text-decoration:none">
-                  <el-button class="addbtn" type="button">新增資料集</el-button
-                  >
-                </router-link>
+            <router-link
+              :to="{ name: 'AddDataSet' }"
+              class="link"
+              style="text-decoration: none"
+            >
+              <el-button class="addbtn" type="button">新增資料集</el-button>
+            </router-link>
           </div>
           <el-table
             :data="
@@ -21,42 +24,56 @@
             style="width: 100%"
             border
             height="500"
-            type="danger" plain
+            type="danger"
+            plain
           >
-            <el-table-column label="新增日期" prop="date" width='150' sortable/>
-            <el-table-column label="資料集名稱" prop="name" width='300' >
+            <el-table-column
+              label="新增日期"
+              prop="date"
+              width="150"
+              sortable
+            />
+            <el-table-column label="資料集名稱" prop="name" width="300">
               <template #default="scope">
-                <el-popover effect="light" trigger="hover" placement="top" width="auto">
-              <template #default class="fs-20">
-                <div>統計開始時間 : {{ scope.row.period_start }}</div>
-                <div>統計截止時間 : {{ scope.row.period_end }}</div>
-              </template>
-              <template #reference>
-                <el-tag class="fs-20">{{ scope.row.name }}</el-tag>
-              </template>
+                <el-popover
+                  effect="light"
+                  trigger="hover"
+                  placement="top"
+                  width="auto"
+                >
+                  <template #default class="fs-20">
+                    <div>統計開始時間 : {{ scope.row.period_start }}</div>
+                    <div>統計截止時間 : {{ scope.row.period_end }}</div>
+                  </template>
+                  <template #reference>
+                    <el-tag class="fs-20">{{ scope.row.name }}</el-tag>
+                  </template>
                 </el-popover>
               </template>
             </el-table-column>
-            <el-table-column label="提供單位" prop="unit" width='300'/>
-            <el-table-column label="是否公開" prop="is_public" width='150'>
+            <el-table-column label="提供單位" prop="unit" width="300" />
+            <el-table-column label="是否公開" prop="is_public" width="150">
               <template #default="scope">
-                <el-tag class="fs-20"
+                <el-tag
+                  class="fs-20"
                   :type="scope.row.is_public === '是' ? '' : 'danger'"
                   disable-transitions
                   >{{ scope.row.is_public }}</el-tag
                 >
               </template>
             </el-table-column>
-            <el-table-column label="使用操作" prop="" >
+            <el-table-column label="使用操作" prop="">
               <template #default="scope">
-                  <el-button class="fs-20"
-                    size="mini"
-                    @click="open"
-                    style="margin-left: 1em"
-                    >上傳資料
-                  </el-button> 
+                <el-button
+                  class="fs-20"
+                  size="mini"
+                  @click="open"
+                  style="margin-left: 1em"
+                  >上傳資料
+                </el-button>
                 <router-link :to="{ name: 'Analysis' }" class="link">
-                  <el-button class="fs-20"
+                  <el-button
+                    class="fs-20"
                     type="warning"
                     size="mini"
                     @click="handleEdit(scope.$index, scope.row)"
@@ -64,7 +81,8 @@
                     >進行分析</el-button
                   >
                 </router-link>
-                <el-button class="fs-20"
+                <el-button
+                  class="fs-20"
                   size="mini"
                   type="danger"
                   @click="handleDelete(scope.$index, scope.row)"
@@ -75,29 +93,41 @@
             </el-table-column>
           </el-table>
         </div>
-        
       </el-col>
     </el-row>
 
-    <div id="AddDataSet" style="margin-top:200px">
-        <div style="font-size:20px">
-          <p style="font-weight:bold;background-color:#10afafca">請填寫資料集基本資料</p>  
-          <br>資料集名稱 : <input type=text style="margin-top: 10px;">
-          <br>提供單位 : <input type=text style="margin-top: 10px;">
-          <br>資料集統計開始時間 : <div class="block"><span class="demonstration">Default</span><el-date-picker v-model="value1" type="date" placeholder="Pick a day" /></div>
-          <input type=text style="margin-top: 10px;">
-          <br>資料集統計截止時間<input type=text style="margin-top: 10px;">
-          <br>備註<input type=text style="margin-top: 10px;">
-          <br>是否公開<el-radio v-model="radio1" label="1" size="large">Option 1</el-radio><el-radio v-model="radio1" label="2" size="large">Option 2</el-radio>
-          <br>上傳節點表 : <input type=file style="margin-top: 10px;">
-          <br>上傳屬性表 : <input type=file style="margin-top: 10px;">
-          <br>上傳肇事結果屬性表 : <input type=file style="margin-top: 10px;">
-          <br>上傳肇事結果表 : <input type=file style="margin-top: 10px;">
-          <br>上傳交通案件表 : <input type=file style="margin-top: 10px;"></div>
+    <div id="AddDataSet" style="margin-top: 200px">
+      <div style="font-size: 20px">
+        <p style="font-weight: bold; background-color: #10afafca">
+          請填寫資料集基本資料
+        </p>
+        <br />資料集名稱 : <input type="text" style="margin-top: 10px" />
+        <br />提供單位 : <input type="text" style="margin-top: 10px" />
+        <br />資料集統計開始時間 :
+        <div class="block">
+          <span class="demonstration">Default</span
+          ><el-date-picker
+            v-model="value1"
+            type="date"
+            placeholder="Pick a day"
+          />
+        </div>
+        <input type="text" style="margin-top: 10px" />
+        <br />資料集統計截止時間<input type="text" style="margin-top: 10px" />
+        <br />備註<input type="text" style="margin-top: 10px" />
+        <br />是否公開<el-radio v-model="radio1" label="1" size="large"
+          >Option 1</el-radio
+        ><el-radio v-model="radio1" label="2" size="large">Option 2</el-radio>
+        <br />上傳節點表 : <input type="file" style="margin-top: 10px" />
+        <br />上傳屬性表 : <input type="file" style="margin-top: 10px" />
+        <br />上傳肇事結果屬性表 :
+        <input type="file" style="margin-top: 10px" /> <br />上傳肇事結果表 :
+        <input type="file" style="margin-top: 10px" /> <br />上傳交通案件表 :
+        <input type="file" style="margin-top: 10px" />
+      </div>
     </div>
   </div>
 </template>
-
 
 <script>
 // import AddDataSet from "@/views/AddDataSet.vue";
@@ -130,7 +160,7 @@ export default {
           name: "台中市車禍資料",
           period_start: "2020-06-03",
           period_end: "2021-03-02",
-          is_public:"是",
+          is_public: "是",
         },
         {
           date: "2021-07-16",
@@ -138,7 +168,7 @@ export default {
           name: "台中市車禍資料",
           period_start: "2020-06-03",
           period_end: "2021-03-02",
-          is_public:"否",
+          is_public: "否",
         },
         {
           date: "2021-07-16",
@@ -146,7 +176,7 @@ export default {
           name: "台中市車禍資料",
           period_start: "2020-06-03",
           period_end: "2021-03-02",
-          is_public:"是",
+          is_public: "是",
         },
       ],
     };
@@ -180,7 +210,6 @@ export default {
     //     })
     // },
   },
-  
 };
 </script>
 
@@ -288,7 +317,7 @@ body > .el-container {
   border-radius: 4px;
   min-height: 36px;
 }
-.addbtn{
+.addbtn {
   font-weight: bold;
   color: #2670c5;
   background: #fff;
@@ -296,12 +325,12 @@ body > .el-container {
   border: 3px solid #2670c5;
   margin: 20px;
   display: block;
-  &:hover{
+  &:hover {
     background: #2670c5bb;
-    color:#fff;
+    color: #fff;
   }
 }
-.fs-20{
-  font-size:20px
+.fs-20 {
+  font-size: 20px;
 }
 </style>

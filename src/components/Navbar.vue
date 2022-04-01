@@ -10,7 +10,9 @@
             <el-button round>Analysis</el-button>
           </router-link>
           <router-link :to="{ name: 'Index' }" class="link">
-            <el-button round type="danger" class="fz-20 homebtn">首頁</el-button>
+            <el-button round type="danger" class="fz-20 homebtn"
+              >首頁</el-button
+            >
           </router-link>
           <!-- <router-link v-if="isAuth" :to="{ name: 'Management' }" class="link">
             <el-button round>Management</el-button>
@@ -36,7 +38,7 @@ export default {
     };
   },
   mounted() {
-    this.isAuth = localStorage.getItem('token');
+    this.isAuth = localStorage.getItem("token");
   },
 };
 </script>
@@ -138,7 +140,7 @@ button {
     margin-bottom: 0;
   }
 }
-.el-col{
+.el-col {
   margin-bottom: 0;
 }
 .bg-purple-dark {
@@ -152,8 +154,8 @@ button {
   margin: 0 10px;
   font-size: 25px;
 }
-.fz-20{
-  font-size:22px;
+.fz-20 {
+  font-size: 22px;
 }
 // 原navbar scss
 // nav{
@@ -186,10 +188,9 @@ button {
 //   }
 // }
 .sticky-top {
-    position: sticky;
-    top: 0;
-    z-index: 1020;
-    background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+  background: #fff;
 }
-
 </style>

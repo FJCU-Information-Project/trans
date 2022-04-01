@@ -1,34 +1,34 @@
 <template>
-<div>
-  <Navbar />
-  <el-row>
-    <el-col :span="24">
-      <div class="grid-content man-banner">
-        
-        <el-tabs
-          stretch="true"
-          :tab-position="tabPosition"
-          style="height: 100%; width: 100%"
-          class="man-tabs"
-        >
-          <el-tab-pane label="範例資料集">
-            <Example />
-          </el-tab-pane>
-          <el-tab-pane label="自訂資料集">
-            <Customized v-if="isAuth" />
-            <Login v-else />
-            <el-alert
-              v-if="false"
-              title="info alert"
-              type="info"
-              description="請先登入再使用本系統"
-              show-icon>
-            </el-alert>
-          </el-tab-pane>
-          <el-tab-pane label="歷史紀錄資料">
-            <HistoryDataSet />
-          </el-tab-pane>
-           <!-- <el-tab-pane label="History">
+  <div>
+    <Navbar />
+    <el-row>
+      <el-col :span="24">
+        <div class="grid-content man-banner">
+          <el-tabs
+            stretch="true"
+            :tab-position="tabPosition"
+            style="height: 100%; width: 100%"
+            class="man-tabs"
+          >
+            <el-tab-pane label="範例資料集">
+              <Example />
+            </el-tab-pane>
+            <el-tab-pane label="自訂資料集">
+              <Customized v-if="isAuth" />
+              <Login v-else />
+              <el-alert
+                v-if="false"
+                title="info alert"
+                type="info"
+                description="請先登入再使用本系統"
+                show-icon
+              >
+              </el-alert>
+            </el-tab-pane>
+            <el-tab-pane label="歷史紀錄資料">
+              <HistoryDataSet />
+            </el-tab-pane>
+            <!-- <el-tab-pane label="History">
             <Customized v-if="isAuth" />
             <Login v-else />
             <el-alert
@@ -40,17 +40,18 @@
             >
             </el-alert>
           </el-tab-pane> -->
-        </el-tabs>
-      </div>
-    </el-col>
-  </el-row></div>
+          </el-tabs>
+        </div>
+      </el-col>
+    </el-row>
+  </div>
 </template>
 
 <script>
 import Navbar from "@/components/Navbar.vue";
 import Example from "@/views/DatasetExample.vue";
 import Customized from "@/views/DatasetCustomized.vue";
-import History from "@/components/History.vue";
+//import History from "@/components/History.vue";
 import HistoryDataSet from "@/views/HistoryDataSet.vue";
 import Login from "@/views/Login.vue";
 
@@ -59,7 +60,7 @@ export default {
     Navbar,
     Example,
     Customized,
-    History,
+    //History,
     HistoryDataSet,
     Login,
   },
@@ -76,7 +77,7 @@ export default {
 </script>
 
 <style lang="scss">
-table{
+table {
   font-size: 20px;
 }
 .el-tabs {

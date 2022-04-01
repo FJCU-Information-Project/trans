@@ -54,7 +54,7 @@ export default {
           // 1.把this.token存到localstorage
           localStorage.setItem("token", this.token);
           // 2.然後跳轉到登入之後的頁面
-          this.$router.push({ name: "Management" });
+          this.$router.push({ name: "Dataset" });
           this.alert = false;
         } else {
           console.log("Token 是廢物");

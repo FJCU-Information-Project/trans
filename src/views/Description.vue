@@ -3,20 +3,25 @@
     <div class="grid-content banner">
       <Navbar />
       <el-row>
-        <el-col :span="7">
-        </el-col>
+        <el-col :span="7"> </el-col>
         <el-col :span="10" class="step_box">
           <el-steps :active="active" finish-status="success">
-            <el-step title="Step 1" class="translate"/>
-            <el-step title="Step 2" class="translate"/>
+            <el-step title="Step 1" class="translate" />
+            <el-step title="Step 2" class="translate" />
             <el-step title="Step 3" />
           </el-steps>
           <div class="step_con">
-            <el-button style="margin-top: 12px" @click="next" plain round type="danger">下一步</el-button>
+            <el-button
+              style="margin-top: 12px"
+              @click="next"
+              plain
+              round
+              type="danger"
+              >下一步</el-button
+            >
           </div>
         </el-col>
-        <el-col :span="7">
-        </el-col>
+        <el-col :span="7"> </el-col>
       </el-row>
     </div>
   </div>
@@ -24,13 +29,7 @@
 
 <script>
 import Navbar from "@/components/Navbar.vue";
-import { ref } from 'vue'
-
-const active = ref(0)
-
-const next = () => {
-  if (active.value++ > 2) active.value = 0
-}
+//import { ref } from "vue";
 
 export default {
   name: "Config",
@@ -58,25 +57,24 @@ export default {
     },
   },
 };
-
 </script>
 
 <style lang="scss">
 .el-step__title {
-    text-align: center;
+  text-align: center;
 }
 .el-step__line {
-    transform: translateX(50%);
+  transform: translateX(50%);
 }
-.translate{
+.translate {
   transform: translateX(-50%);
 }
-.el-step__icon{
+.el-step__icon {
   width: 40px !important;
   height: 40px !important;
   margin-top: -1.5em;
 }
-.step_con{
+.step_con {
   width: 100%;
   height: 600px;
   margin-top: 3em;
@@ -88,7 +86,7 @@ export default {
   box-sizing: border-box;
   border-radius: 30px;
 }
-.step_box{
+.step_box {
   margin-top: 6em;
 }
 .column_input {
@@ -155,9 +153,9 @@ export default {
   background: #fff;
   border-radius: 10px;
 }
-.AddDataSetForm{
-  background:lightblue;
-  width:80%;
-  margin:100px auto;
+.AddDataSetForm {
+  background: lightblue;
+  width: 80%;
+  margin: 100px auto;
 }
 </style>

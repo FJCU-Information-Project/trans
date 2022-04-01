@@ -1,8 +1,8 @@
 <template>
   <div>
-  <Navbar />
-  
-  <!-- <el-row class="close">
+    <Navbar />
+
+    <!-- <el-row class="close">
     <el-col :span="24">
     <div id="index">
       <h3 id="title">TRANS</h3>
@@ -14,114 +14,114 @@
     <img id="bluecar" src="../assets/svg/bluecar.svg" alt="" />
     </el-col>
   </el-row> -->
-  <div class="container">
-    <el-row :gutter="20">
-      <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
-        <div class="grid-content bg-purple analysis-entry-card">
-          <div class="filter">
-            <h3 class="analysis-title">Overall</h3>
-            <div class="btn-group">
-              <router-link :to="{ name: 'Overall' }" class="link">
-                <p class="analysis-btn">entry</p>
-              </router-link>
-              <!-- <p class="analysis-btn">entry</p> -->
+    <div class="container">
+      <el-row :gutter="20">
+        <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
+          <div class="grid-content bg-purple analysis-entry-card">
+            <div class="filter">
+              <h3 class="analysis-title">Overall</h3>
+              <div class="btn-group">
+                <router-link :to="{ name: 'Overall' }" class="link">
+                  <p class="analysis-btn">entry</p>
+                </router-link>
+                <!-- <p class="analysis-btn">entry</p> -->
+              </div>
             </div>
           </div>
-        </div>
-      </el-col>
-      <el-col v-if="false" :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
-        <div class="grid-content bg-purple analysis-entry-card degree-bg">
-          <div class="filter">
-            <h3 class="analysis-title">Degree Analysis</h3>
-            <div class="btn-group">
-              <router-link :to="{ name: 'DegreeAnalysis' }" class="link">
-                <p class="analysis-btn">entry</p>
-              </router-link>
-              <!-- <p class="analysis-btn">entry</p> -->
+        </el-col>
+        <el-col v-if="false" :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
+          <div class="grid-content bg-purple analysis-entry-card degree-bg">
+            <div class="filter">
+              <h3 class="analysis-title">Degree Analysis</h3>
+              <div class="btn-group">
+                <router-link :to="{ name: 'DegreeAnalysis' }" class="link">
+                  <p class="analysis-btn">entry</p>
+                </router-link>
+                <!-- <p class="analysis-btn">entry</p> -->
+              </div>
             </div>
           </div>
-        </div>
-      </el-col>
-      <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
-        <div class="grid-content bg-purple analysis-entry-card">
-          <div class="filter">
-            <h3 class="analysis-title">Result Analysis</h3>
-            <div class="btn-group">
-              <router-link :to="{ name: 'ResultAnalysis' }" class="link">
-                <p class="analysis-btn">entry</p>
-              </router-link>
-              <!-- <p class="analysis-btn">entry</p> -->
+        </el-col>
+        <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
+          <div class="grid-content bg-purple analysis-entry-card">
+            <div class="filter">
+              <h3 class="analysis-title">Result Analysis</h3>
+              <div class="btn-group">
+                <router-link :to="{ name: 'ResultAnalysis' }" class="link">
+                  <p class="analysis-btn">entry</p>
+                </router-link>
+                <!-- <p class="analysis-btn">entry</p> -->
+              </div>
             </div>
           </div>
-        </div>
-      </el-col>
-      <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
-        <div class="grid-content bg-purple analysis-entry-card">
-          <div class="filter">
-            <h3 class="analysis-title">Basic Analysis</h3>
-            <div class="btn-group">
-              <router-link :to="{ name: 'BasicAnalysis' }" class="link">
-                <p class="analysis-btn">entry</p>
-              </router-link>
-              <!-- <p class="analysis-btn">entry</p> -->
+        </el-col>
+        <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
+          <div class="grid-content bg-purple analysis-entry-card">
+            <div class="filter">
+              <h3 class="analysis-title">Basic Analysis</h3>
+              <div class="btn-group">
+                <router-link :to="{ name: 'BasicAnalysis' }" class="link">
+                  <p class="analysis-btn">entry</p>
+                </router-link>
+                <!-- <p class="analysis-btn">entry</p> -->
+              </div>
             </div>
           </div>
-        </div>
-      </el-col>
-      <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
-        <div class="grid-content bg-purple analysis-entry-card">
-          <div class="filter">
-            <h3 class="analysis-title">Layer Analysis</h3>
-            <div class="btn-group">
-              <router-link :to="{ name: 'LayerAnalysis' }" class="link">
-                <p class="analysis-btn">entry</p>
-              </router-link>
-              <!-- <p class="analysis-btn">entry</p> -->
+        </el-col>
+        <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
+          <div class="grid-content bg-purple analysis-entry-card">
+            <div class="filter">
+              <h3 class="analysis-title">Layer Analysis</h3>
+              <div class="btn-group">
+                <router-link :to="{ name: 'LayerAnalysis' }" class="link">
+                  <p class="analysis-btn">entry</p>
+                </router-link>
+                <!-- <p class="analysis-btn">entry</p> -->
+              </div>
             </div>
           </div>
-        </div>
-      </el-col>
-      <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
-        <div class="grid-content bg-purple analysis-entry-card">
-          <div class="filter">
-            <h3 class="analysis-title">Closeness Analysis</h3>
-            <div class="btn-group">
-              <router-link :to="{ name: 'ClosenessAnalysis' }" class="link">
-                <p class="analysis-btn">entry</p>
-              </router-link>
-              <!-- <p class="analysis-btn">entry</p> -->
+        </el-col>
+        <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
+          <div class="grid-content bg-purple analysis-entry-card">
+            <div class="filter">
+              <h3 class="analysis-title">Closeness Analysis</h3>
+              <div class="btn-group">
+                <router-link :to="{ name: 'ClosenessAnalysis' }" class="link">
+                  <p class="analysis-btn">entry</p>
+                </router-link>
+                <!-- <p class="analysis-btn">entry</p> -->
+              </div>
             </div>
           </div>
-        </div>
-      </el-col>
-      <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
-        <div class="grid-content bg-purple analysis-entry-card">
-          <div class="filter">
-            <h3 class="analysis-title">Factor Rank Analysis</h3>
-            <div class="btn-group">
-              <router-link :to="{ name: 'MonoNodeAnalysis' }" class="link">
-                <p class="analysis-btn">entry</p>
-              </router-link>
-              <!-- <p class="analysis-btn">entry</p> -->
+        </el-col>
+        <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
+          <div class="grid-content bg-purple analysis-entry-card">
+            <div class="filter">
+              <h3 class="analysis-title">Factor Rank Analysis</h3>
+              <div class="btn-group">
+                <router-link :to="{ name: 'MonoNodeAnalysis' }" class="link">
+                  <p class="analysis-btn">entry</p>
+                </router-link>
+                <!-- <p class="analysis-btn">entry</p> -->
+              </div>
             </div>
           </div>
-        </div>
-      </el-col>
-      <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
-        <div class="grid-content bg-purple analysis-entry-card">
-          <div class="filter">
-            <h3 class="analysis-title">Isolation Analysis</h3>
-            <div class="btn-group">
-              <router-link :to="{ name: 'IsolationAnalysis' }" class="link">
-                <p class="analysis-btn">entry</p>
-              </router-link>
-              <!-- <p class="analysis-btn">entry</p> -->
+        </el-col>
+        <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
+          <div class="grid-content bg-purple analysis-entry-card">
+            <div class="filter">
+              <h3 class="analysis-title">Isolation Analysis</h3>
+              <div class="btn-group">
+                <router-link :to="{ name: 'IsolationAnalysis' }" class="link">
+                  <p class="analysis-btn">entry</p>
+                </router-link>
+                <!-- <p class="analysis-btn">entry</p> -->
+              </div>
             </div>
           </div>
-        </div>
-      </el-col>
-    </el-row>
-  </div>
+        </el-col>
+      </el-row>
+    </div>
   </div>
 </template>
 
@@ -140,7 +140,6 @@ export default {
     };
   },
 };
-
 </script>
 
 <style lang="scss">
@@ -313,7 +312,7 @@ iframe {
   box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
   z-index: 100;
 }
-.degree-bg{
+.degree-bg {
   background-image: url(../assets/svg/bluecar.svg);
 }
 .link {

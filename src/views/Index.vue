@@ -1,156 +1,139 @@
 <template>
-  
   <div>
-  
-        <Navbar />
-        <!--<div class="ban-title">
+    <Navbar />
+    <!--<div class="ban-title">
           <h1>Welcome to Trans</h1>
         </div>-->
-     
-  <el-row class="close">
-    <el-col :span="24">
-    <div id="index">
-      <h3 id="title">TRANS</h3>
-      <router-link id="entryPoint" to="/Dataset">Get Start!</router-link>
-    </div>
-    <img id="road" src="../assets/svg/road.svg" alt="" />
-    <img id="moutain" src="../assets/svg/moutain.svg" alt="" />
-    <img id="redcar" src="../assets/svg/redcar.svg" alt="" />
-    <img id="bluecar" src="../assets/svg/bluecar.svg" alt="" />
-    </el-col>
-  </el-row>
-  <!--web mannul start-->
-  <el-row justify="center" class="MannulCard">
-    <el-col :span="6">
-      <el-card :body-style="{ padding: '15px' }" shadow="hover">
-        <img
-          src="../assets/svg/degreebg.svg"
-          class="image"
-        />
-        <h3>系統操作說明<br>檔案匯入及分析操作</h3>
-        <div class="p-14">
-          <p class="p-14 gray">開始分析前，先了解操作系統和注意事項。</p>
-          <router-link :to="{ name: 'SysMannul' }" class="link p-14">
-           深入了解
-          </router-link>
-        </div>
-      </el-card>
-    </el-col>
-    <el-col :span="2"></el-col>
-    <el-col :span="6">
-      <el-card :body-style="{ padding: '10px' }" shadow="hover">
-        <img
-          src="../assets/svg/analyze.svg"
-          class="image"
-        />
-        <h3>淺談<br>社會網路圖分析</h3>
-        <div class="p-14">
-          <p class="p-14 gray">經由社會網路，讓肇事因素關聯一目了然。</p>
-          <router-link :to="{ name: 'Management' }" class="link p-14">
-           深入了解
-          </router-link>        
-        </div>
-      </el-card>
-    </el-col>
-  </el-row>
-  <!--web mannul end-->
- <!--web trait start-->
- <div class="transtrait">TRANS TRAITS</div>
-  <el-row class="row-bg" justify="center">
-    <el-col :span="6" class="grid-content bg-green">
-      <div class="introduce">
-        <img
-          src="../assets/hand-shake.png"
-          class="iconsize"
-        />
-        <p class="bold">簡易</p>
-        <p class="introducecontent">操作容易，三分鐘上手</p>
-      </div>
-    </el-col>
-    <el-col :span="6" class="grid-content bg-red">
-      <div class="introduce">
-        <img
-          src="../assets/view.png"
-          class="iconsize"
-        />
-      <p class="bold">清晰</p>
-      <p class="introducecontent">網路圖分析一目了然</p>
-      </div>
-    </el-col>
-    <el-col :span="6" class="grid-content bg-green" >
-      <div class="introduce">
-        <img
-          src="../assets/car.png"
-          class="iconsize"
-        />
-      <p class="bold">多樣</p>
-      <p class="introducecontent">多種不同形式之網路圖分析</p>
-      </div>
-    </el-col>
-  </el-row>
-  <!--web trait end-->
 
-  <!--carousel start-->
-  <el-carousel :interval="4000" type="card" height="300px" class="ma">
-    <el-carousel-item>
-      <div class="item">
-        <div class="item__content">開車不喝酒，喝酒不開車</div>
-         
+    <el-row class="close">
+      <el-col :span="24">
+        <div id="index">
+          <h3 id="title">TRANS</h3>
+          <router-link id="entryPoint" to="/Dataset">Get Start!</router-link>
+        </div>
+        <img id="road" src="../assets/svg/road.svg" alt="" />
+        <img id="moutain" src="../assets/svg/moutain.svg" alt="" />
+        <img id="redcar" src="../assets/svg/redcar.svg" alt="" />
+        <img id="bluecar" src="../assets/svg/bluecar.svg" alt="" />
+      </el-col>
+    </el-row>
+    <!--web mannul start-->
+    <el-row justify="center" class="MannulCard">
+      <el-col :span="6">
+        <el-card :body-style="{ padding: '15px' }" shadow="hover">
+          <img src="../assets/svg/degreebg.svg" class="image" />
+          <h3>系統操作說明<br />檔案匯入及分析操作</h3>
+          <div class="p-14">
+            <p class="p-14 gray">開始分析前，先了解操作系統和注意事項。</p>
+            <router-link :to="{ name: 'Description' }" class="link p-14">
+              深入了解
+            </router-link>
+          </div>
+        </el-card>
+      </el-col>
+      <el-col :span="2"></el-col>
+      <el-col :span="6">
+        <el-card :body-style="{ padding: '10px' }" shadow="hover">
+          <img src="../assets/svg/analyze.svg" class="image" />
+          <h3>淺談<br />社會網路圖分析</h3>
+          <div class="p-14">
+            <p class="p-14 gray">經由社會網路，讓肇事因素關聯一目了然。</p>
+            <router-link :to="{ name: 'Management' }" class="link p-14">
+              深入了解
+            </router-link>
+          </div>
+        </el-card>
+      </el-col>
+    </el-row>
+    <!--web mannul end-->
+    <!--web trait start-->
+    <div class="transtrait">TRANS TRAITS</div>
+    <el-row class="row-bg" justify="center">
+      <el-col :span="6" class="grid-content bg-green">
+        <div class="introduce">
+          <img src="../assets/hand-shake.png" class="iconsize" />
+          <p class="bold">簡易</p>
+          <p class="introducecontent">操作容易，三分鐘上手</p>
+        </div>
+      </el-col>
+      <el-col :span="6" class="grid-content bg-red">
+        <div class="introduce">
+          <img src="../assets/view.png" class="iconsize" />
+          <p class="bold">清晰</p>
+          <p class="introducecontent">網路圖分析一目了然</p>
+        </div>
+      </el-col>
+      <el-col :span="6" class="grid-content bg-green">
+        <div class="introduce">
+          <img src="../assets/car.png" class="iconsize" />
+          <p class="bold">多樣</p>
+          <p class="introducecontent">多種不同形式之網路圖分析</p>
+        </div>
+      </el-col>
+    </el-row>
+    <!--web trait end-->
+
+    <!--carousel start-->
+    <el-carousel :interval="4000" type="card" height="300px" class="ma">
+      <el-carousel-item>
+        <div class="item">
+          <div class="item__content">開車不喝酒，喝酒不開車</div>
+
           <img
             class="item__image"
             src="https://picsum.photos/300?random=1"
             alt=""
           />
-        
-      </div>
-    </el-carousel-item>
-    <el-carousel-item>
-      <div class="item">
-        <div class="item__content">肇事因素關鍵點就在TRANS</div>
-        <img
-          class="item__image"
-          src="https://picsum.photos/300?random=2"
-          alt=""
-        />
-      </div>
-    </el-carousel-item>
-    <el-carousel-item>
-      <div class="item">
-        <div class="item__content">交通之社會網路分析</div>
-        <img
-          class="item__image"
-          src="https://picsum.photos/300?random=3"
-          alt=""
-        />
-      </div>
-    </el-carousel-item>
-  </el-carousel>
-  <!--carousel end-->
-  <!--contact start-->
-  <div class="transtrait">與 TRANS 聯絡</div>
-  
-    <p class="contactp">您有其他疑問需要解惑嗎？或是在使用系統過程中有任何的狀況嗎？只要您有需要，我們都在！</p>
+        </div>
+      </el-carousel-item>
+      <el-carousel-item>
+        <div class="item">
+          <div class="item__content">肇事因素關鍵點就在TRANS</div>
+          <img
+            class="item__image"
+            src="https://picsum.photos/300?random=2"
+            alt=""
+          />
+        </div>
+      </el-carousel-item>
+      <el-carousel-item>
+        <div class="item">
+          <div class="item__content">交通之社會網路分析</div>
+          <img
+            class="item__image"
+            src="https://picsum.photos/300?random=3"
+            alt=""
+          />
+        </div>
+      </el-carousel-item>
+    </el-carousel>
+    <!--carousel end-->
+    <!--contact start-->
+    <div class="transtrait">與 TRANS 聯絡</div>
+
+    <p class="contactp">
+      您有其他疑問需要解惑嗎？或是在使用系統過程中有任何的狀況嗎？只要您有需要，我們都在！
+    </p>
     <div class="container">
       <div class="contact-box">
         <div class="left"></div>
         <div class="right">
           <h2>Contact Us 聯絡資訊</h2>
-          <input type="text" class="field" placeholder="Your Name 您的大名">
-          <input type="text" class="field" placeholder="Your Email 您的郵件">
-          <input type="text" class="field" placeholder="Topic 主旨">
+          <input type="text" class="field" placeholder="Your Name 您的大名" />
+          <input type="text" class="field" placeholder="Your Email 您的郵件" />
+          <input type="text" class="field" placeholder="Topic 主旨" />
           <textarea placeholder="Message 輸入您的疑問" class="field"></textarea>
           <button class="btn">Send 寄送訊息</button>
         </div>
       </div>
-	</div>
-  
-  <!--contact end-->
-  <!--Footer-->
-  <Footer />
-  <!--Footer-->
+    </div>
+
+    <!--contact end-->
+    <!--Footer-->
+    <Footer />
+    <!--Footer-->
   </div>
 </template>
-
 
 <script>
 // @ is an alias to /src
@@ -173,7 +156,6 @@ export default {
 </script>
 
 <style lang="scss">
-
 .home-banner {
   // background: rgb(226, 226, 216);
   height: auto;
@@ -245,11 +227,11 @@ export default {
     border-radius: 3em;
     text-transform: uppercase;
     text-decoration: none;
-    &:hover{
+    &:hover {
       background-color: #655a65;
       color: #fff;
     }
-    &:active{
+    &:active {
       background-color: #655a65ce;
     }
     &.router-link-exact-active {
@@ -310,62 +292,60 @@ export default {
   color: #999;
 }
 
-
-
 .image {
   width: 50%;
   margin: 0 auto;
   display: block;
-  padding:20px 0;
+  padding: 20px 0;
 }
-.MannulCard{
-  margin:60px 0;
-  line-height:1.5;
+.MannulCard {
+  margin: 60px 0;
+  line-height: 1.5;
 }
-.MannulCard .el-card{
+.MannulCard .el-card {
   border: 1px solid #f56c6c;
 }
-.MannulCard h3{
-  font-size:25px;
-  font-weight:bold;
+.MannulCard h3 {
+  font-size: 25px;
+  font-weight: bold;
   background: rgba(189, 185, 185, 0.144);
 }
-.MannulCard p{
+.MannulCard p {
   font-size: 16px;
 }
-.MannulCard a{
+.MannulCard a {
   text-decoration: none;
-  border:1px solid rgb(74, 154, 207);
+  border: 1px solid rgb(74, 154, 207);
   display: block;
   color: rgb(74, 154, 207);
   font-weight: bold;
   font-size: 18px;
   margin: 10px 0;
 }
-.MannulCard a:hover{
+.MannulCard a:hover {
   background: rgb(74, 154, 207);
   color: #fff;
 }
-.MannulCard a:active{
+.MannulCard a:active {
   background: rgb(74, 154, 207);
   opacity: 80%;
 }
-.p-14{
+.p-14 {
   padding: 14px;
 }
-.gray{
+.gray {
   color: rgb(104, 100, 100);
 }
 .sticky-top {
-    position: sticky;
-    top: 0;
-    z-index: 1020;
-    background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+  background: #fff;
 }
 .grid-content {
   border-radius: 4px;
   min-height: 36px;
-  color:#fff;
+  color: #fff;
 }
 .row-bg {
   padding: 30px 0;
@@ -380,145 +360,148 @@ export default {
   background: #f56c6cc2;
   padding: 50px 0px;
 }
-.bold{
+.bold {
   font-weight: bold;
   margin: 10px 0;
 }
-.introduce{
-  padding:10px 5px;
+.introduce {
+  padding: 10px 5px;
   font-size: 25px;
 }
-.introducecontent{
+.introducecontent {
   font-size: 20px;
   margin: 25px 0;
 }
-.transtrait{
-  color:gray;font-weight:bolder;font-size:40px;margin-bottom:10px;
+.transtrait {
+  color: gray;
+  font-weight: bolder;
+  font-size: 40px;
+  margin-bottom: 10px;
 }
-.iconsize{
+.iconsize {
   width: 20%;
   margin: 0 auto;
   display: block;
 }
-.ma{
+.ma {
   margin: 100px 0;
 }
 </style>
 <style>
-.container{
-	position: relative;
-	height: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding: 20px 100px;
+.container {
+  position: relative;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 100px;
 }
 
-.container:after{
-	content: '';
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	left: 0;
-	top: 0;
-	background: url("../assets/bg.jpg") no-repeat center;
-	background-size: cover;
-	filter: blur(50px);
-	z-index: -1;
+.container:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: url("../assets/bg.jpg") no-repeat center;
+  background-size: cover;
+  filter: blur(50px);
+  z-index: -1;
 }
-.contact-box{
-	max-width: 850px;
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	justify-content: center;
-	align-items: center;
-	text-align: center;
-	background-color: #fff;
-	box-shadow: 0px 0px 19px 5px rgba(0,0,0,0.19);
-}
-
-.left{
-	background: url("../assets/bg.jpg") no-repeat center;
-	background-size: cover;
-	height: 100%;
+.contact-box {
+  max-width: 850px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0px 0px 19px 5px rgba(0, 0, 0, 0.19);
 }
 
-.right{
-	padding: 25px 40px;
+.left {
+  background: url("../assets/bg.jpg") no-repeat center;
+  background-size: cover;
+  height: 100%;
 }
 
-h2{
-	position: relative;
-	padding: 0 0 10px;
-	margin-bottom: 10px;
+.right {
+  padding: 25px 40px;
+}
+
+h2 {
+  position: relative;
+  padding: 0 0 10px;
+  margin-bottom: 10px;
   font-size: 25px;
 }
 
-h2:after{
-	content: '';
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    transform: translateX(-50%);
-    height: 4px;
-    width: 50px;
-    border-radius: 2px;
-    background-color: #f56c6c;
+h2:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  height: 4px;
+  width: 50px;
+  border-radius: 2px;
+  background-color: #f56c6c;
 }
 
-.field{
-	border: 2px solid rgba(0, 0, 0, 0);
-	outline: none;
-	background-color: rgba(230, 230, 230, 0.6);
-	padding: 0.5rem 1rem;
-	font-size: 1.1rem;
-	margin: 11px 0;
-	transition: .3s;
+.field {
+  border: 2px solid rgba(0, 0, 0, 0);
+  outline: none;
+  background-color: rgba(230, 230, 230, 0.6);
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  margin: 11px 0;
+  transition: 0.3s;
 }
 
-.field:hover{
-	background-color: rgba(0, 0, 0, 0.1);
+.field:hover {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
-textarea{
-	min-height: 150px;
+textarea {
+  min-height: 150px;
 }
 
-.btn{
-	width: 75%;
-	padding: 0.5rem 1rem;
-	background-color: #fff;
-	color: #f56c6c;
-	font-size: 1.1rem;
-	border: 1px solid #f56c6c;
-	outline: none;
-	cursor: pointer;
-	transition: .3s;
-  display:inline;
-  border-radius:5px;
+.btn {
+  width: 75%;
+  padding: 0.5rem 1rem;
+  background-color: #fff;
+  color: #f56c6c;
+  font-size: 1.1rem;
+  border: 1px solid #f56c6c;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s;
+  display: inline;
+  border-radius: 5px;
 }
 
-.btn:hover{
-    color:#fff;
-    background-color: #f56c6cd3;
+.btn:hover {
+  color: #fff;
+  background-color: #f56c6cd3;
 }
 
-.field:focus{
-    border: 2px solid rgba(30,85,250,0.47);
-    background-color: #fff;
+.field:focus {
+  border: 2px solid rgba(30, 85, 250, 0.47);
+  background-color: #fff;
 }
 
-@media screen and (max-width: 880px){
-	.contact-box{
-		grid-template-columns: 1fr;
-	}
-	.left{
-		height: 200px;
-	}
+@media screen and (max-width: 880px) {
+  .contact-box {
+    grid-template-columns: 1fr;
+  }
+  .left {
+    height: 200px;
+  }
 }
-.contactp{
+.contactp {
   margin: 50px 0;
-  font-size: 20px; 
+  font-size: 20px;
   font-weight: bold;
   color: gray;
 }

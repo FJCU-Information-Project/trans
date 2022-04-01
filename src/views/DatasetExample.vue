@@ -6,7 +6,7 @@
           <p>範例資料集</p>
           <el-table
             :data="
-              tableData.filter(
+              exampleTableData.filter(
                 (data) =>
                   !search ||
                   data.time.toLowerCase().includes(search.toLowerCase())
@@ -15,32 +15,39 @@
             border
             height="350"
             style="width: 100%"
+            @change="handlechange"
           >
-            <el-table-column label="新增日期" prop="date" sortable/>
-           <el-table-column label="資料集名稱" prop="name" width='300' >
+            <el-table-column label="新增日期" prop="date" sortable />
+            <el-table-column label="資料集名稱" prop="datasetName" width="300">
               <template #default="scope">
-                <el-popover effect="light" trigger="hover" placement="top" width="auto">
-              <template #default class="fs-20">
-                <div>統計開始時間 : {{ scope.row.period_start }}</div>
-                <div>統計截止時間 : {{ scope.row.period_end }}</div>
-              </template>
-              <template #reference>
-                <el-tag class="fs-20">{{ scope.row.name }}</el-tag>
-              </template>
+                <el-popover
+                  effect="light"
+                  trigger="hover"
+                  placement="top"
+                  width="auto"
+                >
+                  <template #default class="fs-20">
+                    <div>統計開始時間 : {{ scope.row.datasetStart }}</div>
+                    <div>統計截止時間 : {{ scope.row.datasetEnd }}</div>
+                  </template>
+                  <template #reference>
+                    <el-tag class="fs-20">{{ scope.row.datasetName }}</el-tag>
+                  </template>
                 </el-popover>
               </template>
             </el-table-column>
-            <el-table-column label="提供單位" prop="unit" />
-            <el-table-column label="是否公開" prop="is_public" width='150'>
+            <el-table-column label="提供單位" prop="datasetUnit" />
+            <el-table-column label="是否公開" prop="datasetPublic" width="150">
               <template #default="scope">
-                <el-tag class="fs-20"
-                  :type="scope.row.is_public === '是' ? '' : 'danger'"
+                <el-tag
+                  class="fs-20"
+                  :type="scope.row.datasetPublic ? '' : 'danger'"
                   disable-transitions
-                  >{{ scope.row.is_public }}</el-tag
+                  >{{ scope.row.datasetPublic ? '是' : '否'}}</el-tag
                 >
               </template>
             </el-table-column>
-            <el-table-column label="使用操作" prop="" >
+            <el-table-column label="使用操作" prop="">
               <!-- <template #header>
                 <el-input
                   v-model="search"
@@ -73,6 +80,7 @@ export default {
   data() {
     return {
       search: "",
+      exampleTableData: [],
       tableData: [
         {
           date: "2021-07-16",
@@ -80,7 +88,7 @@ export default {
           name: "台中市車禍資料",
           period_start: "2020-06-03",
           period_end: "2021-03-02",
-          is_public:"是",
+          is_public: "是",
         },
         {
           date: "2021-07-16",
@@ -88,25 +96,7 @@ export default {
           name: "台中市車禍資料",
           period_start: "2020-06-03",
           period_end: "2021-03-02",
-          is_public:"否",
-        },
-        {
-          date: "2021-07-15",
-          unit: "None",
-          name: "台中市車禍資料",
-          period_start: "2020-06-03",
-          period_end: "2021-03-02",
-          is_public:"是",
-        },
-        {
-          date: "2021-07-14",
-          unit: "None",
-          name: "台中市車禍資料",
-        },
-        {
-          date: "2021-07-13",
-          unit: "None",
-          name: "台中市車禍資料",
+          is_public: "否",
         },
       ],
     };
@@ -118,7 +108,17 @@ export default {
     handleDelete(index, row) {
       console.log(index, row);
     },
+    handlechange(){
+      console.log("change");
+    },
   },
+  mounted(){
+      const api = "http://140.136.155.121:50000";
+      this.$http.get(api + "/exampleTable").then((response) => {
+        console.log(response.data);
+        this.exampleTableData = response.data;
+      });
+  }
 };
 </script>
 
