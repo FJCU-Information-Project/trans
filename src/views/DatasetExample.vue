@@ -41,7 +41,7 @@
               <template #default="scope">
                 <el-tag
                   class="fs-20"
-                  :type="scope.row.datasetPublic ? '' : 'danger'"
+                  :type="scope.row.datasetPublic === '1' ? '' : 'danger'"
                   disable-transitions
                   >{{ scope.row.datasetPublic ? '是' : '否'}}</el-tag
                 >

@@ -15,7 +15,7 @@
           </div>
           <el-table
             :data="
-              tableData.filter(
+              customizeTableData.filter(
                 (data) =>
                   !search ||
                   data.time.toLowerCase().includes(search.toLowerCase())
@@ -33,7 +33,7 @@
               width="150"
               sortable
             />
-            <el-table-column label="資料集名稱" prop="name" width="300">
+            <el-table-column label="資料集名稱" prop="datasetName" width="300">
               <template #default="scope">
                 <el-popover
                   effect="light"
@@ -42,23 +42,23 @@
                   width="auto"
                 >
                   <template #default class="fs-20">
-                    <div>統計開始時間 : {{ scope.row.period_start }}</div>
-                    <div>統計截止時間 : {{ scope.row.period_end }}</div>
+                    <div>統計開始時間 : {{ scope.row.datasetStart }}</div>
+                    <div>統計截止時間 : {{ scope.row.datasetEnd }}</div>
                   </template>
                   <template #reference>
-                    <el-tag class="fs-20">{{ scope.row.name }}</el-tag>
+                    <el-tag class="fs-20">{{ scope.row.datasetName }}</el-tag>
                   </template>
                 </el-popover>
               </template>
             </el-table-column>
-            <el-table-column label="提供單位" prop="unit" width="300" />
-            <el-table-column label="是否公開" prop="is_public" width="150">
+            <el-table-column label="提供單位" prop="datasetUnit" width="300" />
+            <el-table-column label="是否公開" prop="datasetPublic" width="150">
               <template #default="scope">
                 <el-tag
                   class="fs-20"
-                  :type="scope.row.is_public === '是' ? '' : 'danger'"
+                  :type="scope.row.datasetPublic === '是' ? '' : 'warning'"
                   disable-transitions
-                  >{{ scope.row.is_public }}</el-tag
+                  >{{ scope.row.datasetPublic ? '是' : '否'}}</el-tag
                 >
               </template>
             </el-table-column>
@@ -153,6 +153,7 @@ export default {
   data() {
     return {
       search: "",
+      customizeTableData: [],
       tableData: [
         {
           date: "2021-07-16",
@@ -210,6 +211,13 @@ export default {
     //     })
     // },
   },
+  mounted(){
+      const api = "http://140.136.155.121:50000";
+      this.$http.get(api + "/customizeTable").then((response) => {
+        console.log(response.data);
+        this.customizeTableData = response.data;
+      });
+  }
 };
 </script>
 
