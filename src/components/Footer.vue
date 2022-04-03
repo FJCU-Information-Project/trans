@@ -15,10 +15,10 @@
             >
               <h3 class="f-title f_600 t_color f_size_18">Keep in Touch</h3>
               <p>
-                Don’t miss any updates of our information about<br />
-                accident factor social network!
+                Find out the valuable information about<br />
+                accident factor by social network analysis!
               </p>
-              <form
+              <!-- <form
                 action="#"
                 class="f_subscribe_two mailchimp"
                 method="post"
@@ -36,7 +36,7 @@
                 </button>
                 <p class="mchimp-errmessage" style="display: none"></p>
                 <p class="mchimp-sucmessage" style="display: none"></p>
-              </form>
+              </form> -->
             </div>
           </div>
           <div class="col-lg-3 col-md-6 pa">
@@ -53,9 +53,9 @@
                 Services and Safety
               </h3>
               <ul class="list-unstyled f_list">
-                <li><a href="#">FAQ</a></li>
-                <li><a href="#">Support Policy</a></li>
-                <li><a href="#">Privacy</a></li>
+                <li><a href="#">常見問題</a></li>
+                <li><a href="#">隱私權聲明</a></li>
+                <li><a href="#">用戶服務條款</a></li>
               </ul>
             </div>
           </div>
@@ -71,8 +71,8 @@
             >
               <h3 class="f-title f_600 t_color f_size_18">Links</h3>
               <ul class="list-unstyled f_list">
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Dataset</a></li>
+                <li><a href="#">關於我們</a></li>
+                <li><a href="#">資料集</a></li>
               </ul>
             </div>
           </div>
@@ -86,13 +86,13 @@
                 animation-name: fadeInLeft;
               "
             >
-              <h3 class="f-title f_600 t_color f_size_18">Social Contact</h3>
+              <!-- <h3 class="f-title f_600 t_color f_size_18">Social Contact</h3>
               <div class="f_social_icon">
                 <a href="#" class="fab fa-facebook"></a>
                 <a href="#" class="fab fa-instagram"></a>
                 <a href="#" class="fab fa-line"></a>
                 <a href="#" class="fab fa-google"></a>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>

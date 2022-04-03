@@ -1,73 +1,104 @@
 <template>
-  <el-row>
-    <el-col :span="24">
-      <div class="grid-content man-banner">
-        <Navbar />
-        <el-tabs
-          stretch="true"
-          :tab-position="tabPosition"
-          style="height: 100%; width: 100%"
-          class="man-tabs"
-        >
-          <el-tab-pane label="History">
-            <History />
-          </el-tab-pane>
-          <el-tab-pane label="Favorite">
-            <Favorite />
-          </el-tab-pane>
-        </el-tabs>
-      </div>
-    </el-col>
-  </el-row>
+  <div>
+    <div class="grid-content banner">
+      <Navbar />
+      <el-row>
+        <el-col :span="7"> </el-col>
+        <el-col :span="10" class="step_box">
+          <el-steps :active="active" finish-status="success">
+            <el-step title="Step 1" class="translate" />
+            <el-step title="Step 2" class="translate" />
+            <el-step title="Step 3" />
+          </el-steps>
+          <div class="step_con">
+            <el-button
+              style="margin-top: 12px"
+              @click="next"
+              plain
+              round
+              type="danger"
+              >下一步</el-button
+            >
+          </div>
+        </el-col>
+        <el-col :span="7"> </el-col>
+      </el-row>
+    </div>
+  </div>
 </template>
 
 <script>
 import Navbar from "@/components/Navbar.vue";
-import History from "@/components/History.vue";
-import Favorite from "@/components/Favorite.vue";
+//import { ref } from "vue";
 
 export default {
-  name: "Management",
+  name: "Config",
   components: {
     Navbar,
-    History,
-    Favorite,
   },
   data() {
     return {
-      tabPosition: "left",
+      input: "",
+      form: {
+        name: "",
+        region: "",
+        date1: "",
+        date2: "",
+        delivery: false,
+        type: [],
+        resource: "",
+        desc: "",
+      },
     };
+  },
+  methods: {
+    onSubmit() {
+      console.log("submit!");
+    },
   },
 };
 </script>
 
 <style lang="scss">
-.el-tabs {
-  & .is-active {
-    background: #fff;
-    color: #fc7064;
-    transition: ease-in-out 0.2s all;
+.el-step__title {
+  text-align: center;
+}
+.el-step__line {
+  transform: translateX(50%);
+}
+.translate {
+  transform: translateX(-50%);
+}
+.el-step__icon {
+  width: 40px !important;
+  height: 40px !important;
+  margin-top: -1.5em;
+}
+.step_con {
+  width: 100%;
+  height: 600px;
+  margin-top: 3em;
+  background: #f7f7fa;
+  display: flex;
+  align-items: flex-end;
+  padding: 2em 1em;
+  justify-content: center;
+  box-sizing: border-box;
+  border-radius: 30px;
+}
+.step_box {
+  margin-top: 6em;
+}
+.column_input {
+  width: 60%;
+}
+.el-form-item {
+  & .manage-btn {
+    width: auto;
   }
-  & .el-tabs__active-bar {
-    width: 10px !important;
-    background: #fc7064;
-  }
 }
-.el-tabs__nav-wrap::after {
-  display: none;
-}
-.el-tabs__item {
-  font-size: 1.25em;
-  padding: 3em 2em;
-  color: white;
-}
-.el-tabs__item:hover {
-  color: black;
-  background: #fff;
-  transition: ease-in-out 0.2s all;
-}
-.man-tabs {
-  height: 100%;
+.el-form-item__content {
+  margin-left: 0 !important;
 }
 .manage-btn {
   width: 25%;
@@ -81,31 +112,22 @@ export default {
   }
 }
 .ban-title {
-  // height: 92vh;
+  height: 92vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  // & span{
+  //   display: inline-block;
+  //   margin-top: 3em;
+  // }
 }
-.con_flex {
-  display: flex;
-  justify-content: space-evenly;
-  padding: 1.25em 0;
-}
-.main_sec {
-  padding: 1em 1em;
-}
-.iframe_main_sec {
-  height: 100vh;
-  padding: 1em 1em;
-}
-.man-banner {
+.banner {
   // background: rgb(226, 226, 216);
-  height: 100vh;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  background-image: url(https://images.pexels.com/photos/10003543/pexels-photo-10003543.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+  background-image: url(../assets/describe.jpg);
   background-size: cover;
   background-position: center;
   color: white;
@@ -116,46 +138,23 @@ export default {
     text-indent: 10px;
   }
 }
-.el-header,
-.el-footer {
-  background-color: #b3c0d1;
-  color: var(--el-text-color-primary);
-  text-align: center;
-  line-height: 60px;
+.con {
+  width: 100%;
+  height: 90vh;
+  background: #e9eef3;
+  display: grid;
+  place-items: center;
 }
-
-.el-aside {
-  background-color: #d3dce6;
-  color: var(--el-text-color-primary);
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 5em 0;
+.config-form {
+  width: 70%;
+  margin: auto;
+  padding: 2em 2em;
+  background: #fff;
+  border-radius: 10px;
 }
-
-.el-main {
-  background-color: #e9eef3;
-  color: var(--el-text-color-primary);
-  text-align: center;
-  line-height: 160px;
-  height: 92vh;
-}
-
-body > .el-container {
-  margin-bottom: 40px;
-}
-
-.el-container:nth-child(5) .el-aside,
-.el-container:nth-child(6) .el-aside {
-  line-height: 260px;
-}
-
-.el-container:nth-child(7) .el-aside {
-  line-height: 320px;
-}
-.grid-content {
-  border-radius: 4px;
-  min-height: 36px;
+.AddDataSetForm {
+  background: lightblue;
+  width: 80%;
+  margin: 100px auto;
 }
 </style>

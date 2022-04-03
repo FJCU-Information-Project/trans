@@ -25,7 +25,7 @@
           <h3>系統操作說明<br />檔案匯入及分析操作</h3>
           <div class="p-14">
             <p class="p-14 gray">開始分析前，先了解操作系統和注意事項。</p>
-            <router-link :to="{ name: 'Description' }" class="link p-14">
+            <router-link :to="{ name: 'SysMannul' }" class="link p-14">
               深入了解
             </router-link>
           </div>
@@ -38,7 +38,7 @@
           <h3>淺談<br />社會網路圖分析</h3>
           <div class="p-14">
             <p class="p-14 gray">經由社會網路，讓肇事因素關聯一目了然。</p>
-            <router-link :to="{ name: 'Management' }" class="link p-14">
+            <router-link :to="{ name: 'SnaDescription' }" class="link p-14">
               深入了解
             </router-link>
           </div>

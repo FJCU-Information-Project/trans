@@ -1,30 +1,16 @@
 <template>
   <div>
     <Navbar />
-
-    <!-- <el-row class="close">
-    <el-col :span="24">
-    <div id="index">
-      <h3 id="title">TRANS</h3>
-      <router-link id="entryPoint" to="/Dataset">Entry</router-link>
-    </div>
-    <img id="road" src="../assets/svg/road.svg" alt="" />
-    <img id="moutain" src="../assets/svg/moutain.svg" alt="" />
-    <img id="redcar" src="../assets/svg/redcar.svg" alt="" />
-    <img id="bluecar" src="../assets/svg/bluecar.svg" alt="" />
-    </el-col>
-  </el-row> -->
     <div class="container">
       <el-row :gutter="20">
         <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
           <div class="grid-content bg-purple analysis-entry-card">
             <div class="filter">
-              <h3 class="analysis-title">Overall</h3>
+              <h3 class="analysis-title">Overall <img class="IconImg" src="../assets/overall.png"></h3>
               <div class="btn-group">
                 <router-link :to="{ name: 'Overall' }" class="link">
                   <p class="analysis-btn">entry</p>
                 </router-link>
-                <!-- <p class="analysis-btn">entry</p> -->
               </div>
             </div>
           </div>
@@ -32,7 +18,7 @@
         <el-col v-if="false" :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
           <div class="grid-content bg-purple analysis-entry-card degree-bg">
             <div class="filter">
-              <h3 class="analysis-title">Degree Analysis</h3>
+              <h3 class="analysis-title">Degree Analysis <img class="IconImg" src="../assets/result.png"></h3>
               <div class="btn-group">
                 <router-link :to="{ name: 'DegreeAnalysis' }" class="link">
                   <p class="analysis-btn">entry</p>
@@ -45,7 +31,7 @@
         <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
           <div class="grid-content bg-purple analysis-entry-card">
             <div class="filter">
-              <h3 class="analysis-title">Result Analysis</h3>
+              <h3 class="analysis-title">Result Analysis  <img class="IconImg" src="../assets/result.png"></h3>
               <div class="btn-group">
                 <router-link :to="{ name: 'ResultAnalysis' }" class="link">
                   <p class="analysis-btn">entry</p>
@@ -58,7 +44,7 @@
         <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
           <div class="grid-content bg-purple analysis-entry-card">
             <div class="filter">
-              <h3 class="analysis-title">Basic Analysis</h3>
+              <h3 class="analysis-title">Basic Analysis<img class="IconImg" src="../assets/basic.png"></h3>
               <div class="btn-group">
                 <router-link :to="{ name: 'BasicAnalysis' }" class="link">
                   <p class="analysis-btn">entry</p>
@@ -71,7 +57,7 @@
         <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
           <div class="grid-content bg-purple analysis-entry-card">
             <div class="filter">
-              <h3 class="analysis-title">Layer Analysis</h3>
+              <h3 class="analysis-title">Layer Analysis <img class="IconImg" src="../assets/layers.png"></h3>
               <div class="btn-group">
                 <router-link :to="{ name: 'LayerAnalysis' }" class="link">
                   <p class="analysis-btn">entry</p>
@@ -81,7 +67,7 @@
             </div>
           </div>
         </el-col>
-        <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
+        <!-- <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
           <div class="grid-content bg-purple analysis-entry-card">
             <div class="filter">
               <h3 class="analysis-title">Closeness Analysis</h3>
@@ -89,15 +75,15 @@
                 <router-link :to="{ name: 'ClosenessAnalysis' }" class="link">
                   <p class="analysis-btn">entry</p>
                 </router-link>
-                <!-- <p class="analysis-btn">entry</p> -->
+                 <p class="analysis-btn">entry</p> 
               </div>
             </div>
           </div>
-        </el-col>
+        </el-col> -->
         <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
           <div class="grid-content bg-purple analysis-entry-card">
             <div class="filter">
-              <h3 class="analysis-title">Factor Rank Analysis</h3>
+              <h3 class="analysis-title">Factor Rank <br>Analysis <img src="../assets/factor.png"></h3>
               <div class="btn-group">
                 <router-link :to="{ name: 'MonoNodeAnalysis' }" class="link">
                   <p class="analysis-btn">entry</p>
@@ -110,7 +96,7 @@
         <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
           <div class="grid-content bg-purple analysis-entry-card">
             <div class="filter">
-              <h3 class="analysis-title">Isolation Analysis</h3>
+              <h3 class="analysis-title">Isolation Analysis <img class="IconImg" src="../assets/isolation.png"></h3>
               <div class="btn-group">
                 <router-link :to="{ name: 'IsolationAnalysis' }" class="link">
                   <p class="analysis-btn">entry</p>
@@ -168,7 +154,7 @@ export default {
 .analysis-title {
   font-size: 2.5em;
   font-weight: bolder;
-  color: #fff;
+  color: #595959;
   letter-spacing: 3px;
   text-indent: 3px;
 }
@@ -303,8 +289,8 @@ iframe {
   margin-top: 0;
 }
 .analysis-entry-card {
-  height: 30em;
-  background-image: url(https://images.pexels.com/photos/10123275/pexels-photo-10123275.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+  height: 18em;
+  background-image: url(../assets/describe.jpg);
   //background-image: url(../assets/svg/degreebg.svg);
   background-position: center;
   background-size: cover;
@@ -313,7 +299,7 @@ iframe {
   z-index: 100;
 }
 .degree-bg {
-  background-image: url(../assets/svg/bluecar.svg);
+  background-image: url(../assets/greenbg.png);
 }
 .link {
   text-decoration: none;
@@ -405,5 +391,8 @@ iframe {
       color: #42b983;
     }
   }
+}
+.IconImg{
+  vertical-align:sub;
 }
 </style>
