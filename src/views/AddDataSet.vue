@@ -75,7 +75,7 @@
             </div>
           </div>
           <!--file upload section start 此section 打開會跑錯 應是沒有載入script-->
-          <!-- <div>
+          <div>
             <el-form-item label="節點表" required>
               <el-upload
                 ref="Upload"
@@ -88,8 +88,14 @@
                 <template #trigger>
                   <el-button type="primary">選取csv檔案</el-button>
                 </template>
-
-                <template #tip> 僅限上傳一個檔案，新檔會覆蓋舊檔 </template>
+                <el-button class="ml-3" type="success" @click="submitUpload">
+                  上傳檔案
+                </el-button>
+                <template #tip>
+                  <div class="el-upload__tip text-red">
+                    僅限上傳一個檔案，新檔會覆蓋舊檔
+                  </div>
+                </template>
               </el-upload>
             </el-form-item>
             <el-form-item label="屬性表" required>
@@ -183,7 +189,7 @@
             <el-button class="ml-3" type="success" @click="submitUpload">
               上傳檔案
             </el-button>
-          </div> -->
+          </div>
           <!--file upload section-->
         </div>
       </el-form>
@@ -222,8 +228,8 @@ export default {
       this.upload.clearFiles();
       const file = files[0];
       console.log(file);
-      // file.uid = genFileId();
-      // this.upload.value.handleStart(file);
+      file.uid = genFileId();
+      this.upload.value.handleStart(file);
     },
   },
   mounted() {

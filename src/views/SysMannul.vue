@@ -33,23 +33,51 @@
           <div class="form-wizard-content-wrapper">
             <div class="form-wizard-content show" data-tab-content="info">
               <form action="#">
-                <h6>Info</h6>
+                <h2 class="step1title">系統操作說明</h2><br>
                 <div class="form-row">
-                  <div class="form-column">
-                    <label for="">First Name</label>
-                    <input type="text" class="text-field">
+                  <div class="form-column" style="display:flex">
+                    <img src="../assets/homestart.png" style="width:100%" alt="">
+                    <!-- <input type="text" class="text-field"> -->
                   </div>
-                  <div class="form-column">
-                    <label for="">Last Name</label>
-                    <input type="text" class="text-field">
-                  </div>
-                  <div class="form-column mt-2">
-                    <label for="">Email Id</label>
-                    <input type="email" class="text-field">
+                  <div class="form-column txt">
+                    <h4>● 點選頁面右上角「TRANS圖標」 或首頁「GET START !」 按鈕，進入「資料集」。</h4>
+                    <!-- <label for="">Last Name</label>
+                    <input type="text" class="text-field"> -->
                   </div>
                   <div class="form-column mt-2">
-                    <label for="">Mobile Number</label>
-                    <input type="text" class="text-field">
+                     <img src="../assets/exampledataset.png" style="width:100%" alt="">
+                  </div>
+                  <div class="form-column mt-2 txt">
+                    <div>
+                    <h4>● 「未輸入授權碼」時，系統僅提供系統預設或其他使用者公開之「範例資料集」給使用者「進行分析」。</h4>
+                    <h4>● 使用者於「範例資料集表格」中，可以查看各資料集之資料集「新增日期」、「名稱」、「統計開始時間」、「統計截止時間」、「提供單位」、「是否公開」、和「進行分析」。</h4>
+                    <h4>● 若您無授權碼且欲使用範例資料集進行本系統之操作，請直接跳至第三步驟，為您解說系統後續之操作方式。</h4>
+                    </div>
+                  </div>
+                  <div class="form-column mt-2">
+                     <img src="../assets/login.png" style="width:100%" alt="">
+                  </div>
+                  <div class="form-column mt-2 txt">
+                    <div>
+                    <h4>● 若使用者已購買此系統且有授權碼，點選頁面右上方「登入授權碼」並輸入您的授權碼，即可「自訂資料集」和「查看歷史紀錄資料」。</h4>
+                    <h4>※自訂資料集 : 使用者可以將自身資料集上傳，在系統中進行資料之分析。</h4>
+                    <h4>※查看歷史紀錄資料 : 使用者可以查看過去瀏覽之分析資訊。</h4>
+                   </div>
+                  </div>
+                  <div class="form-column mt-2">
+                     <img src="../assets/datasetcustomize.png" style="width:100%" alt="">
+                  </div>
+                  <div class="form-column mt-2 txt">
+                    <div>
+                    <h4>● 使用者於「自訂資料集表格」中，可以查看各資料集之資料集「新增日期」、「名稱」、「統計開始時間」、「統計截止時間」、「提供單位」、「是否公開」、「上傳資料」、「進行分析」、和「刪除」。</h4>
+                    <h4>※自訂資料集之操作請至第二步驟，為您解說系統之操作方式。</h4>
+                   </div>
+                  </div>
+                  <div class="form-column mt-2">
+                     <img src="../assets/history.png" style="width:100%" alt="">
+                  </div>
+                  <div class="form-column mt-2 txt">
+                    <h4>● 使用者於「歷史資料集表格」中，可以查看各資料集之資料集「新增日期」、「名稱」、「統計開始時間」、「統計截止時間」、「提供單位」、「是否公開」、「查看分析」、和「刪除」。</h4>
                   </div>
                   <div class="full-wdth clearfix">
                     <a href="javascript:;" class="form-wizard-next-btn float-right">下一步</a>
@@ -605,9 +633,10 @@ body{
 		}
 
 		.form-wizard-content-wrapper {
-			height: 280px;
+			height: 1500px;
 			position: relative;
       background-color: #fff;
+      padding: 50px;
 		}
 		.text-field {
 			display: block;
@@ -622,4 +651,19 @@ body{
 			border-radius: .25rem;
 			transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 		}
+    .txt{
+      display: flex;
+      align-items: center;
+      text-align: left;
+      line-height: 1.5;
+      font-weight: normal;
+      font-size: 20px;
+    }
+    .txt h4{
+      padding:10px 0px;
+    }
+    .step1title{
+      border-bottom: 3px solid salmon;
+      padding: 10px 0;
+    }
 </style>
