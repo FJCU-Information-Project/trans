@@ -216,21 +216,17 @@ export default {
 .carousel {
   background: rgb(255, 255, 255);
 }
-.footer {
-  margin-top: 1.25em;
-}
+
 .container {
   width: 100%;
   padding: 1.25em 1.25em;
   box-sizing: border-box;
-  // background-image: url(https://images.pexels.com/photos/10344100/pexels-photo-10344100.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+  height: 800px;
+  background-image: url(../assets/greenbg.png);
+  background-repeat: repeat-x;
   // background-image: url(https://images.pexels.com/photos/2705755/pexels-photo-2705755.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
 }
-.footer {
-  height: 25em;
-  margin-top: 0;
-  background: rgb(110, 94, 73);
-}
+
 .link {
   text-decoration: none;
 }
@@ -280,14 +276,7 @@ iframe {
   border-radius: 4px;
   min-height: 36px;
 }
-//
-.footer {
-  margin-top: 1.25em;
-}
-.footer {
-  height: 25em;
-  margin-top: 0;
-}
+
 .analysis-entry-card {
   height: 18em;
   background-image: url(../assets/describe.jpg);

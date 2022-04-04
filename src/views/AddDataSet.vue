@@ -1,16 +1,24 @@
 <template>
   <div>
-    <Navbar />
-    <div class="banner fs">
-      <el-breadcrumb class="fs breadcrumb">
-        <el-breadcrumb-item :to="{ path: 'dataset' }" class="fs breadcrumb"
-          >自訂資料集</el-breadcrumb-item
-        >
-        <el-breadcrumb-item class="fs breadcrumb"
-          >新增資料集</el-breadcrumb-item
-        >
-      </el-breadcrumb>
-      <p class="addDataTitle">新增資料集</p>
+        <div class="grid-content banner">
+
+     <el-row class="close sticky-top">
+        <el-col :span="24">         
+          <div class="grid-content nav">
+            <el-breadcrumb class="link" separator="/">
+                <el-breadcrumb-item :to="{ name: 'Dataset' }"> <img  class="IconImg back" src="../assets/left.png"> 我的資料集</el-breadcrumb-item>
+                <el-breadcrumb-item
+                  >新增資料集</el-breadcrumb-item
+                >
+              </el-breadcrumb>
+            <div class="menu">
+            <router-link :to="{ name: 'Login' }" class="link">
+              <el-button round type="danger" class="fz-20">登入授權碼</el-button>
+            </router-link>
+            </div>
+          </div>
+        </el-col>
+      </el-row>
 
       <el-form
         :model="form"
@@ -50,7 +58,7 @@
               <el-input v-model="form.note" type="textarea" />
             </el-form-item>
             <div class="d-flex">
-              <el-form-item label="使否公開" prop="is_public">
+              <el-form-item label="使否公開" prop="is_public" required>
                 <el-radio-group v-model="form.is_public">
                   <el-radio border label="是" />
                   <el-radio border label="否" />
@@ -66,9 +74,9 @@
               </el-form-item>
             </div>
           </div>
-          <div>
+          <!--file upload section start 此section 打開會跑錯 應是沒有載入script-->
+          <!-- <div>
             <el-form-item label="節點表" required>
-              <!-- <el-input v-model="form.name" /> -->
               <el-upload
                 ref="Upload"
                 class="upload-demo"
@@ -175,7 +183,8 @@
             <el-button class="ml-3" type="success" @click="submitUpload">
               上傳檔案
             </el-button>
-          </div>
+          </div> -->
+          <!--file upload section-->
         </div>
       </el-form>
     </div>
@@ -183,12 +192,10 @@
 </template>
 
 <script>
-import Navbar from "@/components/Navbar.vue";
+// import Navbar from "@/components/Navbar.vue";
 export default {
   name: "AddDataSet",
-  components: {
-    Navbar,
-  },
+  
   data() {
     return {
       input: "",
@@ -261,12 +268,12 @@ export default {
 }
 .banner {
   // background: rgb(226, 226, 216);
-  height: auto;
+  height: 120vh;
   padding-bottom: 100px;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  background-image: url(../assets/bggradient.png);
+  background-image: url(../assets/adddata.png);
   background-size: cover;
   background-position: center;
   color: white;
@@ -301,7 +308,7 @@ export default {
 .AddDataSetForm {
   background: rgba(173, 216, 230, 0.822);
   width: 80%;
-  margin: 20px auto;
+  margin: 50px auto;
   padding: 30px 25px 10px 25px;
   border: 2px solid rgba(112, 208, 240, 0.822);
 }
@@ -314,16 +321,53 @@ export default {
 .jcsb {
   justify-content: space-evenly;
 }
-.el-breadcrumb__item,
-.el-breadcrumb__inner {
-  color: #fff !important;
-  margin: 10px 0 0 10px;
+.el-breadcrumb__item{
+  float: none;
 }
+// .el-breadcrumb__item,
+// .el-breadcrumb__inner {
+//   color: #fff !important;
+//   margin: 10px 0 0 10px;
+// }
 .el-form-item__label {
   font-size: 18px !important;
   font-weight: bold;
 }
 .el-button {
   font-size: 18px !important;
+}
+.grid-content {
+  min-height: 36px;
+}
+.link {
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 25px;
+  color: #10afafca;
+  font-weight: bold;
+}
+.fz-20 {
+  font-size: 22px;
+}
+
+.sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+  background: #fff;
+}
+.IconImg{
+  vertical-align:sub;
+}
+.nav {
+  width: 100%;
+  padding: 1em 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 8px 8px 15px rgb(0, 0, 0, 0.6);
+  border-radius: 0 !important;
+  background: transparent;
+  box-sizing: border-box;
 }
 </style>

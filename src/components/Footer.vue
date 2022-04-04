@@ -39,7 +39,7 @@
               </form> -->
             </div>
           </div>
-          <div class="col-lg-3 col-md-6 pa">
+          <!-- <div class="col-lg-3 col-md-6 pa">
             <div
               class="f_widget about-widget pl_70 wow fadeInLeft"
               data-wow-delay="0.4s"
@@ -58,7 +58,7 @@
                 <li><a href="#">用戶服務條款</a></li>
               </ul>
             </div>
-          </div>
+          </div> -->
           <div class="col-lg-3 col-md-6 pa">
             <div
               class="f_widget about-widget pl_70 wow fadeInLeft"

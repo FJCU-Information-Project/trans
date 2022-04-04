@@ -139,7 +139,7 @@ table {
 }
 .man-banner {
   // background: rgb(226, 226, 216);
-  height: 100vh;
+  height: 150vh;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
