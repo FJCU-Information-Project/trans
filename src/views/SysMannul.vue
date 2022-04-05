@@ -23,11 +23,11 @@
         <el-col>
             <div class="form-wizard-wrapper">
           <ul>
-            <li><a class="form-wizard-link active" href="javascript:;" data-attr="info"><span>第一步驟</span></a></li>
-            <li><a class="form-wizard-link" href="javascript:;" data-attr="ads"><span>第二步驟</span></a></li>
-            <li><a class="form-wizard-link" href="javascript:;" data-attr="placement"><span>第三步驟</span></a></li>
-            <li><a class="form-wizard-link" href="javascript:;" data-attr="schedule"><span>第四步驟</span></a></li>
-            <li><a class="form-wizard-link" href="javascript:;" data-attr="review"><span>第五步驟</span></a></li>
+            <li><a class="form-wizard-link active" href="javascript:;" data-attr="info"><span>第一步驟-進入資料集</span></a></li>
+            <li><a class="form-wizard-link" href="javascript:;" data-attr="ads"><span>第二步驟-自訂資料集</span></a></li>
+            <li><a class="form-wizard-link" href="javascript:;" data-attr="placement"><span>第三步驟-分析資料集</span></a></li>
+            <!-- <li><a class="form-wizard-link" href="javascript:;" data-attr="schedule"><span>第四步驟</span></a></li> -->
+            <!-- <li><a class="form-wizard-link" href="javascript:;" data-attr="review"><span>第五步驟</span></a></li> -->
             <li class="form-wizardmove-button"></li>
           </ul>
           <div class="form-wizard-content-wrapper">
@@ -40,7 +40,10 @@
                     <!-- <input type="text" class="text-field"> -->
                   </div>
                   <div class="form-column txt">
-                    <h4>● 點選頁面右上角「TRANS圖標」 或首頁「GET START !」 按鈕，進入「資料集」。</h4>
+                    <div>
+                    <h3>一、進入資料集</h3>
+                    <h4>● 點選頁面左上角「TRANS」 或首頁「GET START !」 按鈕，進入「資料集」。</h4>
+                    </div>
                     <!-- <label for="">Last Name</label>
                     <input type="text" class="text-field"> -->
                   </div>
@@ -49,8 +52,9 @@
                   </div>
                   <div class="form-column mt-2 txt">
                     <div>
-                    <h4>● 「未輸入授權碼」時，系統僅提供系統預設或其他使用者公開之「範例資料集」給使用者「進行分析」。</h4>
-                    <h4>● 使用者於「範例資料集表格」中，可以查看各資料集之資料集「新增日期」、「名稱」、「統計開始時間」、「統計截止時間」、「提供單位」、「是否公開」、和「進行分析」。</h4>
+                    <h3>二、範例資料集</h3>
+                    <h4>● 「未輸入授權碼」時，系統僅提供預設或其他使用者公開之「範例資料集」給使用者「查看分析」。</h4>
+                    <h4>● 使用者於「範例資料集表格」中，可以查看各資料集之資料集「新增日期」、「名稱」、「統計開始時間」、「統計截止時間」、「提供單位」、「是否公開」、和「查看分析」。</h4>
                     <h4>● 若您無授權碼且欲使用範例資料集進行本系統之操作，請直接跳至第三步驟，為您解說系統後續之操作方式。</h4>
                     </div>
                   </div>
@@ -59,9 +63,10 @@
                   </div>
                   <div class="form-column mt-2 txt">
                     <div>
-                    <h4>● 若使用者已購買此系統且有授權碼，點選頁面右上方「登入授權碼」並輸入您的授權碼，即可「自訂資料集」和「查看歷史紀錄資料」。</h4>
+                    <h3>三、登入授權碼</h3>
+                    <h4>● 若使用者已購買此系統且有授權碼，點選頁面右上方「登入授權碼」並輸入您的授權碼，即可使用「自訂資料集」和「查看歷史紀錄資料」。</h4>
                     <h4>※自訂資料集 : 使用者可以將自身資料集上傳，在系統中進行資料之分析。</h4>
-                    <h4>※查看歷史紀錄資料 : 使用者可以查看過去瀏覽之分析資訊。</h4>
+                    <h4>※查看歷史紀錄資料 : 使用者可以查看過去瀏覽之分析資料。</h4>
                    </div>
                   </div>
                   <div class="form-column mt-2">
@@ -69,6 +74,7 @@
                   </div>
                   <div class="form-column mt-2 txt">
                     <div>
+                    <h3>四、自訂資料集</h3>
                     <h4>● 使用者於「自訂資料集表格」中，可以查看各資料集之資料集「新增日期」、「名稱」、「統計開始時間」、「統計截止時間」、「提供單位」、「是否公開」、「上傳資料」、「進行分析」、和「刪除」。</h4>
                     <h4>※自訂資料集之操作請至第二步驟，為您解說系統之操作方式。</h4>
                    </div>
@@ -77,53 +83,122 @@
                      <img src="../assets/history.png" style="width:100%" alt="">
                   </div>
                   <div class="form-column mt-2 txt">
+                    <div>
+                    <h3>五、歷史紀錄資料</h3>
                     <h4>● 使用者於「歷史資料集表格」中，可以查看各資料集之資料集「新增日期」、「名稱」、「統計開始時間」、「統計截止時間」、「提供單位」、「是否公開」、「查看分析」、和「刪除」。</h4>
                   </div>
+                  </div>
                   <div class="full-wdth clearfix">
-                    <a href="javascript:;" class="form-wizard-next-btn float-right">下一步</a>
+                    <a href="javascript:;" class="form-wizard-next-btn float-right">前往下一步</a>
                   </div>
                 </div>
               </form>
             </div>
+            <!--second step start-->
             <div class="form-wizard-content" data-tab-content="ads">
               <form action="#">
-                <h6>Ads</h6>
+                <h2 class="step1title">自訂資料集操作說明</h2><br>
                 <div class="form-row">
-                  <div class="form-column">
-                    <label for="">First Name</label>
-                    <input type="text" class="text-field">
+                   <div class="form-column" style="display:flex">
+                    <img src="../assets/dataset.png" style="width:100%" alt="">
+                    <!-- <input type="text" class="text-field"> -->
                   </div>
-                  <div class="form-column">
-                    <label for="">Last Name</label>
-                    <input type="text" class="text-field">
+                  <div class="form-column txt">
+                    <div>
+                    <h3>※新增資料集csv檔案之規定格式和注意事項</h3>
+                    <a target="_blank" style="text-decoration:none" href="https://docs.google.com/document/d/1TJKFP8L7J7ZgWdPb-MqbvNO0T4FVj1w4PnQFyD132Yw/edit?usp=sharing" download="csv檔案規定格式及注意事項.pdf">
+                      <img src="../assets/car.png" alt="carpdf" width="100" height="80">點此查看格式規範
+                    </a>
+                    <h4>● [情境一] 欲新增新的資料集，請點選「新增資料集」。</h4>
+                    <h4>● [情境二] 欲在已存在的資料集中新增資料，請點選「上傳資料」。</h4>
+                    </div>
+                  </div>
+                  <div class="form-column mt-2" style="display:flex">
+                    <img src="../assets/adddataset.png" style="width:100%" alt="">
+                    <!-- <input type="text" class="text-field"> -->
+                  </div>
+                  <div class="form-column txt">
+                    <div>
+                    <h3>一、新增資料集</h3>
+                    <h4>● 點選「新增資料集」按鈕，可以進行資料集檔案之基本設定與上傳。</h4>
+                    </div>
+                  </div>
+                  <div class="form-column mt-2">
+                     <img src="../assets/adddatasetform.png" style="width:100%;padding-top:70px" alt="">
+                  </div>
+                  <div class="form-column mt-2 txt">
+                    <div>
+                    <h3>二、新增資料集填寫設定</h3>
+                    <h4>● 使用者於左側填寫資料集之基本設定，包含「資料集名稱」、「提供單位」、「統計開始時間」、「統計截止時間」、「備註欄」、「是否公開」。</h4>
+                    <h4>● 使用者於右側點選藍色之「選取csv檔案」按鈕，上傳建立資料集所需之五個csv格式檔案，包含「肇事因素表」、「肇事因素屬性表」、「肇事結果表」、「肇事結果屬性表」、「車禍案件總表」。</h4>
+                    <h4>● 確認選取csv檔案檔案後，即可點選綠色之「上傳檔案」按鈕。</h4>
+                    <h4>● 確認欄位填寫正確，和檔案上傳成功，即可點選橘色之「確認新增」按鈕，若點選「取消新增」按鈕，則返回資料集。</h4>
+                    </div>
+                  </div>
+                  <div class="form-column mt-2">
+                     <img src="../assets/uploaddata.png" style="width:100%" alt="">
+                     <img src="../assets/upload.png" style="width:100%" alt="">
+                  </div>
+                  <div class="form-column mt-2 txt">
+                    <div>
+                    <h3>三、上傳資料</h3>
+                    <h4>● 若使用者要在既有的資料集中進行新的車禍案件分析，點選「上傳資料」按鈕，即可上傳檔案。</h4>
+                    <h4>使用者從本地端「選取車禍案件檔案」並上傳後，點選「OK」及完成資料之上傳。</h4>
+                   </div>
                   </div>
                   <div class="full-wdth clearfix">
                     <a href="javascript:;" class="form-wizard-previous-btn float-left">回上一步</a>
-                    <a href="javascript:;" class="form-wizard-next-btn float-right">下一步</a>
+                    <a href="javascript:;" class="form-wizard-next-btn float-right">前往下一步</a>
                   </div>
                 </div>
               </form>
             </div>
             <div class="form-wizard-content" data-tab-content="placement">
               <form action="#">
-                <h6>Placement</h6>
+                <h2 class="step1title">分析操作說明</h2><br>
                 <div class="form-row">
-                  <div class="form-column">
-                    <label for="">First Name</label>
-                    <input type="text" class="text-field">
+                   <div class="form-column">
+                    <img src="../assets/viewanalysis.png" style="width:100%" alt="">
+                    <img src="../assets/cusview.png" style="width:100%" alt="">
+                    <img src="../assets/historyana.png" style="width:100%" alt="">
                   </div>
-                  <div class="form-column">
-                    <label for="">Last Name</label>
-                    <input type="text" class="text-field">
+                 
+                  <div class="form-column txt">
+                    <div>
+                    <h3>一、查看和進行分析</h3>
+                    <h4>● [情況一] 於「範例資料集」點選「查看分析」按鈕，可以進行分析。</h4>
+                    <h4>● [情況二] 於「自訂資料集」點選「進行分析」按鈕，可以進行分析。</h4>
+                    <h4>● [情況三] 於「歷史紀錄資料集」點選「查看分析」按鈕，可以進行分析。</h4>
+                    </div>
+                  </div>
+                  <div class="form-column mt-2">
+                     <img src="../assets/analysisdashboard.png" style="width:100%;padding-top:70px" alt="">
+                  </div>
+                  <div class="form-column mt-2 txt">
+                    <div>
+                    <h3>二、分析功能儀表板</h3>
+                    <h4>● 使用者於分析功能儀表板選擇欲進行的分析，包含「總攬分析」、「肇事結果分析」、「基礎分析」、「層級分析」、「肇事因素排名分析」、「邊陲分析」。</h4>
+                    </div>
+                  </div>
+                  <div class="form-column mt-2">
+                     <img src="../assets/option.png" style="width:100%" alt="">
+                     <img src="../assets/anapic.png" style="width:100%" alt="">
+                  </div>
+                  <div class="form-column mt-2 txt">
+                    <div>
+                    <h3>三、進入分析功能</h3>
+                    <h4>● 於分析功能下拉選單選擇屬性下之節點，進行分析。</h4>
+                    <h4>● 分析結果顯示分析表格以及社會網路圖。</h4>
+                   </div>
                   </div>
                   <div class="full-wdth clearfix">
                     <a href="javascript:;" class="form-wizard-previous-btn float-left">回上一步</a>
-                    <a href="javascript:;" class="form-wizard-next-btn float-right">下一步</a>
+                    <!-- <a href="javascript:;" class="form-wizard-next-btn float-right">下一步</a> -->
                   </div>
                 </div>
               </form>
             </div>
-            <div class="form-wizard-content" data-tab-content="schedule">
+            <!-- <div class="form-wizard-content" data-tab-content="schedule">
               <form action="#">
                 <h6>Schedule</h6>
                 <div class="form-row">
@@ -141,8 +216,8 @@
                   </div>
                 </div>
               </form>
-            </div>
-            <div class="form-wizard-content" data-tab-content="review">
+            </div> -->
+            <!-- <div class="form-wizard-content" data-tab-content="review">
               <form action="#">
                 <h6>Review</h6>
                 <div class="form-row">
@@ -159,7 +234,7 @@
                   </div>
                 </div>
               </form>
-            </div>
+            </div> -->
           </div>
         </div>
         </el-col>
@@ -514,7 +589,7 @@ body{
 			min-height: 1px;
 			padding-right: 15px;
 			padding-left: 15px;
-      margin-bottom: 10px;
+      margin-bottom: 50px;
 		}
 		.float-right{
 			float: right;
@@ -548,7 +623,7 @@ body{
 		}
 		.form-wizard-wrapper .form-wizardmove-button {
 			position: absolute;
-			width: 220px;
+			width: 390px;
 			left: 0;
 			top: -4px;
 			bottom: -4px;
@@ -633,7 +708,7 @@ body{
 		}
 
 		.form-wizard-content-wrapper {
-			height: 1500px;
+			height: 2000px;
 			position: relative;
       background-color: #fff;
       padding: 50px;
@@ -663,7 +738,7 @@ body{
       padding:10px 0px;
     }
     .step1title{
-      border-bottom: 3px solid salmon;
+      // border-bottom: 3px solid salmon;
       padding: 10px 0;
     }
 </style>

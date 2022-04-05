@@ -56,7 +56,7 @@
               <template #default="scope">
                 <el-tag
                   class="fs-20"
-                  :type="scope.row.datasetPublic === '1' ? '' : 'danger'"
+                  :type="scope.row.datasetPublic  ? 'danger' : 'primary'"
                   disable-transitions
                   >{{ scope.row.datasetPublic ? '是' : '否'}}</el-tag
                 >
@@ -122,7 +122,7 @@
         <br />上傳屬性表 : <input type="file" style="margin-top: 10px" />
         <br />上傳肇事結果屬性表 :
         <input type="file" style="margin-top: 10px" /> <br />上傳肇事結果表 :
-        <input type="file" style="margin-top: 10px" /> <br />上傳交通案件表 :
+        <input type="file" style="margin-top: 10px" /> <br />上傳車禍案件總表 :
         <input type="file" style="margin-top: 10px" />
       </div>
     </div>
@@ -139,8 +139,8 @@ export default {
     const open = () => {
       ElMessageBox.alert(
         //"<div style='font-size:20px'><p style='font-weight:bold;background-color:#10afafca'>請填寫資料集基本資料</p>  <br>資料集名稱 : <input type=text style='margin-top: 10px;'><br>提供單位 : <input type=text style='margin-top: 10px;'><br>資料集統計開始時間 : <div class='block'><span class='demonstration'>Default</span><el-date-picker v-model='value1' type='date' placeholder='Pick a day' /></div><input type=text style='margin-top: 10px;'><br>資料集統計截止時間<input type=text style='margin-top: 10px;'><br>備註<input type=text style='margin-top: 10px;'><br>是否公開<el-radio v-model='radio1' label='1' size='large'>Option 1</el-radio><el-radio v-model='radio1' label='2' size='large'>Option 2</el-radio><br>上傳節點表 : <input type=file style='margin-top: 10px;'></br>上傳屬性表 : <input type=file style='margin-top: 10px;'></br>上傳肇事結果屬性表 : <input type=file style='margin-top: 10px;'></br>上傳肇事結果表 : <input type=file style='margin-top: 10px;'></br>上傳交通案件表 : <input type=file style='margin-top: 10px;'></div>",
-        "<h3 style='font-size:18px;color:#fff;background:#10afafca'>交通案件表 :</h3> <input type=file style='margin-top: 10px;font-size:18px;'>",
-        "請上傳您的交通案件資料",
+        "<h3 style='font-size:18px;color:#fff;background:#10afafca'>車禍案件總表 :</h3> <input type=file style='margin-top: 10px;font-size:18px;'>",
+        "請上傳您的交通案件表",
         {
           dangerouslyUseHTMLString: true,
         }

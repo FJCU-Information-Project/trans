@@ -76,7 +76,7 @@
           </div>
           <!--file upload section start 此section 打開會跑錯 應是沒有載入script-->
           <div>
-            <el-form-item label="節點表" required>
+            <el-form-item label="肇事因素表" required>
               <el-upload
                 ref="Upload"
                 class="upload-demo"
@@ -98,29 +98,7 @@
                 </template>
               </el-upload>
             </el-form-item>
-            <el-form-item label="屬性表" required>
-              <el-upload
-                ref="Upload"
-                class="upload-demo"
-                action="https://jsonplaceholder.typicode.com/posts/"
-                :limit="1"
-                :on-exceed="handleExceed"
-                :auto-upload="false"
-              >
-                <template #trigger>
-                  <el-button type="primary">選取csv檔案</el-button>
-                </template>
-                <el-button class="ml-3" type="success" @click="submitUpload">
-                  上傳檔案
-                </el-button>
-                <template #tip>
-                  <div class="el-upload__tip text-red">
-                    僅限上傳一個檔案，新檔會覆蓋舊檔
-                  </div>
-                </template>
-              </el-upload>
-            </el-form-item>
-            <el-form-item label="肇事結果屬性表" required>
+            <el-form-item label="肇事因素屬性表" required>
               <el-upload
                 ref="Upload"
                 class="upload-demo"
@@ -164,7 +142,29 @@
                 </template>
               </el-upload>
             </el-form-item>
-            <el-form-item label="交通案件表" required>
+            <el-form-item label="肇事結果屬性表" required>
+              <el-upload
+                ref="Upload"
+                class="upload-demo"
+                action="https://jsonplaceholder.typicode.com/posts/"
+                :limit="1"
+                :on-exceed="handleExceed"
+                :auto-upload="false"
+              >
+                <template #trigger>
+                  <el-button type="primary">選取csv檔案</el-button>
+                </template>
+                <el-button class="ml-3" type="success" @click="submitUpload">
+                  上傳檔案
+                </el-button>
+                <template #tip>
+                  <div class="el-upload__tip text-red">
+                    僅限上傳一個檔案，新檔會覆蓋舊檔
+                  </div>
+                </template>
+              </el-upload>
+            </el-form-item>
+            <el-form-item label="車禍案件總表" required>
               <el-upload
                 ref="Upload"
                 class="upload-demo"

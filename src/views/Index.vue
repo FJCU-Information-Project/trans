@@ -81,7 +81,7 @@
 
           <img
             class="item__image"
-            src="https://picsum.photos/300?random=1"
+            src="../assets/factorank.png"
             alt=""
           />
         </div>
@@ -91,7 +91,7 @@
           <div class="item__content">肇事因素關鍵點就在TRANS</div>
           <img
             class="item__image"
-            src="https://picsum.photos/300?random=2"
+            src="../assets/layerana.png"
             alt=""
           />
         </div>
@@ -101,7 +101,7 @@
           <div class="item__content">交通之社會網路分析</div>
           <img
             class="item__image"
-            src="https://picsum.photos/300?random=3"
+            src="../assets/isolationana.png"
             alt=""
           />
         </div>
