@@ -1,20 +1,22 @@
 <template>
   <div>
-        <div class="grid-content banner">
-
-     <el-row class="close sticky-top">
-        <el-col :span="24">         
+    <div class="grid-content banner">
+      <el-row class="close sticky-top">
+        <el-col :span="24">
           <div class="grid-content nav">
             <el-breadcrumb class="link" separator="/">
-                <el-breadcrumb-item :to="{ name: 'Dataset' }"> <img  class="IconImg back" src="../assets/left.png"> 我的資料集</el-breadcrumb-item>
-                <el-breadcrumb-item
-                  >新增資料集</el-breadcrumb-item
-                >
-              </el-breadcrumb>
+              <el-breadcrumb-item :to="{ name: 'Dataset' }">
+                <img class="IconImg back" src="../assets/left.png" />
+                我的資料集</el-breadcrumb-item
+              >
+              <el-breadcrumb-item>新增資料集</el-breadcrumb-item>
+            </el-breadcrumb>
             <div class="menu">
-            <router-link :to="{ name: 'Login' }" class="link">
-              <el-button round type="danger" class="fz-20">登入授權碼</el-button>
-            </router-link>
+              <router-link :to="{ name: 'Login' }" class="link">
+                <el-button round type="danger" class="fz-20"
+                  >登入授權碼</el-button
+                >
+              </router-link>
             </div>
           </div>
         </el-col>
@@ -201,7 +203,7 @@
 // import Navbar from "@/components/Navbar.vue";
 export default {
   name: "AddDataSet",
-  
+
   data() {
     return {
       input: "",
@@ -327,7 +329,7 @@ export default {
 .jcsb {
   justify-content: space-evenly;
 }
-.el-breadcrumb__item{
+.el-breadcrumb__item {
   float: none;
 }
 // .el-breadcrumb__item,
@@ -362,8 +364,8 @@ export default {
   z-index: 1020;
   background: #fff;
 }
-.IconImg{
-  vertical-align:sub;
+.IconImg {
+  vertical-align: sub;
 }
 .nav {
   width: 100%;

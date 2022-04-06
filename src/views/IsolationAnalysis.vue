@@ -1,5 +1,5 @@
 <template>
-  <div style="font-size:20px">
+  <div style="font-size: 20px">
     <el-row>
       <el-col :span="24">
         <div class="grid-content banner">
@@ -27,7 +27,7 @@
     </el-row>
 
     <el-row class="con_flex">
-      <el-col :span="11" class="analysis-table">
+      <el-col :span="20" class="analysis-table">
         <h1>Isolation Analysis</h1>
         <hr />
         <p>
@@ -44,14 +44,19 @@
         </el-card>
         -->
         <div v-loading="loading" class="grid-content bg-purple main_sec">
-          <el-table :data="isolationData" stripe style="width: 100%">
-            <el-table-column prop="from_id_name" label="起始節點" />
-            <el-table-column prop="to_id_name" label="終點節點" />
-            <el-table-column prop="total" label="權重值" />
+          <el-table
+            :data="isolationData"
+            stripe
+            style="width: 100%"
+            class="basictable"
+          >
+            <el-table-column prop="from_id_name" label="肇事因素(起始)節點" />
+            <el-table-column prop="to_id_name" label="肇事因素(終點)節點" />
+            <el-table-column prop="total" label="權重值(交通案件總數)" />
           </el-table>
         </div>
       </el-col>
-      <el-col :span="12">
+      <el-col :span="20">
         <div
           v-loading="loading"
           class="grid-content bg-purple-light iframe_main_sec"
@@ -152,6 +157,9 @@ export default {
   }
 }
 .analysis-table {
+  color: #595959;
+  line-height: 1.5;
+  font-weight: bold;
   & p {
     text-align: left;
     margin-top: 2em;
@@ -266,5 +274,10 @@ body > .el-container {
 .grid-content {
   border-radius: 4px;
   min-height: 36px;
+}
+.basictable {
+  width: 100%;
+  border: 2px solid #595959;
+  font-size: 20px;
 }
 </style>

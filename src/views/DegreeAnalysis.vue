@@ -1,5 +1,5 @@
 <template>
-  <div style="font-size:20px">
+  <div style="font-size: 20px">
     <el-row class="close">
       <el-col :span="24">
         <div class="grid-content banner">

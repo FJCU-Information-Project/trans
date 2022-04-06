@@ -1,5 +1,5 @@
 <template>
-  <div style="font-size:20px">
+  <div style="font-size: 20px">
     <el-row class="close">
       <el-col :span="24">
         <div class="grid-content banner">
@@ -33,16 +33,104 @@
         </div>
       </el-col>
     </el-row>
-    <el-row class="con_flex">
-      <el-col :span="9" class="analysis-table">
-        <h1>Basic Analysis</h1>
-        <hr />
-        <p>
-          使用者先選擇事故結果(例如：受傷程度、主要傷處、車輛撞擊部位），藉由該節點做SNA的集中點（Degree
-          Centrality）分析，找出肇事因素跟車禍案件結果關聯的高低，哪些節點組合最容易造成此結果並對其進行排名<br /><br />在本系統中，使用者可以藉由排名結果，得知造成車禍致死的關鍵因素，也能配合受傷程度屬性關聯，得出可能造成的死傷結果，來幫助其觀察分析結果，進而避免高致死率的肇事因素發生
-        </p>
-        <div class="grid-content bg-purple main_sec">
-          <el-table :data="tableData" stripe style="width: 100%">
+
+    <!--tabs start-->
+    <!-- Tab Section With ID attribute Start -->
+    <div class="container">
+      <ul class="prodNav">
+        <li id="pTab1" class="ptItem active">degree analysis</li>
+        <li id="pTab2" class="ptItem">closeness analysis</li>
+      </ul>
+
+      <div class="prodBody">
+        <!--degree analysis start-->
+        <div class="prodMain active" id="pTab1C">
+          <el-row class="con_flex">
+            <el-col :span="20" class="analysis-table">
+              <h1>Degree Analysis</h1>
+              <hr />
+              <p>
+                使用者先選擇事故結果(例如：受傷程度、主要傷處、車輛撞擊部位），藉由該節點做SNA的集中點（Degree
+                Centrality）分析，找出肇事因素跟車禍案件結果關聯的高低，哪些節點組合最容易造成此結果並對其進行排名<br /><br />在本系統中，使用者可以藉由排名結果，得知造成車禍致死的關鍵因素，也能配合受傷程度屬性關聯，得出可能造成的死傷結果，來幫助其觀察分析結果，進而避免高致死率的肇事因素發生
+              </p>
+              <div class="grid-content bg-purple main_sec">
+                <el-table :data="tableData" stripe class="basictable">
+                  <el-table-column prop="from_id_name" label="肇事因素名稱" />
+                  <el-table-column
+                    prop="from_id_name"
+                    label="集中度(degree centrality)"
+                    sortable
+                  />
+                  <el-table-column
+                    prop="from_id_name"
+                    label="核心度(closeness centrality)"
+                    sortable
+                  />
+                  <!-- <el-table-column prop="rank" label="權重排名" />
+            <el-table-column prop="from_id_name" label="起始節點名稱" />
+            <el-table-column prop="to_id_name" label="終點節點名稱" />
+            <el-table-column prop="total" label="權重" />
+            <el-table-column label="查看SNA圖">
+              <template #default="scope">
+                <el-button
+                  size="small"
+                  @click="checkRank(scope.$index, scope.row)"
+                  >查看</el-button
+                >
+              </template>
+            </el-table-column> -->
+                </el-table>
+              </div>
+            </el-col>
+            <el-col :span="20">
+              <div
+                v-loading="loading"
+                class="grid-content bg-purple-light iframe_main_sec"
+              >
+                <iframe
+                  ref="Iframe"
+                  :src="src"
+                  frameborder="0"
+                  width="100%"
+                  height="100%"
+                >
+                  <!-- 社會網路圖 -->
+                </iframe>
+              </div>
+            </el-col>
+          </el-row>
+        </div>
+        <!--degree analysis end-->
+        <div class="prodMain" id="pTab2C">
+          <el-row class="con_flex">
+            <el-col :span="20" class="analysis-table">
+              <h1>Closeness Analysis</h1>
+              <hr />
+              <p>
+                使用者選擇一個肇事因素做為中心起始節點，透過分析起始節點與周遭其他節點，找出與該節點擁有幾種不同的關聯
+              </p>
+              <div class="grid-content bg-purple main_sec">
+                <el-table
+                  :data="closenessData"
+                  stripe
+                  style="width: 100%"
+                  class="basictable"
+                >
+                  <!-- <el-table-column prop="from_id" label="肇事因素編號" width="180" />
+          <el-table-column
+            prop="from_id_name"
+            label="肇事因素名稱"
+            width="180"
+          />
+          <el-table-column prop="weight" label="Closeness Centrality" /> -->
+                  <el-table-column prop="from_id_name" label="肇事因素名稱" />
+                  <el-table-column prop="" label="集中度(degree centrality)" />
+                  <el-table-column
+                    prop=""
+                    label="核心度(closeness centrality)"
+                  />
+                </el-table>
+                <!-- <el-table :data="tableData" stripe style="width: 100%">
             <el-table-column prop="rank" label="權重排名" />
             <el-table-column prop="from_id_name" label="起始節點名稱" />
             <el-table-column prop="to_id_name" label="終點節點名稱" />
@@ -56,26 +144,31 @@
                 >
               </template>
             </el-table-column>
-          </el-table>
+          </el-table> -->
+              </div>
+            </el-col>
+            <el-col :span="20">
+              <div
+                v-loading="loading"
+                class="grid-content bg-purple-light iframe_main_sec"
+              >
+                <iframe
+                  ref="Iframe"
+                  :src="src"
+                  frameborder="0"
+                  width="100%"
+                  height="100%"
+                >
+                  <!-- 社會網路圖 -->
+                </iframe>
+              </div>
+            </el-col>
+          </el-row>
         </div>
-      </el-col>
-      <el-col :span="14">
-        <div
-          v-loading="loading"
-          class="grid-content bg-purple-light iframe_main_sec"
-        >
-          <iframe
-            ref="Iframe"
-            :src="src"
-            frameborder="0"
-            width="100%"
-            height="100%"
-          >
-            <!-- 社會網路圖 -->
-          </iframe>
-        </div>
-      </el-col>
-    </el-row>
+      </div>
+    </div>
+    <!-- Tab Section With ID attribute End -->
+    <!--tab end-->
   </div>
 </template>
 
@@ -184,6 +277,21 @@ export default {
     });
   },
 };
+$(document).ready(function () {
+  var pTabItem = $(".prodNav .ptItem");
+  $(pTabItem).click(function () {
+    // Tab nav active functionality
+    $(pTabItem).removeClass("active");
+    $(this).addClass("active");
+
+    // Tab container active functionality
+    var tabid = $(this).attr("id");
+    $(".prodMain").removeClass("active");
+    $("#" + tabid + "C").addClass("active");
+
+    return false;
+  });
+});
 </script>
 
 <style lang="scss">
@@ -321,4 +429,78 @@ body > .el-container {
   min-height: 36px;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  // max-width: 850px;
+  margin: 0 auto;
+  padding: 50px;
+}
+
+.prodNav {
+  font-size: 12px;
+  background: #f5f5f5;
+  border-radius: 20px;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 50px 0 20px;
+  line-height: 1.1;
+}
+.prodNav .ptItem {
+  padding: 9px 35px;
+  line-height: 20px;
+  border-radius: 20px;
+  border: 1px solid transparent;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+  transition: all 0.3s ease-in-out;
+}
+
+.prodNav .ptItem.active,
+.prodNav .ptItem:hover {
+  background: #10afafca;
+  border-color: #10afafca;
+  color: #ffffff;
+  font-size: 20px;
+}
+
+.prodBody {
+  border: 1px solid #c1c1c1;
+  // padding: 20px;
+  border-radius: 5px;
+}
+
+.prodMain {
+  display: none;
+  // padding: 20px;
+  color: #595959;
+  line-height: 1.5;
+  font-weight: bold;
+}
+
+.prodMain.active {
+  display: block;
+}
+
+#pTab1C {
+  background: #f0e19f;
+}
+#pTab2C {
+  background: #98c6fa;
+}
+
+#pTab3C {
+  background: #249ef0;
+}
+.basictable {
+  width: 100%;
+  border: 2px solid #595959;
+  font-size: 20px;
+}
 </style>

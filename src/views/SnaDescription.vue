@@ -1,51 +1,66 @@
 <template>
   <div>
     <div class="grid-content banner">
-      
-  <el-row class="close sticky-top">
-    <el-col :span="24">
-      <div class="grid-content nav">
-         <el-breadcrumb class="link" separator="/">
-            <el-breadcrumb-item :to="{ name: 'Index' }"> <img  class="IconImg back" src="../assets/left.png"> 首頁</el-breadcrumb-item>
-            <el-breadcrumb-item
-              >淺談社會網路分析</el-breadcrumb-item
-            >
-          </el-breadcrumb>
-        <!-- <router-link :to="{ name: 'Index' }" class="link">
+      <el-row class="close sticky-top">
+        <el-col :span="24">
+          <div class="grid-content nav">
+            <el-breadcrumb class="link" separator="/">
+              <el-breadcrumb-item :to="{ name: 'Index' }">
+                <img class="IconImg back" src="../assets/left.png" />
+                首頁</el-breadcrumb-item
+              >
+              <el-breadcrumb-item>淺談社會網路分析</el-breadcrumb-item>
+            </el-breadcrumb>
+            <!-- <router-link :to="{ name: 'Index' }" class="link">
             <img class="IconImg" src="../assets/left.png"> 首頁
         </router-link> / 淺談社會網路分析 -->
-        <div class="menu">
-        <router-link :to="{ name: 'Login' }" class="link">
-          <el-button round type="danger" class="fz-20">登入授權碼</el-button>
-        </router-link>
-        </div>
-      </div>
-    </el-col>
-  </el-row>
+            <div class="menu">
+              <router-link :to="{ name: 'Login' }" class="link">
+                <el-button round type="danger" class="fz-20"
+                  >登入授權碼</el-button
+                >
+              </router-link>
+            </div>
+          </div>
+        </el-col>
+      </el-row>
 
       <el-row class="describebg">
         <el-col class="describecontent">
           <h4 class="describetitle">社會網路分析簡介</h4>
-          <h5 class="green"><img src="../assets/tag.png"> 社會網路圖</h5>
-          <img src="../assets/DescribeSna.png" alt="snaneteworkpic">
+          <h5 class="green"><img src="../assets/tag.png" /> 社會網路圖</h5>
+          <img src="../assets/DescribeSna.png" alt="snaneteworkpic" />
           <h6>● 一個節點(node)代表一個獨立的個體。</h6>
           <h6>● 兩個或兩個以上的節點相連就代表其形成關聯(relationship)。</h6>
-          <h6>● 每一組關聯依照其關聯程度的高低擁有不同權重，利用網絡圖中邊(edge)的粗細呈現。</h6>
-          <img src="../assets/SnaAnalysis.png" alt="snatablepic">
-          <h4 class="green"><img src="../assets/tag.png"> Degree Centrality 集中點中心度: </h4>
-          <h6>● 透過去規模化、標準化資料來進行分析。藉由計算一個節點有多少節點的連接數量來計算關係權重，會同時考慮相連的節點及其權重，因此數據越高的節點，通常在網絡中扮演較重要的角色。例如示意圖中的節點8。</h6>
-          <h4 class="green"><img src="../assets/tag.png"> Closeness Centrality 核心點中心度: </h4>
-          <h6>● 評估一個節點在多大程度上，居於其他兩節點之間的權重計算，為一種控制能力的指數。對一個節點而言，若其距離其他節點越近，其核心點中心度越高。通常此指標較著重於相連的節點個數，因此數據越高的節點，通常與較多節點擁有關聯。例如示意圖中的節點3。</h6>
-          <h6>※示意圖中的節點10並沒有與任何節點形成關聯，在該網絡中成為邊陲節點。</h6>
+          <h6>
+            ●
+            每一組關聯依照其關聯程度的高低擁有不同權重，利用網絡圖中邊(edge)的粗細呈現。
+          </h6>
+          <img src="../assets/SnaAnalysis.png" alt="snatablepic" />
+          <h4 class="green">
+            <img src="../assets/tag.png" /> Degree Centrality 集中點中心度:
+          </h4>
+          <h6>
+            ●
+            透過去規模化、標準化資料來進行分析。藉由計算一個節點有多少節點的連接數量來計算關係權重，會同時考慮相連的節點及其權重，因此數據越高的節點，通常在網絡中扮演較重要的角色。例如示意圖中的節點8。
+          </h6>
+          <h4 class="green">
+            <img src="../assets/tag.png" /> Closeness Centrality 核心點中心度:
+          </h4>
+          <h6>
+            ●
+            評估一個節點在多大程度上，居於其他兩節點之間的權重計算，為一種控制能力的指數。對一個節點而言，若其距離其他節點越近，其核心點中心度越高。通常此指標較著重於相連的節點個數，因此數據越高的節點，通常與較多節點擁有關聯。例如示意圖中的節點3。
+          </h6>
+          <h6>
+            ※示意圖中的節點10並沒有與任何節點形成關聯，在該網絡中成為邊陲節點。
+          </h6>
         </el-col>
       </el-row>
     </div>
   </div>
 </template>
 
-
 <style lang="scss">
- 
 .ban-title {
   height: 92vh;
   display: flex;
@@ -154,15 +169,15 @@ button {
   z-index: 1020;
   background: #fff;
 }
-.IconImg{
-  vertical-align:baseline;
+.IconImg {
+  vertical-align: baseline;
 }
-.describebg{
+.describebg {
   background-image: url(../assets/snadescribe.jpg);
   padding: 0 200px;
 }
-.describecontent{
-  margin:50px auto;
+.describecontent {
+  margin: 50px auto;
   background: #ffffff;
   padding: 20px 100px;
   border-radius: 3%;
@@ -170,18 +185,18 @@ button {
   font-size: 20px;
   line-height: 1.8;
 }
-.describetitle{
+.describetitle {
   font-weight: bold;
   font-size: 25px;
   text-align: center;
 }
-.green{  
+.green {
   color: #10afafca;
   font-weight: bold;
 }
-.back{
-  width:25px;
-  height:25px;
-  vertical-align:middle;
+.back {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
 }
 </style>

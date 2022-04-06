@@ -56,9 +56,9 @@
               <template #default="scope">
                 <el-tag
                   class="fs-20"
-                  :type="scope.row.datasetPublic  ? 'danger' : 'primary'"
+                  :type="scope.row.datasetPublic ? 'primary' : 'danger'"
                   disable-transitions
-                  >{{ scope.row.datasetPublic ? '是' : '否'}}</el-tag
+                  >{{ scope.row.datasetPublic ? "是" : "否" }}</el-tag
                 >
               </template>
             </el-table-column>
@@ -81,14 +81,16 @@
                     >進行分析</el-button
                   >
                 </router-link>
+
                 <el-button
                   class="fs-20"
                   size="mini"
                   type="danger"
-                  @click="handleDelete(scope.$index, scope.row)"
+                  @click="remove"
                   style="margin-left: 1em"
                   >刪除</el-button
                 >
+                <!-- @click="handleDelete(scope.$index, scope.row)" -->
               </template>
             </el-table-column>
           </el-table>
@@ -126,6 +128,7 @@
         <input type="file" style="margin-top: 10px" />
       </div>
     </div>
+    <div id="box"></div>
   </div>
 </template>
 
@@ -135,23 +138,9 @@
 import { ElMessageBox } from "element-plus";
 export default {
   name: "Customer",
-  setup() {
-    const open = () => {
-      ElMessageBox.alert(
-        //"<div style='font-size:20px'><p style='font-weight:bold;background-color:#10afafca'>請填寫資料集基本資料</p>  <br>資料集名稱 : <input type=text style='margin-top: 10px;'><br>提供單位 : <input type=text style='margin-top: 10px;'><br>資料集統計開始時間 : <div class='block'><span class='demonstration'>Default</span><el-date-picker v-model='value1' type='date' placeholder='Pick a day' /></div><input type=text style='margin-top: 10px;'><br>資料集統計截止時間<input type=text style='margin-top: 10px;'><br>備註<input type=text style='margin-top: 10px;'><br>是否公開<el-radio v-model='radio1' label='1' size='large'>Option 1</el-radio><el-radio v-model='radio1' label='2' size='large'>Option 2</el-radio><br>上傳節點表 : <input type=file style='margin-top: 10px;'></br>上傳屬性表 : <input type=file style='margin-top: 10px;'></br>上傳肇事結果屬性表 : <input type=file style='margin-top: 10px;'></br>上傳肇事結果表 : <input type=file style='margin-top: 10px;'></br>上傳交通案件表 : <input type=file style='margin-top: 10px;'></div>",
-        "<h3 style='font-size:18px;color:#fff;background:#10afafca'>車禍案件總表 :</h3> <input type=file style='margin-top: 10px;font-size:18px;'>",
-        "請上傳您的交通案件表",
-        {
-          dangerouslyUseHTMLString: true,
-        }
-      );
-    };
-    return {
-      open,
-    };
-  },
   data() {
     return {
+      datasetFile: null,
       search: "",
       customizeTableData: [],
       tableData: [
@@ -186,39 +175,92 @@ export default {
     handleEdit(index, row) {
       console.log(index, row);
     },
-    handleDelete(index, row) {
-      console.log(index, row);
-    },
-    // const uploadata =() =>{
-    //   ElMessageBox.prompt('Please input your e-mail', 'Tip', {
-    //     confirmButtonText: 'OK',
-    //     cancelButtonText: 'Cancel',
-    //     inputPattern:
-    //       /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/,
-    //     inputErrorMessage: 'Invalid Email',
-    //   })
-    //     .then(({ value }) => {
-    //       ElMessage({
-    //         type: 'success',
-    //         message: `Your email is:${value}`,
-    //       })
-    //     })
-    //     .catch(() => {
-    //       ElMessage({
-    //         type: 'info',
-    //         message: 'Input canceled',
-    //       })
-    //     })
+    // handleDelete(index, row) {
+    //   console.log(index, row);
     // },
-  },
-  mounted(){
-      const api = "http://140.136.155.121:50000";
-      this.$http.get(api + "/customizeTable").then((response) => {
-        console.log(response.data);
-        this.customizeTableData = response.data;
+    open() {
+      ElMessageBox.alert(
+        //"<div style='font-size:20px'><p style='font-weight:bold;background-color:#10afafca'>請填寫資料集基本資料</p>  <br>資料集名稱 : <input type=text style='margin-top: 10px;'><br>提供單位 : <input type=text style='margin-top: 10px;'><br>資料集統計開始時間 : <div class='block'><span class='demonstration'>Default</span><el-date-picker v-model='value1' type='date' placeholder='Pick a day' /></div><input type=text style='margin-top: 10px;'><br>資料集統計截止時間<input type=text style='margin-top: 10px;'><br>備註<input type=text style='margin-top: 10px;'><br>是否公開<el-radio v-model='radio1' label='1' size='large'>Option 1</el-radio><el-radio v-model='radio1' label='2' size='large'>Option 2</el-radio><br>上傳節點表 : <input type=file style='margin-top: 10px;'></br>上傳屬性表 : <input type=file style='margin-top: 10px;'></br>上傳肇事結果屬性表 : <input type=file style='margin-top: 10px;'></br>上傳肇事結果表 : <input type=file style='margin-top: 10px;'></br>上傳交通案件表 : <input type=file style='margin-top: 10px;'></div>",
+        "<h3 style='font-size:18px;color:#fff;background:#10afafca'>車禍案件總表 :</h3><input type='file' id='datasetFile' name='caseFile' style='margin-top: 10px;font-size:18px;'>",
+        "請上傳您的交通案件表",
+        {
+          dangerouslyUseHTMLString: true,
+          showCancelButton: true,
+          confirmButtonText: "上傳",
+          cancelButtonText: "取消上傳",
+          beforeClose: (action, instance, done) => {
+            console.log(instance);
+            if (action === "confirm") {
+              const uploadFile = document.getElementById("datasetFile");
+              const formData = new FormData();
+              formData.append("caseFile", uploadFile); // Form file name
+              const api = "http://140.136.155.121:50000";
+              this.$http
+                .post(api + "/uploadFile", formData, {
+                  headers: {
+                    "Content-Type": "multipart/form-data",
+                  },
+                })
+                .then((response) => {
+                  console.log(JSON.stringify(response.data));
+                });
+            }
+            done();
+          },
+        }
+      );
+    },
+    remove() {
+      ElMessageBox.prompt(
+        "<h3 style='font-size:18px;color:#fff;background:#10afafca'>車禍案件總表 :</h3>",
+        "請上傳您的交通案件表",
+        {
+          dangerouslyUseHTMLString: true,
+          confirmButtonText: "刪除",
+          cancelButtonText: "取消",
+        }
+      ).then((value) => {
+        this.datasetFile = value;
+        console.log(value);
+        const api = "http://140.136.155.121:50000";
+        this.$http.post(api + "/deleteDataset").then((then) => {
+          console.log(response.data);
+        });
       });
-  }
+    },
+  },
+  mounted() {
+    const api = "http://140.136.155.121:50000";
+    this.$http.get(api + "/customizeTable").then((response) => {
+      console.log(response.data);
+      this.customizeTableData = response.data;
+    });
+  },
 };
+
+//彈出視窗
+$("#btn3").click(function () {
+  $("body").append("<div id='greybackground'></div>");
+  var wx = $(window).width();
+  var wy = $(window).height();
+  $("#box").show();
+  $("#box").css("top", wy / 2 - 75);
+  $("#box").css("left", wx / 2 - 100);
+  $("#box").append(
+    "<button id='btnP'>關閉</button><div id='cont'>彈出視窗</div>"
+  );
+});
+
+//關閉彈出視窗
+$("#box").on("click", "#btnP", function () {
+  $("#box").empty().hide();
+  $("body #greybackground").remove();
+});
+
+$("body").on("click", "#greybackground", function () {
+  $("#box").empty().hide();
+  $(this).remove();
+});
 </script>
 
 <style lang="scss">
@@ -340,5 +382,28 @@ body > .el-container {
 }
 .fs-20 {
   font-size: 20px;
+}
+/*屏蔽*/
+#greybackground {
+  background: #000;
+  display: block;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/*彈出視窗*/
+#box {
+  display: none;
+  width: 200px;
+  height: 150px;
+  z-index: 200;
+  background-color: white;
+  border: #f60 solid 2px;
+  position: absolute;
 }
 </style>

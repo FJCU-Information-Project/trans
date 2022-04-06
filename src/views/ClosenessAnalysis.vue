@@ -1,63 +1,63 @@
 <template>
-<div style="font-size:20px">
-  <el-row class="close">
-    <el-col :span="24">
-      <div class="grid-content banner">
-        <Navbar />
-        <div class="ban-title">
-          <h1>Closeness Analysis</h1>
-          <span style="font-weight: bolder" class="sub-title">
-            請選取一個您感興趣的節點，我們將會為您分析出此節點有幾種關聯
-          </span>
-          <div class="select-group">
-            <div class="block">
-              <!-- <span class="demonstration">Child options expand when hovered</span> -->
-              <el-cascader
-                v-model="value"
-                :options="attributes"
-                :props="props"
-                @change="handleChange"
-                placeholder="請選擇事故節點"
-              ></el-cascader>
+  <div style="font-size: 20px">
+    <el-row class="close">
+      <el-col :span="24">
+        <div class="grid-content banner">
+          <Navbar />
+          <div class="ban-title">
+            <h1>Closeness Analysis</h1>
+            <span style="font-weight: bolder" class="sub-title">
+              請選取一個您感興趣的節點，我們將會為您分析出此節點有幾種關聯
+            </span>
+            <div class="select-group">
+              <div class="block">
+                <!-- <span class="demonstration">Child options expand when hovered</span> -->
+                <el-cascader
+                  v-model="value"
+                  :options="attributes"
+                  :props="props"
+                  @change="handleChange"
+                  placeholder="請選擇事故節點"
+                ></el-cascader>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </el-col>
-  </el-row>
-  <el-row class="con_flex">
-    <el-col :span="11">
-      <div class="grid-content main_sec">
-        <el-table :data="closenessData" stripe style="width: 100%">
-          <el-table-column prop="from_id" label="肇事因素編號" width="180" />
-          <el-table-column
-            prop="from_id_name"
-            label="肇事因素名稱"
-            width="180"
-          />
-          <el-table-column prop="weight" label="Closeness Centrality" />
-        </el-table>
-      </div>
-    </el-col>
-    <el-col :span="9" class="analysis-table">
-      <h1>Closeness Analysis</h1>
-      <hr />
-      <p>
-        使用者選擇一個肇事因素做為中心起始節點，透過分析起始節點與周遭其他節點，找出與該節點擁有幾種不同的關聯
-      </p>
-      <br />
-      <iframe
-        ref="Iframe"
-        :src="src"
-        frameborder="0"
-        width="100%"
-        height="100%"
-      >
-        <!-- 社會網路圖 -->
-      </iframe>
-    </el-col>
-  </el-row>
-  <!--<el-footer>Footer</el-footer>-->
+      </el-col>
+    </el-row>
+    <el-row class="con_flex">
+      <el-col :span="11">
+        <div class="grid-content main_sec">
+          <el-table :data="closenessData" stripe style="width: 100%">
+            <el-table-column prop="from_id" label="肇事因素編號" width="180" />
+            <el-table-column
+              prop="from_id_name"
+              label="肇事因素名稱"
+              width="180"
+            />
+            <el-table-column prop="weight" label="Closeness Centrality" />
+          </el-table>
+        </div>
+      </el-col>
+      <el-col :span="9" class="analysis-table">
+        <h1>Closeness Analysis</h1>
+        <hr />
+        <p>
+          使用者選擇一個肇事因素做為中心起始節點，透過分析起始節點與周遭其他節點，找出與該節點擁有幾種不同的關聯
+        </p>
+        <br />
+        <iframe
+          ref="Iframe"
+          :src="src"
+          frameborder="0"
+          width="100%"
+          height="100%"
+        >
+          <!-- 社會網路圖 -->
+        </iframe>
+      </el-col>
+    </el-row>
+    <!--<el-footer>Footer</el-footer>-->
   </div>
 </template>
 

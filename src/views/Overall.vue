@@ -1,15 +1,15 @@
 <template>
-<div style="font-size:20px">
-  <el-row>
-    <el-col :span="24">
-      <div class="grid-content banner">
-        <Navbar />
-        <div class="ban-title">
-          <h1>Overall</h1>
-          <span style="font-weight: bolder" class="sub-title">
-            此功能將為您呈現您所選資料及的社會網路圖全貌
-          </span>
-          <!-- <div class="select-group">
+  <div style="font-size: 20px">
+    <el-row>
+      <el-col :span="24">
+        <div class="grid-content banner">
+          <Navbar />
+          <div class="ban-title">
+            <h1>Overall</h1>
+            <span style="font-weight: bolder" class="sub-title">
+              此功能將為您呈現您所選資料及的社會網路圖全貌
+            </span>
+            <!-- <div class="select-group">
             <el-select v-model="value" placeholder="請選擇一個節點">
               <el-option
                 v-for="item in options"
@@ -20,12 +20,12 @@
               </el-option>
             </el-select>
           </div> -->
+          </div>
         </div>
-      </div>
-    </el-col>
-  </el-row>
-  <el-row class="con_flex">
-    <!-- <el-col :span="11">
+      </el-col>
+    </el-row>
+    <el-row class="con_flex">
+      <!-- <el-col :span="11">
       <div class="grid-content bg-purple main_sec">
         <el-table :data="tableData" stripe style="width: 100%">
           <el-table-column prop="date" label="Date" width="180" />
@@ -34,19 +34,19 @@
         </el-table>
       </div>
     </el-col> -->
-    <el-col :span="12">
-      <div class="grid-content bg-purple-light iframe_main_sec">
-        <iframe :src="src" frameborder="0" width="100%" height="100%">
-          <!-- 社會網路圖 -->
-        </iframe>
-      </div>
-    </el-col>
-    <el-col :span="9" class="analysis-table">
-      <h1>Overall</h1>
-      <hr />
-      <p>使用者透過此分析得知所有肇事因素節點周遭的網路分布狀態</p>
-    </el-col>
-  </el-row>
+      <el-col :span="20" class="analysis-table">
+        <h1>Overall</h1>
+        <hr />
+        <p>使用者透過此分析得知所有肇事因素節點周遭的網路分布狀態</p>
+      </el-col>
+      <el-col :span="20">
+        <div class="grid-content bg-purple-light iframe_main_sec">
+          <iframe :src="src" frameborder="0" width="100%" height="100%">
+            <!-- 社會網路圖 -->
+          </iframe>
+        </div>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
@@ -162,6 +162,9 @@ export default {
 
 <style lang="scss">
 .analysis-table {
+  color: #595959;
+  line-height: 1.5;
+  font-weight: bold;
   & p {
     text-align: left;
     margin-top: 2em;

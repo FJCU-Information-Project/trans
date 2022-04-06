@@ -72,8 +72,10 @@
               <h3 class="f-title f_600 t_color f_size_18">Links</h3>
               <ul class="list-unstyled f_list">
                 <li><a href="#">關於我們</a></li>
-                <li>            
-                  <router-link :to="{ name: 'Dataset' }" class="link p-14">資料集</router-link>
+                <li>
+                  <router-link :to="{ name: 'Dataset' }" class="link p-14"
+                    >資料集</router-link
+                  >
                 </li>
               </ul>
             </div>

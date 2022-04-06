@@ -79,31 +79,19 @@
         <div class="item">
           <div class="item__content">開車不喝酒，喝酒不開車</div>
 
-          <img
-            class="item__image"
-            src="../assets/factorank.png"
-            alt=""
-          />
+          <img class="item__image" src="../assets/factorank.png" alt="" />
         </div>
       </el-carousel-item>
       <el-carousel-item>
         <div class="item">
           <div class="item__content">肇事因素關鍵點就在TRANS</div>
-          <img
-            class="item__image"
-            src="../assets/layerana.png"
-            alt=""
-          />
+          <img class="item__image" src="../assets/layerana.png" alt="" />
         </div>
       </el-carousel-item>
       <el-carousel-item>
         <div class="item">
           <div class="item__content">交通之社會網路分析</div>
-          <img
-            class="item__image"
-            src="../assets/isolationana.png"
-            alt=""
-          />
+          <img class="item__image" src="../assets/isolationana.png" alt="" />
         </div>
       </el-carousel-item>
     </el-carousel>

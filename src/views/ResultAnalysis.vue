@@ -1,5 +1,5 @@
 <template>
-  <div style="font-size:20px">
+  <div style="font-size: 20px">
     <el-row class="close">
       <el-col :span="24">
         <div class="grid-content banner">
@@ -34,7 +34,7 @@
       </el-col>
     </el-row>
     <el-row class="con_flex">
-      <el-col :span="9" class="analysis-table">
+      <el-col :span="20" class="analysis-table">
         <h1>Result Analysis</h1>
         <hr />
         <p>
@@ -42,11 +42,19 @@
           Centrality）分析，找出肇事因素跟車禍案件結果關聯的高低，哪些節點組合最容易造成此結果並對其進行排名<br /><br />在本系統中，使用者可以藉由排名結果，得知造成車禍致死的關鍵因素，也能配合受傷程度屬性關聯，得出可能造成的死傷結果，來幫助其觀察分析結果，進而避免高致死率的肇事因素發生
         </p>
         <div class="grid-content bg-purple main_sec">
-          <el-table :data="tableData" stripe style="width: 100%">
+          <el-table
+            :data="tableData"
+            stripe
+            style="width: 100%"
+            class="basictable"
+          >
             <el-table-column prop="rank" label="權重排名" />
-            <el-table-column prop="from_id_name" label="起始節點名稱" />
-            <el-table-column prop="to_id_name" label="終點節點名稱" />
-            <el-table-column prop="total" label="權重" />
+            <el-table-column
+              prop="from_id_name"
+              label="肇事因素節點(起始)名稱"
+            />
+            <el-table-column prop="to_id_name" label="肇事因素節點(終點)名稱" />
+            <el-table-column prop="total" label="權重(交通案件總數)" />
             <el-table-column label="查看SNA圖">
               <template #default="scope">
                 <el-button
@@ -59,7 +67,7 @@
           </el-table>
         </div>
       </el-col>
-      <el-col :span="14">
+      <el-col :span="20">
         <div
           v-loading="loading"
           class="grid-content bg-purple-light iframe_main_sec"
@@ -201,6 +209,9 @@ export default {
   text-align: center !important;
 }
 .analysis-table {
+  color: #595959;
+  line-height: 1.5;
+  font-weight: bold;
   & p {
     text-align: left;
     margin-top: 2em;
@@ -320,5 +331,9 @@ body > .el-container {
   border-radius: 4px;
   min-height: 36px;
 }
-
+.basictable {
+  width: 100%;
+  border: 2px solid #595959;
+  font-size: 20px;
+}
 </style>

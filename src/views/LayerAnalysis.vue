@@ -1,5 +1,5 @@
 <template>
-  <div style="font-size:20px">
+  <div style="font-size: 20px">
     <el-row>
       <el-col :span="24">
         <div class="grid-content banner">
@@ -20,44 +20,48 @@
                   placeholder="請選擇起始節點"
                 ></el-cascader>
               </div>
-              <el-select
-                v-model="layerValue"
-                placeholder="請選擇層級"
-                @change="layerChange"
-              >
-                <el-option
-                  v-for="item in tableData"
-                  :key="item.id"
-                  :label="item.node"
-                  :value="item.node"
+              <div>
+                <el-select
+                  v-model="layerValue"
+                  placeholder="請選擇層級"
+                  @change="layerChange"
                 >
-                </el-option>
-              </el-select>
+                  <el-option
+                    v-for="item in tableData"
+                    :key="item.id"
+                    :label="item.node"
+                    :value="item.node"
+                  >
+                  </el-option>
+                </el-select>
+              </div>
             </div>
           </div>
         </div>
       </el-col>
     </el-row>
     <el-row class="con_flex">
-      <el-col :span="9" class="analysis-table">
+      <el-col :span="20" class="analysis-table">
         <h1>Layer Analysis</h1>
         <hr />
         <p>
           使用者選擇一個肇事因素做為中心起始節點，從起始節點發散並展開來檢視第一層、第二層的關聯節點分析，並呈現以該起始節點為中心所分析的第一層網路圖，再進一步以第一層的節點作為起始點，各自發散出第二層的網路圖
         </p>
         <div v-loading="loading" class="grid-content bg-purple main_sec">
-          <el-table :data="layerData" stripe style="width: 100%">
-            <el-table-column prop="first_name" label="起始節點" width="180" />
-            <el-table-column
-              prop="second_name"
-              label="第一層節點"
-              width="180"
-            />
-            <el-table-column prop="group" label="第二層節點" />
+          <el-table
+            :data="layerData"
+            stripe
+            style="width: 100%"
+            class="basictable"
+          >
+            <el-table-column prop="second_name" label="肇事因素(起始)節點" />
+            <el-table-column prop="group" label="肇事因素(終止)節點" />
+            <el-table-column prop="group" label="層級" />
+            <el-table-column prop="group" label="肇事因素關聯權重" />
           </el-table>
         </div>
       </el-col>
-      <el-col :span="14">
+      <el-col :span="20">
         <div
           v-loading="loading"
           class="grid-content bg-purple-light iframe_main_sec"
@@ -200,6 +204,9 @@ export default {
   text-align: center !important;
 }
 .analysis-table {
+  color: #595959;
+  line-height: 1.5;
+  font-weight: bold;
   & p {
     text-align: left;
     margin-top: 2em;
@@ -237,7 +244,7 @@ export default {
   // }
 }
 .select-group {
-  width: 30%;
+  width: 35%;
   display: flex;
   justify-content: space-between;
   margin-top: 2em;
@@ -309,5 +316,10 @@ body > .el-container {
 .grid-content {
   border-radius: 4px;
   min-height: 36px;
+}
+.basictable {
+  width: 100%;
+  border: 2px solid #595959;
+  font-size: 20px;
 }
 </style>

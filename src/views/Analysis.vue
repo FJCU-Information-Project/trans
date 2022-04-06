@@ -6,7 +6,9 @@
         <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
           <div class="grid-content bg-purple analysis-entry-card">
             <div class="filter">
-              <h3 class="analysis-title">Overall <img class="IconImg" src="../assets/overall.png"></h3>
+              <h3 class="analysis-title">
+                Overall <img class="IconImg" src="../assets/overall.png" />
+              </h3>
               <div class="btn-group">
                 <router-link :to="{ name: 'Overall' }" class="link">
                   <p class="analysis-btn">entry</p>
@@ -18,7 +20,10 @@
         <el-col v-if="false" :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
           <div class="grid-content bg-purple analysis-entry-card degree-bg">
             <div class="filter">
-              <h3 class="analysis-title">Degree Analysis <img class="IconImg" src="../assets/result.png"></h3>
+              <h3 class="analysis-title">
+                Degree Analysis
+                <img class="IconImg" src="../assets/result.png" />
+              </h3>
               <div class="btn-group">
                 <router-link :to="{ name: 'DegreeAnalysis' }" class="link">
                   <p class="analysis-btn">entry</p>
@@ -31,7 +36,10 @@
         <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
           <div class="grid-content bg-purple analysis-entry-card">
             <div class="filter">
-              <h3 class="analysis-title">Result Analysis  <img class="IconImg" src="../assets/result.png"></h3>
+              <h3 class="analysis-title">
+                Result Analysis
+                <img class="IconImg" src="../assets/result.png" />
+              </h3>
               <div class="btn-group">
                 <router-link :to="{ name: 'ResultAnalysis' }" class="link">
                   <p class="analysis-btn">entry</p>
@@ -44,7 +52,9 @@
         <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
           <div class="grid-content bg-purple analysis-entry-card">
             <div class="filter">
-              <h3 class="analysis-title">Basic Analysis<img class="IconImg" src="../assets/basic.png"></h3>
+              <h3 class="analysis-title">
+                Basic Analysis<img class="IconImg" src="../assets/basic.png" />
+              </h3>
               <div class="btn-group">
                 <router-link :to="{ name: 'BasicAnalysis' }" class="link">
                   <p class="analysis-btn">entry</p>
@@ -57,7 +67,10 @@
         <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
           <div class="grid-content bg-purple analysis-entry-card">
             <div class="filter">
-              <h3 class="analysis-title">Layer Analysis <img class="IconImg" src="../assets/layers.png"></h3>
+              <h3 class="analysis-title">
+                Layer Analysis
+                <img class="IconImg" src="../assets/layers.png" />
+              </h3>
               <div class="btn-group">
                 <router-link :to="{ name: 'LayerAnalysis' }" class="link">
                   <p class="analysis-btn">entry</p>
@@ -83,7 +96,9 @@
         <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
           <div class="grid-content bg-purple analysis-entry-card">
             <div class="filter">
-              <h3 class="analysis-title">Factor Rank <br>Analysis <img src="../assets/factor.png"></h3>
+              <h3 class="analysis-title">
+                Factor Rank <br />Analysis <img src="../assets/factor.png" />
+              </h3>
               <div class="btn-group">
                 <router-link :to="{ name: 'FactorRankAnalysis' }" class="link">
                   <p class="analysis-btn">entry</p>
@@ -96,7 +111,10 @@
         <el-col :xs="24" :sm="12" :md="12" :lg="8" :xl="8">
           <div class="grid-content bg-purple analysis-entry-card">
             <div class="filter">
-              <h3 class="analysis-title">Isolation Analysis <img class="IconImg" src="../assets/isolation.png"></h3>
+              <h3 class="analysis-title">
+                Isolation Analysis
+                <img class="IconImg" src="../assets/isolation.png" />
+              </h3>
               <div class="btn-group">
                 <router-link :to="{ name: 'IsolationAnalysis' }" class="link">
                   <p class="analysis-btn">entry</p>
@@ -381,7 +399,7 @@ iframe {
     }
   }
 }
-.IconImg{
-  vertical-align:sub;
+.IconImg {
+  vertical-align: sub;
 }
 </style>

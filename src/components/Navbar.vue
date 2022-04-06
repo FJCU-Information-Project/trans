@@ -17,8 +17,14 @@
           <!-- <router-link v-if="isAuth" :to="{ name: 'Management' }" class="link">
             <el-button round>Management</el-button>
           </router-link> -->
+          <!--使用者未登入前狀態 start-->
           <router-link :to="{ name: 'Login' }" class="link">
             <el-button round type="danger" class="fz-20">登入授權碼</el-button>
+          </router-link>
+          <!--使用者未登入前狀態 end-->
+
+          <router-link :to="{ name: 'Login' }" class="link">
+            <el-button class="fz-20">使用者，您好!</el-button>
           </router-link>
         </div>
       </div>

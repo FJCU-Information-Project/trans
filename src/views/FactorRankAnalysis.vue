@@ -1,64 +1,66 @@
 <template>
-<div style="font-size:20px">
-  <el-row class="close">
-    <el-col :span="24">
-      <div class="grid-content banner">
-        <Navbar />
-        <div class="ban-title">
-          <h1>Factor Rank Analysis</h1>
-          <span style="font-weight: bolder" class="sub-title">
-            請選擇一個節點，我們將會為您呈現與此節點關聯性最高的前10%節點
-          </span>
-          <div class="select-group">
-            <div class="block">
-              <!-- <span class="demonstration">Child options expand when hovered</span> -->
-              <el-cascader
-                v-model="value"
-                :options="attributes"
-                :props="props"
-                @change="handleChange"
-                placeholder="請選擇事故節點"
-              ></el-cascader>
+  <div style="font-size: 20px">
+    <el-row class="close">
+      <el-col :span="24">
+        <div class="grid-content banner">
+          <Navbar />
+          <div class="ban-title">
+            <h1>Factor Rank Analysis</h1>
+            <span style="font-weight: bolder" class="sub-title">
+              請選擇一個節點，我們將會為您呈現與此節點關聯性最高的前10%節點
+            </span>
+            <div class="select-group">
+              <div class="block">
+                <!-- <span class="demonstration">Child options expand when hovered</span> -->
+                <el-cascader
+                  v-model="value"
+                  :options="attributes"
+                  :props="props"
+                  @change="handleChange"
+                  placeholder="請選擇事故節點"
+                ></el-cascader>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </el-col>
-  </el-row>
-  <el-row class="con_flex">
-    <el-col :span="9" class="analysis-table">
-      <h1>Factor Rank Analysis</h1>
-      <hr />
-      <p>
-        使用者先選擇肇事因素的屬性(例如:天候、道路類別)，再依照所選類別選取目標的中心節點，系統會呈現使用者所選的中心節點和其中關聯權重前10%高的肇事因素節點<br /><br />
-        使用者可以藉由選取特定肇事因素節點，來找出該肇事因素節點和其他節點的關聯性強弱。藉此讓使用者觀察對於自己感興趣的肇事因素節點，去尋找與此相關的其他肇事因素並進行關聯權重排名。圖中的線會因兩個節點間的關聯權重增加而加粗
-      </p>
-      <div v-loading="loading" class="grid-content bg-purple main_sec">
-        <el-table :data="factorRankData" stripe style="width: 100%">
-          <el-table-column
-            prop="factorRank"
-            label="關聯肇事因素排名"
-            width="180"
-          />
-          <el-table-column prop="factor" label="肇事因素" width="180" />
-          <el-table-column prop="caseNumber" label="案件總數" />
-        </el-table>
-      </div>
-    </el-col>
-    <el-col :span="14">
-      <div class="grid-content bg-purple-light iframe_main_sec">
-        <iframe
-          ref="Iframe"
-          :src="src"
-          frameborder="0"
-          width="100%"
-          height="100%"
-        >
-          <!-- 社會網路圖 -->
-        </iframe>
-      </div>
-    </el-col>
-  </el-row>
+      </el-col>
+    </el-row>
+    <el-row class="con_flex">
+      <el-col :span="20" class="analysis-table">
+        <h1>Factor Rank Analysis</h1>
+        <hr />
+        <p>
+          使用者先選擇肇事因素的屬性(例如:天候、道路類別)，再依照所選類別選取目標的中心節點，系統會呈現使用者所選的中心節點和其中關聯權重前10%高的肇事因素節點<br /><br />
+          使用者可以藉由選取特定肇事因素節點，來找出該肇事因素節點和其他節點的關聯性強弱。藉此讓使用者觀察對於自己感興趣的肇事因素節點，去尋找與此相關的其他肇事因素並進行關聯權重排名。圖中的線會因兩個節點間的關聯權重增加而加粗
+        </p>
+        <div v-loading="loading" class="grid-content bg-purple main_sec">
+          <el-table
+            :data="factorRankData"
+            stripe
+            style="width: 100%"
+            class="basictable"
+          >
+            <el-table-column prop="factorRank" label="肇事因素關聯排名" />
+            <el-table-column prop="factor" label="肇事因素起始點" />
+            <el-table-column prop="factor" label="與起始點關聯之肇事因素" />
+            <el-table-column prop="caseNumber" label="權重(交通案件總數)" />
+          </el-table>
+        </div>
+      </el-col>
+      <el-col :span="20">
+        <div class="grid-content bg-purple-light iframe_main_sec">
+          <iframe
+            ref="Iframe"
+            :src="src"
+            frameborder="0"
+            width="100%"
+            height="100%"
+          >
+            <!-- 社會網路圖 -->
+          </iframe>
+        </div>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
@@ -146,6 +148,9 @@ export default {
   text-align: center !important;
 }
 .analysis-table {
+  color: #595959;
+  line-height: 1.5;
+  font-weight: bold;
   & p {
     text-align: left;
     margin-top: 2em;
@@ -256,5 +261,10 @@ body > .el-container {
 }
 .select-group {
   justify-content: center;
+}
+.basictable {
+  width: 100%;
+  border: 2px solid #595959;
+  font-size: 20px;
 }
 </style>

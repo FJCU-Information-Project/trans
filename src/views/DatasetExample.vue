@@ -17,7 +17,12 @@
             style="width: 100%"
             @change="handlechange"
           >
-            <el-table-column label="新增日期" prop="date" width="150" sortable />
+            <el-table-column
+              label="新增日期"
+              prop="date"
+              width="150"
+              sortable
+            />
             <el-table-column label="資料集名稱" prop="datasetName" width="300">
               <template #default="scope">
                 <el-popover
@@ -36,14 +41,14 @@
                 </el-popover>
               </template>
             </el-table-column>
-            <el-table-column label="提供單位" prop="datasetUnit" width="300"/>
+            <el-table-column label="提供單位" prop="datasetUnit" width="300" />
             <el-table-column label="是否公開" prop="datasetPublic" width="120">
               <template #default="scope">
                 <el-tag
                   class="fs-20"
-                  :type="scope.row.datasetPublic  ? 'danger' : 'primary'"
+                  :type="scope.row.datasetPublic ? 'primary' : 'danger'"
                   disable-transitions
-                  >{{ scope.row.datasetPublic  ? '是' : '否'}}</el-tag
+                  >{{ scope.row.datasetPublic ? "是" : "否" }}</el-tag
                 >
               </template>
             </el-table-column>
@@ -108,17 +113,17 @@ export default {
     handleDelete(index, row) {
       console.log(index, row);
     },
-    handlechange(){
+    handlechange() {
       console.log("change");
     },
   },
-  mounted(){
-      const api = "http://140.136.155.121:50000";
-      this.$http.get(api + "/exampleTable").then((response) => {
-        console.log(response.data);
-        this.exampleTableData = response.data;
-      });
-  }
+  mounted() {
+    const api = "http://140.136.155.121:50000";
+    this.$http.get(api + "/exampleTable").then((response) => {
+      console.log(response.data);
+      this.exampleTableData = response.data;
+    });
+  },
 };
 </script>
 

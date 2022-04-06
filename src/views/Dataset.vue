@@ -13,7 +13,7 @@
             <el-tab-pane label="範例資料集">
               <Example />
             </el-tab-pane>
-            <el-tab-pane label="自訂資料集">
+            <el-tab-pane :disabled="!isAuth" label="自訂資料集">
               <Customized v-if="isAuth" />
               <Login v-else />
               <el-alert
@@ -25,21 +25,18 @@
               >
               </el-alert>
             </el-tab-pane>
-            <el-tab-pane label="歷史紀錄資料">
-              <HistoryDataSet />
+            <el-tab-pane :disabled="!isAuth" label="歷史紀錄資料">
+              <HistoryDataSet v-if="isAuth" />
+              <Login v-else />
+              <el-alert
+                v-if="false"
+                title="info alert"
+                type="info"
+                description="請先登入再使用本系統"
+                show-icon
+              >
+              </el-alert>
             </el-tab-pane>
-            <!-- <el-tab-pane label="History">
-            <Customized v-if="isAuth" />
-            <Login v-else />
-            <el-alert
-              v-if="false"
-              title="info alert"
-              type="info"
-              description="請先登入再使用本系統"
-              show-icon
-            >
-            </el-alert>
-          </el-tab-pane> -->
           </el-tabs>
         </div>
       </el-col>
@@ -72,6 +69,7 @@ export default {
   },
   mounted() {
     this.isAuth = localStorage.getItem("token");
+    console.log(this.isAuth);
   },
 };
 </script>
