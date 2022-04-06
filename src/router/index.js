@@ -57,9 +57,9 @@ const routes = [
     component: () => import("../views/DegreeAnalysis.vue"),
   },
   {
-    path: "/monoNodeanalysis",
-    name: "MonoNodeAnalysis",
-    component: () => import("../views/MonoNodeAnalysis.vue"),
+    path: "/FactorRankAnalysis",
+    name: "FactorRankAnalysis",
+    component: () => import("../views/FactorRankAnalysis.vue"),
   },
   {
     path: "/isolationanalysis",

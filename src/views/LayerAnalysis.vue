@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="font-size:20px">
     <el-row>
       <el-col :span="24">
         <div class="grid-content banner">
@@ -240,7 +240,7 @@ export default {
   width: 30%;
   display: flex;
   justify-content: space-between;
-  margin-top: 4em;
+  margin-top: 2em;
 }
 .con_flex {
   display: flex;
@@ -253,11 +253,11 @@ export default {
 }
 .banner {
   // background: rgb(226, 226, 216);
-  height: 100vh;
+  height: 60vh;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  background-image: url(https://images.pexels.com/photos/10003543/pexels-photo-10003543.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+  background-image: url(../assets/greenbg.png);
   background-size: cover;
   background-position: center;
   color: white;

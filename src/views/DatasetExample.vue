@@ -17,7 +17,7 @@
             style="width: 100%"
             @change="handlechange"
           >
-            <el-table-column label="新增日期" prop="date" sortable />
+            <el-table-column label="新增日期" prop="date" width="150" sortable />
             <el-table-column label="資料集名稱" prop="datasetName" width="300">
               <template #default="scope">
                 <el-popover
@@ -36,8 +36,8 @@
                 </el-popover>
               </template>
             </el-table-column>
-            <el-table-column label="提供單位" prop="datasetUnit" />
-            <el-table-column label="是否公開" prop="datasetPublic" width="150">
+            <el-table-column label="提供單位" prop="datasetUnit" width="300"/>
+            <el-table-column label="是否公開" prop="datasetPublic" width="120">
               <template #default="scope">
                 <el-tag
                   class="fs-20"

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="font-size:20px">
     <el-row class="close">
       <el-col :span="24">
         <div class="grid-content banner">
@@ -252,11 +252,11 @@ export default {
 }
 .banner {
   // background: rgb(226, 226, 216);
-  height: 100vh;
+  height: 60vh;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  background-image: url(https://images.pexels.com/photos/10003543/pexels-photo-10003543.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+  background-image: url(../assets/greenbg.png);
   background-size: cover;
   background-position: center;
   color: white;
@@ -311,7 +311,6 @@ body > .el-container {
 }
 .select-group {
   justify-content: center;
-  margin-top: 4em;
 }
 
 .el-container:nth-child(7) .el-aside {
@@ -321,8 +320,5 @@ body > .el-container {
   border-radius: 4px;
   min-height: 36px;
 }
-.select-group {
-  justify-content: center;
-  margin-top: 4em;
-}
+
 </style>

@@ -33,7 +33,7 @@
               width="150"
               sortable
             />
-            <el-table-column label="資料集名稱" prop="datasetName" width="300">
+            <el-table-column label="資料集名稱" prop="datasetName" width="350">
               <template #default="scope">
                 <el-popover
                   effect="light"
@@ -52,7 +52,7 @@
               </template>
             </el-table-column>
             <el-table-column label="提供單位" prop="datasetUnit" width="300" />
-            <el-table-column label="是否公開" prop="datasetPublic" width="150">
+            <el-table-column label="是否公開" prop="datasetPublic" width="120">
               <template #default="scope">
                 <el-tag
                   class="fs-20"

@@ -85,7 +85,7 @@
             <div class="filter">
               <h3 class="analysis-title">Factor Rank <br>Analysis <img src="../assets/factor.png"></h3>
               <div class="btn-group">
-                <router-link :to="{ name: 'MonoNodeAnalysis' }" class="link">
+                <router-link :to="{ name: 'FactorRankAnalysis' }" class="link">
                   <p class="analysis-btn">entry</p>
                 </router-link>
                 <!-- <p class="analysis-btn">entry</p> -->
@@ -135,7 +135,7 @@ export default {
 }
 .card-allocate {
   width: 100%;
-  height: 100vh;
+  height: 120vh;
   padding: 3em 5em;
   box-sizing: border-box;
   display: flex;

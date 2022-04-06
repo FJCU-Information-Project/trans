@@ -45,7 +45,7 @@
               </template>
             </el-table-column>
             <el-table-column label="提供單位" prop="unit" width="300" />
-            <el-table-column label="是否公開" prop="is_public" width="150">
+            <el-table-column label="是否公開" prop="is_public" width="120">
               <template #default="scope">
                 <el-tag
                   class="fs-20"
