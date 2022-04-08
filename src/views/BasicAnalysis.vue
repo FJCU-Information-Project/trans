@@ -54,7 +54,7 @@
                 Centrality）分析，找出肇事因素跟車禍案件結果關聯的高低，哪些節點組合最容易造成此結果並對其進行排名<br /><br />在本系統中，使用者可以藉由排名結果，得知造成車禍致死的關鍵因素，也能配合受傷程度屬性關聯，得出可能造成的死傷結果，來幫助其觀察分析結果，進而避免高致死率的肇事因素發生
               </p>
               <div class="grid-content bg-purple main_sec">
-                <el-table :data="tableData" stripe class="basictable">
+                <el-table :data="tableData" stripe class="basictable" height="550">
                   <el-table-column prop="from_id_name" label="肇事因素名稱" />
                   <el-table-column
                     prop="from_id_name"
@@ -82,6 +82,8 @@
                 </el-table>
               </div>
             </el-col>
+            </el-row>
+            <el-row class="con_flex">
             <el-col :span="20">
               <div
                 v-loading="loading"
@@ -115,6 +117,7 @@
                   stripe
                   style="width: 100%"
                   class="basictable"
+                  height="550"
                 >
                   <!-- <el-table-column prop="from_id" label="肇事因素編號" width="180" />
           <el-table-column
@@ -147,6 +150,8 @@
           </el-table> -->
               </div>
             </el-col>
+            </el-row>
+            <el-row class="con_flex">
             <el-col :span="20">
               <div
                 v-loading="loading"
@@ -351,7 +356,7 @@ $(document).ready(function () {
 .con_flex {
   display: flex;
   justify-content: space-evenly;
-  padding: 5em 2em;
+  padding: 2em;
   // background-image: url(https://images.pexels.com/photos/10481158/pexels-photo-10481158.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
 }
 .iframe_main_sec {

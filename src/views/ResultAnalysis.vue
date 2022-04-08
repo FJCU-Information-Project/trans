@@ -47,6 +47,7 @@
             stripe
             style="width: 100%"
             class="basictable"
+            height="550"
           >
             <el-table-column prop="rank" label="權重排名" />
             <el-table-column
@@ -58,16 +59,19 @@
             <el-table-column label="查看SNA圖">
               <template #default="scope">
                 <el-button
-                  size="small"
+                  size="medium"
                   @click="checkRank(scope.$index, scope.row)"
-                  >查看</el-button
+                  type="warning" plain
+                  ><i class="el-icon-view"></i> 查看</el-button
                 >
               </template>
             </el-table-column>
           </el-table>
         </div>
       </el-col>
-      <el-col :span="20">
+    </el-row>
+    <el-row class="con_flex">
+      <el-col :span="20" class="snapic"> 
         <div
           v-loading="loading"
           class="grid-content bg-purple-light iframe_main_sec"
@@ -254,7 +258,7 @@ export default {
 .con_flex {
   display: flex;
   justify-content: space-evenly;
-  padding: 5em 2em;
+  // padding: 5em 2em;
   // background-image: url(https://images.pexels.com/photos/10481158/pexels-photo-10481158.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
 }
 .iframe_main_sec {
@@ -335,5 +339,8 @@ body > .el-container {
   width: 100%;
   border: 2px solid #595959;
   font-size: 20px;
+}
+.snapic{
+  margin: 0 auto;
 }
 </style>

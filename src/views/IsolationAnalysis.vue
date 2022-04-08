@@ -49,6 +49,7 @@
             stripe
             style="width: 100%"
             class="basictable"
+            height="550"
           >
             <el-table-column prop="from_id_name" label="肇事因素(起始)節點" />
             <el-table-column prop="to_id_name" label="肇事因素(終點)節點" />
@@ -56,6 +57,8 @@
           </el-table>
         </div>
       </el-col>
+      </el-row>
+      <el-row class="con_flex">
       <el-col :span="20">
         <div
           v-loading="loading"
@@ -207,7 +210,7 @@ export default {
 .con_flex {
   display: flex;
   justify-content: space-evenly;
-  padding: 5em 2em;
+  padding: 2em;
 }
 .main_sec {
   padding: 1em 1em;

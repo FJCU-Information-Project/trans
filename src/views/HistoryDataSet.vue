@@ -4,7 +4,7 @@
       <el-col :span="23">
         <div class="grid-content cos_main_sec">
           <div style="display: flex; justify-content: center">
-            <p>歷史紀錄資料</p>
+            <p><i class="el-icon-document"></i>歷史紀錄資料</p>
           </div>
           <el-table
             :data="
@@ -21,7 +21,7 @@
             plain
           >
             <el-table-column
-              label="新增日期"
+              label="瀏覽時間"
               prop="date"
               width="150"
               sortable
@@ -73,7 +73,7 @@
                   type="danger"
                   @click="handleDelete(scope.$index, scope.row)"
                   style="margin-left: 1em"
-                  >刪除</el-button
+                  ><i class="el-icon-delete"></i></el-button
                 >
               </template>
             </el-table-column>

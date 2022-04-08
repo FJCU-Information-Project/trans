@@ -53,6 +53,7 @@
             stripe
             style="width: 100%"
             class="basictable"
+            height="550"
           >
             <el-table-column prop="second_name" label="肇事因素(起始)節點" />
             <el-table-column prop="group" label="肇事因素(終止)節點" />
@@ -61,6 +62,8 @@
           </el-table>
         </div>
       </el-col>
+      </el-row>
+      <el-row class="con_flex">
       <el-col :span="20">
         <div
           v-loading="loading"
@@ -246,13 +249,13 @@ export default {
 .select-group {
   width: 35%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin-top: 2em;
 }
 .con_flex {
   display: flex;
   justify-content: space-evenly;
-  padding: 5em 2em;
+  padding: 2em;
 }
 .iframe_main_sec {
   height: 100vh;

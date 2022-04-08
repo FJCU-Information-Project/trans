@@ -39,6 +39,7 @@
             stripe
             style="width: 100%"
             class="basictable"
+            height="550"
           >
             <el-table-column prop="factorRank" label="肇事因素關聯排名" />
             <el-table-column prop="factor" label="肇事因素起始點" />
@@ -47,6 +48,8 @@
           </el-table>
         </div>
       </el-col>
+      </el-row>
+      <el-row class="con_flex">
       <el-col :span="20">
         <div class="grid-content bg-purple-light iframe_main_sec">
           <iframe
@@ -193,7 +196,7 @@ export default {
 .con_flex {
   display: flex;
   justify-content: space-evenly;
-  padding: 5em 2em;
+  padding: 2em;
   // background-image: url(https://images.pexels.com/photos/10481158/pexels-photo-10481158.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
 }
 .iframe_main_sec {

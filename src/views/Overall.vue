@@ -39,6 +39,8 @@
         <hr />
         <p>使用者透過此分析得知所有肇事因素節點周遭的網路分布狀態</p>
       </el-col>
+      </el-row>
+      <el-row class="con_flex">
       <el-col :span="20">
         <div class="grid-content bg-purple-light iframe_main_sec">
           <iframe :src="src" frameborder="0" width="100%" height="100%">
@@ -212,7 +214,7 @@ export default {
 .con_flex {
   display: flex;
   justify-content: space-evenly;
-  padding: 5em 2em;
+  padding: 2em;
 }
 .main_sec {
   padding: 1em 1em;

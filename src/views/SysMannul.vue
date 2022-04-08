@@ -174,7 +174,7 @@
                     <a
                       href="javascript:;"
                       class="form-wizard-next-btn float-right"
-                      >前往下一步</a
+                      >前往下一步<i class="el-icon-arrow-right"></i></a
                     >
                   </div>
                 </div>
@@ -292,12 +292,12 @@
                     <a
                       href="javascript:;"
                       class="form-wizard-previous-btn float-left"
-                      >回上一步</a
+                      ><i class="el-icon-arrow-left"></i>回上一步</a
                     >
                     <a
                       href="javascript:;"
                       class="form-wizard-next-btn float-right"
-                      >前往下一步</a
+                      >前往下一步<i class="el-icon-arrow-right"></i></a
                     >
                   </div>
                 </div>
@@ -382,7 +382,7 @@
                     <a
                       href="javascript:;"
                       class="form-wizard-previous-btn float-left"
-                      >回上一步</a
+                      ><i class="el-icon-arrow-left"></i>回上一步</a
                     >
                     <!-- <a href="javascript:;" class="form-wizard-next-btn float-right">下一步</a> -->
                   </div>

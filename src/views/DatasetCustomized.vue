@@ -4,13 +4,13 @@
       <el-col :span="23">
         <div class="grid-content cos_main_sec">
           <div style="display: flex; justify-content: center">
-            <p>自訂資料集</p>
+            <p><i class="el-icon-edit"></i>自訂資料集</p>
             <router-link
               :to="{ name: 'AddDataSet' }"
               class="link"
               style="text-decoration: none"
             >
-              <el-button class="addbtn" type="button">新增資料集</el-button>
+              <el-button class="addbtn" type="button"><i class="el-icon-plus"></i>新增資料集</el-button>
             </router-link>
           </div>
           <el-table
@@ -88,7 +88,7 @@
                   type="danger"
                   @click="remove"
                   style="margin-left: 1em"
-                  >刪除</el-button
+                  ><i class="el-icon-delete"></i></el-button
                 >
                 <!-- @click="handleDelete(scope.$index, scope.row)" -->
               </template>

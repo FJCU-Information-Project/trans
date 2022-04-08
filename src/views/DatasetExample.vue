@@ -3,7 +3,7 @@
     <el-row class="cusdata-con_flex">
       <el-col :span="23">
         <div class="grid-content cos_main_sec">
-          <p>範例資料集</p>
+          <p><i class="el-icon-folder-checked"></i>範例資料集</p>
           <el-table
             :data="
               exampleTableData.filter(
