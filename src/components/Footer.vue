@@ -136,6 +136,7 @@ input {
 }
 .new_footer_area {
   background: #fbfbfd;
+  font-size: 20px;
 }
 
 .new_footer_top {

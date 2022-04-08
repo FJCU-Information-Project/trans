@@ -14,13 +14,28 @@
             <!-- <router-link :to="{ name: 'Index' }" class="link">
             <img class="IconImg" src="../assets/left.png"> 首頁
         </router-link> / 淺談社會網路分析 -->
-            <div class="menu">
-              <router-link :to="{ name: 'Login' }" class="link">
-                <el-button round type="danger" class="fz-20"
-                  >登入授權碼</el-button
-                >
-              </router-link>
-            </div>
+             <div class="menu">
+            <router-link :to="{ name: 'Login' }" class="link">
+              <el-button round type="danger" class="fz-20 fw-b"
+                ><i class="el-icon-user"></i>登入授權碼</el-button
+              >
+            </router-link>
+            <!--使用者未登入後的狀態 start-->
+           <el-popover
+              style="font-size:20px"
+              ref="popover"
+              placement="bottom"
+              title="您的授權碼到期日為▼ "
+              width="200"
+              trigger="hover"
+              content="2022-09-18">
+            </el-popover>
+            <el-button class="afterlogin" v-popover:popover> 
+              <el-avatar :size="30" class="avatarsize" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+              xxx，您好!
+            </el-button>
+          <!--使用者未登入後的狀態 end-->
+             </div>
           </div>
         </el-col>
       </el-row>
@@ -198,5 +213,19 @@ button {
   width: 25px;
   height: 25px;
   vertical-align: middle;
+}
+.afterlogin{
+  background:white;
+  color:blue;
+  font-size: 22px;
+  border: none;
+  font-weight: bold;
+}
+.avatarsize{
+  vertical-align:sub;
+}
+.fw-b{
+    font-weight: bold;
+
 }
 </style>

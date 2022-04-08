@@ -26,7 +26,7 @@
           <div class="p-14">
             <p class="p-14 gray">開始分析前，先了解操作系統和注意事項。</p>
             <router-link :to="{ name: 'SysMannul' }" class="link p-14">
-              深入了解
+              深入了解<i class="el-icon-arrow-right"></i>
             </router-link>
           </div>
         </el-card>
@@ -39,7 +39,7 @@
           <div class="p-14">
             <p class="p-14 gray">經由社會網路，讓肇事因素關聯一目了然。</p>
             <router-link :to="{ name: 'SnaDescription' }" class="link p-14">
-              深入了解
+              深入了解<i class="el-icon-arrow-right"></i>
             </router-link>
           </div>
         </el-card>
