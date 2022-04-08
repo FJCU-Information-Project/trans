@@ -17,6 +17,21 @@
                   >登入授權碼</el-button
                 >
               </router-link>
+               <!--使用者未登入後的狀態 start-->
+              <el-popover
+                  style="font-size:20px"
+                  ref="popover"
+                  placement="bottom"
+                  title="您的授權碼到期日為▼ "
+                  width="200"
+                  trigger="hover"
+                  content="2022-09-18">
+                </el-popover>
+                <el-button class="afterlogin" v-popover:popover> 
+                  <el-avatar :size="30" class="avatarsize" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+                  xxx，您好!
+                </el-button>
+              <!--使用者未登入後的狀態 end-->
             </div>
           </div>
         </el-col>
@@ -181,16 +196,16 @@
                 <el-button class="ml-3" type="success" @click="submitUpload">
                   上傳檔案
                 </el-button>
-                <template #tip>
+                <!-- <template #tip>
                   <div class="el-upload__tip text-red">
                     僅限上傳一個檔案，新檔會覆蓋舊檔
                   </div>
-                </template>
+                </template> -->
               </el-upload>
             </el-form-item>
-            <el-button class="ml-3" type="success" @click="submitUpload">
+            <!-- <el-button class="ml-3" type="success" @click="submitUpload">
               上傳檔案
-            </el-button>
+            </el-button> -->
           </div>
           <!--file upload section-->
         </div>
@@ -377,5 +392,14 @@ export default {
   border-radius: 0 !important;
   background: transparent;
   box-sizing: border-box;
+}
+.afterlogin{
+  background:white;
+  color:blue;
+  font-size: 22px;
+  border:none;
+}
+.avatarsize{
+  vertical-align:sub;
 }
 </style>

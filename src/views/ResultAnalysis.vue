@@ -34,13 +34,21 @@
       </el-col>
     </el-row>
     <el-row class="con_flex">
-      <el-col :span="20" class="analysis-table">
+      <el-col :span="23" class="analysis-table content">
         <h1>Result Analysis</h1>
         <hr />
         <p>
           使用者先選擇事故結果(例如：受傷程度、主要傷處、車輛撞擊部位），藉由該節點做SNA的集中點（Degree
           Centrality）分析，找出肇事因素跟車禍案件結果關聯的高低，哪些節點組合最容易造成此結果並對其進行排名<br /><br />在本系統中，使用者可以藉由排名結果，得知造成車禍致死的關鍵因素，也能配合受傷程度屬性關聯，得出可能造成的死傷結果，來幫助其觀察分析結果，進而避免高致死率的肇事因素發生
         </p>
+      </el-col>
+      <el-col :span="11" class="analysis-table snatable">
+        <!-- <h1>Result Analysis</h1>
+        <hr />
+        <p>
+          使用者先選擇事故結果(例如：受傷程度、主要傷處、車輛撞擊部位），藉由該節點做SNA的集中點（Degree
+          Centrality）分析，找出肇事因素跟車禍案件結果關聯的高低，哪些節點組合最容易造成此結果並對其進行排名<br /><br />在本系統中，使用者可以藉由排名結果，得知造成車禍致死的關鍵因素，也能配合受傷程度屬性關聯，得出可能造成的死傷結果，來幫助其觀察分析結果，進而避免高致死率的肇事因素發生
+        </p> -->
         <div class="grid-content bg-purple main_sec">
           <el-table
             :data="tableData"
@@ -69,9 +77,7 @@
           </el-table>
         </div>
       </el-col>
-    </el-row>
-    <el-row class="con_flex">
-      <el-col :span="20" class="snapic"> 
+      <el-col :span="12" class="snapic"> 
         <div
           v-loading="loading"
           class="grid-content bg-purple-light iframe_main_sec"
@@ -88,6 +94,23 @@
         </div>
       </el-col>
     </el-row>
+    <!-- <el-row class="con_flex">
+      <el-col :span="20" class="snapic"> 
+        <div
+          v-loading="loading"
+          class="grid-content bg-purple-light iframe_main_sec"
+        >
+          <iframe
+            ref="Iframe"
+            :src="src"
+            frameborder="0"
+            width="100%"
+            height="100%"
+          >
+          </iframe>
+        </div>
+      </el-col>
+    </el-row> -->
   </div>
 </template>
 
@@ -206,7 +229,7 @@ export default {
   }
 }
 .el-table {
-  margin-top: 2em;
+  // margin-top: 2em;
   border-radius: 0.45em;
 }
 .el-table__cell {
@@ -216,7 +239,7 @@ export default {
   color: #595959;
   line-height: 1.5;
   font-weight: bold;
-  & p {
+   & p {
     text-align: left;
     margin-top: 2em;
   }
@@ -263,7 +286,7 @@ export default {
 }
 .iframe_main_sec {
   height: 100vh;
-  padding: 1em 1em;
+  // padding: 1em 1em;
 }
 .banner {
   // background: rgb(226, 226, 216);
@@ -342,5 +365,15 @@ body > .el-container {
 }
 .snapic{
   margin: 0 auto;
+  border: 2px solid #595959;
+  // margin-top: 58px;
+  border-radius: 0.45em;
+
+}
+.snatable{
+  margin-left: 30px;
+}
+.content{
+  margin:30px 0;
 }
 </style>

@@ -41,12 +41,14 @@
       </el-col>
     </el-row>
     <el-row class="con_flex">
-      <el-col :span="20" class="analysis-table">
+      <el-col :span="23" class="analysis-table content">
         <h1>Layer Analysis</h1>
         <hr />
         <p>
           使用者選擇一個肇事因素做為中心起始節點，從起始節點發散並展開來檢視第一層、第二層的關聯節點分析，並呈現以該起始節點為中心所分析的第一層網路圖，再進一步以第一層的節點作為起始點，各自發散出第二層的網路圖
         </p>
+         </el-col>
+        <el-col :span="11" class="analysis-table snatable">
         <div v-loading="loading" class="grid-content bg-purple main_sec">
           <el-table
             :data="layerData"
@@ -62,9 +64,8 @@
           </el-table>
         </div>
       </el-col>
-      </el-row>
-      <el-row class="con_flex">
-      <el-col :span="20">
+        <el-col :span="12" class="snapic">
+
         <div
           v-loading="loading"
           class="grid-content bg-purple-light iframe_main_sec"
@@ -200,7 +201,7 @@ export default {
   }
 }
 .el-table {
-  margin-top: 2em;
+  // margin-top: 2em;
   border-radius: 0.45em;
 }
 .el-table__cell {
@@ -247,7 +248,7 @@ export default {
   // }
 }
 .select-group {
-  width: 35%;
+  width: 50%;
   display: flex;
   justify-content: space-evenly;
   margin-top: 2em;
@@ -324,5 +325,16 @@ body > .el-container {
   width: 100%;
   border: 2px solid #595959;
   font-size: 20px;
+}
+.snatable{
+  margin-left: 30px;
+}
+.snapic{
+  margin: 0 auto;
+  border: 2px solid #595959;
+  border-radius: 0.45em;
+}
+.content{
+  margin:30px 0;
 }
 </style>

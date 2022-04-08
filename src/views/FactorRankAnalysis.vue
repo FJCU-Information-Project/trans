@@ -26,13 +26,15 @@
       </el-col>
     </el-row>
     <el-row class="con_flex">
-      <el-col :span="20" class="analysis-table">
+      <el-col :span="23" class="analysis-table content">
         <h1>Factor Rank Analysis</h1>
         <hr />
         <p>
           使用者先選擇肇事因素的屬性(例如:天候、道路類別)，再依照所選類別選取目標的中心節點，系統會呈現使用者所選的中心節點和其中關聯權重前10%高的肇事因素節點<br /><br />
           使用者可以藉由選取特定肇事因素節點，來找出該肇事因素節點和其他節點的關聯性強弱。藉此讓使用者觀察對於自己感興趣的肇事因素節點，去尋找與此相關的其他肇事因素並進行關聯權重排名。圖中的線會因兩個節點間的關聯權重增加而加粗
         </p>
+        </el-col>
+        <el-col :span="11" class="analysis-table snatable ">
         <div v-loading="loading" class="grid-content bg-purple main_sec">
           <el-table
             :data="factorRankData"
@@ -48,9 +50,7 @@
           </el-table>
         </div>
       </el-col>
-      </el-row>
-      <el-row class="con_flex">
-      <el-col :span="20">
+       <el-col :span="12" class="snapic">
         <div class="grid-content bg-purple-light iframe_main_sec">
           <iframe
             ref="Iframe"
@@ -144,7 +144,7 @@ export default {
   }
 }
 .el-table {
-  margin-top: 2em;
+  // margin-top: 2em;
   border-radius: 0.45em;
 }
 .el-table__cell {
@@ -201,7 +201,7 @@ export default {
 }
 .iframe_main_sec {
   height: 100vh;
-  padding: 1em 1em;
+  // padding: 1em 1em;
 }
 .banner {
   // background: rgb(226, 226, 216);
@@ -269,5 +269,16 @@ body > .el-container {
   width: 100%;
   border: 2px solid #595959;
   font-size: 20px;
+}
+.content{
+  margin:30px 0;
+}
+.snapic{
+  margin: 0 auto;
+  border: 2px solid #595959;
+  border-radius: 0.45em;
+}
+.snatable{
+  margin-left: 30px;
 }
 </style>

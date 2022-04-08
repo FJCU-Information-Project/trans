@@ -77,21 +77,38 @@
     <el-carousel :interval="4000" type="card" height="300px" class="ma">
       <el-carousel-item>
         <div class="item">
-          <div class="item__content">開車不喝酒，喝酒不開車</div>
-
-          <img class="item__image" src="../assets/factorank.png" alt="" />
+          <div class="item__content">肇事因素關聯總覽分析(Overall Analysis)</div>
+          <img class="item__image" src="../assets/overall.png" alt="" />
         </div>
       </el-carousel-item>
       <el-carousel-item>
         <div class="item">
-          <div class="item__content">肇事因素關鍵點就在TRANS</div>
-          <img class="item__image" src="../assets/layerana.png" alt="" />
+          <div class="item__content">肇事結果排名分析(Result Analysis)</div>
+          <img class="item__image" src="../assets/result.png" alt="" />
         </div>
       </el-carousel-item>
       <el-carousel-item>
         <div class="item">
-          <div class="item__content">交通之社會網路分析</div>
-          <img class="item__image" src="../assets/isolationana.png" alt="" />
+          <div class="item__content">肇事因素基本理論分析(Basic Analysis)</div>
+          <img class="item__image" src="../assets/basic.png" alt="" />
+        </div>
+      </el-carousel-item>
+       <el-carousel-item>
+        <div class="item">
+          <div class="item__content">肇事因素層級分析(Layer Analysis)</div>
+          <img class="item__image" src="../assets/layers.png" alt="" />
+        </div>
+      </el-carousel-item>
+      <el-carousel-item>
+        <div class="item">
+          <div class="item__content">肇事因素排名分析(Factor Rank Analysis)</div>
+          <img class="item__image" src="../assets/factor.png" alt="" />
+        </div>
+      </el-carousel-item>
+      <el-carousel-item>
+        <div class="item">
+          <div class="item__content">肇事因素邊陲分析(Isolation Analysis)</div>
+          <img class="item__image" src="../assets/isolation.png" alt="" />
         </div>
       </el-carousel-item>
     </el-carousel>
@@ -262,9 +279,11 @@ export default {
 }
 
 .item__image {
-  width: 80%;
-  height: 100%;
+  width: 50%;
+  height: 50%;
   object-fit: contain;
+  vertical-align: center;
+  padding-top:60px;
 }
 
 .el-carousel__item:nth-child(2n) {

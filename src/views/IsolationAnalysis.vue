@@ -27,14 +27,14 @@
     </el-row>
 
     <el-row class="con_flex">
-      <el-col :span="20" class="analysis-table">
+      <el-col :span="23" class="analysis-table content">
         <h1>Isolation Analysis</h1>
         <hr />
         <p>
           使用者透過此分析的 SNA
           圖可得知在該資料集中並非造成車禍發生的因素節點。其中表格中所顯示的關聯組合皆為相同的起始因素節點，而其每一組組合的權重皆為0，亦可解釋為「在該資料集中並沒有出現過的關聯組合」。
         </p>
-        <br />
+        
         <!--
           <el-card class="box-card" v-if="value !== ''">
           <div class="card-header">
@@ -42,7 +42,9 @@
             <span>{{isolationData[0].from_id_name}}</span>
           </div>
         </el-card>
-        -->
+        --> 
+        </el-col>
+        <el-col :span="11" class="analysis-table snatable">
         <div v-loading="loading" class="grid-content bg-purple main_sec">
           <el-table
             :data="isolationData"
@@ -57,9 +59,8 @@
           </el-table>
         </div>
       </el-col>
-      </el-row>
-      <el-row class="con_flex">
-      <el-col :span="20">
+      
+      <el-col :span="12" class="snapic">
         <div
           v-loading="loading"
           class="grid-content bg-purple-light iframe_main_sec"
@@ -179,6 +180,7 @@ export default {
     margin-top: 2em;
   }
 }
+
 .el-table__cell {
   text-align: center !important;
 }
@@ -212,12 +214,12 @@ export default {
   justify-content: space-evenly;
   padding: 2em;
 }
-.main_sec {
-  padding: 1em 1em;
-}
+// .main_sec {
+//   padding: 1em 1em;
+// }
 .iframe_main_sec {
   height: 100vh;
-  padding: 1em 1em;
+  // padding: 1em 1em;
 }
 .banner {
   // background: rgb(226, 226, 216);
@@ -282,5 +284,16 @@ body > .el-container {
   width: 100%;
   border: 2px solid #595959;
   font-size: 20px;
+  border-radius: 0.45em;
+
+}
+.snapic{
+  margin: 0 auto;
+  border: 2px solid #595959;
+  border-radius: 0.45em;
+
+}
+.content{
+  margin:30px 0;
 }
 </style>
