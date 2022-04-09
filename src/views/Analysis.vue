@@ -240,7 +240,8 @@ export default {
   padding: 1.25em 1.25em;
   box-sizing: border-box;
   height: 800px;
-  background-image: url(../assets/greenbg.png);
+  // background-image: url(../assets/greenbg.png);
+  background: lightgray;
   background-repeat: repeat-x;
   // background-image: url(https://images.pexels.com/photos/2705755/pexels-photo-2705755.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
 }
@@ -297,7 +298,7 @@ iframe {
 
 .analysis-entry-card {
   height: 18em;
-  background-image: url(../assets/describe.jpg);
+  background-image: url(../assets/snadescribe.jpg);
   //background-image: url(../assets/svg/degreebg.svg);
   background-position: center;
   background-size: cover;
@@ -402,4 +403,5 @@ iframe {
 .IconImg {
   vertical-align: sub;
 }
+
 </style>
