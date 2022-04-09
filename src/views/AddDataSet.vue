@@ -75,7 +75,7 @@
               <el-input v-model="form.note" type="textarea" />
             </el-form-item>
             <div class="d-flex">
-              <el-form-item label="使否公開" prop="is_public" required>
+              <el-form-item label="是否公開" prop="is_public" required>
                 <el-radio-group v-model="form.is_public">
                   <el-radio border label="是" />
                   <el-radio border label="否" />
