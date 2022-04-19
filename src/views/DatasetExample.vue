@@ -19,7 +19,7 @@
           >
             <el-table-column
               label="新增日期"
-              prop="date"
+              prop="datasetAddDate"
               width="150"
               sortable
             />

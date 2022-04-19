@@ -41,7 +41,7 @@
             stripe
             style="width: 100%"
             class="basictable"
-            height="550"
+            height="860"
           >
             <el-table-column prop="factorRank" label="肇事因素關聯排名" />
             <el-table-column prop="factor" label="肇事因素起始點" />

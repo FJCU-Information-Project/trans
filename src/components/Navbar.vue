@@ -35,7 +35,7 @@
             </el-popover>
             <el-button class="afterlogin" v-popover:popover> 
               <el-avatar :size="30" class="avatarsize" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
-              xxx，您好!
+              {{ isAuth }}，您好!
             </el-button>
           <!--使用者未登入後的狀態 end-->
 

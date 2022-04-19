@@ -42,7 +42,8 @@
         label-width="180px"
         class="AddDataSetForm"
         :rules="rules"
-      >
+        @submit.prevent="handleSubmit"
+        >
         <div class="d-flex jcsb">
           <div class="fs">
             <el-form-item label="資料集名稱" prop="name" required>
@@ -84,7 +85,7 @@
             </div>
             <div class="d-flex" style="justify-content: end">
               <el-form-item class="d-flex">
-                <el-button type="warning" @click="onSubmit">確定新增</el-button>
+                <el-button type="warning" @click="handleSubmit">確定新增</el-button>
                 <router-link :to="{ name: 'Dataset' }" class="link">
                   <el-button>取消新增</el-button>
                 </router-link>
@@ -93,7 +94,7 @@
           </div>
           <!--file upload section start 此section 打開會跑錯 應是沒有載入script-->
           <div>
-            <el-form-item label="肇事因素屬性表" required>
+            <el-form-item v-for="uploadTable,key in uploadTables" :key="key" :label="uploadTable.label" required>
               <el-upload
                 ref="Upload"
                 class="upload-demo"
@@ -105,107 +106,14 @@
                 <template #trigger>
                   <el-button type="primary">選取csv檔案</el-button>
                 </template>
-                <el-button class="ml-3" type="success" @click="submitUpload">
-                  上傳檔案
-                </el-button>
-                <template #tip>
-                  <div class="el-upload__tip text-red">
-                    僅限上傳一個檔案，新檔會覆蓋舊檔
-                  </div>
-                </template>
+                <span class="el-upload__tip text-red">
+                  僅限上傳一個檔案，新檔會覆蓋舊檔
+                </span>
               </el-upload>
             </el-form-item>
-            <el-form-item label="肇事因素表" required>
-              <el-upload
-                ref="Upload"
-                class="upload-demo"
-                action="https://jsonplaceholder.typicode.com/posts/"
-                :limit="1"
-                :on-exceed="handleExceed"
-                :auto-upload="false"
-              >
-                <template #trigger>
-                  <el-button type="primary">選取csv檔案</el-button>
-                </template>
-                <el-button class="ml-3" type="success" @click="submitUpload">
-                  上傳檔案
-                </el-button>
-                <template #tip>
-                  <div class="el-upload__tip text-red">
-                    僅限上傳一個檔案，新檔會覆蓋舊檔
-                  </div>
-                </template>
-              </el-upload>
-            </el-form-item>
-            <el-form-item label="肇事結果屬性表" required>
-              <el-upload
-                ref="Upload"
-                class="upload-demo"
-                action="https://jsonplaceholder.typicode.com/posts/"
-                :limit="1"
-                :on-exceed="handleExceed"
-                :auto-upload="false"
-              >
-                <template #trigger>
-                  <el-button type="primary">選取csv檔案</el-button>
-                </template>
-                <el-button class="ml-3" type="success" @click="submitUpload">
-                  上傳檔案
-                </el-button>
-                <template #tip>
-                  <div class="el-upload__tip text-red">
-                    僅限上傳一個檔案，新檔會覆蓋舊檔
-                  </div>
-                </template>
-              </el-upload>
-            </el-form-item>
-            <el-form-item label="肇事結果表" required>
-              <el-upload
-                ref="Upload"
-                class="upload-demo"
-                action="https://jsonplaceholder.typicode.com/posts/"
-                :limit="1"
-                :on-exceed="handleExceed"
-                :auto-upload="false"
-              >
-                <template #trigger>
-                  <el-button type="primary">選取csv檔案</el-button>
-                </template>
-                <el-button class="ml-3" type="success" @click="submitUpload">
-                  上傳檔案
-                </el-button>
-                <template #tip>
-                  <div class="el-upload__tip text-red">
-                    僅限上傳一個檔案，新檔會覆蓋舊檔
-                  </div>
-                </template>
-              </el-upload>
-            </el-form-item>
-            <el-form-item label="車禍案件總表" required>
-              <el-upload
-                ref="Upload"
-                class="upload-demo"
-                action="https://jsonplaceholder.typicode.com/posts/"
-                :limit="1"
-                :on-exceed="handleExceed"
-                :auto-upload="false"
-              >
-                <template #trigger>
-                  <el-button type="primary">選取csv檔案</el-button>
-                </template>
-                <el-button class="ml-3" type="success" @click="submitUpload">
-                  上傳檔案
-                </el-button>
-                <!-- <template #tip>
-                  <div class="el-upload__tip text-red">
-                    僅限上傳一個檔案，新檔會覆蓋舊檔
-                  </div>
-                </template> -->
-              </el-upload>
-            </el-form-item>
-            <!-- <el-button class="ml-3" type="success" @click="submitUpload">
+            <el-button class="ml-3" type="success" @click="submitUpload">
               上傳檔案
-            </el-button> -->
+            </el-button>
           </div>
           <!--file upload section-->
         </div>
@@ -231,22 +139,61 @@ export default {
         is_public: "",
       },
       upload: null,
+      uploadTables:[
+        {
+          name: "",
+          label: "肇事因素屬性表"
+        },
+        {
+          name: "",
+          label: "肇事因素表"
+        },
+        {
+          name: "",
+          label: "肇事結果屬性表"
+        },
+        {
+          name: "",
+          label: "肇事結果表"
+        },
+        {
+          name: "",
+          label: "車禍案件總表"
+        },
+      ]
     };
   },
   methods: {
-    onSubmit() {
+    handleSubmit() {
       console.log("submit!");
+      const formData = new FormData();
+      const userToken = localStorage.getItem("token");
+      const form = this.form;
+      // ["datasetName", "datasetUnit", "datasetPeriodStart", "datasetPeriodEnd", "datasetNote", "datasetPublic"]
+      formData.append("userToken", userToken); // Form userToken
+      formData.append("datasetName", form.name); // Form userToken
+      formData.append("datasetUnit", form.unit); // Form userToken
+      formData.append("datasetPeriodStart", form.period_start); // Form userToken
+      formData.append("datasetPeriodEnd", form.period_end); // Form userToken
+      formData.append("datasetNote", form.note); // Form userToken
+      formData.append("datasetPublic", form.is_public); // Form userToken
+      const api = "http://140.136.155.121:50000";
+      this.$http
+        .post(api + "/addDataset", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then((response) => {
+          console.log(JSON.stringify(response.data));
+        });
     },
     submitUpload() {
       console.log("submitUpload");
       this.upload.submit();
     },
-    handleExceed(files) {
-      this.upload.clearFiles();
-      const file = files[0];
-      console.log(file);
-      file.uid = genFileId();
-      this.upload.value.handleStart(file);
+    handleExceed() {
+      console.log("handleExceed");
     },
   },
   mounted() {

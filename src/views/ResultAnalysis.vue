@@ -55,7 +55,7 @@
             stripe
             style="width: 100%"
             class="basictable"
-            height="550"
+            height="820"
           >
             <el-table-column prop="rank" label="權重排名" />
             <el-table-column
@@ -366,6 +366,8 @@ body > .el-container {
 .snapic{
   margin: 0 auto;
   border: 2px solid #595959;
+  // margin-bottom: 50px;
+
   // margin-top: 58px;
   border-radius: 0.45em;
 

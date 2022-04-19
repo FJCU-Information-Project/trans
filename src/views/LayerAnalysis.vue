@@ -55,11 +55,11 @@
             stripe
             style="width: 100%"
             class="basictable"
-            height="550"
+            height="860"
           >
             <el-table-column prop="second_name" label="肇事因素(起始)節點" />
-            <el-table-column prop="group" label="肇事因素(終止)節點" />
-            <el-table-column prop="group" label="層級" />
+            <el-table-column prop="group" label="第一層節點" />
+            <el-table-column prop="group" label="第二層節點" />
             <el-table-column prop="group" label="肇事因素關聯權重" />
           </el-table>
         </div>

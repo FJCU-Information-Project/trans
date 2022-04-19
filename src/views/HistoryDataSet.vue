@@ -82,6 +82,7 @@
       </el-col>
     </el-row>
 
+    <!-- 新增資料集基本資料 等待刪除
     <div id="AddDataSet" style="margin-top: 200px">
       <div style="font-size: 20px">
         <p style="font-weight: bold; background-color: #10afafca">
@@ -112,6 +113,7 @@
         <input type="file" style="margin-top: 10px" />
       </div>
     </div>
+    -->
   </div>
 </template>
 

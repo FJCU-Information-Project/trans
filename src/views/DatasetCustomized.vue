@@ -29,7 +29,7 @@
           >
             <el-table-column
               label="新增日期"
-              prop="date"
+              prop="datasetAddDate"
               width="150"
               sortable
             />
@@ -86,7 +86,8 @@
                   class="fs-20"
                   size="mini"
                   type="danger"
-                  @click="remove"
+                  
+                  @click="remove(scope.$index, scope.row)"
                   style="margin-left: 1em"
                   ><i class="el-icon-delete"></i></el-button
                 >
@@ -98,6 +99,7 @@
       </el-col>
     </el-row>
 
+    <!-- 新增資料集基本資料 等待刪除
     <div id="AddDataSet" style="margin-top: 200px">
       <div style="font-size: 20px">
         <p style="font-weight: bold; background-color: #10afafca">
@@ -128,7 +130,7 @@
         <input type="file" style="margin-top: 10px" />
       </div>
     </div>
-    <div id="box"></div>
+    -->
   </div>
 </template>
 
@@ -191,8 +193,10 @@ export default {
           beforeClose: (action, instance, done) => {
             console.log(instance);
             if (action === "confirm") {
-              const uploadFile = document.getElementById("datasetFile");
+              const uploadFile = document.getElementById("datasetFile").files[0];
               const formData = new FormData();
+              const userToken = localStorage.getItem("token");
+              formData.append("userToken", userToken); // Form userToken
               formData.append("caseFile", uploadFile); // Form file name
               const api = "http://140.136.155.121:50000";
               this.$http
@@ -210,23 +214,54 @@ export default {
         }
       );
     },
-    remove() {
-      ElMessageBox.prompt(
-        "<h3 style='font-size:18px;color:#fff;background:#10afafca'>車禍案件總表 :</h3>",
-        "請上傳您的交通案件表",
-        {
-          dangerouslyUseHTMLString: true,
-          confirmButtonText: "刪除",
-          cancelButtonText: "取消",
-        }
-      ).then((value) => {
-        this.datasetFile = value;
-        console.log(value);
-        const api = "http://140.136.155.121:50000";
-        this.$http.post(api + "/deleteDataset").then((then) => {
-          console.log(response.data);
+    remove(index, dataset) {
+      this.$confirm('此操作將永久刪除此資料集, 是否確認刪除?', '提示', {
+          confirmButtonText: '確認',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then((value) => {
+          const formData = new FormData();
+          const userToken = localStorage.getItem("token");
+          console.log(value);
+          formData.append("token", userToken); // Form userToken
+          formData.append("dataset", dataset.datasetID); // Form file name
+          const api = "http://140.136.155.121:50000";
+          this.$http
+            .post(api + "/deleteDataset", formData, {
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            })
+            .then((response) => {
+                  console.log(JSON.stringify(response.data));
+                  this.customizeTableData.splice(index, 1);
+                });
+          this.$message({
+            type: 'success',
+            message: '刪除成功!'
+          });
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消刪除'
+          });          
         });
-      });
+      // ElMessageBox.prompt(
+      //   "<h3 style='font-size:18px;color:#fff;background:#10afafca'>車禍案件總表 :</h3>",
+      //   "請上傳您的交通案件表",
+      //   {
+      //     dangerouslyUseHTMLString: true,
+      //     confirmButtonText: "刪除",
+      //     cancelButtonText: "取消",
+      //   }
+      // ).then((value) => {
+      //   this.datasetFile = value;
+      //   console.log(value);
+      //   const api = "http://140.136.155.121:50000";
+      //   this.$http.post(api + "/deleteDataset").then((then) => {
+      //     console.log(response.data);
+      //   });
+      // });
     },
   },
   mounted() {

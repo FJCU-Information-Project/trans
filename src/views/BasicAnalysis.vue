@@ -56,7 +56,7 @@
             </el-col>
             <el-col :span="11" class="analysis-table snatable">
               <div class="grid-content bg-purple main_sec">
-                <el-table :data="tableData" stripe class="basictable" height="550">
+                <el-table :data="tableData" stripe class="basictable" height="820">
                   <el-table-column prop="from_id_name" label="肇事因素名稱" />
                   <el-table-column
                     prop="from_id_name"
@@ -119,7 +119,7 @@
                   stripe
                   style="width: 100%"
                   class="basictable"
-                  height="550"
+                  height="820"
                 >
                   <!-- <el-table-column prop="from_id" label="肇事因素編號" width="180" />
           <el-table-column
