@@ -56,53 +56,13 @@
 import Navbar from "@/components/Navbar.vue";
 
 export default {
-  name: "IntersectionAnalysis",
+  name: "Overall",
   components: {
     Navbar,
   },
   data() {
     return {
       tableData: [
-        {
-          date: "2016-05-03",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-02",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-04",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-01",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-03",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-02",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-04",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-01",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
         {
           date: "2016-05-03",
           name: "Tom",
@@ -120,7 +80,7 @@ export default {
       value: "",
       loading: false,
       // src: "https://fju-trans.herokuapp.com/sna_graph/snaRank10.html",
-      src: "http://140.136.155.121:5000/sna_graph/overall.html",
+      src: "http://140.136.155.121:50000/sna_graph/overall.html",
     };
   },
   methods: {

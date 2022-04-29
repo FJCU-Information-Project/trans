@@ -1,42 +1,14 @@
 <template>
   <div>
     <div class="grid-content banner">
-      <el-row class="close sticky-top">
-        <el-col :span="24">
-          <div class="grid-content nav">
-            <el-breadcrumb class="link" separator="/">
-              <el-breadcrumb-item :to="{ name: 'Dataset' }">
-                <img class="IconImg back" src="../assets/left.png" />
-                我的資料集</el-breadcrumb-item
-              >
-              <el-breadcrumb-item>新增資料集</el-breadcrumb-item>
-            </el-breadcrumb>
-            <div class="menu">
-              <router-link :to="{ name: 'Login' }" class="link">
-                <el-button round type="danger" class="fz-20"
-                  >登入授權碼</el-button
-                >
-              </router-link>
-               <!--使用者未登入後的狀態 start-->
-              <el-popover
-                  style="font-size:20px"
-                  ref="popover"
-                  placement="bottom"
-                  title="您的授權碼到期日為▼ "
-                  width="200"
-                  trigger="hover"
-                  content="2022-09-18">
-                </el-popover>
-                <el-button class="afterlogin" v-popover:popover> 
-                  <el-avatar :size="30" class="avatarsize" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
-                  xxx，您好!
-                </el-button>
-              <!--使用者未登入後的狀態 end-->
-            </div>
-          </div>
-        </el-col>
-      </el-row>
-
+      <Navbar />
+      <el-breadcrumb class="link" separator="/">
+        <el-breadcrumb-item :to="{ name: 'Dataset' }">
+          <img class="IconImg back" src="../assets/left.png" />
+          我的資料集</el-breadcrumb-item
+        >
+        <el-breadcrumb-item>新增資料集</el-breadcrumb-item>
+      </el-breadcrumb>
       <el-form
         :model="form"
         label-width="180px"
@@ -60,6 +32,7 @@
                   placeholder="Pick a day"
                   :disabled-date="disabledDate"
                   :shortcuts="shortcuts"
+                  value-format="YYYY-MM-DD"
                 />
               </el-form-item>
               <el-form-item label="統計截止時間" prop="period_end" required>
@@ -69,6 +42,7 @@
                   placeholder="Pick a day"
                   :disabled-date="disabledDate"
                   :shortcuts="shortcuts"
+                  value-format="YYYY-MM-DD"
                 />
               </el-form-item>
             </div>
@@ -97,6 +71,7 @@
             <el-form-item v-for="uploadTable,key in uploadTables" :key="key" :label="uploadTable.label" required>
               <el-upload
                 ref="Upload"
+                :id="uploadTable.name"
                 class="upload-demo"
                 action="https://jsonplaceholder.typicode.com/posts/"
                 :limit="1"
@@ -114,6 +89,19 @@
             <el-button class="ml-3" type="success" @click="submitUpload">
               上傳檔案
             </el-button>
+            <a
+              target="_blank"
+              class="mannul"
+              href="https://docs.google.com/document/d/1TJKFP8L7J7ZgWdPb-MqbvNO0T4FVj1w4PnQFyD132Yw/edit?usp=sharing"
+              download="csv檔案規定格式及注意事項.pdf"
+            >
+              <img
+                src="../assets/car.png"
+                alt="carpdf"
+                width="30"
+                height="30"
+              /> 點此查看格式規範
+            </a>
           </div>
           <!--file upload section-->
         </div>
@@ -123,10 +111,12 @@
 </template>
 
 <script>
-// import Navbar from "@/components/Navbar.vue";
+import Navbar from "@/components/Navbar.vue";
 export default {
   name: "AddDataSet",
-
+  components: {
+    Navbar,
+  },
   data() {
     return {
       input: "",
@@ -139,25 +129,26 @@ export default {
         is_public: "",
       },
       upload: null,
+      // Form file name
       uploadTables:[
         {
-          name: "",
+          name: "attributeFileName",
           label: "肇事因素屬性表"
         },
         {
-          name: "",
+          name: "nodeFileName",
           label: "肇事因素表"
         },
         {
-          name: "",
+          name: "resultAttributeFileName",
           label: "肇事結果屬性表"
         },
         {
-          name: "",
+          name: "resultFileName",
           label: "肇事結果表"
         },
         {
-          name: "",
+          name: "caseFileName",
           label: "車禍案件總表"
         },
       ]
@@ -167,10 +158,10 @@ export default {
     handleSubmit() {
       console.log("submit!");
       const formData = new FormData();
-      const userToken = localStorage.getItem("token");
       const form = this.form;
       // ["datasetName", "datasetUnit", "datasetPeriodStart", "datasetPeriodEnd", "datasetNote", "datasetPublic"]
-      formData.append("userToken", userToken); // Form userToken
+      formData.append("token", localStorage.getItem("token")); // Form userToken      
+
       formData.append("datasetName", form.name); // Form userToken
       formData.append("datasetUnit", form.unit); // Form userToken
       formData.append("datasetPeriodStart", form.period_start); // Form userToken
@@ -185,12 +176,52 @@ export default {
           },
         })
         .then((response) => {
-          console.log(JSON.stringify(response.data));
+          let res = response.data;
+          console.log(res);
+          if(res.status){
+            console.log("Scheme create SUCCESS");
+            console.log(res.datasetId);
+            localStorage.setItem("dataset",res.datasetId);
+          }else{
+            console.log("Scheme create ERROR");
+          }
         });
     },
     submitUpload() {
       console.log("submitUpload");
-      this.upload.submit();
+      
+      let formData = new FormData();
+      formData.append("token", localStorage.getItem("token")); // Form token
+      formData.append("dataset", localStorage.getItem("dataset")); // Form dataset  
+      // TODO: 改檔案名稱
+      
+      this.uploadTables.forEach(element => {
+        let file = document.getElementById(element.name).childNodes[2].lastChild.files[0];
+        console.log(file);
+        formData.append(element.name, file);
+      });
+      const api = "http://140.136.155.121:50000";
+      this.$http
+        .post(api + "/uploadDatasets", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then((response) => {
+          console.log(JSON.stringify(response.data));
+          formData = new FormData();
+          formData.append("token", localStorage.getItem("token")); // Form token
+          formData.append("dataset", localStorage.getItem("dataset")); // Form dataset  
+          this.$http
+            .post(api + "/createTable", formData, {
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            })
+            .then((response2) => {
+              console.log(response2.data);
+            }); 
+        }); 
     },
     handleExceed() {
       console.log("handleExceed");
@@ -311,7 +342,7 @@ export default {
 }
 .link {
   text-decoration: none;
-  margin: 0 10px;
+  margin: 10px auto 0 10px;
   font-size: 25px;
   color: #10afafca;
   font-weight: bold;
@@ -349,4 +380,12 @@ export default {
 .avatarsize{
   vertical-align:sub;
 }
+.mannul{
+  vertical-align: middle;
+  margin-left: 10px;
+  text-decoration: none;
+  color: rgb(78, 78, 238);
+  font-weight: bold;
+}
+
 </style>

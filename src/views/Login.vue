@@ -44,9 +44,16 @@ export default {
   methods: {
     authcheck() {
       //const api = `https://fju-trans.herokuapp.com`;
+      var formData = new FormData();
+      formData.append('token', this.token);
       console.log(this.token)
       const api = `http://140.136.155.121:50000`;
-      this.$http.post(api + "/auth", { token: this.token }).then((req) => {
+      this.$http.post(api + "/auth", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((req) => {
         console.log(req.data);
         if (req.data.valid === true) {
           console.log("Token 是有用的!!");

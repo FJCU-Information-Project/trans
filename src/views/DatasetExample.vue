@@ -66,7 +66,7 @@
                     class="fs-20"
                     type="warning"
                     size="mini"
-                    @click="handleEdit(scope.$index, scope)"
+                    @click="handleAnalysis(scope.$index, scope)"
                     style="margin-left: 1em"
                     >查看分析</el-button
                   >
@@ -107,8 +107,30 @@ export default {
     };
   },
   methods: {
-    handleEdit(index, scope) {
+    handleAnalysis(index, scope) {
       console.log(index, scope);
+      const owner = scope.row.user;
+      const dataset = scope.row.datasetId;
+      console.log(owner);
+      console.log(dataset);
+      localStorage.setItem("owner",owner);
+      localStorage.setItem("dataset",dataset);
+
+      const formData = new FormData();
+      const userToken = localStorage.getItem("token");
+      formData.append("token", userToken); // Form token
+      formData.append("dataset", dataset); // Form dataset
+      formData.append("owner", owner); // Form owner
+      const api = "http://140.136.155.121:50000";
+      this.$http
+        .post(api + "/historyCreate", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then((response) => {
+          console.log(JSON.stringify(response.data));
+        });
     },
     handleDelete(index, row) {
       console.log(index, row);

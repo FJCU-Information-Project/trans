@@ -37,17 +37,17 @@
     <!--tabs start-->
     <!-- Tab Section With ID attribute Start -->
     <div class="container">
-      <ul class="prodNav">
+      <!-- <ul class="prodNav">
         <li id="pTab1" class="ptItem active">degree analysis</li>
         <li id="pTab2" class="ptItem">closeness analysis</li>
-      </ul>
+      </ul> -->
 
       <div class="prodBody">
         <!--degree analysis start-->
         <div class="prodMain active" id="pTab1C">
           <el-row class="con_flex">
             <el-col :span="23" class="analysis-table content">
-              <h1>Degree Analysis</h1>
+              <h1>Basic Analysis</h1>
               <hr />
               <p>
                 使用者先選擇事故結果(例如：受傷程度、主要傷處、車輛撞擊部位），藉由該節點做SNA的集中點（Degree
@@ -56,18 +56,27 @@
             </el-col>
             <el-col :span="11" class="analysis-table snatable">
               <div class="grid-content bg-purple main_sec">
-                <el-table :data="tableData" stripe class="basictable" height="820">
-                  <el-table-column prop="from_id_name" label="肇事因素名稱" />
+                <el-table :data="basicData" stripe class="basictable" height="820">
+                  <el-table-column prop="from_id_name" label="節點名稱" />
                   <el-table-column
                     prop="from_id_name"
-                    label="集中度(degree centrality)"
+                    label="集中度"
                     sortable
                   />
                   <el-table-column
                     prop="from_id_name"
-                    label="核心度(closeness centrality)"
+                    label="核心度"
                     sortable
                   />
+                   <el-table-column label="查看網路圖">
+                    <template #default="scope">
+                      <el-button
+                        size="small"
+                        @click="checkRank(scope.$index, scope.row)"
+                        >查看</el-button
+                      >
+                    </template>
+                  </el-table-column>
                   <!-- <el-table-column prop="rank" label="權重排名" />
             <el-table-column prop="from_id_name" label="起始節點名稱" />
             <el-table-column prop="to_id_name" label="終點節點名稱" />
@@ -166,7 +175,7 @@
 import Navbar from "@/components/Navbar.vue";
 
 export default {
-  name: "ResultAnalysis",
+  name: "nalysis",
   components: {
     Navbar,
   },
@@ -175,6 +184,7 @@ export default {
       attributes: [],
       value: "",
       ranks: [],
+      basicData: [],
       rank: "",
       tableData: [
         {
@@ -190,7 +200,7 @@ export default {
         expandTrigger: "hover",
       },
       loading: false,
-      src: "http://140.136.155.121:50000/sna_graph/result.html",
+      src: "http://140.136.155.121:50000/sna_graph/basic.html",
     };
   },
   methods: {
@@ -210,45 +220,60 @@ export default {
       }
     },
     nodeChange() {
+      this.loading = true;
       //const api = `https://fju-trans.herokuapp.com`;
       const api = `http://140.136.155.121:50000`;
-      this.loading = true;
+        
+      const formData = new FormData()
+      formData.append("token", localStorage.getItem("token")); // Form userToken
+      formData.append("dataset", localStorage.getItem("dataset")); // Form userToken
+
       this.$http
-        .get(
-          api +
-            "/resultReceive?node=" +
-            this.attributes[parseInt(this.value[0]) - 1].label +
-            "&rank=1"
-        )
+        .post(api + "basicReceive?node=" + this.value[1], formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
         .then(() => {
           const iframe = this.$refs.Iframe;
           const tempSrc = iframe.src;
           iframe.src = tempSrc;
           this.iframeLoad();
-          this.$http.get(api + "/resultcsv").then((response) => {
-            this.loading = false;
-            console.log(response.data);
-            this.tableData = response.data;
-            response.data.forEach((item) => {
-              this.ranks.push({
-                value: item.rank,
-                label: item.rank,
-              });
-            });
+
+          this.$http
+            .post(api + "/basiccsv", formData, {
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            })
+            .then((response) => {
+              this.loading = false;
+              console.log(response.data);
+              this.basicData = response.data;
           });
-        });
+      });
     },
     checkRank(index, rowItem) {
       console.log(rowItem);
       //const api = `https://fju-trans.herokuapp.com`;
-      const api = `http://140.136.155.121:50000`;
+      const api = `http://140.136.155.121:50000`;      
+      
+      const formData = new FormData()
+      formData.append("token", localStorage.getItem("token")); // Form userToken
+      formData.append("dataset", localStorage.getItem("dataset")); // Form userToken
+
       this.$http
-        .get(
+        .post(
           api +
             "/resultReceive?node=" +
             this.attributes[parseInt(this.value[0]) - 1].label +
             "&rank=" +
             (parseInt(index) + 1)
+          , formData, {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
         )
         .then(() => {
           const iframe = this.$refs.Iframe;
@@ -260,11 +285,22 @@ export default {
   },
   created() {
     // const api = `https://fju-trans.herokuapp.com`;
-    const api = `http://140.136.155.121:50000`;
-    this.$http.get(api + "/resultAttributes").then((response) => {
-      console.log(response.data);
-      this.attributes = response.data;
-    });
+    const api = `http://140.136.155.121:50000`;      
+    
+    const formData = new FormData()
+    formData.append("token", localStorage.getItem("token")); // Form userToken
+    formData.append("dataset", localStorage.getItem("dataset")); // Form userToken
+
+    this.$http
+      .post(api + "/resultAttributes", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
+        this.attributes = response.data;
+      });
   },
 };
 $(document).ready(function () {
@@ -464,7 +500,7 @@ body > .el-container {
 }
 
 .prodBody {
-  border: 1px solid #c1c1c1;
+  //border: 1px solid #c1c1c1;
   // padding: 20px;
   border-radius: 5px;
 }
@@ -481,9 +517,9 @@ body > .el-container {
   display: block;
 }
 
-#pTab1C {
-  background: #f0e19f;
-}
+// #pTab1C {
+//   background: #f0e19f;
+// }
 #pTab2C {
   background: #98c6fa;
 }

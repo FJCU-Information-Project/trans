@@ -13,7 +13,7 @@
             <el-tab-pane label="範例資料集">
               <Example />
             </el-tab-pane>
-            <el-tab-pane :disabled="!isAuth" label="自訂資料集">
+            <el-tab-pane lazy="true" :disabled="!isAuth" label="自訂資料集">
               <Customized v-if="isAuth" />
               <Login v-else />
               <el-alert
@@ -25,7 +25,7 @@
               >
               </el-alert>
             </el-tab-pane>
-            <el-tab-pane :disabled="!isAuth" label="歷史紀錄資料">
+            <el-tab-pane lazy="true" :disabled="!isAuth" label="歷史紀錄資料">
               <HistoryDataSet v-if="isAuth" />
               <Login v-else />
               <el-alert
@@ -41,6 +41,17 @@
         </div>
       </el-col>
     </el-row>
+    <div id="mannul-icons">
+      <router-link :to="{ name: 'SysMannul' }" class="link" target="_blank" style="text-decoration:none;font-weight:bold;color:blue">
+        <img
+            src="../assets/car.png"
+            alt="carpdf"
+            width="40"
+            height="35"
+            style="vertical-align:middle;"
+          /> 查看操作說明    
+      </router-link>
+  </div>
   </div>
 </template>
 
@@ -193,5 +204,25 @@ body > .el-container {
 .grid-content {
   border-radius: 4px;
   min-height: 36px;
+}
+#mannul-icons {
+  position: fixed;
+  z-index: 11;
+  right: 0;
+  top: 18%;
+  background: #e4e8ed;
+  padding: 20px 20px 10px 15px;
+  margin: 0;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+}
+ 
+#mannul-icons .router-link {
+  padding: 0;
+  clear: both;
+  float: left;
+  margin-bottom: 10px;
+  text-decoration: none;
 }
 </style>

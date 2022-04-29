@@ -20,7 +20,7 @@
                   placeholder="請選擇起始節點"
                 ></el-cascader>
               </div>
-              <div>
+              <div class="block">
                 <el-select
                   v-model="layerValue"
                   placeholder="請選擇層級"
@@ -57,10 +57,12 @@
             class="basictable"
             height="860"
           >
-            <el-table-column prop="second_name" label="肇事因素(起始)節點" />
+            <el-table-column prop="second_name" label="起始節點" />
             <el-table-column prop="group" label="第一層節點" />
+            <el-table-column prop="group" label="第一層權重" />
             <el-table-column prop="group" label="第二層節點" />
-            <el-table-column prop="group" label="肇事因素關聯權重" />
+            <el-table-column prop="group" label="第二層權重" />
+            <el-table-column prop="group" label="總權重" />
           </el-table>
         </div>
       </el-col>

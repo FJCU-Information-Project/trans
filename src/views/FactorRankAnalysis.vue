@@ -43,10 +43,10 @@
             class="basictable"
             height="860"
           >
-            <el-table-column prop="factorRank" label="肇事因素關聯排名" />
-            <el-table-column prop="factor" label="肇事因素起始點" />
-            <el-table-column prop="factor" label="與起始點關聯之肇事因素" />
-            <el-table-column prop="caseNumber" label="權重(交通案件總數)" />
+            <el-table-column prop="factorRank" label="排名" />
+            <el-table-column prop="factor" label="節點名稱" />
+            <!-- <el-table-column prop="factor" label="與起始點關聯之肇事因素" /> -->
+            <el-table-column prop="caseNumber" label="權重" />
           </el-table>
         </div>
       </el-col>
@@ -109,18 +109,33 @@ export default {
       this.loading = true;
       //const api = `https://fju-trans.herokuapp.com`;
       const api = `http://140.136.155.121:50000`;
+      
+      const formData = new FormData()
+      formData.append("token", localStorage.getItem("token")); // Form userToken
+      formData.append("dataset", localStorage.getItem("dataset")); // Form userToken
+
       this.$http
-        .get(api + "/factorRankReceive?node=" + this.value[1])
+        .post(api + "/factorRankReceive?node=" + this.value[1] , formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
         .then(() => {
           const iframe = this.$refs.Iframe;
           const tempSrc = iframe.src;
           iframe.src = tempSrc;
           this.iframeLoad();
-          this.$http.get(api + "/factorRankcsv").then((response) => {
-            this.loading = false;
-            console.log(response.data);
-            this.factorRankData = response.data;
-          });
+          this.$http
+            .post(api + "/factorRankcsv", formData, {
+                headers: {
+                  "Content-Type": "multipart/form-data",
+                },
+              })
+            .then((response) => {
+              this.loading = false;
+              console.log(response.data);
+              this.factorRankData = response.data;
+            });
         });
     },
   },
@@ -128,7 +143,18 @@ export default {
   created() {
     //const api = `https://fju-trans.herokuapp.com`;
     const api = `http://140.136.155.121:50000`;
-    this.$http.get(api + "/attributes").then((response) => {
+      
+    const formData = new FormData()
+    formData.append("token", localStorage.getItem("token")); // Form userToken
+    formData.append("dataset", localStorage.getItem("dataset")); // Form userToken
+
+    this.$http
+    .post(api + "/attributes", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+    .then((response) => {
       console.log(response.data);
       this.attributes = response.data;
     });

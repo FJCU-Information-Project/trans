@@ -31,11 +31,11 @@
               title="您的授權碼到期日為▼ "
               width="200"
               trigger="hover"
-              content="2022-09-18">
+              :content="expireDate">
             </el-popover>
             <el-button class="afterlogin" v-popover:popover> 
               <el-avatar :size="30" class="avatarsize" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
-              {{ isAuth }}，您好!
+              {{ isAuth }}
             </el-button>
           <!--使用者未登入後的狀態 end-->
 
@@ -53,11 +53,32 @@ export default {
     //var path = this.$route.params.path;
     return {
       //path,
-      isAuth: "",
+      isAuth: "載入中",
+      expireDate: null,
     };
   },
   mounted() {
-    this.isAuth = localStorage.getItem("token");
+    if(localStorage.getItem("token")){
+      var formData = new FormData();
+      formData.append('token', localStorage.getItem("token"));
+      const api = "http://140.136.155.121:50000";
+      setTimeout(() => {
+        this.$http
+          .post(api + "/user", formData, {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          })
+          .then((response) => {
+            console.log(JSON.stringify(response.data));
+            this.isAuth = response.data[2]+"，您好！";
+            this.expireDate = new Date(Date.parse(response.data[5]));
+          });
+      }, 1000);
+
+    }else{
+      this.isAuth = "目前未登入";
+    }
   },
   
 };

@@ -19,14 +19,6 @@
                   @change="nodeChange"
                   placeholder="請選擇事故節點"
                 ></el-cascader>
-                <!-- <span class="demonstration">Child options expand when hovered</span>
-                <el-cascader
-                  v-model="rank"
-                  :options="ranks"
-                  :props="props"
-                  @change="rankChange"
-                  placeholder="請選擇Rank(預設為1)"
-                ></el-cascader> -->
               </div>
             </div>
           </div>
@@ -43,12 +35,6 @@
         </p>
       </el-col>
       <el-col :span="11" class="analysis-table snatable">
-        <!-- <h1>Result Analysis</h1>
-        <hr />
-        <p>
-          使用者先選擇事故結果(例如：受傷程度、主要傷處、車輛撞擊部位），藉由該節點做SNA的集中點（Degree
-          Centrality）分析，找出肇事因素跟車禍案件結果關聯的高低，哪些節點組合最容易造成此結果並對其進行排名<br /><br />在本系統中，使用者可以藉由排名結果，得知造成車禍致死的關鍵因素，也能配合受傷程度屬性關聯，得出可能造成的死傷結果，來幫助其觀察分析結果，進而避免高致死率的肇事因素發生
-        </p> -->
         <div class="grid-content bg-purple main_sec">
           <el-table
             :data="tableData"
@@ -57,13 +43,13 @@
             class="basictable"
             height="820"
           >
-            <el-table-column prop="rank" label="權重排名" />
+            <el-table-column prop="rank" label="排名" />
             <el-table-column
               prop="from_id_name"
-              label="肇事因素節點(起始)名稱"
+              label="起始節點名稱"
             />
-            <el-table-column prop="to_id_name" label="肇事因素節點(終點)名稱" />
-            <el-table-column prop="total" label="權重(交通案件總數)" />
+            <el-table-column prop="to_id_name" label="終點節點名稱" />
+            <el-table-column prop="total" label="權重" />
             <el-table-column label="查看SNA圖">
               <template #default="scope">
                 <el-button
@@ -94,23 +80,6 @@
         </div>
       </el-col>
     </el-row>
-    <!-- <el-row class="con_flex">
-      <el-col :span="20" class="snapic"> 
-        <div
-          v-loading="loading"
-          class="grid-content bg-purple-light iframe_main_sec"
-        >
-          <iframe
-            ref="Iframe"
-            :src="src"
-            frameborder="0"
-            width="100%"
-            height="100%"
-          >
-          </iframe>
-        </div>
-      </el-col>
-    </el-row> -->
   </div>
 </template>
 
@@ -165,28 +134,43 @@ export default {
       //const api = `https://fju-trans.herokuapp.com`;
       const api = `http://140.136.155.121:50000`;
       this.loading = true;
+        
+      const formData = new FormData();
+      formData.append("token", localStorage.getItem("token")); // Form userToken
+      formData.append("dataset", localStorage.getItem("dataset")); // Form userToken
+
       this.$http
-        .get(
+        .post(
           api +
             "/resultReceive?node=" +
             this.attributes[parseInt(this.value[0]) - 1].label +
             "&rank=1"
-        )
+        , formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
         .then(() => {
           const iframe = this.$refs.Iframe;
           const tempSrc = iframe.src;
           iframe.src = tempSrc;
           this.iframeLoad();
-          this.$http.get(api + "/resultcsv").then((response) => {
-            this.loading = false;
-            console.log(response.data);
-            this.tableData = response.data;
-            response.data.forEach((item) => {
-              this.ranks.push({
-                value: item.rank,
-                label: item.rank,
+          this.$http
+            .post(api + "/resultcsv", formData, {
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            })
+            .then((response) => {
+              this.loading = false;
+              console.log(response.data);
+              this.tableData = response.data;
+              response.data.forEach((item) => {
+                this.ranks.push({
+                  value: item.rank,
+                  label: item.rank,
+                });
               });
-            });
           });
         });
     },
@@ -194,13 +178,23 @@ export default {
       console.log(rowItem);
       //const api = `https://fju-trans.herokuapp.com`;
       const api = `http://140.136.155.121:50000`;
+      
+      const formData = new FormData()
+      formData.append("token", localStorage.getItem("token")); // Form userToken
+      formData.append("dataset", localStorage.getItem("dataset")); // Form userToken
+
       this.$http
-        .get(
+        .post(
           api +
             "/resultReceive?node=" +
             this.attributes[parseInt(this.value[0]) - 1].label +
             "&rank=" +
             (parseInt(index) + 1)
+          , formData, {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
         )
         .then(() => {
           const iframe = this.$refs.Iframe;
@@ -212,11 +206,22 @@ export default {
   },
   created() {
     // const api = `https://fju-trans.herokuapp.com`;
-    const api = `http://140.136.155.121:50000`;
-    this.$http.get(api + "/resultAttributes").then((response) => {
-      console.log(response.data);
-      this.attributes = response.data;
-    });
+    const api = `http://140.136.155.121:50000`; 
+    
+    const formData = new FormData()
+    formData.append("token", localStorage.getItem("token")); // Form userToken
+    formData.append("dataset", localStorage.getItem("dataset")); // Form userToken
+
+    this.$http
+      .post(api + "/resultAttributes", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
+        this.attributes = response.data;
+      });
   },
 };
 </script>
