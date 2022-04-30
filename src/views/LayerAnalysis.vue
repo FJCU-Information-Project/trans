@@ -145,40 +145,75 @@ export default {
       // const api = `https://fju-trans.herokuapp.com`;
       // const api = `http://140.136.155.121:50000`;
       const api = `http://140.136.155.121:50000`;
-      this.$http.get(api + "/layerReceive?node=" + this.value[1]).then(() => {
-        const iframe = this.$refs.Iframe;
-        const tempSrc = iframe.src;
-        iframe.src = tempSrc;
-        this.iframeLoad();
-        this.$http.get(api + "/layercsv").then((response) => {
-          this.loading = false;
-          console.log(response.data);
-          this.layerData = response.data;
+
+      const formData = new FormData()
+      formData.append("token", localStorage.getItem("owner")); // Form userToken
+      formData.append("dataset", localStorage.getItem("dataset")); // Form userToken
+
+      this.$http
+        .post(api + "/layerReceive?node=" + this.value[1], formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then(() => {
+          const iframe = this.$refs.Iframe;
+          const tempSrc = iframe.src;
+          iframe.src = tempSrc;
+          this.iframeLoad();
+          this.$http
+            .post(api + "/layercsv", formData, {
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            })
+            .then((response) => {
+              this.loading = false;
+              console.log(response.data);
+              this.layerData = response.data;
+            });
         });
-      });
     },
     layerChange() {
       this.loading = true;
       // const api = `https://fju-trans.herokuapp.com`;
       // const api = `http://140.136.155.121:50000`;
       const api = `http://140.136.155.121:50000`;
-      this.$http.get(api + "/layerReceive?node=" + this.value[1]).then(() => {
-        const iframe = this.$refs.Iframe;
-        const tempSrc = iframe.src;
-        iframe.src = tempSrc;
-        this.iframeLoad();
-        this.$http.get(api + "/layercsv").then((response) => {
-          this.loading = false;
-          console.log(response.data);
-          this.layerData = response.data
-            .map((value) => {
-              if (value.group === this.layerValue) {
-                return value;
-              }
-            })
-            .filter((item) => item);
+
+      const formData = new FormData()
+      formData.append("token", localStorage.getItem("owner")); // Form userToken
+      formData.append("dataset", localStorage.getItem("dataset")); // Form userToken
+
+
+      this.$http
+        .post(api + "/layerReceive?node=" + this.value[1], formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then(() => {
+          const iframe = this.$refs.Iframe;
+          const tempSrc = iframe.src;
+          iframe.src = tempSrc;
+          this.iframeLoad();
+          this.$http
+          .post(api + "/layercsv", formData, {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          })
+          .then((response) => {
+            this.loading = false;
+            console.log(response.data);
+            this.layerData = response.data
+              .map((value) => {
+                if (value.group === this.layerValue) {
+                  return value;
+                }
+              })
+              .filter((item) => item);
+          });
         });
-      });
     },
   },
   mounted() {
@@ -188,7 +223,18 @@ export default {
     console.log("created");
     // const api = `https://fju-trans.herokuapp.com`;
     const api = `http://140.136.155.121:50000`;
-    this.$http.get(api + "/attributes").then((response) => {
+      
+    const formData = new FormData()
+    formData.append("token", localStorage.getItem("owner")); // Form userToken
+    formData.append("dataset", localStorage.getItem("dataset")); // Form userToken
+
+    this.$http
+    .post(api + "/attributes", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    })
+    .then((response) => {
       console.log(response.data);
       this.attributes = response.data;
     });

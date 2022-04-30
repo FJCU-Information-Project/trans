@@ -35,8 +35,9 @@
         </p>
         </el-col>
         <el-col :span="11" class="analysis-table snatable ">
-        <div v-loading="loading" class="grid-content bg-purple main_sec">
+        <div class="grid-content bg-purple main_sec">
           <el-table
+            v-loading="loading"
             :data="factorRankData"
             stripe
             style="width: 100%"
@@ -50,8 +51,8 @@
           </el-table>
         </div>
       </el-col>
-       <el-col :span="12" class="snapic">
-        <div class="grid-content bg-purple-light iframe_main_sec">
+      <el-col :span="12" class="snapic">
+        <div v-loading="loading" class="grid-content bg-purple-light iframe_main_sec">
           <iframe
             ref="Iframe"
             :src="src"
@@ -111,7 +112,7 @@ export default {
       const api = `http://140.136.155.121:50000`;
       
       const formData = new FormData()
-      formData.append("token", localStorage.getItem("token")); // Form userToken
+      formData.append("token", localStorage.getItem("owner")); // Form userToken
       formData.append("dataset", localStorage.getItem("dataset")); // Form userToken
 
       this.$http
@@ -145,7 +146,7 @@ export default {
     const api = `http://140.136.155.121:50000`;
       
     const formData = new FormData()
-    formData.append("token", localStorage.getItem("token")); // Form userToken
+    formData.append("token", localStorage.getItem("owner")); // Form userToken
     formData.append("dataset", localStorage.getItem("dataset")); // Form userToken
 
     this.$http

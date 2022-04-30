@@ -9,26 +9,6 @@
             <span style="font-weight: bolder" class="sub-title">
               基本的社會網路分析
             </span>
-            <div class="select-group">
-              <div class="block">
-                <!-- <span class="demonstration">Child options expand when hovered</span> -->
-                <el-cascader
-                  v-model="value"
-                  :options="attributes"
-                  :props="props"
-                  @change="nodeChange"
-                  placeholder="請選擇事故節點"
-                ></el-cascader>
-                <!-- <span class="demonstration">Child options expand when hovered</span>
-                <el-cascader
-                  v-model="rank"
-                  :options="ranks"
-                  :props="props"
-                  @change="rankChange"
-                  placeholder="請選擇Rank(預設為1)"
-                ></el-cascader> -->
-              </div>
-            </div>
           </div>
         </div>
       </el-col>
@@ -37,11 +17,6 @@
     <!--tabs start-->
     <!-- Tab Section With ID attribute Start -->
     <div class="container">
-      <!-- <ul class="prodNav">
-        <li id="pTab1" class="ptItem active">degree analysis</li>
-        <li id="pTab2" class="ptItem">closeness analysis</li>
-      </ul> -->
-
       <div class="prodBody">
         <!--degree analysis start-->
         <div class="prodMain active" id="pTab1C">
@@ -55,20 +30,20 @@
               </p>
             </el-col>
             <el-col :span="11" class="analysis-table snatable">
-              <div class="grid-content bg-purple main_sec">
+              <div v-loading="loadingcsv" class="grid-content bg-purple main_sec">
                 <el-table :data="basicData" stripe class="basictable" height="820">
-                  <el-table-column prop="from_id_name" label="節點名稱" />
+                  <el-table-column prop="node_name" label="節點名稱" />
                   <el-table-column
-                    prop="from_id_name"
+                    prop="degree_centrality"
                     label="集中度"
                     sortable
                   />
                   <el-table-column
-                    prop="from_id_name"
+                    prop="closeness_centrality"
                     label="核心度"
                     sortable
-                  />
-                   <el-table-column label="查看網路圖">
+                    />
+                    <el-table-column label="查看網路圖">
                     <template #default="scope">
                       <el-button
                         size="small"
@@ -77,23 +52,10 @@
                       >
                     </template>
                   </el-table-column>
-                  <!-- <el-table-column prop="rank" label="權重排名" />
-            <el-table-column prop="from_id_name" label="起始節點名稱" />
-            <el-table-column prop="to_id_name" label="終點節點名稱" />
-            <el-table-column prop="total" label="權重" />
-            <el-table-column label="查看SNA圖">
-              <template #default="scope">
-                <el-button
-                  size="small"
-                  @click="checkRank(scope.$index, scope.row)"
-                  >查看</el-button
-                >
-              </template>
-            </el-table-column> -->
                 </el-table>
               </div>
             </el-col>
-              <el-col :span="12" class="snapic">
+            <el-col :span="12" class="snapic">
               <div
                 v-loading="loading"
                 class="grid-content bg-purple-light iframe_main_sec"
@@ -105,60 +67,7 @@
                   width="100%"
                   height="100%"
                 >
-                  <!-- 社會網路圖 -->
-                </iframe>
-              </div>
-            </el-col>
-          </el-row>
-        </div>
-        <!--degree analysis end-->
-        <div class="prodMain" id="pTab2C">
-          <el-row class="con_flex">
-            <el-col :span="23" class="analysis-table content">
-              <h1>Closeness Analysis</h1>
-              <hr />
-              <p>
-                使用者選擇一個肇事因素做為中心起始節點，透過分析起始節點與周遭其他節點，找出與該節點擁有幾種不同的關聯
-              </p>
-              </el-col>
-              <el-col :span="11" class="analysis-table snatable">
-              <div class="grid-content bg-purple main_sec">
-                <el-table
-                  :data="closenessData"
-                  stripe
-                  style="width: 100%"
-                  class="basictable"
-                  height="820"
-                >
-                  <!-- <el-table-column prop="from_id" label="肇事因素編號" width="180" />
-          <el-table-column
-            prop="from_id_name"
-            label="肇事因素名稱"
-            width="180"
-          />
-          <el-table-column prop="weight" label="Closeness Centrality" /> -->
-                  <el-table-column prop="from_id_name" label="肇事因素名稱" />
-                  <el-table-column prop="" label="集中度(degree centrality)" />
-                  <el-table-column
-                    prop=""
-                    label="核心度(closeness centrality)"
-                  />
-                </el-table>
-        </div>
-      </el-col>
-        <el-col :span="12" class="snapic">
-              <div
-                v-loading="loading"
-                class="grid-content bg-purple-light iframe_main_sec"
-              >
-                <iframe
-                  ref="Iframe"
-                  :src="src"
-                  frameborder="0"
-                  width="100%"
-                  height="100%"
-                >
-                  <!-- 社會網路圖 -->
+                <!-- 社會網路圖 -->
                 </iframe>
               </div>
             </el-col>
@@ -175,7 +84,7 @@
 import Navbar from "@/components/Navbar.vue";
 
 export default {
-  name: "nalysis",
+  name: "basicAnalysis",
   components: {
     Navbar,
   },
@@ -186,21 +95,13 @@ export default {
       ranks: [],
       basicData: [],
       rank: "",
-      tableData: [
-        {
-          from_id: "139",
-          from_id_name: "無缺陷",
-          rank: "1",
-          to_id: "184",
-          to_id_name: "無繪設快慢車道分隔線",
-          total: "21774",
-        },
-      ],
+      tableData: [],
       props: {
         expandTrigger: "hover",
       },
       loading: false,
-      src: "http://140.136.155.121:50000/sna_graph/basic.html",
+      loadingcsv: false,
+      src: "",
     };
   },
   methods: {
@@ -219,56 +120,20 @@ export default {
         };
       }
     },
-    nodeChange() {
-      this.loading = true;
+    checkRank(index, rowItem) {
+      console.log(rowItem.node_id);
       //const api = `https://fju-trans.herokuapp.com`;
       const api = `http://140.136.155.121:50000`;
-        
-      const formData = new FormData()
-      formData.append("token", localStorage.getItem("token")); // Form userToken
-      formData.append("dataset", localStorage.getItem("dataset")); // Form userToken
-
-      this.$http
-        .post(api + "basicReceive?node=" + this.value[1], formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        })
-        .then(() => {
-          const iframe = this.$refs.Iframe;
-          const tempSrc = iframe.src;
-          iframe.src = tempSrc;
-          this.iframeLoad();
-
-          this.$http
-            .post(api + "/basiccsv", formData, {
-              headers: {
-                "Content-Type": "multipart/form-data",
-              },
-            })
-            .then((response) => {
-              this.loading = false;
-              console.log(response.data);
-              this.basicData = response.data;
-          });
-      });
-    },
-    checkRank(index, rowItem) {
-      console.log(rowItem);
-      //const api = `https://fju-trans.herokuapp.com`;
-      const api = `http://140.136.155.121:50000`;      
       
+      this.loading = true;
       const formData = new FormData()
-      formData.append("token", localStorage.getItem("token")); // Form userToken
+      formData.append("token", localStorage.getItem("owner")); // Form userToken
       formData.append("dataset", localStorage.getItem("dataset")); // Form userToken
-
+      formData.append("node", rowItem.node_id); // Form userToken
       this.$http
         .post(
           api +
-            "/resultReceive?node=" +
-            this.attributes[parseInt(this.value[0]) - 1].label +
-            "&rank=" +
-            (parseInt(index) + 1)
+            "/basicReceive"
           , formData, {
             headers: {
               "Content-Type": "multipart/form-data",
@@ -277,8 +142,7 @@ export default {
         )
         .then(() => {
           const iframe = this.$refs.Iframe;
-          const tempSrc = iframe.src;
-          iframe.src = tempSrc;
+          iframe.src = "http://140.136.155.121:50000/sna_graph/basic.html";
           this.iframeLoad();
         });
     },
@@ -287,19 +151,32 @@ export default {
     // const api = `https://fju-trans.herokuapp.com`;
     const api = `http://140.136.155.121:50000`;      
     
+    this.loading = true;
+    this.loadingcsv = true;
     const formData = new FormData()
-    formData.append("token", localStorage.getItem("token")); // Form userToken
+    formData.append("token", localStorage.getItem("owner")); // Form userToken
     formData.append("dataset", localStorage.getItem("dataset")); // Form userToken
 
     this.$http
-      .post(api + "/resultAttributes", formData, {
+      .post(api + "/basicReceive", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       })
       .then((response) => {
         console.log(response.data);
-        this.attributes = response.data;
+        this.$http
+          .post(api + "/basiccsv", formData, {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          })
+          .then((response) => {
+            console.log(response.data);
+            this.basicData = response.data;
+            this.loading = false;
+            this.loadingcsv = false;
+          });
       });
   },
 };

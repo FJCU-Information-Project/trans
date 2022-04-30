@@ -123,7 +123,7 @@ export default {
       const api = `http://140.136.155.121:50000`;
       
       const formData = new FormData()
-      formData.append("token", localStorage.getItem("token")); // Form userToken
+      formData.append("token", localStorage.getItem("owner")); // Form userToken
       formData.append("dataset", localStorage.getItem("dataset")); // Form userToken
 
       this.$http
@@ -159,7 +159,7 @@ export default {
     const api = `http://140.136.155.121:50000`;
       
     const formData = new FormData()
-    formData.append("token", localStorage.getItem("token")); // Form userToken
+    formData.append("token", localStorage.getItem("owner")); // Form userToken
     formData.append("dataset", localStorage.getItem("dataset")); // Form userToken
 
     this.$http

@@ -71,16 +71,14 @@
                   style="margin-left: 1em"
                   >上傳資料
                 </el-button>
-                <router-link :to="{ name: 'Analysis' }" class="link">
-                  <el-button
-                    class="fs-20"
-                    type="warning"
-                    size="mini"
-                    @click="handleEdit(scope.$index, scope.row)"
-                    style="margin-left: 1em"
-                    >進行分析</el-button
-                  >
-                </router-link>
+                <el-button
+                  class="fs-20"
+                  type="warning"
+                  size="mini"
+                  @click="handleEdit(scope.$index, scope.row)"
+                  style="margin-left: 1em"
+                  >進行分析</el-button
+                >
 
                 <el-button
                   class="fs-20"
@@ -127,6 +125,28 @@ export default {
   methods: {
     handleEdit(index, row) {
       console.log(index, row);
+      const dataset = row.datasetID;
+      console.log(dataset);
+
+      const formData = new FormData();
+      const userToken = localStorage.getItem("token");
+
+      localStorage.setItem("owner",userToken);
+      localStorage.setItem("dataset",dataset);
+      formData.append("token", userToken); // Form token
+      formData.append("dataset", dataset); // Form dataset
+      formData.append("owner", userToken); // Form owner
+      const api = "http://140.136.155.121:50000";
+      this.$http
+        .post(api + "/historyCreate", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then((response) => {
+          console.log(JSON.stringify(response.data));
+        });
+      this.$router.push('/analysis');
     },
     // handleDelete(index, row) {
     //   console.log(index, row);
@@ -147,7 +167,8 @@ export default {
               const uploadFile = document.getElementById("datasetFile").files[0];
               const formData = new FormData();
               const userToken = localStorage.getItem("token");
-              formData.append("userToken", userToken); // Form userToken
+              formData.append("token", userToken); // Form userToken
+              formData.append("dataset", localStorage.getItem("dataset")); // Form datasetID
               formData.append("caseFile", uploadFile); // Form file name
               const api = "http://140.136.155.121:50000";
               this.$http
@@ -156,14 +177,41 @@ export default {
                     "Content-Type": "multipart/form-data",
                   },
                 })
-                .then((response) => {
-                  console.log(JSON.stringify(response.data));
+                .then((response2) => {
+                  console.log(JSON.stringify(response2.data));
+                  this.$http
+                    .post(api + "/insertCase", formData, {
+                      headers: {
+                        "Content-Type": "multipart/form-data",
+                      },
+                    })
+                    .then((response3) => {
+                      console.log(response3.data);
+                      this.$http
+                        .post(api + "/relationship", formData, {
+                          headers: {
+                            "Content-Type": "multipart/form-data",
+                          },
+                        })
+                        .then((response4) => {
+                          console.log(response4.data);
+                          this.$http
+                            .post(api + "/resultWeight", formData, {
+                              headers: {
+                                "Content-Type": "multipart/form-data",
+                              },
+                            })
+                            .then((response4) => {
+                              console.log(response4.data);
+                            }); 
+                        }); 
+                    });
                 });
-            }
-            done();
+            // done();
+            };
           },
         }
-      );
+      )
     },
     remove(index, dataset) {
       this.$confirm('此操作將永久刪除此資料集, 是否確認刪除?', '提示', {

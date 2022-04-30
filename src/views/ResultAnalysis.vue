@@ -35,7 +35,7 @@
         </p>
       </el-col>
       <el-col :span="11" class="analysis-table snatable">
-        <div class="grid-content bg-purple main_sec">
+        <div v-loading="loading" class="grid-content bg-purple main_sec">
           <el-table
             :data="tableData"
             stripe
@@ -46,11 +46,11 @@
             <el-table-column prop="rank" label="排名" />
             <el-table-column
               prop="from_id_name"
-              label="起始節點名稱"
+              label="起始節點"
             />
-            <el-table-column prop="to_id_name" label="終點節點名稱" />
+            <el-table-column prop="to_id_name" label="終點節點" />
             <el-table-column prop="total" label="權重" />
-            <el-table-column label="查看SNA圖">
+            <!-- <el-table-column label="查看SNA圖">
               <template #default="scope">
                 <el-button
                   size="medium"
@@ -59,7 +59,7 @@
                   ><i class="el-icon-view"></i> 查看</el-button
                 >
               </template>
-            </el-table-column>
+            </el-table-column> -->
           </el-table>
         </div>
       </el-col>
@@ -136,15 +136,13 @@ export default {
       this.loading = true;
         
       const formData = new FormData();
-      formData.append("token", localStorage.getItem("token")); // Form userToken
+      formData.append("token", localStorage.getItem("owner")); // Form userToken
       formData.append("dataset", localStorage.getItem("dataset")); // Form userToken
 
       this.$http
         .post(
           api +
-            "/resultReceive?node=" +
-            this.attributes[parseInt(this.value[0]) - 1].label +
-            "&rank=1"
+            "/resultReceive?node=" + this.attributes[parseInt(this.value[0]) - 1].value
         , formData, {
           headers: {
             "Content-Type": "multipart/form-data",
@@ -180,7 +178,7 @@ export default {
       const api = `http://140.136.155.121:50000`;
       
       const formData = new FormData()
-      formData.append("token", localStorage.getItem("token")); // Form userToken
+      formData.append("token", localStorage.getItem("owner")); // Form userToken
       formData.append("dataset", localStorage.getItem("dataset")); // Form userToken
 
       this.$http
@@ -209,7 +207,7 @@ export default {
     const api = `http://140.136.155.121:50000`; 
     
     const formData = new FormData()
-    formData.append("token", localStorage.getItem("token")); // Form userToken
+    formData.append("token", localStorage.getItem("owner")); // Form userToken
     formData.append("dataset", localStorage.getItem("dataset")); // Form userToken
 
     this.$http

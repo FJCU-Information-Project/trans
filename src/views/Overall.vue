@@ -80,7 +80,7 @@ export default {
       value: "",
       loading: false,
       // src: "https://fju-trans.herokuapp.com/sna_graph/snaRank10.html",
-      src: "http://140.136.155.121:50000/sna_graph/overall.html",
+      src: "http://140.136.155.121:50000/sna_graph/all.html",
     };
   },
   methods: {
@@ -99,25 +99,27 @@ export default {
         };
       }
     },
-    handleChange() {
-      this.loading = true;
-      //const api = `https://fju-trans.herokuapp.com`;
-      const api = `http://140.136.155.121:5000`;
-      this.$http.get(api + "/overallReceive").then(() => {
+  },
+  mounted() {
+    // const api = `https://fju-trans.herokuapp.com`;
+    const api = `http://140.136.155.121:50000`;
+
+    const formData = new FormData();
+    formData.append("token", localStorage.getItem("owner")); // Form token
+    formData.append("dataset", localStorage.getItem("dataset")); // Form dataset  
+    
+    this.$http
+      .post(api + "/overallReceive", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then(() => {
         const iframe = this.$refs.Iframe;
         const tempSrc = iframe.src;
         iframe.src = tempSrc;
         this.iframeLoad();
       });
-    },
-  },
-  created() {
-    // const api = `https://fju-trans.herokuapp.com`;
-    const api = `http://140.136.155.121:5000`;
-    this.$http.get(api + "/attributes").then((response) => {
-      console.log(response.data);
-      this.attributes = response.data;
-    });
   },
 };
 </script>

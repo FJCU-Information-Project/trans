@@ -190,28 +190,25 @@ export default {
     submitUpload() {
       console.log("submitUpload");
       
-      let formData = new FormData();
+      const formData = new FormData();
       formData.append("token", localStorage.getItem("token")); // Form token
       formData.append("dataset", localStorage.getItem("dataset")); // Form dataset  
-      // TODO: 改檔案名稱
+      const formDataFile = formData;
       
       this.uploadTables.forEach(element => {
         let file = document.getElementById(element.name).childNodes[2].lastChild.files[0];
         console.log(file);
-        formData.append(element.name, file);
+        formDataFile.append(element.name, file);
       });
       const api = "http://140.136.155.121:50000";
       this.$http
-        .post(api + "/uploadDatasets", formData, {
+        .post(api + "/uploadDatasets", formDataFile, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
         })
         .then((response) => {
           console.log(JSON.stringify(response.data));
-          formData = new FormData();
-          formData.append("token", localStorage.getItem("token")); // Form token
-          formData.append("dataset", localStorage.getItem("dataset")); // Form dataset  
           this.$http
             .post(api + "/createTable", formData, {
               headers: {
@@ -220,6 +217,24 @@ export default {
             })
             .then((response2) => {
               console.log(response2.data);
+              this.$http
+                .post(api + "/relationship", formData, {
+                  headers: {
+                    "Content-Type": "multipart/form-data",
+                  },
+                })
+                .then((response3) => {
+                  console.log(response3.data);
+                  this.$http
+                    .post(api + "/resultWeight", formData, {
+                      headers: {
+                        "Content-Type": "multipart/form-data",
+                      },
+                    })
+                    .then((response4) => {
+                      console.log(response4.data);
+                    }); 
+                }); 
             }); 
         }); 
     },
