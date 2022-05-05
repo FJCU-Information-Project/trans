@@ -7,7 +7,7 @@
           <div class="ban-title">
             <h1>Factor Rank Analysis</h1>
             <span style="font-weight: bolder" class="sub-title">
-              請選擇一個節點，我們將會為您呈現與此節點關聯性最高的前10%節點
+              以某肇事因素為條件，呈現出與該肇事因素同時發生之前百分之十的因素節點和排名。
             </span>
             <div class="select-group">
               <div class="block">
@@ -30,8 +30,8 @@
         <h1>Factor Rank Analysis</h1>
         <hr />
         <p>
-          使用者先選擇肇事因素的屬性(例如:天候、道路類別)，再依照所選類別選取目標的中心節點，系統會呈現使用者所選的中心節點和其中關聯權重前10%高的肇事因素節點<br /><br />
-          使用者可以藉由選取特定肇事因素節點，來找出該肇事因素節點和其他節點的關聯性強弱。藉此讓使用者觀察對於自己感興趣的肇事因素節點，去尋找與此相關的其他肇事因素並進行關聯權重排名。圖中的線會因兩個節點間的關聯權重增加而加粗
+          系統將針對所選的肇事因素，找出與此因素相關聯的肇事因素節點，並透過關聯權重大小進行排名，進一步列出前10%筆的資料，再以網路圖呈現出整體該組合關聯的分布情形。<br /><br />
+          權重較大且排名較高的關聯組合，代表該組合的肇事因素在是經常出現的，且通常也是該肇事因素最為核心關鍵的肇事因素組合。關聯組合權重越高，網路圖中呈現的關聯線條越粗、肇事因素節點越大。
         </p>
         </el-col>
         <el-col :span="11" class="analysis-table snatable ">
@@ -47,7 +47,7 @@
             <el-table-column prop="factorRank" label="排名" />
             <el-table-column prop="factor" label="節點名稱" />
             <!-- <el-table-column prop="factor" label="與起始點關聯之肇事因素" /> -->
-            <el-table-column prop="caseNumber" label="權重" />
+            <el-table-column prop="caseWeight" label="權重" />
           </el-table>
         </div>
       </el-col>
@@ -87,7 +87,7 @@ export default {
       value: "",
       loading: false,
       // src: "https://fju-trans.herokuapp.com/sna_graph/snaRank10.html",
-      src: "http://140.136.155.121:50000/sna_graph/snaRank10.html",
+      src: "",
     };
   },
   methods: {
@@ -114,17 +114,18 @@ export default {
       const formData = new FormData()
       formData.append("token", localStorage.getItem("owner")); // Form userToken
       formData.append("dataset", localStorage.getItem("dataset")); // Form userToken
+      formData.append("node", this.value[1]); // Form node
 
       this.$http
-        .post(api + "/factorRankReceive?node=" + this.value[1] , formData, {
+        .post(api + "/factorRankReceive" , formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
         })
         .then(() => {
           const iframe = this.$refs.Iframe;
-          const tempSrc = iframe.src;
-          iframe.src = tempSrc;
+          iframe.src = "";
+          iframe.src = "http://140.136.155.121:50000/sna_graph/snaRank10.html";
           this.iframeLoad();
           this.$http
             .post(api + "/factorRankcsv", formData, {

@@ -61,7 +61,7 @@
                 />
               </template> -->
               <template #default="scope">
-                <router-link :to="{ name: 'Analysis' }" class="link">
+                <router-link :to="{ name: 'ExampleAnalysis' }" class="link">
                   <el-button
                     class="fs-20"
                     type="warning"

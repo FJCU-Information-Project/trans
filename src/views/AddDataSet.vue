@@ -177,6 +177,11 @@ export default {
         })
         .then((response) => {
           let res = response.data;
+          this.$notify({
+            title: '資料集基本資訊',
+            message: "資料集基本資訊已上傳完成",
+            type: 'success',
+          });
           console.log(res);
           if(res.status){
             console.log("Scheme create SUCCESS");
@@ -217,6 +222,11 @@ export default {
             })
             .then((response2) => {
               console.log(response2.data);
+              this.$notify({
+                title: '資料集檔案上傳完成',
+                message: "資料集檔案上傳完成",
+                type: 'info',
+              });
               this.$http
                 .post(api + "/relationship", formData, {
                   headers: {
@@ -225,6 +235,29 @@ export default {
                 })
                 .then((response3) => {
                   console.log(response3.data);
+                  this.$notify({
+                    title: '資料集關聯製作中',
+                    message: "資料集關聯製作中 約需耗時30分鐘 請稍後回來 在此時間內請勿重新上傳資料集或離開此分頁",
+                    type: 'info',
+                  });
+                  // this.$prompt('資料集關聯製作中 視資料大小約需耗時30分鐘至1小時', '請輸入Email，可在分析完成後會寄送Email給您，如不須通知可直接取消', {
+                  //   confirmButtonText: '送出登記',
+                  //   cancelButtonText: '取消',
+                  //   inputPattern: /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/,
+                  //   inputErrorMessage: '信箱格式錯誤'
+                  // }).then(({ value }) => {
+                  //   console.log(value);
+                  //   this.$message({
+                  //     type: 'success',
+                  //     message: `將在完成後送出通知至:${value}`,
+                  //   })
+                  // }).catch(() => {
+                  //   console.log('cancel');
+                  //   this.$message({
+                  //     type: 'info',
+                  //     message: `已取消通知`,
+                  //   })
+                  // });
                   this.$http
                     .post(api + "/resultWeight", formData, {
                       headers: {
@@ -232,6 +265,11 @@ export default {
                       },
                     })
                     .then((response4) => {
+                      this.$notify({
+                        title: '資料集檔案關聯製作完成',
+                        message: "資料集檔案關聯製作完成",
+                        type: 'success',
+                      });
                       console.log(response4.data);
                     }); 
                 }); 

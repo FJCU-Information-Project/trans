@@ -123,6 +123,11 @@ const routes = [
     name: "SnaDescription",
     component: () => import("../views/SnaDescription.vue"),
   },
+  {
+    path: "/exampleanalysis",
+    name: "ExampleAnalysis",
+    component: () => import("../views/ExampleAnalysis.vue"),
+  },
 ];
 
 const router = createRouter({
@@ -132,7 +137,15 @@ const router = createRouter({
 
 router.beforeEach((to) => {
   let isAuth = localStorage.getItem("token");
-  if (to.name !== "Dataset" && to.name !== "Login" && !isAuth) {
+  if (to.name !== "Dataset" && to.name !== "Login" && !isAuth && to.name !== "Index" && to.name !== "ExampleAnalysis" 
+  && to.name !== "BasicAnalysis" 
+  && to.name !== "IsolationAnalysis"
+  && to.name !== "ResultAnalysis"
+  && to.name !== "Overall"
+  && to.name !== "LayerAnalysis"
+  && to.name !== "FactorRankAnalysis"
+  && to.name !== "SysMannul"
+  && to.name !== "SnaDescription") {
     return { name: "Login" };
   }
 });

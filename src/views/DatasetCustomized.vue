@@ -187,6 +187,11 @@ export default {
                     })
                     .then((response3) => {
                       console.log(response3.data);
+                      this.$notify({
+                        title: '資料集檔案上傳完成',
+                        message: "資料集檔案上傳完成",
+                        type: 'info',
+                      });
                       this.$http
                         .post(api + "/relationship", formData, {
                           headers: {
@@ -195,6 +200,11 @@ export default {
                         })
                         .then((response4) => {
                           console.log(response4.data);
+                          this.$notify({
+                            title: '資料集關聯製作中',
+                            message: "資料集關聯製作中 約需耗時30分鐘 請稍後回來 在此時間內請勿重新上傳資料集或離開此分頁",
+                            type: 'info',
+                          });
                           this.$http
                             .post(api + "/resultWeight", formData, {
                               headers: {
@@ -202,12 +212,17 @@ export default {
                               },
                             })
                             .then((response4) => {
+                              this.$notify({
+                                title: '資料集檔案關聯製作完成',
+                                message: "資料集檔案關聯製作完成",
+                                type: 'success',
+                              });
                               console.log(response4.data);
                             }); 
                         }); 
                     });
                 });
-            // done();
+            done();
             };
           },
         }

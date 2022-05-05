@@ -7,7 +7,7 @@
           <div class="ban-title">
             <h1>Overall</h1>
             <span style="font-weight: bolder" class="sub-title">
-              此功能將為您呈現您所選資料及的社會網路圖全貌
+              呈現網路圖的全貌，並聚焦出核心節點。
             </span>
             <!-- <div class="select-group">
             <el-select v-model="value" placeholder="請選擇一個節點">
@@ -37,7 +37,9 @@
       <el-col :span="20" class="analysis-table">
         <h1>Overall</h1>
         <hr />
-        <p>使用者透過此分析得知所有肇事因素節點周遭的網路分布狀態</p>
+        <p>
+          顯示出資料集中權重程度前20%的關聯，在網路圖中若形成一個小型網路，代表這些節點在此資料集中為較重要的節點，且通常也是最為核心關鍵的節點。
+        </p>
       </el-col>
       </el-row>
       <el-row class="con_flex">

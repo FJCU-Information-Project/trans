@@ -124,11 +124,11 @@
         <div class="left"></div>
         <div class="right">
           <h2>Contact Us 聯絡資訊</h2>
-          <input type="text" class="field" placeholder="Your Name 您的大名" />
-          <input type="text" class="field" placeholder="Your Email 您的郵件" />
-          <input type="text" class="field" placeholder="Topic 主旨" />
-          <textarea placeholder="Message 輸入您的疑問" class="field"></textarea>
-          <button class="btn">Send 寄送訊息</button>
+          <input v-model="contact.name" type="text" class="field" placeholder="Your Name 您的大名" required />
+          <input v-model="contact.email" type="email" class="field" placeholder="Your Email 您的郵件" required />
+          <input v-model="contact.topic" type="text" class="field" placeholder="Topic 主旨" required />
+          <textarea v-model="contact.messege" placeholder="Message 輸入您的疑問" class="field"></textarea>
+          <button @click="contactUs()" class="btn">Send 寄送訊息</button>
         </div>
       </div>
     </div>
@@ -151,12 +151,54 @@ export default {
   name: "Analysis",
   components: {
     Navbar,
-    Footer,
+    Footer
   },
   data() {
     return {
       src: "http://127.0.0.1:50000/",
+      contact:{
+        email: "",
+        name: "",
+        topic: "",
+        message: ""
+      }
     };
+  },
+  methods: {
+    contactUs(){
+      console.log(this.contact);
+      if(this.contact.name && this.contact.email && this.contact.topic){
+        const formData = new FormData();
+        formData.append('name', this.contact.name);
+        formData.append('email', this.contact.email);
+        formData.append('topic', this.contact.topic);
+        formData.append('messege', this.contact.message);
+        this.$http
+          .post(`http://140.136.155.121:50000/contact`, formData, {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            }
+          })
+          .then(response => {
+            this.$notify({
+              title: `${this.contact.name}您好！`,
+              message: `資料已送出至管理員，謝謝您的支持！系統管理員將會回復至${this.contact.email}`,
+              type: 'success',
+            });
+            console.log(response);
+          })
+          .catch(error => {
+            console.log(error);
+          });
+            }else{
+        this.$notify({
+          title: '請填寫完整資料',
+          message: '請填寫完整資料',
+          type: 'warning',
+        });
+      }
+
+    }
   },
 };
 </script>

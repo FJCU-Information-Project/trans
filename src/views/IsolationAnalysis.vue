@@ -7,7 +7,7 @@
           <div class="ban-title">
             <h1>Isolation Analysis</h1>
             <span style="font-weight: bolder" class="sub-title">
-              此分析我們將為您呈現整個網路圖中被孤立的節點
+              以某肇事因素為條件，呈現出沒有與該肇事因素同時發生的節點。
             </span>
             <div class="select-group">
               <div class="block">
@@ -31,8 +31,8 @@
         <h1>Isolation Analysis</h1>
         <hr />
         <p>
-          使用者透過此分析的 SNA
-          圖可得知在該資料集中並非造成車禍發生的因素節點。其中表格中所顯示的關聯組合皆為相同的起始因素節點，而其每一組組合的權重皆為0，亦可解釋為「在該資料集中並沒有出現過的關聯組合」。
+          系統將針對所選的肇事因素，找出與此因素毫無關聯的肇事因素節點，進一步以網路圖呈現出整體資料集的分布情形。<br>
+          權重為0的節點，代表在該資料集中並沒有與所選節點同時發生的紀錄，且通常也是整體網路圖中，相對邊陲的節點。
         </p>
         
         <!--
@@ -98,7 +98,7 @@ export default {
         expandTrigger: "hover",
       },
       loading: false,
-      src: "http://140.136.155.121:50000/sna_graph/isolation.html",
+      src: "",
     };
   },
   methods: {
@@ -134,8 +134,8 @@ export default {
           })
         .then(() => {
           const iframe = this.$refs.Iframe;
-          const tempSrc = iframe.src;
-          iframe.src = tempSrc;
+          iframe.src = "";
+          iframe.src = "http://140.136.155.121:50000/sna_graph/isolation.html";
           this.iframeLoad();
           this.$http
             .post(api + "/isolationcsv", formData, {

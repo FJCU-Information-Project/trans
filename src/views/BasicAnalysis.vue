@@ -7,7 +7,7 @@
           <div class="ban-title">
             <h1>Basic Analysis</h1>
             <span style="font-weight: bolder" class="sub-title">
-              基本的社會網路分析
+              以社會網路分析(Social Network Analysis, SNA)的基本理論來分析資料集。
             </span>
           </div>
         </div>
@@ -25,8 +25,10 @@
               <h1>Basic Analysis</h1>
               <hr />
               <p>
-                使用者先選擇事故結果(例如：受傷程度、主要傷處、車輛撞擊部位），藉由該節點做SNA的集中點（Degree
-                Centrality）分析，找出肇事因素跟車禍案件結果關聯的高低，哪些節點組合最容易造成此結果並對其進行排名<br /><br />在本系統中，使用者可以藉由排名結果，得知造成車禍致死的關鍵因素，也能配合受傷程度屬性關聯，得出可能造成的死傷結果，來幫助其觀察分析結果，進而避免高致死率的肇事因素發生
+                系統針對整個資料集中的肇事因素進行集中點分析與核心點分析，計算出各節點的Degree Centrality和Closeness Centrality，並藉由選取特定節點看出該節點與哪些節點有關聯。<br>
+	Degree Centrality數值較高的節點，通常也是權重總數較高的節點，因此可推斷其為較常出現的節點，換言之，就是較常發生車禍的關鍵因素之一。<br>
+	Closeness Centrality 數值較高的節點，通常也是具有較多組關聯組合的節點，因此可推斷其為較常伴隨其他因素出現的節點，換言之，就是較常與其他肇事因素一起發生的核心因素之一。<br>
+
               </p>
             </el-col>
             <el-col :span="11" class="analysis-table snatable">
@@ -180,21 +182,6 @@ export default {
       });
   },
 };
-$(document).ready(function () {
-  var pTabItem = $(".prodNav .ptItem");
-  $(pTabItem).click(function () {
-    // Tab nav active functionality
-    $(pTabItem).removeClass("active");
-    $(this).addClass("active");
-
-    // Tab container active functionality
-    var tabid = $(this).attr("id");
-    $(".prodMain").removeClass("active");
-    $("#" + tabid + "C").addClass("active");
-
-    return false;
-  });
-});
 </script>
 
 <style lang="scss">

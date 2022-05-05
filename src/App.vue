@@ -5,6 +5,25 @@
 <script>
 export default {
   name: "App",
+  mounted() {
+    setInterval(() => {
+      this.$http
+      .get("http://140.136.155.121:50000", {
+        timeout: 1000
+      })
+      .then()
+      .catch(error => {
+        console.log(error);
+        this.$notify({
+          title: '後端未連線或失去連線',
+          duration: 2000,
+          message: error,
+          type: 'error',
+        });
+      });
+    }, 5000);
+    
+  },
 };
 </script>
 

@@ -7,7 +7,7 @@
           <div class="ban-title">
             <h1>Layer Analysis</h1>
             <span style="font-weight: bolder" class="sub-title">
-              請選擇您想分析的中心節點及階層，我們將會為您呈現中心節點向外發散的層級關係點層級
+              以某肇事因素為條件，透過層級呈現出與該肇事因素直接和間接的關係節點和關係權重。
             </span>
             <div class="select-group">
               <div class="block">
@@ -20,21 +20,6 @@
                   placeholder="請選擇起始節點"
                 ></el-cascader>
               </div>
-              <div class="block">
-                <el-select
-                  v-model="layerValue"
-                  placeholder="請選擇層級"
-                  @change="layerChange"
-                >
-                  <el-option
-                    v-for="item in tableData"
-                    :key="item.id"
-                    :label="item.node"
-                    :value="item.node"
-                  >
-                  </el-option>
-                </el-select>
-              </div>
             </div>
           </div>
         </div>
@@ -45,10 +30,12 @@
         <h1>Layer Analysis</h1>
         <hr />
         <p>
-          使用者選擇一個肇事因素做為中心起始節點，從起始節點發散並展開來檢視第一層、第二層的關聯節點分析，並呈現以該起始節點為中心所分析的第一層網路圖，再進一步以第一層的節點作為起始點，各自發散出第二層的網路圖
+          系統將針對所選的肇事因素作為起始點，找出與此因素相關聯的肇事因素節點作為第一層節點，進一步再以第一層節點找出下一層的肇事因素節點作為第二層節點，網路圖呈現出肇事因素間的直接和間接關係之分布情形。<br /><br />
+
+          以起始點和第一層節點的關聯組合加上第一層節點和第二層節點的關聯組合為總權重，而總權重越高的關聯組合，代表該肇事因素組合關聯是經常出現的，且通常也是最為核心關鍵的肇事因素組合。因此可推斷哪些因素節點與該節點發生的關聯機率越高，也就是較常與該肇事因素一起發生的兩層關聯組合。
         </p>
-         </el-col>
-        <el-col :span="11" class="analysis-table snatable">
+      </el-col>
+      <el-col :span="11" class="analysis-table snatable">
         <div v-loading="loading" class="grid-content bg-purple main_sec">
           <el-table
             :data="layerData"
@@ -57,12 +44,11 @@
             class="basictable"
             height="860"
           >
-            <el-table-column prop="second_name" label="起始節點" />
-            <el-table-column prop="group" label="第一層節點" />
-            <el-table-column prop="group" label="第一層權重" />
-            <el-table-column prop="group" label="第二層節點" />
-            <el-table-column prop="group" label="第二層權重" />
-            <el-table-column prop="group" label="總權重" />
+            <el-table-column prop="first_node_name" label="起始節點" />
+            <el-table-column prop="second_node_name" label="第一層節點" />
+            <el-table-column prop="weight1" label="第一層權重" />
+            <el-table-column prop="third_node_name" label="第二層節點" />
+            <el-table-column prop="weight2" label="第二層權重" />
           </el-table>
         </div>
       </el-col>
@@ -99,20 +85,6 @@ export default {
       value: "",
       attributes: [],
       layerData: [],
-      tableData: [
-        {
-          id: "0",
-          node: "起始點",
-        },
-        {
-          id: "1",
-          node: "第1層",
-        },
-        {
-          id: "2",
-          node: "第2層",
-        },
-      ],
       layerValue: "",
       props: {
         expandTrigger: "hover",
@@ -120,7 +92,7 @@ export default {
       loading: false,
       // src: "https://fju-trans.herokuapp.com/sna_graph/layer.html",
       // src: "http://140.136.155.121:50000/sna_graph/layer.html",
-      src: "http://140.136.155.121:50000/sna_graph/layer.html",
+      src: "",//,
       // src: "http://140.136.155.121:8080",
     };
   },
@@ -149,17 +121,18 @@ export default {
       const formData = new FormData()
       formData.append("token", localStorage.getItem("owner")); // Form userToken
       formData.append("dataset", localStorage.getItem("dataset")); // Form userToken
+      formData.append("node", this.value[1]); // Form userToken
 
       this.$http
-        .post(api + "/layerReceive?node=" + this.value[1], formData, {
+        .post(api + "/layerReceive", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
         })
         .then(() => {
           const iframe = this.$refs.Iframe;
-          const tempSrc = iframe.src;
-          iframe.src = tempSrc;
+          iframe.src = "";
+          iframe.src = "http://140.136.155.121:50000/sna_graph/layer.html";
           this.iframeLoad();
           this.$http
             .post(api + "/layercsv", formData, {
