@@ -30,7 +30,7 @@
         <h1>Result Analysis</h1>
         <hr />
         <p>
-          系統將針對所選的肇事結果，找出符合該肇事結果的肇事因素組合，透過權重大小進行排名，進一步列出前10%筆的資料，同時，完成網路圖的呈現。<br>
+          系統將針對所選的肇事結果，找出符合該肇事結果的肇事因素組合，透過權重大小進行排名，進一步列出前1%筆的資料，同時，完成網路圖的呈現。<br>
           權重較大的關聯組合，代表該組合的肇事因素在此資料集中是經常出現的，且通常也是最為核心關鍵的肇事因素組合。<br>
         </p>
       </el-col>
@@ -111,7 +111,7 @@ export default {
         expandTrigger: "hover",
       },
       loading: false,
-      src: "http://140.136.155.121:50000/sna_graph/result.html",
+      src: "",
     };
   },
   methods: {
@@ -142,7 +142,7 @@ export default {
       this.$http
         .post(
           api +
-            "/resultReceive?node=" + this.attributes[parseInt(this.value[0]) - 1].value
+            "/resultReceive?node=" + this.value[1]
         , formData, {
           headers: {
             "Content-Type": "multipart/form-data",
@@ -150,8 +150,8 @@ export default {
         })
         .then(() => {
           const iframe = this.$refs.Iframe;
-          const tempSrc = iframe.src;
-          iframe.src = tempSrc;
+          iframe.src = "";
+          iframe.src = "http://140.136.155.121:50000/sna_graph/result.html";
           this.iframeLoad();
           this.$http
             .post(api + "/resultcsv", formData, {
