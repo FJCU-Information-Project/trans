@@ -250,10 +250,10 @@ export default {
                   console.log(JSON.stringify(response.data));
                   this.customizeTableData.splice(index, 1);
                 });
-          this.$message({
-            type: 'success',
-            message: '刪除成功!'
-          });
+          //this.$message({
+          //  type: 'success',
+          //  message: '刪除成功!'
+          // });
         }).catch(() => {
           this.$message({
             type: 'info',

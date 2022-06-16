@@ -160,7 +160,7 @@ export default {
         email: "",
         name: "",
         topic: "",
-        message: ""
+        messege: ""
       }
     };
   },
@@ -172,7 +172,7 @@ export default {
         formData.append('name', this.contact.name);
         formData.append('email', this.contact.email);
         formData.append('topic', this.contact.topic);
-        formData.append('messege', this.contact.message);
+        formData.append('messege', this.contact.messege);
         this.$http
           .post(`http://140.136.155.121:50000/contact`, formData, {
             headers: {

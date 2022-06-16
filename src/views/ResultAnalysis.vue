@@ -44,12 +44,12 @@
             height="820"
           >
             <el-table-column prop="rank" label="排名" />
+            <el-table-column prop="total" label="權重" />
             <el-table-column
               prop="from_id_name"
               label="起始節點"
             />
             <el-table-column prop="to_id_name" label="終點節點" />
-            <el-table-column prop="total" label="權重" />
             <!-- <el-table-column label="查看SNA圖">
               <template #default="scope">
                 <el-button
@@ -97,16 +97,7 @@ export default {
       value: "",
       ranks: [],
       rank: "",
-      tableData: [
-        {
-          from_id: "139",
-          from_id_name: "無缺陷",
-          rank: "1",
-          to_id: "184",
-          to_id_name: "無繪設快慢車道分隔線",
-          total: "21774",
-        },
-      ],
+      tableData: [],
       props: {
         expandTrigger: "hover",
       },

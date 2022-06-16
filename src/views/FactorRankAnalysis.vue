@@ -45,9 +45,9 @@
             height="860"
           >
             <el-table-column prop="factorRank" label="排名" />
+            <el-table-column prop="caseWeight" label="權重" />
             <el-table-column prop="factor" label="節點名稱" />
             <!-- <el-table-column prop="factor" label="與起始點關聯之肇事因素" /> -->
-            <el-table-column prop="caseWeight" label="權重" />
           </el-table>
         </div>
       </el-col>

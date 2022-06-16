@@ -241,7 +241,7 @@ export default {
   box-sizing: border-box;
   height: 800px;
   // background-image: url(../assets/greenbg.png);
-  background: lightgray;
+  //background: lightgray;
   background-repeat: repeat-x;
   // background-image: url(https://images.pexels.com/photos/2705755/pexels-photo-2705755.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
 }

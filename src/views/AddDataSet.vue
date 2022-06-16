@@ -59,7 +59,7 @@
             </div>
             <div class="d-flex" style="justify-content: end">
               <el-form-item class="d-flex">
-                <el-button type="warning" @click="handleSubmit">確定新增</el-button>
+                <el-button :disabled="dataDisable" type="warning" @click="handleSubmit">確定新增</el-button>
                 <router-link :to="{ name: 'Dataset' }" class="link">
                   <el-button>取消新增</el-button>
                 </router-link>
@@ -86,7 +86,7 @@
                 </span>
               </el-upload>
             </el-form-item>
-            <el-button class="ml-3" type="success" @click="submitUpload">
+            <el-button :disabled="fileDisable" class="ml-3" type="success" @click="submitUpload">
               上傳檔案
             </el-button>
             <a
@@ -102,6 +102,20 @@
                 height="30"
               /> 點此查看格式規範
             </a>
+            <el-form-item>
+              <el-progress v-if="relation_status" type="dashboard" :percentage="relation_progress">
+                <template #default="{ percentage }">
+                  <span class="percentage-value">{{ percentage }}%</span>
+                  <span class="percentage-label">Realationing...</span>
+                </template>
+              </el-progress>
+              <el-progress v-if="weight_status" type="dashboard" :percentage="weight_progress">
+                <template #default="{ percentage }">
+                  <span class="percentage-value">{{ percentage }}%</span>
+                  <span class="percentage-label">Weighting...</span>
+                </template>
+              </el-progress>
+            </el-form-item>
           </div>
           <!--file upload section-->
         </div>
@@ -120,6 +134,8 @@ export default {
   data() {
     return {
       input: "",
+      dataDisable: false,
+      fileDisable: true,
       form: {
         name: "",
         unit: "",
@@ -151,12 +167,19 @@ export default {
           name: "caseFileName",
           label: "車禍案件總表"
         },
-      ]
+      ],
+      relation_status: false,
+      relation_progress: 0,
+      weight_status: false,
+      weight_progress: 0,
     };
   },
   methods: {
     handleSubmit() {
-      console.log("submit!");
+      console.log("data submit!");
+      this.$message.success("送出新資料集資料");
+      this.dataDisable = true;
+      this.fileDisable = false;
       const formData = new FormData();
       const form = this.form;
       // ["datasetName", "datasetUnit", "datasetPeriodStart", "datasetPeriodEnd", "datasetNote", "datasetPublic"]
@@ -190,11 +213,24 @@ export default {
           }else{
             console.log("Scheme create ERROR");
           }
+        })
+        .catch((error) => {
+          this.$notify({
+            title: '資料集基本資訊',
+            message: "資料集基本資訊上傳失敗",
+            type: 'error',
+          });
+          console.error(error);
         });
     },
     submitUpload() {
       console.log("submitUpload");
-      
+      this.$message({
+        message:"上傳檔案",
+        type: 'success'
+      });
+      this.fileDisable = true;
+
       const formData = new FormData();
       formData.append("token", localStorage.getItem("token")); // Form token
       formData.append("dataset", localStorage.getItem("dataset")); // Form dataset  
@@ -213,6 +249,10 @@ export default {
           },
         })
         .then((response) => {
+          this.$message({
+            message:"上傳檔案完成",
+            type: 'success'
+          });
           console.log(JSON.stringify(response.data));
           this.$http
             .post(api + "/createTable", formData, {
@@ -227,6 +267,15 @@ export default {
                 message: "資料集檔案上傳完成",
                 type: 'info',
               });
+              this.relation_status = true;
+              const relation_progress_status = setInterval(() => {
+                this.$http
+                .get(api + "/relationshipStatus")
+                .then((response) => {
+                  console.log(response.data);
+                  this.relation_progress = (100 * response.data.progress).toFixed(2);
+                });
+              }, 500);
               this.$http
                 .post(api + "/relationship", formData, {
                   headers: {
@@ -234,6 +283,8 @@ export default {
                   },
                 })
                 .then((response3) => {
+                  clearInterval(relation_progress_status);
+                  this.relation_progress = 100;
                   console.log(response3.data);
                   this.$notify({
                     title: '資料集關聯製作中',
@@ -258,6 +309,15 @@ export default {
                   //     message: `已取消通知`,
                   //   })
                   // });
+                  this.weight_status = true;
+                  const weight_progress_status = setInterval(() => {
+                    this.$http
+                    .get(api + "/weightStatus")
+                    .then((response) => {
+                      console.log(response.data);
+                      this.weight_progress = (100*response.data.progress).toFixed(2);
+                    });
+                  }, 3000);
                   this.$http
                     .post(api + "/resultWeight", formData, {
                       headers: {
@@ -265,14 +325,16 @@ export default {
                       },
                     })
                     .then((response4) => {
+                      clearInterval(weight_progress_status);
+                      this.weight_progress = 100;
+                      console.log(response4.data);
                       this.$notify({
                         title: '資料集檔案關聯製作完成',
                         message: "資料集檔案關聯製作完成",
                         type: 'success',
                       });
-                      console.log(response4.data);
                     }); 
-                }); 
+                });
             }); 
         }); 
     },
@@ -440,5 +502,14 @@ export default {
   color: rgb(78, 78, 238);
   font-weight: bold;
 }
-
+.percentage-value {
+  display: block;
+  margin-top: 10px;
+  font-size: 28px;
+}
+.percentage-label {
+  display: block;
+  margin-top: 10px;
+  font-size: 12px;
+}
 </style>
